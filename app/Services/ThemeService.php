@@ -206,6 +206,7 @@ class ThemeService
             'theme_font' => 'Cairo',
             'theme_radius' => 'medium',
             'show_emergency_ticker' => '1',
+            'show_header_contact_buttons' => '1',
             'show_floating_buttons' => '1',
             'show_home_articles' => '1',
             'header_style' => 'sticky',

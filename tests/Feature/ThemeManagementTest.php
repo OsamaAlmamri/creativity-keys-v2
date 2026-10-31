@@ -48,6 +48,7 @@ class ThemeManagementTest extends TestCase
             'theme_font' => 'Tajawal',
             'theme_radius' => 'pill',
             'show_emergency_ticker' => 1,
+            'show_header_contact_buttons' => 1,
             'show_floating_buttons' => 1,
             'show_home_articles' => 1,
             'header_style' => 'sticky',
@@ -60,6 +61,7 @@ class ThemeManagementTest extends TestCase
         $this->assertEquals('light', Setting::get('theme_mode'));
         $this->assertEquals('Tajawal', Setting::get('theme_font'));
         $this->assertEquals('pill', Setting::get('theme_radius'));
+        $this->assertEquals('1', Setting::get('show_header_contact_buttons'));
     }
 
     public function test_admin_can_set_custom_color(): void
@@ -102,6 +104,24 @@ class ThemeManagementTest extends TestCase
         $response = $this->get(route('home'));
         $response->assertStatus(200);
         $response->assertDontSee('خدمة طوارئ متنقلة على مدار 24 ساعة لجميع أحياء الرياض');
+    }
+
+    public function test_header_contact_buttons_can_be_hidden_and_shown(): void
+    {
+        // 1. By default or enabled: header contact buttons are visible
+        Setting::set('show_header_contact_buttons', '1', 'theme');
+        $response = $this->get(route('home'));
+        $response->assertStatus(200);
+        $response->assertSee('<span>واتساب</span>', false);
+        $response->assertSee('<span>اتصال طوارئ 24/7</span>', false);
+
+        // 2. When disabled: header contact buttons are hidden
+        Setting::set('show_header_contact_buttons', '0', 'theme');
+        $responseDisabled = $this->get(route('home'));
+        $responseDisabled->assertStatus(200);
+        $responseDisabled->assertDontSee('<span>واتساب</span>', false);
+        $responseDisabled->assertDontSee('<span>اتصال طوارئ 24/7</span>', false);
+        $responseDisabled->assertDontSee('محادثة واتساب سريعة', false);
     }
 
     public function test_admin_can_reset_theme_to_defaults(): void

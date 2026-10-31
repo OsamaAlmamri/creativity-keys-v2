@@ -28,6 +28,7 @@ class ThemeController extends Controller
             'theme_font' => Setting::get('theme_font', 'Cairo'),
             'theme_radius' => Setting::get('theme_radius', 'medium'),
             'show_emergency_ticker' => (bool) Setting::get('show_emergency_ticker', '1'),
+            'show_header_contact_buttons' => (bool) Setting::get('show_header_contact_buttons', '1'),
             'show_floating_buttons' => (bool) Setting::get('show_floating_buttons', '1'),
             'show_home_articles' => (bool) Setting::get('show_home_articles', '1'),
             'header_style' => Setting::get('header_style', 'sticky'),
@@ -49,6 +50,7 @@ class ThemeController extends Controller
             'theme_font' => ['required', 'string', 'in:Cairo,Tajawal,Alexandria,Almarai'],
             'theme_radius' => ['required', 'string', 'in:sharp,medium,pill'],
             'show_emergency_ticker' => ['nullable', 'boolean'],
+            'show_header_contact_buttons' => ['nullable', 'boolean'],
             'show_floating_buttons' => ['nullable', 'boolean'],
             'show_home_articles' => ['nullable', 'boolean'],
             'header_style' => ['required', 'string', 'in:sticky,static'],
@@ -65,6 +67,7 @@ class ThemeController extends Controller
         Setting::set('theme_font', $validated['theme_font'], 'theme', 'نوع الخط العربي');
         Setting::set('theme_radius', $validated['theme_radius'], 'theme', 'نمط حواف العناصر');
         Setting::set('show_emergency_ticker', $request->has('show_emergency_ticker') ? '1' : '0', 'theme', 'إظهار شريط الطوارئ', 'boolean');
+        Setting::set('show_header_contact_buttons', $request->has('show_header_contact_buttons') ? '1' : '0', 'theme', 'إظهار أزرار اتصال الهيدر', 'boolean');
         Setting::set('show_floating_buttons', $request->has('show_floating_buttons') ? '1' : '0', 'theme', 'إظهار أزرار الاتصال العائمة', 'boolean');
         Setting::set('show_home_articles', $request->has('show_home_articles') ? '1' : '0', 'theme', 'إظهار قسم المقالات بالرئيسية', 'boolean');
         Setting::set('header_style', $validated['header_style'], 'theme', 'نمط شريط التنقل');

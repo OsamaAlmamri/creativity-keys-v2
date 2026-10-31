@@ -342,11 +342,29 @@
                         </div>
                     </label>
 
+                    <!-- Header Contact Buttons -->
+                    <label class="group p-4 sm:p-5 rounded-2xl bg-slate-950 border border-slate-800 hover:border-slate-700 transition-all flex items-center justify-between gap-4 cursor-pointer select-none has-[:checked]:border-amber-500/40 has-[:checked]:bg-amber-500/[0.03]">
+                        <div class="space-y-1 flex-1">
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs sm:text-sm font-bold text-white block">إظهار أزرار الاتصال السريع في هيدر الموقع (WhatsApp & Phone)</span>
+                                <span class="hidden group-has-[:checked]:inline-flex text-[10px] font-black px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-500 dark:text-amber-400 border border-amber-500/30">مفعل</span>
+                                <span class="inline-flex group-has-[:checked]:hidden text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700/60">معطل</span>
+                            </div>
+                            <span class="text-[11px] text-slate-400 block">إظهار أو إخفاء أزرار الواتساب والاتصال الهاتفي المباشر في شريط التنقل العلوي للموقع (الهيدر).</span>
+                        </div>
+                        <div class="modern-switch shrink-0">
+                            <input type="checkbox" name="show_header_contact_buttons" value="1" class="modern-switch-input" {{ $current['show_header_contact_buttons'] ? 'checked' : '' }}>
+                            <span class="modern-switch-track">
+                                <span class="modern-switch-thumb"></span>
+                            </span>
+                        </div>
+                    </label>
+
                     <!-- Floating Buttons -->
                     <label class="group p-4 sm:p-5 rounded-2xl bg-slate-950 border border-slate-800 hover:border-slate-700 transition-all flex items-center justify-between gap-4 cursor-pointer select-none has-[:checked]:border-amber-500/40 has-[:checked]:bg-amber-500/[0.03]">
                         <div class="space-y-1 flex-1">
                             <div class="flex items-center gap-2">
-                                <span class="text-xs sm:text-sm font-bold text-white block">إظهار أزرار الاتصال السريع العائمة (WhatsApp & Phone)</span>
+                                <span class="text-xs sm:text-sm font-bold text-white block">إظهار أزرار الاتصال السريع العائمة أسفل الشاشة (WhatsApp & Phone)</span>
                                 <span class="hidden group-has-[:checked]:inline-flex text-[10px] font-black px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-500 dark:text-amber-400 border border-amber-500/30">مفعل</span>
                                 <span class="inline-flex group-has-[:checked]:hidden text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700/60">معطل</span>
                             </div>
