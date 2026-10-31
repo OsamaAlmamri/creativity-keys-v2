@@ -3,6 +3,7 @@
 @section('page_title', 'إعدادات وبيانات المحل')
 
 @section('content')
+
     <div class="max-w-5xl mx-auto space-y-8">
 
         <!-- Top Header & Breadcrumb Info -->
