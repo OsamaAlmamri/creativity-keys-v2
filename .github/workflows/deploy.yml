@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch: # يتيح تشغيل النشر يدوياً من واجهة GitHub
+  workflow_dispatch: # يتيح تشغيل النشر يدوياً من واجهة GitHub Actions
 
 jobs:
   build-and-deploy:
@@ -12,11 +12,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. جلب الكود من المستودع
+      # 1. التحقق من وجود جميع المتغيرات السرية المطلوبة قبل بدء البناء
+      - name: Validate Required Secrets
+        run: |
+          MISSING=""
+          if [ -z "${{ secrets.SSH_HOST }}" ]; then MISSING="$MISSING SSH_HOST"; fi
+          if [ -z "${{ secrets.SSH_USER }}" ]; then MISSING="$MISSING SSH_USER"; fi
+          if [ -z "${{ secrets.SSH_PRIVATE_KEY }}" ]; then MISSING="$MISSING SSH_PRIVATE_KEY"; fi
+          if [ -z "${{ secrets.DEPLOY_PATH }}" ]; then MISSING="$MISSING DEPLOY_PATH"; fi
+
+          if [ -n "$MISSING" ]; then
+            echo "::error title=Missing Secrets::المتغيرات السرية التالية مفقودة أو فارغة في GitHub Repository Secrets:$MISSING"
+            echo "يرجى الذهاب إلى مستودع GitHub:"
+            echo "Settings -> Secrets and variables -> Actions -> قسم 'Repository secrets'"
+            echo "وتأكد من إضافة المتغيرات بالأسماء الصحيحة وبحروف كبيرة (Capital):"
+            echo "1. SSH_HOST (عنوان IP السيرفر أو النطاق)"
+            echo "2. SSH_USER (اسم مستخدم cPanel)"
+            echo "3. SSH_PRIVATE_KEY (المفتاح الخاص)"
+            echo "4. DEPLOY_PATH (المسار الكامل مثل /home/username/baba-albustan-keys)"
+            exit 1
+          fi
+
+      # 2. جلب الكود من المستودع
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # 2. إعداد بيئة PHP 8.3 مع الامتدادات اللازمة
+      # 3. إعداد بيئة PHP 8.3 مع الامتدادات اللازمة
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -24,37 +45,44 @@ jobs:
           extensions: mbstring, xml, ctype, iconv, intl, pdo, pdo_mysql, pdo_sqlite, bcmath, curl, zip
           coverage: none
 
-      # 3. تثبيت حزم Composer للإنتاج بدون حزم التطوير
+      # 4. تثبيت حزم Composer للإنتاج بدون حزم التطوير
       - name: Install Composer Dependencies
         run: |
           composer install --no-dev --prefer-dist --optimize-autoloader --no-progress --no-interaction
 
-      # 4. إعداد بيئة Node.js 20
+      # 5. إعداد بيئة Node.js 20
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
 
-      # 5. تثبيت حزم NPM وبناء ملفات الواجهة (Vite / Tailwind)
+      # 6. تثبيت حزم NPM وبناء ملفات الواجهة (Vite / Tailwind)
       - name: Install NPM Dependencies & Build Assets
         run: |
           npm ci
           npm run build
 
-      # 6. إعداد مفتاح SSH والاتصال بسيرفر Namecheap (المنفذ الافتراضي 21098)
+      # 7. إعداد مفتاح SSH والاتصال بسيرفر Namecheap (المنفذ الافتراضي 21098)
       - name: Configure SSH Key & Host
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PORT: ${{ secrets.SSH_PORT || '21098' }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          SSH_PORT="${{ secrets.SSH_PORT || '21098' }}"
-          ssh-keyscan -p $SSH_PORT -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts 2>/dev/null || true
+          ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null || true
 
-      # 7. مزامنة ونقل الملفات عبر Rsync مع استثناء الملفات الحساسة
+      # 8. مزامنة ونقل الملفات عبر Rsync مع استثناء الملفات الحساسة
       - name: Sync Files via Rsync
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PORT: ${{ secrets.SSH_PORT || '21098' }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
         run: |
-          SSH_PORT="${{ secrets.SSH_PORT || '21098' }}"
           rsync -avz --delete \
             -e "ssh -p $SSH_PORT -o StrictHostKeyChecking=no" \
             --exclude='.env' \
@@ -66,17 +94,20 @@ jobs:
             --exclude='storage/framework/views/*' \
             --exclude='storage/logs/*' \
             --exclude='database/database.sqlite' \
-            ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}
+            ./ "$SSH_USER@$SSH_HOST:$DEPLOY_PATH"
 
-      # 8. تنفيذ أوامر الصيانة والتحديث على سيرفر الاستضافة
+      # 9. تنفيذ أوامر الصيانة والتحديث على سيرفر الاستضافة
       - name: Execute Remote Post-Deployment Tasks
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PORT: ${{ secrets.SSH_PORT || '21098' }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          PHP_CMD: ${{ secrets.PHP_BIN || 'php' }}
         run: |
-          SSH_PORT="${{ secrets.SSH_PORT || '21098' }}"
-          PHP_CMD="${{ secrets.PHP_BIN || 'php' }}"
-
-          ssh -p $SSH_PORT -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << EOF
+          ssh -p "$SSH_PORT" -o StrictHostKeyChecking=no "$SSH_USER@$SSH_HOST" << EOF
             set -e
-            cd ${{ secrets.DEPLOY_PATH }}
+            cd "$DEPLOY_PATH"
 
             # ضبط الصلاحيات للمجلدات القابلة للكتابة
             chmod -R 775 storage bootstrap/cache
