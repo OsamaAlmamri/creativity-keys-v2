@@ -28,8 +28,8 @@
 
     @php
         $cleanArrival = trim(str_replace('دقيقة', '', $settings['arrival_time'] ?? '15 - 25'));
-        $cityName = $settings['city_name'] ?? 'الرياض';
-        $coverageAreas = $settings['coverage_areas'] ?? 'النرجس • الملقا • العليا • الياسمين • حطين • الروضة • الشفا';
+        $cityName = $settings['city_name'] ?? 'جدة';
+        $coverageAreas = $settings['coverage_areas'] ?? 'الروضة • السلامة • الزهراء • الشاطئ • الحمراء • المروة • الصفا • أبحر';
         $directionsUrl = $settings['directions_url'] ?? \App\Models\Setting::getDirectionsUrl();
         $mapEmbedUrl = $settings['map_embed_url'] ?? \App\Models\Setting::getMapEmbedUrl();
     @endphp

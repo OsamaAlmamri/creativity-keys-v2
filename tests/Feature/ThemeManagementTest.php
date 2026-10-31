@@ -103,7 +103,7 @@ class ThemeManagementTest extends TestCase
 
         $response = $this->get(route('home'));
         $response->assertStatus(200);
-        $response->assertDontSee('خدمة طوارئ متنقلة على مدار 24 ساعة لجميع أحياء الرياض');
+        $response->assertDontSee('طوارئ 24/7:');
     }
 
     public function test_header_contact_buttons_can_be_hidden_and_shown(): void

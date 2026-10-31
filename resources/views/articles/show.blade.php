@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $article->title . ' | ' . ($settings['site_name'] ?? 'مفاتيح الأمان الذهبية'))
+@section('title', $article->title . ' | ' . ($settings['site_name'] ?? 'مفتاح باب البستان'))
 @section('meta_description', $article->excerpt ?? \Illuminate\Support\Str::limit(strip_tags($article->content), 160))
 @section('og_type', 'article')
 @section('og_image', $article->image_url)
@@ -21,12 +21,12 @@
     "dateModified": "{{ $article->updated_at->toIso8601String() }}",
     "author": {
         "@@type": "Organization",
-        "name": "{{ $settings['site_name'] ?? 'مفاتيح الأمان الذهبية' }}",
+        "name": "{{ $settings['site_name'] ?? 'مفتاح باب البستان' }}",
         "url": "{{ route('home') }}"
     },
     "publisher": {
         "@@type": "Organization",
-        "name": "{{ $settings['site_name'] ?? 'مفاتيح الأمان الذهبية' }}",
+        "name": "{{ $settings['site_name'] ?? 'مفتاح باب البستان' }}",
         "url": "{{ route('home') }}"
     },
     "articleSection": "{{ $article->category }}"
@@ -134,9 +134,9 @@
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
                 </div>
                 <div>
-                    <h4 class="text-sm font-bold text-white mb-0.5">فريق فنيي {{ $settings['site_name'] ?? 'مفاتيح الأمان الذهبية' }}</h4>
+                    <h4 class="text-sm font-bold text-white mb-0.5">فريق فنيي {{ $settings['site_name'] ?? 'مفتاح باب البستان' }}</h4>
                     <p class="text-xs text-slate-400 leading-relaxed">
-                        نخبة من أمهر فنيي فتح الأقفال وبرمجة مفاتيح السيارات في {{ $settings['city_name'] ?? 'الرياض' }} بخبرة تتجاوز {{ $settings['years_experience'] ?? '15' }} عاماً. نهدف من خلال هذه المقالات إلى إثراء المحتوى التوعوي وحماية ممتلكاتكم.
+                        نخبة من أمهر فنيي فتح الأقفال وبرمجة مفاتيح السيارات في {{ $settings['city_name'] ?? 'جدة' }} بخبرة تتجاوز {{ $settings['years_experience'] ?? '15' }} عاماً. نهدف من خلال هذه المقالات إلى إثراء المحتوى التوعوي وحماية ممتلكاتكم.
                     </p>
                 </div>
             </div>
@@ -145,7 +145,7 @@
             <div class="p-8 rounded-3xl bg-gradient-to-r from-amber-600 via-amber-500 to-yellow-500 text-slate-950 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-2xl">
                 <div>
                     <h3 class="text-xl sm:text-2xl font-black mb-1">هل تواجه موقف طوارئ الآن؟</h3>
-                    <p class="text-xs sm:text-sm font-bold text-slate-900">انقفل باب منزلك أو فقدت مفتاح سيارتك؟ نصلك خلال {{ $settings['arrival_time'] ?? '15-25 دقيقة' }} أينما كنت في {{ $settings['city_name'] ?? 'الرياض' }}.</p>
+                    <p class="text-xs sm:text-sm font-bold text-slate-900">انقفل باب منزلك أو فقدت مفتاح سيارتك؟ نصلك خلال {{ $settings['arrival_time'] ?? '15-25 دقيقة' }} أينما كنت في {{ $settings['city_name'] ?? 'جدة' }}.</p>
                 </div>
                 <div class="flex items-center gap-3 shrink-0">
                     <a href="tel:{{ $settings['emergency_phone'] ?? '0559998877' }}" class="px-6 py-3.5 rounded-2xl bg-slate-950 text-white font-black text-sm hover:bg-slate-900 transition-colors shadow-lg">

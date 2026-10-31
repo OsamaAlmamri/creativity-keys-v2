@@ -53,7 +53,7 @@ class ServiceCategorySeeder extends Seeder
                 'name' => 'الورشة المتنقلة للطوارئ 24/7',
                 'slug' => 'mobile-workshop',
                 'icon' => 'truck',
-                'description' => 'سيارات مجهزة بأحدث أجهزة الليزر والبرمجة تصل لموقعك في الرياض لخدمتك فوراً',
+                'description' => 'سيارات مجهزة بأحدث أجهزة الليزر والبرمجة تصل لموقعك في جدة لخدمتك فوراً',
                 'sort_order' => 6,
             ],
         ];

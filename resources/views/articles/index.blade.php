@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'المقالات والنصائح التوعوية للأقفال والمفاتيح | ' . ($settings['site_name'] ?? 'مفاتيح الأمان الذهبية'))
-@section('meta_description', 'دليل شامل ومقالات متخصصة في حماية المنازل وبرمجة مفاتيح وبصمات السيارات الحديثة والأقفال الذكية في ' . ($settings['city_name'] ?? 'الرياض') . '.')
+@section('title', 'المقالات والنصائح التوعوية للأقفال والمفاتيح | ' . ($settings['site_name'] ?? 'مفتاح باب البستان'))
+@section('meta_description', 'دليل شامل ومقالات متخصصة في حماية المنازل وبرمجة مفاتيح وبصمات السيارات الحديثة والأقفال الذكية في ' . ($settings['city_name'] ?? 'جدة') . '.')
 
 @section('schema')
 <script type="application/ld+json">
@@ -41,7 +41,7 @@
             <div class="max-w-3xl space-y-4">
                 <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
-                    مدونة ومكتبة مفاتيح الأمان
+                    مدونة ومكتبة {{ $settings['site_name'] ?? 'مفتاح باب البستان' }}
                 </div>
                 <h1 class="text-3xl sm:text-5xl font-black text-white leading-tight">
                     أحدث المقالات والإرشادات الأمنية للأقفال والمفاتيح

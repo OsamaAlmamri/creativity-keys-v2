@@ -187,12 +187,12 @@ class AdminCrudOperationsTest extends TestCase
         $response = $this->actingAs($this->admin)->post(route('admin.settings.update'), [
             'phone' => '0558887766',
             'emergency_phone' => '0551110099',
-            'site_name' => 'مركز مفاتيح الأمان المتطور',
+            'site_name' => 'مفتاح باب البستان - الفرع الرئيسي',
         ]);
 
         $response->assertRedirect(route('admin.settings.index'));
         $this->assertEquals('0558887766', Setting::get('phone'));
-        $this->assertEquals('مركز مفاتيح الأمان المتطور', Setting::get('site_name'));
+        $this->assertEquals('مفتاح باب البستان - الفرع الرئيسي', Setting::get('site_name'));
     }
 
     public function test_admin_can_manage_users_and_cannot_delete_self(): void

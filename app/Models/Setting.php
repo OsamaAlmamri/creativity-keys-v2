@@ -73,7 +73,7 @@ class Setting extends Model
             return 'https://www.google.com/maps/search/?api=1&query='.urlencode($address);
         }
 
-        $city = (string) static::get('city_name', 'الرياض');
+        $city = (string) static::get('city_name', 'جدة');
 
         return 'https://www.google.com/maps/search/?api=1&query='.urlencode($city.' مفاتيح');
     }
@@ -94,7 +94,7 @@ class Setting extends Model
             return "https://maps.google.com/maps?q={$lat},{$lng}&hl=ar&z=15&output=embed";
         }
 
-        $city = (string) static::get('city_name', 'الرياض');
+        $city = (string) static::get('city_name', 'جدة');
 
         return 'https://maps.google.com/maps?q='.urlencode($city).'&hl=ar&z=14&output=embed';
     }

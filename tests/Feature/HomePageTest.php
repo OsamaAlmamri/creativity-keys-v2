@@ -16,7 +16,7 @@ class HomePageTest extends TestCase
 
     public function test_home_page_loads_successfully(): void
     {
-        Setting::set('site_name', 'مفاتيح الأمان الذهبية');
+        Setting::set('site_name', 'مفتاح باب البستان');
         Article::factory()->create(['title' => 'مقال رئيسي مميز', 'is_published' => true]);
         Service::factory()->create(['title' => 'برمجة بصمة سيارة']);
         GalleryItem::factory()->create(['title' => 'قص مفتاح ليزر']);
@@ -25,7 +25,7 @@ class HomePageTest extends TestCase
         $response = $this->get(route('home'));
 
         $response->assertStatus(200);
-        $response->assertSee('مفاتيح الأمان الذهبية');
+        $response->assertSee('مفتاح باب البستان');
         $response->assertSee('برمجة بصمة سيارة');
         $response->assertSee('قص مفتاح ليزر');
         $response->assertSee('سعد الشمري');

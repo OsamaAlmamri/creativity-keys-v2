@@ -46,7 +46,7 @@
                             <svg class="w-5 h-5 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
                         </div>
                         <div>
-                            <span class="text-sm font-black text-white block" id="preview-brand-title">مفاتيح الأمان الذهبية</span>
+                            <span class="text-sm font-black text-white block" id="preview-brand-title">مفتاح باب البستان</span>
                             <span class="text-[11px] font-bold block" id="preview-brand-sub" style="color: {{ $activeColors['500'] }};">قص وبرمجة الأقفال 24/7</span>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
                             <span class="text-xs font-mono font-bold" id="preview-price" style="color: {{ $activeColors['500'] }};">ابتداءً من 180 ر.س</span>
                         </div>
                         <p class="text-xs text-slate-400" id="preview-sample-text">
-                            عينة توضيحية لخط الموقع: نستخدم أحدث أجهزة الليزر الرقمي لقص وبرمجة مفاتيح السيارات في موقعك بالرياض.
+                            عينة توضيحية لخط الموقع: نستخدم أحدث أجهزة الليزر الرقمي لقص وبرمجة مفاتيح السيارات في موقعك بجدة.
                         </p>
                     </div>
 
@@ -178,7 +178,7 @@
                             <span class="text-3xl">🌙</span>
                             <div>
                                 <span class="text-sm font-black text-white block">الوضع الليلي الفاخر (Dark)</span>
-                                <span class="text-[11px] text-slate-400 mt-1 block">موصى به؛ يمنح الموقع فخامة عالية وإضاءات نيون جذابة لأقفال ومفاتيح الأمان.</span>
+                                <span class="text-[11px] text-slate-400 mt-1 block">موصى به؛ يمنح الموقع فخامة عالية وإضاءات نيون جذابة لخدمات قص الأقفال والمفاتيح.</span>
                             </div>
                         </div>
                     </label>
@@ -321,7 +321,7 @@
                         name="show_emergency_ticker"
                         :checked="(bool)$current['show_emergency_ticker']"
                         label="إظهار شريط الطوارئ المتحرك 24/7 أعلى الموقع"
-                        subtitle="شريط لافت بأعلى الشاشة يوضح خدمة الطوارئ السريعة لجميع أحياء الرياض مع رقم الاتصال المباشر."
+                        subtitle="شريط لافت بأعلى الشاشة يوضح خدمة الطوارئ السريعة لجميع أحياء جدة مع رقم الاتصال المباشر."
                         activeBadge="مفعل"
                         inactiveBadge="معطل"
                     />

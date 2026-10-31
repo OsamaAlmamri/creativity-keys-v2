@@ -34,7 +34,7 @@
                     <!-- Client Title / City -->
                     <div class="space-y-1.5">
                         <label for="client_title" class="block text-xs font-bold text-slate-300">المدينة أو الحي</label>
-                        <input type="text" id="client_title" name="client_title" value="{{ old('client_title', 'حي النرجس، ' . \App\Models\Setting::get('city_name', 'الرياض')) }}" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:border-amber-400 focus:outline-none">
+                        <input type="text" id="client_title" name="client_title" value="{{ old('client_title', 'حي الروضة، ' . \App\Models\Setting::get('city_name', 'جدة')) }}" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:border-amber-400 focus:outline-none">
                     </div>
 
                     <!-- Rating Stars -->

@@ -1,7 +1,7 @@
 @php
-    $siteName = $settings['site_name'] ?? 'مفاتيح الأمان الذهبية';
+    $siteName = $settings['site_name'] ?? 'مفتاح باب البستان';
     $siteTagline = $settings['site_tagline'] ?? 'قص وبرمجة المفاتيح الذكية وفتح الأقفال على مدار 24 ساعة';
-    $cityName = $settings['city_name'] ?? 'الرياض';
+    $cityName = $settings['city_name'] ?? 'جدة';
     $defaultDesc = $settings['meta_description'] ?? ("أفضل خدمات قص وبرمجة مفاتيح وبصمات السيارات وفتح الأقفال المغلقة للطوارئ بدون كسر على مدار 24 ساعة في {$cityName}.");
 
     $title = View::hasSection('title') ? View::getSection('title') : "{$siteName} | {$siteTagline} في {$cityName}";
@@ -12,9 +12,9 @@
     $keywords = View::hasSection('keywords') ? View::getSection('keywords') : "قص مفاتيح {$cityName}, برمجة مفاتيح سيارات {$cityName}, فتح ابواب منازل طوارئ, فتح سيارات مقفلة, صب مفاتيح, اقفال ذكية {$cityName}, مفاتيح سيارات مشفرة, ريموت بصمة, نجار فتح اقفال 24 ساعة";
 
     $phone = $settings['emergency_phone'] ?? ($settings['phone'] ?? '0559998877');
-    $address = $settings['address'] ?? "طريق الملك فهد - حي العليا، بجوار برج الفيصلية، {$cityName}";
-    $lat = $settings['map_latitude'] ?? '24.713552';
-    $lng = $settings['map_longitude'] ?? '46.675296';
+    $address = $settings['address'] ?? "طريق الملك عبد العزيز - حي الشاطئ، {$cityName}";
+    $lat = $settings['map_latitude'] ?? '21.543333';
+    $lng = $settings['map_longitude'] ?? '39.172778';
 @endphp
 
 <!-- Basic Meta & Title -->
@@ -29,7 +29,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f59e0b'><path d='M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z'/></svg>">
 
 <!-- Local & Geo SEO for Saudi Arabia / City -->
-<meta name="geo.region" content="SA-01">
+<meta name="geo.region" content="SA-02">
 <meta name="geo.placename" content="{{ $cityName }}، المملكة العربية السعودية">
 <meta name="geo.position" content="{{ $lat }};{{ $lng }}">
 <meta name="ICBM" content="{{ $lat }}, {{ $lng }}">
@@ -57,7 +57,7 @@
     "@@type": "Locksmith",
     "@@id": "{{ route('home') }}#localbusiness",
     "name": "{{ $siteName }}",
-    "alternateName": "محل وورشة مفاتيح الأمان لقص وبرمجة المفاتيح وفتح الأقفال",
+    "alternateName": "محل وورشة مفتاح باب البستان لقص وبرمجة المفاتيح وفتح الأقفال",
     "description": "{{ $defaultDesc }}",
     "url": "{{ route('home') }}",
     "telephone": "{{ $phone }}",

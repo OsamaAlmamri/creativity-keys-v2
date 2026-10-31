@@ -71,7 +71,7 @@
                         <label for="city_district" class="block text-sm font-bold text-slate-200">
                             الحي / المنطقة في {{ $cityName }}
                         </label>
-                        <input type="text" id="city_district" name="city_district" value="{{ old('city_district') }}" placeholder="مثال: حي النرجس / حي العليا" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 text-sm">
+                        <input type="text" id="city_district" name="city_district" value="{{ old('city_district') }}" placeholder="مثال: حي الروضة / حي الشاطئ" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 text-sm">
                     </div>
                 </div>
 

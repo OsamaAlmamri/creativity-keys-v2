@@ -15,10 +15,10 @@ class SeoOptimizationTest extends TestCase
 
     public function test_home_page_contains_comprehensive_seo_meta_tags_and_schema(): void
     {
-        Setting::set('site_name', 'مفاتيح الأمان الذهبية');
+        Setting::set('site_name', 'مفتاح باب البستان');
         Setting::set('site_tagline', 'قص وبرمجة المفاتيح الذكية');
-        Setting::set('city_name', 'الرياض');
-        Setting::set('meta_description', 'أفضل خدمات قص وبرمجة المفاتيح والأقفال في الرياض على مدار 24 ساعة');
+        Setting::set('city_name', 'جدة');
+        Setting::set('meta_description', 'أفضل خدمات قص وبرمجة المفاتيح والأقفال في جدة على مدار 24 ساعة');
         Setting::set('emergency_phone', '0559998877');
 
         Service::factory()->create([
@@ -39,27 +39,27 @@ class SeoOptimizationTest extends TestCase
         // Basic SEO & Meta
         $response->assertSee('<meta name="robots" content="index, follow', false);
         $response->assertSee('<link rel="canonical" href="'.route('home').'">', false);
-        $response->assertSee('مفاتيح الأمان الذهبية');
-        $response->assertSee('أفضل خدمات قص وبرمجة المفاتيح والأقفال في الرياض', false);
+        $response->assertSee('مفتاح باب البستان');
+        $response->assertSee('أفضل خدمات قص وبرمجة المفاتيح والأقفال في جدة', false);
 
         // Geo & Local SEO Tags
-        $response->assertSee('<meta name="geo.region" content="SA-01">', false);
-        $response->assertSee('<meta name="geo.placename" content="الرياض، المملكة العربية السعودية">', false);
+        $response->assertSee('<meta name="geo.region" content="SA-02">', false);
+        $response->assertSee('<meta name="geo.placename" content="جدة، المملكة العربية السعودية">', false);
         $response->assertSee('name="geo.position"', false);
         $response->assertSee('name="ICBM"', false);
 
         // Open Graph & Twitter Cards
-        $response->assertSee('<meta property="og:site_name" content="مفاتيح الأمان الذهبية">', false);
+        $response->assertSee('<meta property="og:site_name" content="مفتاح باب البستان">', false);
         $response->assertSee('<meta property="og:locale" content="ar_SA">', false);
         $response->assertSee('<meta property="og:type" content="website">', false);
         $response->assertSee('<meta name="twitter:card" content="summary_large_image">', false);
 
         // JSON-LD Schema.org LocalBusiness / Locksmith
         $response->assertSee('"@type": "Locksmith"', false);
-        $response->assertSee('"name": "مفاتيح الأمان الذهبية"', false);
+        $response->assertSee('"name": "مفتاح باب البستان"', false);
         $response->assertSee('"telephone": "0559998877"', false);
         $response->assertSee('"@type": "PostalAddress"', false);
-        $response->assertSee('"addressLocality": "الرياض"', false);
+        $response->assertSee('"addressLocality": "جدة"', false);
         $response->assertSee('"addressCountry": "SA"', false);
         $response->assertSee('"@type": "OpeningHoursSpecification"', false);
 
@@ -71,7 +71,7 @@ class SeoOptimizationTest extends TestCase
 
     public function test_article_details_page_contains_article_specific_seo_and_schema(): void
     {
-        Setting::set('site_name', 'مفاتيح الأمان الذهبية');
+        Setting::set('site_name', 'مفتاح باب البستان');
 
         $article = Article::factory()->create([
             'title' => 'دليل برمجة مفاتيح سيارات تويوتا الذكية',
@@ -87,7 +87,7 @@ class SeoOptimizationTest extends TestCase
         $response->assertStatus(200);
 
         // Title and description match article
-        $response->assertSee('<title>دليل برمجة مفاتيح سيارات تويوتا الذكية | مفاتيح الأمان الذهبية</title>', false);
+        $response->assertSee('<title>دليل برمجة مفاتيح سيارات تويوتا الذكية | مفتاح باب البستان</title>', false);
         $response->assertSee('content="كل ما تود معرفته عن برمجة بصمات ومفاتيح تويوتا المشفرة', false);
 
         // Open Graph

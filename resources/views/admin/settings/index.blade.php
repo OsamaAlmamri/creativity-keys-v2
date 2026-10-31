@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="max-w-4xl mx-auto space-y-8">
-        
+
         <div>
             <h2 class="text-xl font-black text-white">إعدادات وبيانات المركز والموقع</h2>
             <p class="text-xs text-slate-400">تعديل بيانات المحل، المدينة، نطاق التغطية، خطوط الطوارئ، العنوان، وإحداثيات خريطة Google Maps</p>
@@ -24,12 +24,12 @@
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
                     <div class="space-y-1.5 sm:col-span-1">
                         <label for="site_name" class="block text-xs font-bold text-slate-300">اسم المحل / المركز</label>
-                        <input type="text" id="site_name" name="site_name" value="{{ \App\Models\Setting::get('site_name', 'مفاتيح الأمان الذهبية') }}" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:border-amber-400 focus:outline-none">
+                        <input type="text" id="site_name" name="site_name" value="{{ \App\Models\Setting::get('site_name', 'مفتاح باب البستان') }}" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:border-amber-400 focus:outline-none">
                     </div>
 
                     <div class="space-y-1.5 sm:col-span-1">
                         <label for="city_name" class="block text-xs font-bold text-amber-400">المدينة الرئيسية (نطاق العمل الأساسي)</label>
-                        <input type="text" id="city_name" name="city_name" value="{{ \App\Models\Setting::get('city_name', 'الرياض') }}" placeholder="مثال: الرياض أو جدة أو الدمام" class="w-full bg-slate-950 border border-amber-500/30 rounded-xl px-4 py-3 text-white text-sm focus:border-amber-400 focus:outline-none">
+                        <input type="text" id="city_name" name="city_name" value="{{ \App\Models\Setting::get('city_name', 'جدة') }}" placeholder="مثال: جدة أو مكة أو الرياض" class="w-full bg-slate-950 border border-amber-500/30 rounded-xl px-4 py-3 text-white text-sm focus:border-amber-400 focus:outline-none">
                         <p class="text-[11px] text-slate-400">تُستبدل تلقائياً في كافة نصوص وهوية الموقع وشريط الطوارئ.</p>
                     </div>
 
@@ -55,7 +55,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div class="space-y-1.5">
                         <label for="coverage_areas" class="block text-xs font-bold text-slate-300">أحياء ونطاق التغطية الفورية (تظهر في كرت الطوارئ بالهيرو)</label>
-                        <textarea id="coverage_areas" name="coverage_areas" rows="2" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:border-amber-400 focus:outline-none" placeholder="مثال: النرجس • الملقا • العليا • الياسمين • حطين • الروضة • الشفا">{{ \App\Models\Setting::get('coverage_areas', 'النرجس • الملقا • العليا • الياسمين • حطين • الروضة • الشفا') }}</textarea>
+                        <textarea id="coverage_areas" name="coverage_areas" rows="2" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:border-amber-400 focus:outline-none" placeholder="مثال: الروضة • السلامة • الزهراء • الشاطئ • الحمراء • المروة • الصفا • أبحر">{{ \App\Models\Setting::get('coverage_areas', 'الروضة • السلامة • الزهراء • الشاطئ • الحمراء • المروة • الصفا • أبحر') }}</textarea>
                         <p class="text-[11px] text-slate-400">افصل بين الأحياء بنقطة أو فاصلة لتظهر بشكل متناسق في شريط التغطية الحي.</p>
                     </div>
 
@@ -118,7 +118,7 @@
                 </div>
 
                 <!-- Google Maps & Directions Integration -->
-                <div class="p-5 rounded-2xl bg-slate-950/70 border border-blue-500/20 space-y-4">
+                <div class="p-5 rounded-2xl bg-slate-950 border border-blue-500/20 space-y-4">
                     <div class="flex items-center justify-between">
                         <h4 class="text-xs font-bold text-blue-300 flex items-center gap-1.5">
                             <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
