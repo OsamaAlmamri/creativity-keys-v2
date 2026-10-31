@@ -7,6 +7,10 @@
     <!-- ========================================== -->
     @php
         $cleanArrival = trim(str_replace('دقيقة', '', $settings['arrival_time'] ?? '15 - 25'));
+        $cityName = $settings['city_name'] ?? 'الرياض';
+        $coverageAreas = $settings['coverage_areas'] ?? 'النرجس • الملقا • العليا • الياسمين • حطين • الروضة • الشفا';
+        $directionsUrl = $settings['directions_url'] ?? \App\Models\Setting::getDirectionsUrl();
+        $mapEmbedUrl = $settings['map_embed_url'] ?? \App\Models\Setting::getMapEmbedUrl();
     @endphp
     <section id="hero" class="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 pt-8 pb-20">
         <!-- Background Lighting effects & Pattern -->
@@ -22,7 +26,7 @@
                     <!-- Emergency Badge -->
                     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-700 dark:text-amber-400 text-xs sm:text-sm font-bold shadow-inner">
                         <span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse"></span>
-                        <span>خدمة فتح أقفال وبرمجة مفاتيح فورية • طوارئ 24/7 في الرياض</span>
+                        <span>خدمة فتح أقفال وبرمجة مفاتيح فورية • طوارئ 24/7 في {{ $cityName }}</span>
                     </div>
 
                     <!-- Main Headline -->
@@ -38,7 +42,7 @@
 
                     <!-- Subtitle -->
                     <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
-                        {{ $settings['site_tagline'] ?? 'خدمات قص وبرمجة مفاتيح وبصمات السيارات بجميع موديلاتها، فتح أبواب المنازل والخزائن المغلقة بدون خدش، وتوريد أحدث الأقفال الذكية مع ورش متنقلة مجهزة بالكامل تصلك فوراً بالرياض.' }}
+                        {{ $settings['site_tagline'] ?? ('خدمات قص وبرمجة مفاتيح وبصمات السيارات بجميع موديلاتها، فتح أبواب المنازل والخزائن المغلقة بدون خدش، وتوريد أحدث الأقفال الذكية مع ورش متنقلة مجهزة بالكامل تصلك فوراً في ' . $cityName . '.') }}
                     </p>
 
                     <!-- Trust Stats Bar (Modern Metrics Cards) -->
@@ -53,7 +57,7 @@
                         </div>
                         <div class="p-4 rounded-2xl bg-white dark:bg-slate-900/80 border border-slate-200/90 dark:border-slate-800 shadow-xs hover:border-amber-400/50 transition-all text-center lg:text-right">
                             <div class="text-2xl sm:text-3xl font-black text-amber-500 font-mono tracking-tight" dir="ltr">{{ $settings['happy_clients'] ?? '18,500+' }}</div>
-                            <div class="text-xs text-slate-500 dark:text-slate-400 font-bold mt-1">عميل بالرياض</div>
+                            <div class="text-xs text-slate-500 dark:text-slate-400 font-bold mt-1">عميل في {{ $cityName }}</div>
                         </div>
                     </div>
 
@@ -108,7 +112,7 @@
                                     </div>
                                     <div>
                                         <h3 class="text-base sm:text-lg font-black text-slate-900 dark:text-white">الورشة المتنقلة الفورية</h3>
-                                        <p class="text-xs text-slate-500 dark:text-slate-400">تغطية مباشرة لكافة أحياء الرياض</p>
+                                        <p class="text-xs text-slate-500 dark:text-slate-400">تغطية مباشرة لكافة أحياء {{ $cityName }}</p>
                                     </div>
                                 </div>
                                 <div class="flex flex-col items-end gap-1">
@@ -126,8 +130,8 @@
                                     <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
                                     نطاق التغطية:
                                 </span>
-                                <span class="text-slate-600 dark:text-slate-400 truncate text-[11px]">
-                                    النرجس • الملقا • العليا • الياسمين • حطين • الروضة • الشفا
+                                <span class="text-slate-600 dark:text-slate-400 truncate text-[11px]" title="{{ $coverageAreas }}">
+                                    {{ $coverageAreas }}
                                 </span>
                             </div>
 
@@ -235,7 +239,7 @@
                     </div>
 
                     <h2 class="text-2xl sm:text-4xl font-black text-white leading-snug">
-                        {{ $settings['about_title'] ?? 'أكثر من 15 عاماً من الريادة في عالم الأقفال والمفاتيح المشفرة بالرياض' }}
+                        {{ $settings['about_title'] ?? ('أكثر من 15 عاماً من الريادة في عالم الأقفال والمفاتيح المشفرة في ' . $cityName) }}
                     </h2>
 
                     <div class="space-y-4 text-slate-300 text-base leading-relaxed">
@@ -482,7 +486,7 @@
                     ماذا يقول عملاؤنا عنا؟
                 </h2>
                 <p class="text-slate-400 text-base">
-                    نفخر بثقة آلاف العملاء في الرياض الذين تشرفنا بخدمتهم في أوقات الطوارئ والمناسبات.
+                    نفخر بثقة آلاف العملاء في {{ $cityName }} الذين تشرفنا بخدمتهم في أوقات الطوارئ والمناسبات.
                 </p>
             </div>
 
@@ -610,7 +614,7 @@
                     </h2>
 
                     <p class="text-slate-300 text-base leading-relaxed">
-                        تفضل بزيارة مركزنا ومعرضنا الرئيسي لتجربة الأقفال الذكية ونسخ المفاتيح الفورية، أو اطلب ورشة الطوارئ لتصلك مباشرة إلى موقعك في أي حي من أحياء الرياض.
+                        تفضل بزيارة مركزنا ومعرضنا الرئيسي لتجربة الأقفال الذكية ونسخ المفاتيح الفورية، أو اطلب ورشة الطوارئ لتصلك مباشرة إلى موقعك في أي حي من أحياء {{ $cityName }}.
                     </p>
 
                     <!-- Info Cards -->
@@ -621,7 +625,7 @@
                             </div>
                             <div>
                                 <h4 class="text-sm font-bold text-white mb-0.5">العنوان</h4>
-                                <p class="text-xs text-slate-400">{{ $settings['address'] ?? 'الرياض - طريق الملك فهد' }}</p>
+                                <p class="text-xs text-slate-400">{{ $settings['address'] ?? ($cityName . ' - المركز الرئيسي') }}</p>
                             </div>
                         </div>
 
@@ -638,7 +642,7 @@
 
                     <!-- Direct Directions Link -->
                     <div class="pt-2">
-                        <a href="https://maps.google.com/?q=Riyadh+Saudi+Arabia" target="_blank" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm px-6 py-3 rounded-xl border border-slate-700 transition-colors">
+                        <a href="{{ $directionsUrl }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm px-6 py-3 rounded-xl border border-slate-700 transition-colors shadow-sm">
                             <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
                             <span>فتح الاتجاهات عبر Google Maps</span>
                         </a>
@@ -650,7 +654,7 @@
                     <div class="rounded-3xl overflow-hidden border-2 border-slate-800 shadow-2xl bg-slate-950 p-2">
                         <div class="relative w-full h-[400px] sm:h-[460px] rounded-2xl overflow-hidden">
                             <iframe 
-                                src="{{ $settings['google_map_embed'] ?? 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115984.72149594537!2d46.6752957!3d24.7135517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f03890d48939b%3A0x1b4129759d64380!2sRiyadh%20Saudi%20Arabia!5e0!3m2!1sen!2ssa!4v1700000000000!5m2!1sen!2ssa' }}" 
+                                src="{{ $mapEmbedUrl }}" 
                                 class="w-full h-full border-0 filter grayscale-[25%] contrast-[110%]" 
                                 allowfullscreen="" 
                                 loading="lazy" 
@@ -740,7 +744,7 @@
                         <!-- City District -->
                         <div class="space-y-2">
                             <label for="city_district" class="block text-sm font-bold text-slate-200">
-                                الحي / المنطقة بالرياض
+                                الحي / المنطقة في {{ $cityName }}
                             </label>
                             <input type="text" id="city_district" name="city_district" value="{{ old('city_district') }}" placeholder="مثال: حي النرجس / حي العليا" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 text-sm">
                         </div>

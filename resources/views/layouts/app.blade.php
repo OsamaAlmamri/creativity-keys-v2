@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ $settings['site_name'] ?? 'مفاتيح الأمان الذهبية' }} | {{ $settings['site_tagline'] ?? 'قص وبرمجة المفاتيح وفتح الأقفال 24/7' }}</title>
-    <meta name="description" content="{{ $settings['meta_description'] ?? 'أفضل خدمات قص وبرمجة مفاتيح السيارات وفتح الأقفال للطوارئ على مدار 24 ساعة في الرياض' }}">
+    <meta name="description" content="{{ $settings['meta_description'] ?? ('أفضل خدمات قص وبرمجة مفاتيح السيارات وفتح الأقفال للطوارئ على مدار 24 ساعة في ' . ($settings['city_name'] ?? 'الرياض')) }}">
 
     @include('partials.theme-styles')
 
@@ -24,12 +24,12 @@
                     <span class="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
                 </span>
                 <span class="font-black text-red-950 shrink-0">طوارئ 24/7:</span>
-                <span class="truncate">ورش متنقلة وفنيون مرخصون لجميع أحياء ومناطق الرياض</span>
+                <span class="truncate">{{ $settings['coverage_note'] ?? ('ورش متنقلة وفنيون مرخصون لجميع أحياء ومناطق ' . ($settings['city_name'] ?? 'الرياض')) }}</span>
             </div>
             <div class="flex items-center gap-3 shrink-0 text-[11px] sm:text-xs">
                 <span class="hidden md:inline-flex items-center gap-1 opacity-90 font-medium">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    <span>متوسط سرعة الوصول: 15-25 دقيقة</span>
+                    <span>متوسط سرعة الوصول: {{ $settings['arrival_time'] ?? '15 - 25 دقيقة' }}</span>
                 </span>
                 <span class="hidden md:inline text-slate-900/30">•</span>
                 <a href="tel:{{ $settings['emergency_phone'] ?? '0559998877' }}" class="inline-flex items-center gap-1.5 bg-slate-950 text-white px-3 py-0.5 rounded-full font-black text-xs hover:bg-slate-900 transition-colors shadow-xs">
@@ -225,7 +225,7 @@
                     </h3>
                     <div class="flex items-start gap-3 text-sm">
                         <svg class="w-5 h-5 text-amber-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                        <span>{{ $settings['address'] ?? 'الرياض - طريق الملك فهد' }}</span>
+                        <span>{{ $settings['address'] ?? (($settings['city_name'] ?? 'الرياض') . ' - طريق الملك فهد') }}</span>
                     </div>
                     <div class="flex items-center gap-3 text-sm">
                         <svg class="w-5 h-5 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>

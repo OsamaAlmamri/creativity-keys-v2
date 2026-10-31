@@ -37,6 +37,8 @@ class HomeController extends Controller
             ->get();
 
         $settings = Setting::all()->pluck('value', 'key');
+        $settings['directions_url'] = Setting::getDirectionsUrl();
+        $settings['map_embed_url'] = Setting::getMapEmbedUrl();
 
         return view('landing', compact('services', 'galleryItems', 'galleryCategories', 'reviews', 'latestArticles', 'settings'));
     }

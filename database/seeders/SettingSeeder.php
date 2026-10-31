@@ -15,16 +15,22 @@ class SettingSeeder extends Seeder
         $settings = [
             // العام
             ['key' => 'site_name', 'value' => 'مفاتيح الأمان الذهبية', 'group' => 'general', 'label' => 'اسم المحل / المركز', 'type' => 'text'],
-            ['key' => 'site_tagline', 'value' => 'قص وبرمجة المفاتيح الذكية وفتح الأقفال على مدار 24 ساعة في الرياض', 'group' => 'general', 'label' => 'الشعار التعريفي', 'type' => 'text'],
+            ['key' => 'site_tagline', 'value' => 'قص وبرمجة المفاتيح الذكية وفتح الأقفال على مدار 24 ساعة', 'group' => 'general', 'label' => 'الشعار التعريفي', 'type' => 'text'],
+            ['key' => 'city_name', 'value' => 'الرياض', 'group' => 'general', 'label' => 'المدينة الرئيسية', 'type' => 'text'],
+            ['key' => 'coverage_areas', 'value' => 'النرجس • الملقا • العليا • الياسمين • حطين • الروضة • الشفا', 'group' => 'general', 'label' => 'نطاق وأحياء التغطية الميدانية', 'type' => 'textarea'],
+            ['key' => 'coverage_note', 'value' => 'ورش متنقلة وفنيون مرخصون لجميع الأحياء والمناطق', 'group' => 'general', 'label' => 'ملاحظة تغطية شريط الطوارئ', 'type' => 'text'],
             ['key' => 'meta_description', 'value' => 'محل ومختبر مفاتيح الأمان الذهبية: خدمات نسخ وقص وبرمجة مفاتيح السيارات، فتح الأبواب المقفلة للطوارئ 24 ساعة، صيانة وتركيب الأقفال الذكية وفتح الخزنات.', 'group' => 'general', 'label' => 'وصف الموقع لمحركات البحث', 'type' => 'textarea'],
 
-            // الاتصال
+            // الاتصال وموقع الخريطة
             ['key' => 'phone', 'value' => '0551234567', 'group' => 'contact', 'label' => 'رقم الهاتف الرئيسي', 'type' => 'text'],
             ['key' => 'emergency_phone', 'value' => '0559998877', 'group' => 'contact', 'label' => 'خط الطوارئ 24/7', 'type' => 'text'],
             ['key' => 'whatsapp', 'value' => '966551234567', 'group' => 'contact', 'label' => 'رقم الواتساب (مع الرمز الدولي)', 'type' => 'text'],
             ['key' => 'email', 'value' => 'info@keyshop-sa.com', 'group' => 'contact', 'label' => 'البريد الإلكتروني', 'type' => 'text'],
             ['key' => 'address', 'value' => 'الرياض - طريق الملك فهد - حي العليا، بجوار برج الفيصلية', 'group' => 'contact', 'label' => 'العنوان الفعلي', 'type' => 'text'],
             ['key' => 'working_hours', 'value' => 'خدمة الطوارئ والورشة المتنقلة: 24/7 | المعرض: السبت إلى الخميس 8:00 ص - 11:30 م (الجمعة 4:00 م - 11:30 م)', 'group' => 'contact', 'label' => 'ساعات العمل', 'type' => 'textarea'],
+            ['key' => 'map_directions_url', 'value' => '', 'group' => 'contact', 'label' => 'رابط اتجاهات قوقل ماب المباشر', 'type' => 'text'],
+            ['key' => 'map_latitude', 'value' => '24.713552', 'group' => 'contact', 'label' => 'خط العرض (Latitude)', 'type' => 'text'],
+            ['key' => 'map_longitude', 'value' => '46.675296', 'group' => 'contact', 'label' => 'خط الطول (Longitude)', 'type' => 'text'],
             ['key' => 'google_map_embed', 'value' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115984.72149594537!2d46.6752957!3d24.7135517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f03890d48939b%3A0x1b4129759d64380!2sRiyadh%20Saudi%20Arabia!5e0!3m2!1sen!2ssa!4v1700000000000!5m2!1sen!2ssa', 'group' => 'contact', 'label' => 'رابط تضمين خريطة قوقل', 'type' => 'textarea'],
 
             // الإحصائيات ومعلومات الثقة
