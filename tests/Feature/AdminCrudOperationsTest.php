@@ -269,4 +269,124 @@ class AdminCrudOperationsTest extends TestCase
         $this->actingAs($this->admin)->delete(route('admin.users.destroy', $user));
         $this->assertDatabaseMissing('users', ['id' => $user->id]);
     }
+
+    public function test_admin_can_view_all_settings_tabs(): void
+    {
+        $tabs = ['branding', 'seo', 'social', 'contact', 'coverage', 'location', 'stats'];
+
+        foreach ($tabs as $tab) {
+            $response = $this->actingAs($this->admin)->get(route('admin.settings.index', ['tab' => $tab]));
+            $response->assertStatus(200);
+            $response->assertViewHas('activeTab', $tab);
+            $response->assertSee('tab-panel-'.$tab, false);
+        }
+    }
+
+    public function test_admin_can_update_tabs_independently_without_overwriting_others(): void
+    {
+        // 1. Set initial contact setting
+        Setting::set('emergency_phone', '0559998877', 'contact');
+        Setting::set('meta_keywords', 'كلمات مفتاحية أصلية', 'seo');
+
+        // 2. Update branding tab independently
+        $brandingResponse = $this->actingAs($this->admin)->post(route('admin.settings.update-tab', 'branding'), [
+            'site_name' => 'مفتاح باب البستان المطور',
+            'city_name' => 'جدة عروس البحر',
+            'site_tagline' => 'خدمة 24 ساعة احترافية',
+        ]);
+
+        $brandingResponse->assertRedirect(route('admin.settings.index', ['tab' => 'branding']));
+        $brandingResponse->assertSessionHas('success');
+        $this->assertEquals('مفتاح باب البستان المطور', Setting::get('site_name'));
+        $this->assertEquals('جدة عروس البحر', Setting::get('city_name'));
+
+        // Verify other tabs were untouched
+        $this->assertEquals('0559998877', Setting::get('emergency_phone'));
+        $this->assertEquals('كلمات مفتاحية أصلية', Setting::get('meta_keywords'));
+
+        // 3. Update SEO tab independently
+        $seoResponse = $this->actingAs($this->admin)->post(route('admin.settings.update-tab', 'seo'), [
+            'meta_description' => 'وصف سيو جديد ومميز لخدمات المفاتيح بجدة',
+            'meta_keywords' => 'مفاتيح, سيارات, برمجة, بصمة',
+            'seo_robots' => 'index, follow',
+            'google_analytics_id' => 'G-TAB123456',
+        ]);
+
+        $seoResponse->assertRedirect(route('admin.settings.index', ['tab' => 'seo']));
+        $this->assertEquals('وصف سيو جديد ومميز لخدمات المفاتيح بجدة', Setting::get('meta_description'));
+        $this->assertEquals('G-TAB123456', Setting::get('google_analytics_id'));
+
+        // 4. Update Social tab independently
+        $socialResponse = $this->actingAs($this->admin)->post(route('admin.settings.update-tab', 'social'), [
+            'social_twitter' => 'https://x.com/baba_albustan_tab',
+            'social_instagram' => 'https://instagram.com/baba_albustan_tab',
+        ]);
+
+        $socialResponse->assertRedirect(route('admin.settings.index', ['tab' => 'social']));
+        $this->assertEquals('https://x.com/baba_albustan_tab', Setting::get('social_twitter'));
+        $this->assertEquals('https://instagram.com/baba_albustan_tab', Setting::get('social_instagram'));
+
+        // 5. Update Contact tab independently
+        $contactResponse = $this->actingAs($this->admin)->post(route('admin.settings.update-tab', 'contact'), [
+            'emergency_phone' => '0551122334',
+            'phone' => '0126655443',
+            'whatsapp' => '966551122334',
+            'email' => 'contact@albustan-keys.com',
+        ]);
+
+        $contactResponse->assertRedirect(route('admin.settings.index', ['tab' => 'contact']));
+        $this->assertEquals('0551122334', Setting::get('emergency_phone'));
+        $this->assertEquals('contact@albustan-keys.com', Setting::get('email'));
+
+        // 6. Update Coverage tab independently
+        $coverageResponse = $this->actingAs($this->admin)->post(route('admin.settings.update-tab', 'coverage'), [
+            'coverage_areas' => 'البلد • الروضة • النزهة • الشاطئ',
+            'coverage_note' => 'تغطية شاملة لجميع أحياء جدة',
+        ]);
+
+        $coverageResponse->assertRedirect(route('admin.settings.index', ['tab' => 'coverage']));
+        $this->assertEquals('البلد • الروضة • النزهة • الشاطئ', Setting::get('coverage_areas'));
+
+        // 7. Update Location tab independently
+        $locationResponse = $this->actingAs($this->admin)->post(route('admin.settings.update-tab', 'location'), [
+            'address' => 'جدة - شارع حراء - حي الزهراء',
+            'working_hours' => '24 ساعة على مدار الأسبوع',
+            'map_latitude' => '21.583333',
+            'map_longitude' => '39.183333',
+        ]);
+
+        $locationResponse->assertRedirect(route('admin.settings.index', ['tab' => 'location']));
+        $this->assertEquals('21.583333', Setting::get('map_latitude'));
+        $this->assertEquals('39.183333', Setting::get('map_longitude'));
+
+        // 8. Update Stats tab independently
+        $statsResponse = $this->actingAs($this->admin)->post(route('admin.settings.update-tab', 'stats'), [
+            'years_experience' => '20+',
+            'arrival_time' => '10 - 20 دقيقة',
+            'happy_clients' => '25,000+',
+            'team_size' => '15 فني معتمد',
+        ]);
+
+        $statsResponse->assertRedirect(route('admin.settings.index', ['tab' => 'stats']));
+        $this->assertEquals('20+', Setting::get('years_experience'));
+        $this->assertEquals('15 فني معتمد', Setting::get('team_size'));
+    }
+
+    public function test_settings_tab_validation_errors(): void
+    {
+        // Emergency phone is required for contact tab
+        $response = $this->actingAs($this->admin)->post(route('admin.settings.update-tab', 'contact'), [
+            'emergency_phone' => '',
+            'email' => 'not-an-email',
+        ]);
+
+        $response->assertSessionHasErrors(['emergency_phone', 'email']);
+
+        // Social url validation
+        $socialResponse = $this->actingAs($this->admin)->post(route('admin.settings.update-tab', 'social'), [
+            'social_twitter' => 'not-a-valid-url',
+        ]);
+
+        $socialResponse->assertSessionHasErrors(['social_twitter']);
+    }
 }

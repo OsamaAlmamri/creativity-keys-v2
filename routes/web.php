@@ -72,8 +72,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/messages/{message}/notes', [ContactMessageController::class, 'updateNotes'])->name('messages.notes');
         Route::delete('/messages/{message}', [ContactMessageController::class, 'destroy'])->name('messages.destroy');
 
-        // إدارة إعدادات المحل
-        Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
+        // إدارة إعدادات المحل مقسمة إلى تابات مستقلة
+        Route::get('/settings/{tab?}', [SettingController::class, 'index'])
+            ->whereIn('tab', ['branding', 'seo', 'social', 'contact', 'coverage', 'location', 'stats'])
+            ->name('settings.index');
+        Route::post('/settings/{tab}', [SettingController::class, 'updateTab'])
+            ->whereIn('tab', ['branding', 'seo', 'social', 'contact', 'coverage', 'location', 'stats'])
+            ->name('settings.update-tab');
         Route::post('/settings', [SettingController::class, 'update'])->name('settings.update');
 
         // إدارة المظهر والثيم والهوية البصرية
