@@ -63,7 +63,7 @@ jobs:
           npm ci
           npm run build
 
-      # 7. إعداد مفتاح SSH والاتصال بسيرفر Namecheap (المنفذ الافتراضي 21098)
+      # 7. إعداد مفتاح SSH وتوافق خوارزميات سيرفرات cPanel القديمة والحديثة
       - name: Configure SSH Key & Host
         env:
           SSH_HOST: ${{ secrets.SSH_HOST }}
@@ -71,9 +71,24 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
           mkdir -p ~/.ssh
+          # حفظ المفتاح الخاص مع تنظيف نهايات الأسطر
           echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+          # التأكد من وجود سطر فارغ في نهاية الملف لسلامة تنسيق OpenSSH
+          sed -i -e '$a\' ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null || true
+
+          # إعداد ملف ~/.ssh/config مع دعم خوارزميات RSA القديمة والحديثة الخاصة بـ cPanel
+          cat << EOF > ~/.ssh/config
+          Host $SSH_HOST
+            Port $SSH_PORT
+            IdentityFile ~/.ssh/id_rsa
+            IdentitiesOnly yes
+            StrictHostKeyChecking no
+            UserKnownHostsFile /dev/null
+            PubkeyAcceptedKeyTypes +ssh-rsa,rsa-sha2-256,rsa-sha2-512
+            HostKeyAlgorithms +ssh-rsa,rsa-sha2-256,rsa-sha2-512
+          EOF
+          chmod 600 ~/.ssh/config
 
       # 8. مزامنة ونقل الملفات عبر Rsync مع استثناء الملفات الحساسة
       - name: Sync Files via Rsync
@@ -84,7 +99,7 @@ jobs:
           DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
         run: |
           rsync -avz --delete \
-            -e "ssh -p $SSH_PORT -o StrictHostKeyChecking=no" \
+            -e "ssh -p $SSH_PORT -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -o PubkeyAcceptedKeyTypes=+ssh-rsa,rsa-sha2-256,rsa-sha2-512" \
             --exclude='.env' \
             --exclude='.git/' \
             --exclude='.github/' \
@@ -105,7 +120,7 @@ jobs:
           DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
           PHP_CMD: ${{ secrets.PHP_BIN || 'php' }}
         run: |
-          ssh -p "$SSH_PORT" -o StrictHostKeyChecking=no "$SSH_USER@$SSH_HOST" << EOF
+          ssh -p "$SSH_PORT" -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -o PubkeyAcceptedKeyTypes=+ssh-rsa,rsa-sha2-256,rsa-sha2-512 "$SSH_USER@$SSH_HOST" << EOF
             set -e
             cd "$DEPLOY_PATH"
 
