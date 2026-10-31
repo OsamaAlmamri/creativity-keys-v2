@@ -655,6 +655,14 @@
         border-color: #e2e8f0 !important;
     }
 
+    html.theme-light aside .sidebar-section-title {
+        color: #64748b !important;
+    }
+
+    html.theme-light aside .sidebar-section-divider {
+        background-color: #e2e8f0 !important;
+    }
+
     html.theme-light aside nav a:not([class*="bg-amber-500"]) {
         color: #475569 !important;
     }
@@ -664,13 +672,33 @@
         color: #0f172a !important;
     }
 
+    html.theme-light aside nav a:not([class*="bg-amber-500"]) .bg-slate-800\/60 {
+        background-color: #f1f5f9 !important;
+        color: #64748b !important;
+    }
+
+    html.theme-light aside nav a:not([class*="bg-amber-500"]):hover .bg-slate-800\/60 {
+        background-color: #e2e8f0 !important;
+        color: #0f172a !important;
+    }
+
     html.theme-light aside .bg-slate-950\/60 {
         background-color: #f8fafc !important;
     }
 
+    html.theme-light aside .bg-slate-900\/80 {
+        background-color: #ffffff !important;
+        border-color: #e2e8f0 !important;
+    }
+
+    html.theme-light aside .sidebar-brand-text span.text-white,
+    html.theme-light aside .sidebar-user-text div.text-white {
+        color: #0f172a !important;
+    }
+
     /* Admin Topbar */
     html.theme-light div.flex-1 > header.h-16 {
-        background-color: #ffffff !important;
+        background-color: rgba(255, 255, 255, 0.95) !important;
         border-bottom-color: #e2e8f0 !important;
     }
 
