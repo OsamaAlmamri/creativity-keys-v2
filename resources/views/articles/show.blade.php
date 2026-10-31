@@ -1,5 +1,66 @@
 @extends('layouts.app')
 
+@section('title', $article->title . ' | ' . ($settings['site_name'] ?? 'مفاتيح الأمان الذهبية'))
+@section('meta_description', $article->excerpt ?? \Illuminate\Support\Str::limit(strip_tags($article->content), 160))
+@section('og_type', 'article')
+@section('og_image', $article->image_url)
+
+@section('schema')
+<script type="application/ld+json">
+{
+    "@@context": "https://schema.org",
+    "@@type": "BlogPosting",
+    "mainEntityOfPage": {
+        "@@type": "WebPage",
+        "@@id": "{{ url()->current() }}"
+    },
+    "headline": {!! json_encode($article->title, JSON_UNESCAPED_UNICODE) !!},
+    "description": {!! json_encode($article->excerpt ?? \Illuminate\Support\Str::limit(strip_tags($article->content), 160), JSON_UNESCAPED_UNICODE) !!},
+    "image": {!! json_encode($article->image_url, JSON_UNESCAPED_SLASHES) !!},
+    "datePublished": "{{ $article->published_at ? $article->published_at->toIso8601String() : $article->created_at->toIso8601String() }}",
+    "dateModified": "{{ $article->updated_at->toIso8601String() }}",
+    "author": {
+        "@@type": "Organization",
+        "name": "{{ $settings['site_name'] ?? 'مفاتيح الأمان الذهبية' }}",
+        "url": "{{ route('home') }}"
+    },
+    "publisher": {
+        "@@type": "Organization",
+        "name": "{{ $settings['site_name'] ?? 'مفاتيح الأمان الذهبية' }}",
+        "url": "{{ route('home') }}"
+    },
+    "articleSection": "{{ $article->category }}"
+}
+</script>
+
+<script type="application/ld+json">
+{
+    "@@context": "https://schema.org",
+    "@@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@@type": "ListItem",
+            "position": 1,
+            "name": "الرئيسية",
+            "item": "{{ route('home') }}"
+        },
+        {
+            "@@type": "ListItem",
+            "position": 2,
+            "name": "المقالات والنصائح",
+            "item": "{{ route('articles.index') }}"
+        },
+        {
+            "@@type": "ListItem",
+            "position": 3,
+            "name": {!! json_encode($article->title, JSON_UNESCAPED_UNICODE) !!},
+            "item": "{{ url()->current() }}"
+        }
+    ]
+}
+</script>
+@endsection
+
 @section('content')
 
     <article class="py-12 bg-slate-950">
@@ -42,7 +103,7 @@
 
             <!-- Featured Cover Image -->
             <div class="rounded-3xl overflow-hidden border border-slate-800 shadow-2xl h-80 sm:h-96 w-full bg-slate-900">
-                <img src="{{ $article->image_url }}" alt="{{ $article->title }}" class="w-full h-full object-cover">
+                <img src="{{ $article->image_url }}" alt="{{ $article->title }}" fetchpriority="high" class="w-full h-full object-cover">
             </div>
 
             <!-- Article Body Content -->
@@ -105,7 +166,7 @@
                         @foreach($relatedArticles as $rel)
                             <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-amber-500/40 transition-all group flex flex-col justify-between hover-brand-card">
                                 <div class="h-40 overflow-hidden bg-slate-950">
-                                    <img src="{{ $rel->image_url }}" alt="{{ $rel->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                    <img src="{{ $rel->image_url }}" alt="{{ $rel->title }}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                                 </div>
                                 <div class="p-4 space-y-2">
                                     <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-amber-400 font-bold">

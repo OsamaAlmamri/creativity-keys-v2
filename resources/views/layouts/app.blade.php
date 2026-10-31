@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $settings['site_name'] ?? 'مفاتيح الأمان الذهبية' }} | {{ $settings['site_tagline'] ?? 'قص وبرمجة المفاتيح وفتح الأقفال 24/7' }}</title>
-    <meta name="description" content="{{ $settings['meta_description'] ?? ('أفضل خدمات قص وبرمجة مفاتيح السيارات وفتح الأقفال للطوارئ على مدار 24 ساعة في ' . ($settings['city_name'] ?? 'الرياض')) }}">
+    @include('partials.seo')
 
     @include('partials.theme-styles')
 

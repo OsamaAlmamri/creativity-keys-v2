@@ -1,5 +1,31 @@
 @extends('layouts.app')
 
+@section('title', 'المقالات والنصائح التوعوية للأقفال والمفاتيح | ' . ($settings['site_name'] ?? 'مفاتيح الأمان الذهبية'))
+@section('meta_description', 'دليل شامل ومقالات متخصصة في حماية المنازل وبرمجة مفاتيح وبصمات السيارات الحديثة والأقفال الذكية في ' . ($settings['city_name'] ?? 'الرياض') . '.')
+
+@section('schema')
+<script type="application/ld+json">
+{
+    "@@context": "https://schema.org",
+    "@@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@@type": "ListItem",
+            "position": 1,
+            "name": "الرئيسية",
+            "item": "{{ route('home') }}"
+        },
+        {
+            "@@type": "ListItem",
+            "position": 2,
+            "name": "المقالات والنصائح",
+            "item": "{{ route('articles.index') }}"
+        }
+    ]
+}
+</script>
+@endsection
+
 @section('content')
 
     <!-- Breadcrumb & Header Hero -->

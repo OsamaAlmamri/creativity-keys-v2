@@ -5,7 +5,7 @@
             <!-- About Media & Trust Elements -->
             <div class="lg:col-span-5 space-y-6">
                 <div class="relative rounded-3xl overflow-hidden border border-slate-800 shadow-2xl group">
-                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="ورشة ومختبر المفاتيح" class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-500">
+                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="ورشة ومختبر مفاتيح الأمان لقص وبرمجة المفاتيح في {{ $cityName }}" loading="lazy" class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
                     
                     <div class="absolute bottom-6 right-6 left-6 p-4 rounded-2xl bg-slate-900/90 backdrop-blur-md border border-slate-750">

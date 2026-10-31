@@ -1,5 +1,29 @@
 @extends('layouts.app')
 
+@section('schema')
+@if(isset($services) && $services->isNotEmpty())
+<script type="application/ld+json">
+{
+    "@@context": "https://schema.org",
+    "@@type": "OfferCatalog",
+    "name": "دليل خدمات قص وبرمجة المفاتيح وفتح الأقفال",
+    "itemListElement": [
+        @foreach($services as $index => $srv)
+        {
+            "@@type": "Offer",
+            "itemOffered": {
+                "@@type": "Service",
+                "name": {!! json_encode($srv->title, JSON_UNESCAPED_UNICODE) !!},
+                "description": {!! json_encode($srv->short_description, JSON_UNESCAPED_UNICODE) !!}
+            }
+        }{{ !$loop->last ? ',' : '' }}
+        @endforeach
+    ]
+}
+</script>
+@endif
+@endsection
+
 @section('content')
 
     @php
