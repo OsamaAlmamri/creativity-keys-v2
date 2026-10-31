@@ -28,7 +28,7 @@
 
                 <!-- Subtitle -->
                 <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
-                    {{ $settings['site_tagline'] ?? ('خدمات قص وبرمجة مفاتيح وبصمات السيارات بجميع موديلاتها، فتح أبواب المنازل والخزائن المغلقة بدون خدش، وتوريد أحدث الأقفال الذكية مع ورش متنقلة مجهزة بالكامل تصلك فوراً في ' . $cityName . '.') }}
+                    {{ !empty($settings['hero_subtitle']) ? $settings['hero_subtitle'] : ('خدمات قص وبرمجة مفاتيح وبصمات السيارات بجميع موديلاتها، فتح أبواب المنازل والخزائن المغلقة بدون خدش، وتوريد أحدث الأقفال الذكية مع ورش متنقلة مجهزة بالكامل تصلك فوراً في ' . $cityName . '.') }}
                 </p>
 
                 <!-- Trust Stats Bar (Modern Metrics Cards) -->

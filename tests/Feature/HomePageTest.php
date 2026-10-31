@@ -26,6 +26,8 @@ class HomePageTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertSee('مفتاح باب البستان');
+        $response->assertSee('قص وبرمجة المفاتيح الذكية');
+        $response->assertDontSee('قص وبرمجة المفاتيح الذكية وفتح الأقفال على مدار 24 ساعة');
         $response->assertSee('برمجة بصمة سيارة');
         $response->assertSee('قص مفتاح ليزر');
         $response->assertSee('سعد الشمري');

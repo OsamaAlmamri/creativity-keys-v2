@@ -71,7 +71,7 @@
                             {{ $settings['site_name'] ?? 'مفتاح باب البستان' }}
                         </span>
                         <span class="text-[11px] text-amber-600 dark:text-amber-400 font-bold block leading-none">
-                            {{ $settings['site_tagline'] ?? 'قص وبرمجة المفاتيح والأقفال الذكية' }}
+                            {{ $settings['site_tagline'] ?? 'قص وبرمجة المفاتيح الذكية' }}
                         </span>
                     </div>
                 </a>

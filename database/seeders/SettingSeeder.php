@@ -15,7 +15,7 @@ class SettingSeeder extends Seeder
         $settings = [
             // العام
             ['key' => 'site_name', 'value' => 'مفتاح باب البستان', 'group' => 'general', 'label' => 'اسم المحل / المركز', 'type' => 'text'],
-            ['key' => 'site_tagline', 'value' => 'قص وبرمجة المفاتيح الذكية وفتح الأقفال على مدار 24 ساعة', 'group' => 'general', 'label' => 'الشعار التعريفي', 'type' => 'text'],
+            ['key' => 'site_tagline', 'value' => 'قص وبرمجة المفاتيح الذكية', 'group' => 'general', 'label' => 'الشعار التعريفي', 'type' => 'text'],
             ['key' => 'city_name', 'value' => 'جدة', 'group' => 'general', 'label' => 'المدينة الرئيسية', 'type' => 'text'],
             ['key' => 'coverage_areas', 'value' => 'الروضة • السلامة • الزهراء • الشاطئ • الحمراء • المروة • الصفا • أبحر', 'group' => 'general', 'label' => 'نطاق وأحياء التغطية الميدانية', 'type' => 'textarea'],
             ['key' => 'coverage_note', 'value' => 'ورش متنقلة وفنيون مرخصون لجميع أحياء ومناطق جدة', 'group' => 'general', 'label' => 'ملاحظة تغطية شريط الطوارئ', 'type' => 'text'],
