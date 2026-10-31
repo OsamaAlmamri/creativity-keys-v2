@@ -86,10 +86,10 @@
                                     <a href="https://wa.me/{{ preg_replace('/^0/', '966', preg_replace('/\D/', '', $msg->phone)) }}?text={{ urlencode('مرحباً أخي ' . $msg->name . '، بخصوص طلبك من مركز مفاتيح الأمان') }}" target="_blank" class="inline-flex items-center px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-colors">
                                         واتساب
                                     </a>
-                                    <form action="{{ route('admin.messages.destroy', $msg) }}" method="POST" class="inline" onsubmit="return confirm('هل أنت متأكد من حذف هذه الرسالة؟')">
+                                    <form action="{{ route('admin.messages.destroy', $msg) }}" method="POST" class="inline" data-confirm-title="تأكيد حذف الرسالة" data-item-name="{{ $msg->name }} ({{ $msg->phone }})" data-confirm-message="هل أنت متأكد من رغبتك في حذف طلب وتواصل العميل؟">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="p-1.5 rounded-lg bg-red-500/10 hover:bg-red-500 text-red-400 hover:text-white transition-colors" title="حذف">
+                                        <button type="submit" class="btn-delete p-1.5 rounded-lg transition-all" title="حذف الرسالة">
                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
                                         </button>
                                     </form>

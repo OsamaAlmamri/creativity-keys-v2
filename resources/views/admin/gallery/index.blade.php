@@ -107,11 +107,12 @@
                                     تعديل
                                 </button>
                             </div>
-                            <form action="{{ route('admin.gallery.destroy', $item) }}" method="POST" onsubmit="return confirm('هل أنت متأكد من حذف هذه الصورة؟')">
+                            <form action="{{ route('admin.gallery.destroy', $item) }}" method="POST" data-confirm-title="تأكيد حذف الصورة" data-item-name="{{ $item->title }}" data-confirm-message="هل أنت متأكد من رغبتك في حذف هذه الصورة من معرض الأعمال؟">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="text-red-400 hover:text-red-300 font-bold">
-                                    حذف
+                                <button type="submit" class="text-red-400 hover:text-red-300 font-bold transition-colors cursor-pointer inline-flex items-center gap-1">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                                    <span>حذف</span>
                                 </button>
                             </form>
                         </div>

@@ -63,6 +63,18 @@ class AdminCrudOperationsTest extends TestCase
         $this->assertDatabaseMissing('services', ['id' => $service->id]);
     }
 
+    public function test_services_index_renders_custom_delete_button_and_modal_attributes(): void
+    {
+        $service = Service::factory()->create(['title' => 'خدمة فتح مرسيدس']);
+
+        $response = $this->actingAs($this->admin)->get(route('admin.services.index'));
+        $response->assertStatus(200);
+        $response->assertSee('btn-delete', false);
+        $response->assertSee('data-confirm-title="تأكيد حذف الخدمة الفنية"', false);
+        $response->assertSee('data-item-name="خدمة فتح مرسيدس"', false);
+        $response->assertSee('id="delete-modal"', false);
+    }
+
     public function test_admin_can_add_and_delete_gallery_item(): void
     {
         $response = $this->actingAs($this->admin)->post(route('admin.gallery.store'), [

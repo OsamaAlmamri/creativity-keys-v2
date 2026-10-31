@@ -999,6 +999,58 @@
         font-weight: 800 !important;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
     }
+
+    /* ========================================================= */
+    /* 🗑️ DELETE CONFIRMATION MODAL & BUTTON STYLING             */
+    /* ========================================================= */
+    .btn-delete {
+        background-color: rgba(239, 68, 68, 0.1) !important;
+        color: #f87171 !important;
+        border: 1px solid rgba(239, 68, 68, 0.25) !important;
+        transition: all 0.2s ease-in-out !important;
+    }
+
+    .btn-delete:hover {
+        background-color: #ef4444 !important;
+        color: #ffffff !important;
+        border-color: #dc2626 !important;
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3) !important;
+        transform: translateY(-1px);
+    }
+
+    html.theme-light .btn-delete {
+        background-color: #fef2f2 !important;
+        color: #dc2626 !important;
+        border-color: #fecaca !important;
+    }
+
+    html.theme-light .btn-delete:hover {
+        background-color: #dc2626 !important;
+        color: #ffffff !important;
+        border-color: #dc2626 !important;
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25) !important;
+    }
+
+    /* Modal dialog styling in Light Mode */
+    html.theme-light #delete-modal-dialog {
+        background-color: #ffffff !important;
+        border-color: #e2e8f0 !important;
+        box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25) !important;
+    }
+
+    html.theme-light #delete-modal-title {
+        color: #0f172a !important;
+    }
+
+    html.theme-light #delete-modal-message {
+        color: #64748b !important;
+    }
+
+    html.theme-light #delete-modal-item {
+        background-color: #fffbeb !important;
+        border-color: #fde68a !important;
+        color: #92400e !important;
+    }
 </style>
 
 <!-- Immediate Theme Mode Initialization (Zero Flicker) -->

@@ -600,5 +600,8 @@
         });
     </script>
 
+    <!-- Global Delete Confirmation Modal -->
+    @include('admin.partials.delete-modal')
+
 </body>
 </html>

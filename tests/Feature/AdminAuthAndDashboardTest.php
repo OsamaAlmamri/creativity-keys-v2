@@ -103,5 +103,12 @@ class AdminAuthAndDashboardTest extends TestCase
         // Check theme style includes admin breadcrumb styling
         $response->assertSee('html.theme-light .admin-header', false);
         $response->assertSee('html.theme-light .admin-breadcrumb', false);
+
+        // Check global delete confirmation modal is included
+        $response->assertSee('id="delete-modal"', false);
+        $response->assertSee('id="delete-modal-backdrop"', false);
+        $response->assertSee('openDeleteModal', false);
+        $response->assertSee('closeDeleteModal', false);
+        $response->assertSee('submitDeleteModalForm', false);
     }
 }
