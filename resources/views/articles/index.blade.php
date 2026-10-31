@@ -67,48 +67,7 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @forelse($articles as $article)
-                    <article class="bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-xl hover:border-amber-500/40 hover:shadow-2xl hover:shadow-amber-500/10 transition-all duration-300 flex flex-col justify-between group hover-brand-card">
-                        
-                        <div>
-                            <!-- Cover Image -->
-                            <div class="relative h-56 overflow-hidden bg-slate-950">
-                                <img src="{{ $article->image_url }}" alt="{{ $article->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
-                                <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-slate-900/90 backdrop-blur-md text-amber-400 border border-slate-750 text-xs font-bold">
-                                    {{ $article->category }}
-                                </span>
-                            </div>
-
-                            <!-- Content -->
-                            <div class="p-6 space-y-3">
-                                <div class="flex items-center gap-3 text-xs text-slate-400 font-mono">
-                                    <span>{{ $article->published_at ? $article->published_at->format('Y-m-d') : $article->created_at->format('Y-m-d') }}</span>
-                                    <span>•</span>
-                                    <span>{{ $article->read_time }}</span>
-                                </div>
-
-                                <h2 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors line-clamp-2 leading-snug">
-                                    <a href="{{ route('articles.show', $article->slug) }}">
-                                        {{ $article->title }}
-                                    </a>
-                                </h2>
-
-                                <p class="text-xs text-slate-400 leading-relaxed line-clamp-3">
-                                    {{ $article->excerpt }}
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Read More Link -->
-                        <div class="p-6 pt-0 border-t border-slate-800/80 mt-4 flex items-center justify-between">
-                            <a href="{{ route('articles.show', $article->slug) }}" class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-400 group-hover:text-amber-300 transition-colors">
-                                <span>قراءة المقال بالكامل</span>
-                                <svg class="w-4 h-4 -rotate-90 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                            </a>
-                            <span class="text-[11px] text-slate-500 font-mono">{{ $article->views_count }} مشاهدة</span>
-                        </div>
-
-                    </article>
+                    <x-article-card :article="$article" />
                 @empty
                     <div class="col-span-3 text-center py-16 text-slate-500">
                         لا توجد مقالات منشورة مطابقة لبحثك في الوقت الحالي.
