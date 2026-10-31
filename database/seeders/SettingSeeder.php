@@ -36,6 +36,9 @@ class SettingSeeder extends Seeder
             ['key' => 'social_instagram', 'value' => '', 'group' => 'seo', 'label' => 'حساب انستغرام', 'type' => 'text'],
             ['key' => 'social_tiktok', 'value' => '', 'group' => 'seo', 'label' => 'حساب تيك توك', 'type' => 'text'],
             ['key' => 'social_snapchat', 'value' => '', 'group' => 'seo', 'label' => 'حساب سناب شات', 'type' => 'text'],
+            ['key' => 'social_facebook', 'value' => '', 'group' => 'seo', 'label' => 'حساب فيسبوك', 'type' => 'text'],
+            ['key' => 'social_youtube', 'value' => '', 'group' => 'seo', 'label' => 'قناة يوتيوب', 'type' => 'text'],
+            ['key' => 'social_linkedin', 'value' => '', 'group' => 'seo', 'label' => 'صفحة لينكد إن', 'type' => 'text'],
 
             // الاتصال وموقع الخريطة
             ['key' => 'phone', 'value' => '0551234567', 'group' => 'contact', 'label' => 'رقم الهاتف الرئيسي', 'type' => 'text'],
@@ -67,7 +70,7 @@ class SettingSeeder extends Seeder
             ['key' => 'theme_font', 'value' => 'Cairo', 'group' => 'theme', 'label' => 'نوع الخط العربي', 'type' => 'text'],
             ['key' => 'theme_radius', 'value' => 'medium', 'group' => 'theme', 'label' => 'نمط حواف الأزرار والبطاقات', 'type' => 'text'],
             ['key' => 'show_emergency_ticker', 'value' => '1', 'group' => 'theme', 'label' => 'إظهار شريط الطوارئ العلوي', 'type' => 'boolean'],
-            ['key' => 'show_header_contact_buttons', 'value' => '1', 'group' => 'theme', 'label' => 'إظهار أزرار اتصال الهيدر', 'type' => 'boolean'],
+            ['key' => 'show_header_contact_buttons', 'value' => '0', 'group' => 'theme', 'label' => 'إظهار أزرار اتصال الهيدر', 'type' => 'boolean'],
             ['key' => 'show_floating_buttons', 'value' => '1', 'group' => 'theme', 'label' => 'إظهار أزرار الاتصال العائمة', 'type' => 'boolean'],
             ['key' => 'show_home_articles', 'value' => '1', 'group' => 'theme', 'label' => 'إظهار قسم المقالات بالرئيسية', 'type' => 'boolean'],
             ['key' => 'header_style', 'value' => 'sticky', 'group' => 'theme', 'label' => 'نمط شريط التنقل', 'type' => 'text'],
