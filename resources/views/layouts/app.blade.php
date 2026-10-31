@@ -32,7 +32,7 @@
                     <span>متوسط سرعة الوصول: {{ $settings['arrival_time'] ?? '15 - 25 دقيقة' }}</span>
                 </span>
                 <span class="hidden md:inline text-slate-900/30">•</span>
-                <a href="tel:{{ $settings['emergency_phone'] ?? '0559998877' }}" class="inline-flex items-center gap-1.5 bg-slate-950 text-white px-3 py-0.5 rounded-full font-black text-xs hover:bg-slate-900 transition-colors shadow-xs">
+                <a href="tel:{{ $settings['emergency_phone'] ?? '0559998877' }}" class="emergency-ticker-btn inline-flex items-center gap-1.5 bg-slate-950 text-white px-3 py-0.5 rounded-full font-black text-xs hover:bg-slate-900 transition-colors shadow-xs">
                     <svg class="w-3 h-3 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                     <span>اتصال فوري:</span>
                     <span dir="ltr">{{ $settings['emergency_phone'] ?? '0559998877' }}</span>
@@ -86,10 +86,19 @@
                 <!-- Header Actions -->
                 <div class="hidden sm:flex items-center gap-2.5 shrink-0">
                     @if($allowVisitorToggle)
-                        <button type="button" onclick="window.toggleSiteTheme()" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-750 text-slate-700 dark:text-slate-300 transition-colors border border-slate-200 dark:border-slate-700/80 flex items-center justify-center cursor-pointer shadow-xs" title="تبديل المظهر النهاري / الليلي" aria-label="تبديل المظهر">
-                            <svg class="w-5 h-5 theme-icon-sun text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9h-1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-                            <svg class="w-5 h-5 theme-icon-moon text-blue-400" style="display: none;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-                        </button>
+                        @if($showHeaderContactButtons)
+                            <button type="button" onclick="window.toggleSiteTheme()" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-750 text-slate-700 dark:text-slate-300 transition-colors border border-slate-200 dark:border-slate-700/80 flex items-center justify-center cursor-pointer shadow-xs" aria-label="تبديل المظهر">
+                                <svg class="w-5 h-5 theme-icon-sun text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9h-1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                                <svg class="w-5 h-5 theme-icon-moon text-blue-400" style="display: none;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                            </button>
+                        @else
+                            <button type="button" onclick="window.toggleSiteTheme()" class="h-10 px-3.5 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-750 text-slate-700 dark:text-slate-300 transition-colors border border-slate-200 dark:border-slate-700/80 inline-flex items-center gap-2 cursor-pointer shadow-xs text-xs font-bold" aria-label="تبديل المظهر">
+                                <svg class="w-4 h-4 theme-icon-sun text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9h-1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                                <svg class="w-4 h-4 theme-icon-moon text-blue-400" style="display: none;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                                <span class="theme-text-sun">الوضع الليلي</span>
+                                <span class="theme-text-moon" style="display: none;">الوضع النهاري</span>
+                            </button>
+                        @endif
                     @endif
 
                     @if($showHeaderContactButtons)

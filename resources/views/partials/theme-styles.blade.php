@@ -214,8 +214,18 @@
     }
 
     /* 2. Global Slate Background Fallbacks in Light Mode */
-    html.theme-light .bg-slate-950 {
+    html.theme-light .bg-slate-950:not(.emergency-ticker-btn) {
         background-color: #f8fafc !important;
+    }
+
+    /* Protect the emergency ticker phone button from being turned into white-on-white in light mode */
+    .emergency-ticker-btn,
+    html.theme-light .emergency-ticker-btn {
+        background-color: #020617 !important;
+        color: #ffffff !important;
+    }
+    html.theme-light .emergency-ticker-btn:hover {
+        background-color: #0f172a !important;
     }
 
     html.theme-light .bg-slate-900 {
@@ -1108,6 +1118,12 @@
         });
         document.querySelectorAll('.theme-icon-moon').forEach(function(el) {
             el.style.display = isLight ? 'inline-block' : 'none';
+        });
+        document.querySelectorAll('.theme-text-sun').forEach(function(el) {
+            el.style.display = isLight ? 'none' : 'inline';
+        });
+        document.querySelectorAll('.theme-text-moon').forEach(function(el) {
+            el.style.display = isLight ? 'inline' : 'none';
         });
     }
 

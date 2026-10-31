@@ -115,13 +115,16 @@ class ThemeManagementTest extends TestCase
         $response->assertSee('<span>واتساب</span>', false);
         $response->assertSee('<span>اتصال طوارئ 24/7</span>', false);
 
-        // 2. When disabled: header contact buttons are hidden
+        // 2. When disabled: header contact buttons are hidden and theme toggle switches to refined pill
         Setting::set('show_header_contact_buttons', '0', 'theme');
         $responseDisabled = $this->get(route('home'));
         $responseDisabled->assertStatus(200);
         $responseDisabled->assertDontSee('<span>واتساب</span>', false);
         $responseDisabled->assertDontSee('<span>اتصال طوارئ 24/7</span>', false);
         $responseDisabled->assertDontSee('محادثة واتساب سريعة', false);
+        $responseDisabled->assertSee('theme-text-sun', false);
+        $responseDisabled->assertSee('الوضع الليلي', false);
+        $responseDisabled->assertSee('emergency-ticker-btn', false);
     }
 
     public function test_admin_can_reset_theme_to_defaults(): void
