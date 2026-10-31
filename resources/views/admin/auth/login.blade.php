@@ -7,10 +7,7 @@
 
     <title>تسجيل الدخول إلى لوحة التحكم | مفاتيح الأمان</title>
 
-    <!-- Google Font Cairo -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    @include('partials.theme-styles')
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>

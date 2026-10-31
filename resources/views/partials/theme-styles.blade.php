@@ -166,9 +166,56 @@
         color: #1e293b !important;
     }
 
-    /* 1. Global Backgrounds & Gradients in Light Mode */
-    html.theme-light .bg-slate-950 {
+    /* 1. Global Section Backgrounds Alternation in Light Mode */
+    html.theme-light #hero,
+    html.theme-light .hero-section,
+    html.theme-light .bg-gradient-to-b.from-slate-950.via-slate-900.to-slate-950 {
+        background: linear-gradient(180deg, #ffffff 0%, #f8fafc 40%, #f1f5f9 100%) !important;
+    }
+
+    html.theme-light #about {
         background-color: #ffffff !important;
+        border-top-color: #e2e8f0 !important;
+    }
+
+    html.theme-light #services {
+        background-color: #f8fafc !important;
+        border-top-color: #e2e8f0 !important;
+    }
+
+    html.theme-light #gallery {
+        background-color: #ffffff !important;
+        border-top-color: #e2e8f0 !important;
+    }
+
+    html.theme-light #reviews {
+        background-color: #f8fafc !important;
+        border-top-color: #e2e8f0 !important;
+    }
+
+    html.theme-light #articles {
+        background-color: #ffffff !important;
+        border-top-color: #e2e8f0 !important;
+    }
+
+    html.theme-light #location {
+        background-color: #f8fafc !important;
+        border-top-color: #e2e8f0 !important;
+    }
+
+    html.theme-light #contact {
+        background-color: #ffffff !important;
+        border-top-color: #e2e8f0 !important;
+    }
+
+    html.theme-light footer {
+        background-color: #f1f5f9 !important;
+        border-top-color: #e2e8f0 !important;
+    }
+
+    /* 2. Global Slate Background Fallbacks in Light Mode */
+    html.theme-light .bg-slate-950 {
+        background-color: #f8fafc !important;
     }
 
     html.theme-light .bg-slate-900 {
@@ -185,8 +232,12 @@
     }
 
     html.theme-light .bg-slate-800,
+    html.theme-light .bg-slate-800\/90,
+    html.theme-light .bg-slate-800\/80,
     html.theme-light .bg-slate-800\/60,
-    html.theme-light .bg-slate-800\/80 {
+    html.theme-light .bg-slate-800\/50,
+    html.theme-light .bg-slate-750,
+    html.theme-light .bg-slate-850 {
         background-color: #f1f5f9 !important;
     }
 
@@ -195,34 +246,50 @@
     html.theme-light .border-slate-800\/60,
     html.theme-light .border-slate-700,
     html.theme-light .border-slate-700\/60,
-    html.theme-light .border-slate-750 {
+    html.theme-light .border-slate-750,
+    html.theme-light .border-slate-850 {
         border-color: #e2e8f0 !important;
     }
 
-    /* Section Gradients in Light Mode */
-    html.theme-light #hero,
-    html.theme-light .bg-gradient-to-b.from-slate-950.via-slate-900.to-slate-950 {
-        background-image: linear-gradient(180deg, #ffffff 0%, #f1f5f9 60%, #f8fafc 100%) !important;
+    html.theme-light .divide-slate-800 > :not([hidden]) ~ :not([hidden]) {
+        border-color: #f1f5f9 !important;
     }
 
-    /* Hero Headline Gradient in Light Mode - High Contrast */
+    /* 3. Hero Headline Gradient & Badges in Light Mode */
     html.theme-light .text-brand-gradient {
         background: linear-gradient(135deg, var(--brand-700) 0%, var(--brand-600) 50%, var(--brand-500) 100%) !important;
         -webkit-background-clip: text !important;
         -webkit-text-fill-color: transparent !important;
     }
 
-    /* 2. Text Color Harmony in Light Mode */
+    /* Hero Quick Emergency Card & Highlight Items */
+    html.theme-light #hero .bg-slate-900 {
+        background-color: #ffffff !important;
+        border-color: #e2e8f0 !important;
+        box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.08) !important;
+    }
+
+    html.theme-light #hero .bg-slate-800\/50 {
+        background-color: #f8fafc !important;
+        border-color: #e2e8f0 !important;
+    }
+
+    html.theme-light #hero .border-y.border-slate-800\/80,
+    html.theme-light #hero .border-x.border-slate-800 {
+        border-color: #e2e8f0 !important;
+    }
+
+    /* 4. Text Color Typography in Light Mode */
     html.theme-light h1,
     html.theme-light h2,
-    html.theme-light h3,
-    html.theme-light h4,
+    html.theme-light h3:not(.gallery-card h3),
+    html.theme-light h4:not(.gallery-card h4),
     html.theme-light h5,
     html.theme-light h6 {
         color: #0f172a !important;
     }
 
-    html.theme-light p {
+    html.theme-light p:not(.gallery-card p) {
         color: #334155 !important;
     }
 
@@ -234,21 +301,21 @@
         color: #1e293b !important;
     }
 
-    html.theme-light .text-slate-300 {
+    html.theme-light .text-slate-300:not(.gallery-card *) {
         color: #475569 !important;
     }
 
-    html.theme-light .text-slate-400 {
+    html.theme-light .text-slate-400:not(.gallery-card *) {
         color: #64748b !important;
     }
 
-    html.theme-light .text-slate-500 {
+    html.theme-light .text-slate-500:not(.gallery-card *) {
         color: #64748b !important;
     }
 
     /* Replace pale text colors with rich, readable contrast on white */
-    html.theme-light .text-amber-400,
-    html.theme-light .text-amber-300 {
+    html.theme-light .text-amber-400:not(.gallery-card *):not(.bg-gradient-to-r *),
+    html.theme-light .text-amber-300:not(.gallery-card *):not(.bg-gradient-to-r *) {
         color: var(--brand-700, #b45309) !important;
     }
 
@@ -268,9 +335,28 @@
         color: #7e22ce !important;
     }
 
-    /* 3. PROTECT BUTTONS AND OVERLAYS WITH INTENDED WHITE TEXT */
-    html.theme-light button.text-white,
-    html.theme-light a.text-white,
+    /* 5. Button & Action Link Contrasts in Light Mode */
+    /* Secondary Action Buttons (was dark slate with white text) */
+    html.theme-light a[class*="bg-slate-800"],
+    html.theme-light button[class*="bg-slate-800"],
+    html.theme-light a[class*="bg-slate-700"],
+    html.theme-light button[class*="bg-slate-700"] {
+        background-color: #ffffff !important;
+        color: #0f172a !important;
+        border-color: #cbd5e1 !important;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+    }
+
+    html.theme-light a[class*="bg-slate-800"]:hover,
+    html.theme-light button[class*="bg-slate-800"]:hover,
+    html.theme-light a[class*="bg-slate-700"]:hover,
+    html.theme-light button[class*="bg-slate-700"]:hover {
+        background-color: #f1f5f9 !important;
+        color: #0f172a !important;
+        border-color: #94a3b8 !important;
+    }
+
+    /* Primary and Colored Buttons (retain white or dark text appropriately) */
     html.theme-light .bg-emerald-600,
     html.theme-light .bg-emerald-600 *,
     html.theme-light .bg-emerald-500,
@@ -279,28 +365,32 @@
     html.theme-light .bg-red-600 *,
     html.theme-light .bg-red-500,
     html.theme-light .bg-red-500 *,
-    html.theme-light .bg-gradient-to-r.from-red-600,
-    html.theme-light .bg-gradient-to-r.from-red-600 *,
-    html.theme-light .gallery-card h3,
-    html.theme-light .gallery-card p,
-    html.theme-light .gallery-card span.text-white,
-    html.theme-light span.bg-red-500.text-white,
-    html.theme-light .badge-white-text {
+    html.theme-light .bg-brand-primary,
+    html.theme-light .bg-brand-primary *,
+    html.theme-light .badge-white-text,
+    html.theme-light span.bg-red-500.text-white {
         color: #ffffff !important;
     }
 
-    /* Standalone .text-white elements that are NOT buttons/badges */
-    html.theme-light div > .text-white:not(button):not(a):not(span[class*="bg-red"]):not(span[class*="bg-emerald"]),
+    html.theme-light a[class*="from-amber"],
+    html.theme-light button[class*="from-amber"],
+    html.theme-light a[class*="from-amber"] *,
+    html.theme-light button[class*="from-amber"] * {
+        color: #020617 !important;
+    }
+
+    /* Standalone .text-white elements that are NOT colored buttons/badges */
+    html.theme-light div > .text-white:not(button):not(a):not(span[class*="bg-red"]):not(span[class*="bg-emerald"]):not(.gallery-card *):not(.badge-white-text),
     html.theme-light tr > td.text-white,
     html.theme-light label.text-white {
         color: #0f172a !important;
     }
 
-    /* 4. Navigation Bar & Header in Light Mode */
+    /* 6. Navigation Bar & Header in Light Mode */
     html.theme-light header {
-        background-color: rgba(255, 255, 255, 0.94) !important;
+        background-color: rgba(255, 255, 255, 0.95) !important;
         border-bottom-color: #e2e8f0 !important;
-        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05) !important;
     }
 
     html.theme-light header a > span.text-white {
@@ -309,44 +399,126 @@
 
     html.theme-light header nav {
         background-color: #f1f5f9 !important;
-        border-color: #cbd5e1 !important;
+        border-color: #e2e8f0 !important;
     }
 
     html.theme-light header nav a {
         color: #475569 !important;
+        font-weight: 600 !important;
     }
 
     html.theme-light header nav a:hover {
         color: #0f172a !important;
-        background-color: #e2e8f0 !important;
+        background-color: #ffffff !important;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
     }
 
-    /* 5. Cards & Containers in Light Mode */
-    html.theme-light .bg-slate-900.border.border-slate-800,
-    html.theme-light .bg-slate-950.border.border-slate-800 {
+    /* Mobile Dropdown Menu in Light Mode */
+    html.theme-light #mobile-menu {
+        background-color: #ffffff !important;
+        border-top-color: #e2e8f0 !important;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08) !important;
+    }
+
+    html.theme-light #mobile-menu a:not([class*="bg-emerald"]):not([class*="bg-amber"]) {
+        color: #334155 !important;
+    }
+
+    html.theme-light #mobile-menu a:not([class*="bg-emerald"]):not([class*="bg-amber"]):hover {
+        background-color: #f1f5f9 !important;
+        color: #0f172a !important;
+    }
+
+    /* 7. Cards & Containers Hierarchy in Light Mode */
+    /* Cards inside Services, Reviews, Location, Contact */
+    html.theme-light #services .bg-slate-900,
+    html.theme-light #reviews .bg-slate-900,
+    html.theme-light #location .bg-slate-950,
+    html.theme-light #contact .bg-slate-900,
+    html.theme-light #articles article.bg-slate-950 {
         background-color: #ffffff !important;
         border-color: #e2e8f0 !important;
-        box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.05) !important;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -2px rgba(0, 0, 0, 0.04) !important;
     }
 
-    /* Sub-panels and inner wells in Light Mode */
-    html.theme-light .peer + div {
+    html.theme-light #services .hover-brand-card:hover,
+    html.theme-light #reviews .hover-brand-card:hover,
+    html.theme-light #articles .hover-brand-card:hover {
+        transform: translateY(-4px) !important;
+        border-color: var(--brand-400) !important;
+        box-shadow: 0 20px 25px -5px rgba(var(--brand-rgb), 0.15), 0 8px 10px -6px rgba(var(--brand-rgb), 0.08) !important;
+    }
+
+    /* About Section Elements */
+    html.theme-light #about .absolute.bottom-6 {
+        background-color: rgba(255, 255, 255, 0.95) !important;
+        border-color: #e2e8f0 !important;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    html.theme-light #about .grid-cols-2 .bg-slate-950 {
         background-color: #f8fafc !important;
         border-color: #e2e8f0 !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
     }
 
-    html.theme-light .peer:checked + div {
-        background-color: #ffffff !important;
-        border-color: var(--brand-500) !important;
-        box-shadow: 0 4px 15px -2px rgba(var(--brand-rgb), 0.15) !important;
+    /* Service Category Badge */
+    html.theme-light #services .bg-slate-800.text-amber-400,
+    html.theme-light .bg-slate-800.text-amber-400 {
+        background-color: #fffbeb !important;
+        color: #92400e !important;
+        border-color: #fde68a !important;
     }
 
-    /* Font sample preview box in Theme Customizer */
-    html.theme-light .theme-font-radio + div > div:last-child {
+    /* Service Card Order Button */
+    html.theme-light #services a[class*="bg-slate-800"] {
         background-color: #f1f5f9 !important;
+        color: #0f172a !important;
+        border-color: #cbd5e1 !important;
+    }
+
+    html.theme-light #services a[class*="bg-slate-800"]:hover {
+        background-color: var(--brand-500) !important;
+        color: #ffffff !important;
+        border-color: var(--brand-500) !important;
+    }
+
+    /* Gallery Section in Light Mode */
+    html.theme-light .filter-btn:not(.active):not(.bg-amber-500) {
+        background-color: #f1f5f9 !important;
+        color: #475569 !important;
+        border: 1px solid #e2e8f0 !important;
+    }
+
+    html.theme-light .filter-btn:not(.active):not(.bg-amber-500):hover {
+        background-color: #e2e8f0 !important;
+        color: #0f172a !important;
+    }
+
+    html.theme-light .filter-btn.active,
+    html.theme-light .filter-btn.bg-amber-500 {
+        background-color: var(--brand-500) !important;
+        color: #ffffff !important;
+    }
+
+    html.theme-light .gallery-card {
         border-color: #e2e8f0 !important;
-        color: var(--brand-700, #b45309) !important;
-        font-weight: 600;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.06) !important;
+    }
+
+    /* Gallery text over dark image gradient overlay MUST stay light */
+    html.theme-light .gallery-card h3 {
+        color: #ffffff !important;
+    }
+
+    html.theme-light .gallery-card p {
+        color: #e2e8f0 !important;
+    }
+
+    html.theme-light .gallery-card .bg-slate-900\/90 {
+        background-color: rgba(15, 23, 42, 0.8) !important;
+        color: #fde68a !important;
+        border-color: rgba(255, 255, 255, 0.25) !important;
     }
 
     /* Map iframe in Light Mode */
@@ -354,32 +526,39 @@
         filter: none !important;
     }
 
-    /* Service Category Badge */
-    html.theme-light .bg-slate-800.text-amber-400 {
-        background-color: #f1f5f9 !important;
-        color: var(--brand-700, #b45309) !important;
-        border-color: #cbd5e1 !important;
+    /* Badges & Alert Pills in Light Mode */
+    html.theme-light .bg-amber-500\/10 {
+        background-color: #fffbeb !important;
+        border-color: #fde68a !important;
+        color: #92400e !important;
     }
 
-    /* Gallery Tabs Inactive */
-    html.theme-light .gallery-tab-btn:not(.bg-amber-500) {
-        background-color: #f1f5f9 !important;
-        color: #475569 !important;
-        border-color: #cbd5e1 !important;
+    html.theme-light .bg-emerald-500\/10 {
+        background-color: #ecfdf5 !important;
+        border-color: #a7f3d0 !important;
+        color: #047857 !important;
     }
 
-    html.theme-light .gallery-tab-btn:not(.bg-amber-500):hover {
-        background-color: #e2e8f0 !important;
-        color: #0f172a !important;
+    html.theme-light .bg-blue-500\/10 {
+        background-color: #eff6ff !important;
+        border-color: #bfdbfe !important;
+        color: #1d4ed8 !important;
     }
 
-    /* 6. Form Inputs & Selects in Light Mode */
+    html.theme-light .bg-red-500\/10 {
+        background-color: #fef2f2 !important;
+        border-color: #fecaca !important;
+        color: #b91c1c !important;
+    }
+
+    /* 8. Form Inputs & Selects in Light Mode */
     html.theme-light input:not([type="checkbox"]):not([type="radio"]):not([type="color"]),
     html.theme-light textarea,
     html.theme-light select {
         background-color: #ffffff !important;
         color: #0f172a !important;
         border-color: #cbd5e1 !important;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
     }
 
     html.theme-light input::placeholder,
@@ -392,29 +571,78 @@
     html.theme-light select:focus {
         background-color: #ffffff !important;
         border-color: var(--brand-500) !important;
-        box-shadow: 0 0 0 3px rgba(var(--brand-rgb), 0.15) !important;
+        box-shadow: 0 0 0 3px rgba(var(--brand-rgb), 0.18) !important;
     }
 
-    /* 7. Footer in Light Mode */
-    html.theme-light footer {
-        background-color: #f8fafc !important;
-        border-top-color: #e2e8f0 !important;
+    html.theme-light input[type="checkbox"],
+    html.theme-light input[type="radio"] {
+        border-color: #cbd5e1 !important;
+        background-color: #ffffff !important;
     }
 
-    html.theme-light footer p,
-    html.theme-light footer a {
-        color: #64748b !important;
+    /* Emergency Checkbox Box */
+    html.theme-light #contact .bg-amber-500\/10 {
+        background-color: #fffbeb !important;
+        border-color: #fde68a !important;
     }
 
-    html.theme-light footer a:hover {
+    html.theme-light #contact label[for="is_emergency"] {
+        color: #92400e !important;
+    }
+
+    /* 9. Articles Page & Typography in Light Mode */
+    html.theme-light .prose {
+        color: #334155 !important;
+    }
+
+    html.theme-light .prose h1,
+    html.theme-light .prose h2,
+    html.theme-light .prose h3,
+    html.theme-light .prose h4,
+    html.theme-light .prose strong {
+        color: #0f172a !important;
+    }
+
+    html.theme-light .prose a {
         color: var(--brand-700, #b45309) !important;
     }
 
-    /* 8. ADMIN PANEL COMPLETE LIGHT MODE STYLING */
+    html.theme-light .prose blockquote {
+        color: #475569 !important;
+        border-right-color: var(--brand-500) !important;
+    }
+
+    /* 10. Footer in Light Mode */
+    html.theme-light footer {
+        background-color: #f1f5f9 !important;
+        border-top-color: #e2e8f0 !important;
+    }
+
+    html.theme-light footer h3 {
+        color: #0f172a !important;
+    }
+
+    html.theme-light footer p,
+    html.theme-light footer a:not([class*="bg-"]) {
+        color: #475569 !important;
+    }
+
+    html.theme-light footer a:not([class*="bg-"]):hover {
+        color: var(--brand-700, #b45309) !important;
+    }
+
+    html.theme-light footer .bg-slate-900 {
+        background-color: #ffffff !important;
+        border-color: #e2e8f0 !important;
+        color: #334155 !important;
+    }
+
+    /* 11. ADMIN PANEL COMPLETE LIGHT MODE STYLING */
     /* Admin Sidebar */
     html.theme-light aside {
         background-color: #ffffff !important;
         border-left-color: #e2e8f0 !important;
+        box-shadow: 1px 0 3px 0 rgba(0, 0, 0, 0.03) !important;
     }
 
     html.theme-light aside .border-b,
@@ -466,36 +694,36 @@
         color: #1e293b !important;
     }
 
-    /* Admin Stat Cards */
-    html.theme-light .rounded-3xl.bg-slate-900.border.border-slate-800 {
+    /* Admin Stat Cards & Action Bars */
+    html.theme-light .rounded-3xl.bg-slate-900.border.border-slate-800,
+    html.theme-light .bg-slate-900.border.border-slate-800 {
         background-color: #ffffff !important;
         border-color: #e2e8f0 !important;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05) !important;
     }
 
     html.theme-light .font-mono.text-white {
         color: #0f172a !important;
     }
 
-    /* Admin Badges & Pills in Light Mode */
-    html.theme-light .bg-emerald-500\/10 {
-        background-color: #ecfdf5 !important;
-        border-color: #a7f3d0 !important;
+    /* Sub-panels and inner wells in Light Mode */
+    html.theme-light .peer + div {
+        background-color: #f8fafc !important;
+        border-color: #e2e8f0 !important;
     }
 
-    html.theme-light .bg-amber-500\/10,
-    html.theme-light .bg-amber-500\/5 {
-        background-color: #fffbeb !important;
-        border-color: #fde68a !important;
+    html.theme-light .peer:checked + div {
+        background-color: #ffffff !important;
+        border-color: var(--brand-500) !important;
+        box-shadow: 0 4px 15px -2px rgba(var(--brand-rgb), 0.15) !important;
     }
 
-    html.theme-light .bg-blue-500\/10 {
-        background-color: #eff6ff !important;
-        border-color: #bfdbfe !important;
-    }
-
-    html.theme-light .bg-red-500\/10 {
-        background-color: #fef2f2 !important;
-        border-color: #fecaca !important;
+    /* Font sample preview box in Theme Customizer */
+    html.theme-light .theme-font-radio + div > div:last-child {
+        background-color: #f1f5f9 !important;
+        border-color: #e2e8f0 !important;
+        color: var(--brand-700, #b45309) !important;
+        font-weight: 600;
     }
 
     /* Admin Action Buttons */
@@ -514,7 +742,7 @@
 
     /* Admin Modals */
     html.theme-light .fixed.z-50.bg-slate-950\/80 {
-        background-color: rgba(15, 23, 42, 0.6) !important;
+        background-color: rgba(15, 23, 42, 0.5) !important;
     }
 
     html.theme-light .fixed.z-50 .bg-slate-900 {
