@@ -1051,6 +1051,20 @@
         border-color: #fde68a !important;
         color: #92400e !important;
     }
+
+    /* Article & Table Title Links in Light Mode */
+    html.theme-light td a.article-title,
+    html.theme-light td a.text-white,
+    html.theme-light td div > a.text-white,
+    html.theme-light .article-title {
+        color: #0f172a !important;
+    }
+
+    html.theme-light td a.article-title:hover,
+    html.theme-light td a.text-white:hover,
+    html.theme-light .article-title:hover {
+        color: var(--brand-600, #d97706) !important;
+    }
 </style>
 
 <!-- Immediate Theme Mode Initialization (Zero Flicker) -->

@@ -111,4 +111,23 @@ class ArticleTest extends TestCase
         $deleteResponse->assertRedirect(route('admin.articles.index'));
         $this->assertDatabaseMissing('articles', ['id' => $article->id]);
     }
+
+    public function test_admin_articles_index_renders_accessible_title_and_actions(): void
+    {
+        $article = Article::factory()->create([
+            'title' => 'مقال تجريبي واضح العنوان',
+        ]);
+
+        $response = $this->actingAs($this->admin)->get(route('admin.articles.index'));
+        $response->assertStatus(200);
+
+        // Title has article-title class with dark text in light mode
+        $response->assertSee('article-title', false);
+        $response->assertSee('مقال تجريبي واضح العنوان');
+
+        // Actions container has btn-delete and confirm data attributes
+        $response->assertSee('btn-delete', false);
+        $response->assertSee('data-confirm-title="تأكيد حذف المقال"', false);
+        $response->assertSee('data-item-name="مقال تجريبي واضح العنوان"', false);
+    }
 }
