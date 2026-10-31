@@ -682,7 +682,8 @@
         color: #0f172a !important;
     }
 
-    html.theme-light aside .bg-slate-950\/60 {
+    html.theme-light aside .bg-slate-950\/60,
+    html.theme-light aside .bg-slate-950\/40 {
         background-color: #f8fafc !important;
     }
 
@@ -691,9 +692,13 @@
         border-color: #e2e8f0 !important;
     }
 
-    html.theme-light aside .sidebar-brand-text span.text-white,
-    html.theme-light aside .sidebar-user-text div.text-white {
+    html.theme-light aside .sidebar-text span.text-white,
+    html.theme-light aside .sidebar-text div.text-white {
         color: #0f172a !important;
+    }
+
+    html.theme-light aside .sidebar-toggle-arrow {
+        color: #64748b !important;
     }
 
     /* Admin Topbar */

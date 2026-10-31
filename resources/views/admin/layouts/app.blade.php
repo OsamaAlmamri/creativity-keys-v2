@@ -40,27 +40,44 @@
 
         /* Collapsed Sidebar Styles */
         html.sidebar-is-collapsed #admin-sidebar {
-            width: 5rem !important; /* 80px */
+            width: 4.75rem !important; /* 76px */
         }
-        html.sidebar-is-collapsed #admin-sidebar .sidebar-label,
-        html.sidebar-is-collapsed #admin-sidebar .sidebar-badge,
-        html.sidebar-is-collapsed #admin-sidebar .sidebar-brand-text,
-        html.sidebar-is-collapsed #admin-sidebar .sidebar-user-text {
-            display: none !important;
-        }
+        html.sidebar-is-collapsed #admin-sidebar .sidebar-text,
         html.sidebar-is-collapsed #admin-sidebar .sidebar-section-title {
             display: none !important;
+        }
+        html.sidebar-is-collapsed #admin-sidebar .sidebar-badge {
+            position: absolute !important;
+            top: 0.35rem !important;
+            right: 0.75rem !important;
+            width: 0.55rem !important;
+            height: 0.55rem !important;
+            padding: 0 !important;
+            border-radius: 9999px !important;
+            font-size: 0 !important;
+            border: 2px solid #0f172a !important;
         }
         html.sidebar-is-collapsed #admin-sidebar .sidebar-section-divider {
             display: block !important;
         }
         html.sidebar-is-collapsed #admin-sidebar nav a {
             justify-content: center !important;
+            padding-left: 0.25rem !important;
+            padding-right: 0.25rem !important;
+        }
+        html.sidebar-is-collapsed #admin-sidebar .sidebar-header-box {
+            justify-content: center !important;
             padding-left: 0.5rem !important;
             padding-right: 0.5rem !important;
         }
-        html.sidebar-is-collapsed #admin-sidebar .user-card-actions {
-            flex-direction: column !important;
+        html.sidebar-is-collapsed #admin-sidebar .sidebar-user-card {
+            justify-content: center !important;
+            padding: 0.25rem !important;
+            background: transparent !important;
+            border-color: transparent !important;
+        }
+        html.sidebar-is-collapsed .sidebar-toggle-arrow {
+            transform: rotate(180deg) !important;
         }
     </style>
 </head>
@@ -235,12 +252,12 @@
            class="hidden lg:flex flex-col sticky top-0 h-screen bg-slate-900 border-l border-slate-800 transition-all duration-300 ease-in-out z-40 shrink-0 w-64 shadow-xl">
         
         <!-- Brand Header with Desktop Collapse Action -->
-        <div class="h-16 px-4 border-b border-slate-800 flex items-center justify-between shrink-0">
-            <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 overflow-hidden">
+        <div class="h-16 px-3 border-b border-slate-800 flex items-center justify-between shrink-0 sidebar-header-box">
+            <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-2.5 overflow-hidden sidebar-logo-link" title="الرئيسية">
                 <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-amber-500 to-yellow-300 text-slate-950 flex items-center justify-center font-black shadow-lg shadow-amber-500/20 shrink-0 group-hover:scale-105 transition-transform">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
                 </div>
-                <div class="sidebar-brand-text truncate">
+                <div class="sidebar-text truncate">
                     <span class="text-sm font-black text-white block tracking-tight">لوحة الإدارة</span>
                     <span class="text-[11px] text-amber-400 font-bold block flex items-center gap-1">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
@@ -249,13 +266,13 @@
                 </div>
             </a>
 
-            <!-- Desktop Collapse Toggle Button -->
+            <!-- Desktop Collapse Toggle Button in Header -->
             <button type="button" 
                     onclick="toggleDesktopSidebar()" 
-                    class="sidebar-brand-text p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors" 
-                    title="طي / توسيع القائمة الجانبية"
+                    class="sidebar-text p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors shrink-0" 
+                    title="طي القائمة الجانبية"
                     aria-label="طي القائمة الجانبية">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"/></svg>
+                <svg class="w-4 h-4 sidebar-toggle-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"/></svg>
             </button>
         </div>
 
@@ -270,25 +287,23 @@
                 <div class="sidebar-section-divider hidden my-2 mx-auto w-6 h-px bg-slate-800"></div>
 
                 <a href="{{ route('admin.dashboard') }}" 
-                   class="group flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all {{ request()->routeIs('admin.dashboard') ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}"
+                   class="group flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all relative {{ request()->routeIs('admin.dashboard') ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}"
                    title="لوحة التحكم الرئيسية">
                     <div class="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 {{ request()->routeIs('admin.dashboard') ? 'bg-slate-950/15 text-slate-950' : 'bg-slate-800/60 text-slate-400 group-hover:text-amber-400 group-hover:bg-amber-400/10' }} transition-colors">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
                     </div>
-                    <span class="sidebar-label truncate">لوحة التحكم (الرئيسية)</span>
+                    <span class="sidebar-text truncate">لوحة التحكم (الرئيسية)</span>
                 </a>
 
                 <a href="{{ route('admin.messages.index') }}" 
-                   class="group flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold transition-all {{ request()->routeIs('admin.messages.*') ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}"
+                   class="group flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all relative {{ request()->routeIs('admin.messages.*') ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}"
                    title="رسائل وطلبات العملاء">
-                    <div class="flex items-center gap-3 truncate">
-                        <div class="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 {{ request()->routeIs('admin.messages.*') ? 'bg-slate-950/15 text-slate-950' : 'bg-slate-800/60 text-slate-400 group-hover:text-amber-400 group-hover:bg-amber-400/10' }} transition-colors">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                        </div>
-                        <span class="sidebar-label truncate">رسائل وطلبات العملاء</span>
+                    <div class="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 {{ request()->routeIs('admin.messages.*') ? 'bg-slate-950/15 text-slate-950' : 'bg-slate-800/60 text-slate-400 group-hover:text-amber-400 group-hover:bg-amber-400/10' }} transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                     </div>
+                    <span class="sidebar-text truncate">رسائل وطلبات العملاء</span>
                     @if($unreadMessagesCount > 0)
-                        <span class="sidebar-badge px-2 py-0.5 rounded-full text-[10px] font-black {{ request()->routeIs('admin.messages.*') ? 'bg-slate-950 text-white' : 'bg-red-500 text-white animate-pulse' }}">
+                        <span class="sidebar-badge mr-auto px-2 py-0.5 rounded-full text-[10px] font-black {{ request()->routeIs('admin.messages.*') ? 'bg-slate-950 text-white' : 'bg-red-500 text-white animate-pulse' }}">
                             {{ $unreadMessagesCount }}
                         </span>
                     @endif
@@ -303,48 +318,48 @@
                 <div class="sidebar-section-divider hidden my-2 mx-auto w-6 h-px bg-slate-800"></div>
 
                 <a href="{{ route('admin.services.index') }}" 
-                   class="group flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all {{ request()->routeIs('admin.services.*') ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}"
+                   class="group flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all relative {{ request()->routeIs('admin.services.*') ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}"
                    title="دليل الخدمات الفنية">
                     <div class="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 {{ request()->routeIs('admin.services.*') ? 'bg-slate-950/15 text-slate-950' : 'bg-slate-800/60 text-slate-400 group-hover:text-amber-400 group-hover:bg-amber-400/10' }} transition-colors">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                     </div>
-                    <span class="sidebar-label truncate">دليل الخدمات</span>
+                    <span class="sidebar-text truncate">دليل الخدمات</span>
                 </a>
 
                 <a href="{{ route('admin.service-categories.index') }}" 
-                   class="group flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all {{ request()->routeIs('admin.service-categories.*') ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}"
+                   class="group flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all relative {{ request()->routeIs('admin.service-categories.*') ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}"
                    title="أصناف وتصنيفات الخدمات">
                     <div class="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 {{ request()->routeIs('admin.service-categories.*') ? 'bg-slate-950/15 text-slate-950' : 'bg-slate-800/60 text-slate-400 group-hover:text-amber-400 group-hover:bg-amber-400/10' }} transition-colors">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
                     </div>
-                    <span class="sidebar-label truncate">أصناف الخدمات</span>
+                    <span class="sidebar-text truncate">أصناف الخدمات</span>
                 </a>
 
                 <a href="{{ route('admin.gallery.index') }}" 
-                   class="group flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all {{ request()->routeIs('admin.gallery.*') ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}"
+                   class="group flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all relative {{ request()->routeIs('admin.gallery.*') ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}"
                    title="معرض الأعمال والصور">
                     <div class="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 {{ request()->routeIs('admin.gallery.*') ? 'bg-slate-950/15 text-slate-950' : 'bg-slate-800/60 text-slate-400 group-hover:text-amber-400 group-hover:bg-amber-400/10' }} transition-colors">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                     </div>
-                    <span class="sidebar-label truncate">معرض الأعمال والصور</span>
+                    <span class="sidebar-text truncate">معرض الأعمال والصور</span>
                 </a>
 
                 <a href="{{ route('admin.reviews.index') }}" 
-                   class="group flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all {{ request()->routeIs('admin.reviews.*') ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}"
+                   class="group flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all relative {{ request()->routeIs('admin.reviews.*') ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}"
                    title="إدارة التقييمات">
                     <div class="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 {{ request()->routeIs('admin.reviews.*') ? 'bg-slate-950/15 text-slate-950' : 'bg-slate-800/60 text-slate-400 group-hover:text-amber-400 group-hover:bg-amber-400/10' }} transition-colors">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
                     </div>
-                    <span class="sidebar-label truncate">إدارة التقييمات</span>
+                    <span class="sidebar-text truncate">إدارة التقييمات</span>
                 </a>
 
                 <a href="{{ route('admin.articles.index') }}" 
-                   class="group flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all {{ request()->routeIs('admin.articles.*') ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}"
+                   class="group flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all relative {{ request()->routeIs('admin.articles.*') ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}"
                    title="المقالات والمدونة">
                     <div class="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 {{ request()->routeIs('admin.articles.*') ? 'bg-slate-950/15 text-slate-950' : 'bg-slate-800/60 text-slate-400 group-hover:text-amber-400 group-hover:bg-amber-400/10' }} transition-colors">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
                     </div>
-                    <span class="sidebar-label truncate">المقالات والمدونة</span>
+                    <span class="sidebar-text truncate">المقالات والمدونة</span>
                 </a>
             </div>
 
@@ -356,44 +371,56 @@
                 <div class="sidebar-section-divider hidden my-2 mx-auto w-6 h-px bg-slate-800"></div>
 
                 <a href="{{ route('admin.settings.index') }}" 
-                   class="group flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all {{ request()->routeIs('admin.settings.*') ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}"
+                   class="group flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all relative {{ request()->routeIs('admin.settings.*') ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}"
                    title="بيانات وإعدادات المحل">
                     <div class="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 {{ request()->routeIs('admin.settings.*') ? 'bg-slate-950/15 text-slate-950' : 'bg-slate-800/60 text-slate-400 group-hover:text-amber-400 group-hover:bg-amber-400/10' }} transition-colors">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
                     </div>
-                    <span class="sidebar-label truncate">بيانات وإعدادات المحل</span>
+                    <span class="sidebar-text truncate">بيانات وإعدادات المحل</span>
                 </a>
 
                 <a href="{{ route('admin.theme.index') }}" 
-                   class="group flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all {{ request()->routeIs('admin.theme.*') ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}"
+                   class="group flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all relative {{ request()->routeIs('admin.theme.*') ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}"
                    title="المظهر والثيم والخطوط">
                     <div class="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 {{ request()->routeIs('admin.theme.*') ? 'bg-slate-950/15 text-slate-950' : 'bg-slate-800/60 text-slate-400 group-hover:text-amber-400 group-hover:bg-amber-400/10' }} transition-colors">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4 4 4 0 014-4c.77 0 1.5.21 2.13.57L19.5 3.5a2.12 2.12 0 013 3L12.43 16.87A3.99 3.99 0 017 21zM7 17a2 2 0 100 4 2 2 0 000-4z"/></svg>
                     </div>
-                    <span class="sidebar-label truncate">المظهر والثيم والخطوط</span>
+                    <span class="sidebar-text truncate">المظهر والثيم والخطوط</span>
                 </a>
 
                 @if(auth()->user()->isAdmin())
                     <a href="{{ route('admin.users.index') }}" 
-                       class="group flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all {{ request()->routeIs('admin.users.*') ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}"
+                       class="group flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all relative {{ request()->routeIs('admin.users.*') ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}"
                        title="المستخدمين والصلاحيات">
                         <div class="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 {{ request()->routeIs('admin.users.*') ? 'bg-slate-950/15 text-slate-950' : 'bg-slate-800/60 text-slate-400 group-hover:text-amber-400 group-hover:bg-amber-400/10' }} transition-colors">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
                         </div>
-                        <span class="sidebar-label truncate">المستخدمين والصلاحيات</span>
+                        <span class="sidebar-text truncate">المستخدمين والصلاحيات</span>
                     </a>
                 @endif
             </div>
         </nav>
 
-        <!-- Bottom User Card Widget -->
+        <!-- Toggle Collapse/Expand Action Footer Bar (Always Visible & Functional) -->
+        <div class="px-3 py-2 border-t border-slate-800/80 bg-slate-950/40 shrink-0">
+            <button type="button" 
+                    onclick="toggleDesktopSidebar()" 
+                    class="w-full flex items-center justify-center p-2 rounded-xl text-slate-400 hover:text-amber-400 hover:bg-slate-800/80 transition-all gap-2"
+                    title="طي / توسيع القائمة الجانبية"
+                    aria-label="طي / توسيع القائمة الجانبية">
+                <svg class="w-4 h-4 sidebar-toggle-arrow shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"/></svg>
+                <span class="sidebar-text text-xs font-bold">طي القائمة الجانبية</span>
+            </button>
+        </div>
+
+        <!-- Bottom User Profile Card -->
         <div class="p-3 border-t border-slate-800 bg-slate-950/60 shrink-0">
-            <div class="flex items-center gap-3 p-2 rounded-xl bg-slate-900/80 border border-slate-800/80 mb-2">
-                <div class="relative w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-yellow-400 text-slate-950 font-black flex items-center justify-center shadow-md shrink-0">
+            <div class="flex items-center gap-3 p-1.5 rounded-xl bg-slate-900/80 border border-slate-800/80 mb-2 sidebar-user-card">
+                <div class="relative w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-yellow-400 text-slate-950 font-black flex items-center justify-center shadow-md shrink-0 mx-auto" title="{{ auth()->user()->name }}">
                     {{ mb_substr(auth()->user()->name, 0, 1) }}
                     <span class="absolute -bottom-0.5 -left-0.5 w-2.5 h-2.5 bg-emerald-500 border-2 border-slate-900 rounded-full" title="متصل الآن"></span>
                 </div>
-                <div class="sidebar-user-text overflow-hidden flex-1">
+                <div class="sidebar-text overflow-hidden flex-1">
                     <div class="text-xs font-bold text-white truncate">{{ auth()->user()->name }}</div>
                     <div class="text-[10px] text-amber-400 font-bold">
                         {{ auth()->user()->role === 'admin' ? 'مدير النظام (Admin)' : 'مشرف (Manager)' }}
@@ -401,14 +428,13 @@
                 </div>
             </div>
 
-            <div class="user-card-actions flex items-center gap-2">
-                <a href="{{ route('home') }}" target="_blank" class="flex-1 text-center py-1.5 px-2 rounded-lg bg-slate-800 hover:bg-slate-750 text-[11px] font-bold text-slate-300 hover:text-white transition-colors truncate" title="زيارة الموقع">
-                    <span class="sidebar-label">معاينة الموقع</span>
-                    <span class="hidden sidebar-icon">🌐</span>
+            <div class="flex items-center gap-2">
+                <a href="{{ route('home') }}" target="_blank" class="sidebar-text flex-1 text-center py-1.5 px-2 rounded-lg bg-slate-800 hover:bg-slate-750 text-[11px] font-bold text-slate-300 hover:text-white transition-colors truncate" title="زيارة الموقع">
+                    معاينة الموقع
                 </a>
-                <form action="{{ route('admin.logout') }}" method="POST" class="inline">
+                <form action="{{ route('admin.logout') }}" method="POST" class="w-full lg:w-auto">
                     @csrf
-                    <button type="submit" class="p-1.5 rounded-lg bg-red-500/10 hover:bg-red-500 text-red-400 hover:text-white transition-colors" title="تسجيل الخروج">
+                    <button type="submit" class="w-full flex items-center justify-center p-2 rounded-lg bg-red-500/10 hover:bg-red-500 text-red-400 hover:text-white transition-colors" title="تسجيل الخروج">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
                     </button>
                 </form>
@@ -432,6 +458,15 @@
                         class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white lg:hidden transition-colors" 
                         aria-label="فتح القائمة الجانبية">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/></svg>
+                </button>
+
+                <!-- Desktop Sidebar Collapse/Expand Toggle Button (Always in Topbar) -->
+                <button type="button" 
+                        onclick="toggleDesktopSidebar()" 
+                        class="hidden lg:inline-flex p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors border border-slate-700/60" 
+                        title="طي / توسيع القائمة الجانبية"
+                        aria-label="طي / توسيع القائمة الجانبية">
+                    <svg class="w-4 h-4 sidebar-collapse-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/></svg>
                 </button>
 
                 <!-- Breadcrumb Navigation -->
