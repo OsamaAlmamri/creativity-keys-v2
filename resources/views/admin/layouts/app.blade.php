@@ -251,10 +251,10 @@
     <aside id="admin-sidebar" 
            class="hidden lg:flex flex-col sticky top-0 h-screen bg-slate-900 border-l border-slate-800 transition-all duration-300 ease-in-out z-40 shrink-0 w-64 shadow-xl">
         
-        <!-- Brand Header with Desktop Collapse Action -->
-        <div class="h-16 px-3 border-b border-slate-800 flex items-center justify-between shrink-0 sidebar-header-box">
-            <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-2.5 overflow-hidden sidebar-logo-link" title="الرئيسية">
-                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-amber-500 to-yellow-300 text-slate-950 flex items-center justify-center font-black shadow-lg shadow-amber-500/20 shrink-0 group-hover:scale-105 transition-transform">
+        <!-- Brand Header (Clean & Centered when collapsed) -->
+        <div class="h-16 px-4 border-b border-slate-800 flex items-center shrink-0 sidebar-header-box overflow-hidden">
+            <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 overflow-hidden sidebar-logo-link w-full" title="لوحة الإدارة - مفاتيح الأمان">
+                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-amber-500 to-yellow-300 text-slate-950 flex items-center justify-center font-black shadow-lg shadow-amber-500/20 shrink-0 group-hover:scale-105 transition-transform mx-auto lg:mx-0">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
                 </div>
                 <div class="sidebar-text truncate">
@@ -265,15 +265,6 @@
                     </span>
                 </div>
             </a>
-
-            <!-- Desktop Collapse Toggle Button in Header -->
-            <button type="button" 
-                    onclick="toggleDesktopSidebar()" 
-                    class="sidebar-text p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors shrink-0" 
-                    title="طي القائمة الجانبية"
-                    aria-label="طي القائمة الجانبية">
-                <svg class="w-4 h-4 sidebar-toggle-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"/></svg>
-            </button>
         </div>
 
         <!-- Scrollable Navigation Groups -->
@@ -401,18 +392,6 @@
             </div>
         </nav>
 
-        <!-- Toggle Collapse/Expand Action Footer Bar (Always Visible & Functional) -->
-        <div class="px-3 py-2 border-t border-slate-800/80 bg-slate-950/40 shrink-0">
-            <button type="button" 
-                    onclick="toggleDesktopSidebar()" 
-                    class="w-full flex items-center justify-center p-2 rounded-xl text-slate-400 hover:text-amber-400 hover:bg-slate-800/80 transition-all gap-2"
-                    title="طي / توسيع القائمة الجانبية"
-                    aria-label="طي / توسيع القائمة الجانبية">
-                <svg class="w-4 h-4 sidebar-toggle-arrow shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"/></svg>
-                <span class="sidebar-text text-xs font-bold">طي القائمة الجانبية</span>
-            </button>
-        </div>
-
         <!-- Bottom User Profile Card -->
         <div class="p-3 border-t border-slate-800 bg-slate-950/60 shrink-0">
             <div class="flex items-center gap-3 p-1.5 rounded-xl bg-slate-900/80 border border-slate-800/80 mb-2 sidebar-user-card">
@@ -450,29 +429,36 @@
         <!-- Modern Floating / Sticky Topbar -->
         <header class="h-16 bg-slate-900/80 backdrop-blur-md border-b border-slate-800/80 px-4 sm:px-8 flex items-center justify-between sticky top-0 z-30">
             
-            <!-- Left Side: Hamburger & Breadcrumbs -->
+            <!-- Left Side: Modern Sidebar Toggle Icon & Breadcrumbs -->
             <div class="flex items-center gap-3 sm:gap-4 min-w-0">
-                <!-- Mobile Hamburger Toggle Button -->
+                <!-- Unified Modern Sidebar Toggle Icon Button (Next to Breadcrumbs) -->
                 <button type="button" 
-                        onclick="toggleMobileSidebar(true)" 
-                        class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white lg:hidden transition-colors" 
-                        aria-label="فتح القائمة الجانبية">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/></svg>
+                        onclick="handleSidebarToggle()" 
+                        class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-amber-400 hover:border-amber-400/40 transition-all border border-slate-700/60 shadow-xs cursor-pointer flex items-center justify-center shrink-0 group" 
+                        title="طي / توسيع القائمة الجانبية (Ctrl+B)" 
+                        aria-label="تبديل القائمة الجانبية">
+                    <!-- Modern PanelLeft / Sidebar Toggle Icon -->
+                    <svg class="w-5 h-5 transition-transform duration-200 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <rect x="3" y="3" width="18" height="18" rx="3" stroke-width="2"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v18"/>
+                    </svg>
                 </button>
 
-                <!-- Desktop Sidebar Collapse/Expand Toggle Button (Always in Topbar) -->
-                <button type="button" 
-                        onclick="toggleDesktopSidebar()" 
-                        class="hidden lg:inline-flex p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors border border-slate-700/60" 
-                        title="طي / توسيع القائمة الجانبية"
-                        aria-label="طي / توسيع القائمة الجانبية">
-                    <svg class="w-4 h-4 sidebar-collapse-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/></svg>
-                </button>
+                <!-- Subtle Vertical Divider -->
+                <div class="h-5 w-px bg-slate-800 hidden sm:block"></div>
 
                 <!-- Breadcrumb Navigation -->
                 <nav class="flex items-center gap-2 text-xs font-bold truncate" aria-label="مسار التصفح">
                     <a href="{{ route('admin.dashboard') }}" class="text-slate-400 hover:text-white transition-colors hidden sm:inline-flex items-center gap-1">
                         <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                        <span>لوحة الإدارة</span>
+                    </a>
+                    <span class="text-slate-600 hidden sm:inline">/</span>
+                    <h1 class="text-xs sm:text-sm font-black text-white truncate">
+                        @yield('page_title', 'لوحة التحكم')
+                    </h1>
+                </nav>
+            </div>
                         <span>لوحة الإدارة</span>
                     </a>
                     <span class="text-slate-600 hidden sm:inline">/</span>
@@ -592,6 +578,16 @@
             }
         }
 
+        function handleSidebarToggle() {
+            if (window.innerWidth < 1024) {
+                const drawer = document.getElementById('mobile-sidebar');
+                const isOpen = drawer && !drawer.classList.contains('translate-x-full');
+                toggleMobileSidebar(!isOpen);
+            } else {
+                toggleDesktopSidebar();
+            }
+        }
+
         function toggleDesktopSidebar() {
             const isCollapsed = document.documentElement.classList.toggle('sidebar-is-collapsed');
             try {
@@ -599,10 +595,15 @@
             } catch (e) {}
         }
 
-        // Close mobile drawer on Escape key press
+        // Keyboard shortcuts
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 toggleMobileSidebar(false);
+            }
+            // Ctrl+B or Cmd+B to toggle sidebar like modern IDEs and Dashboards
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') {
+                e.preventDefault();
+                handleSidebarToggle();
             }
         });
     </script>
