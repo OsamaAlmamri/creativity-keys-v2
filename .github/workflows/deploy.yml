@@ -1,0 +1,95 @@
+name: Deploy to Namecheap Shared Hosting (SSH / Rsync)
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # يتيح تشغيل النشر يدوياً من واجهة GitHub
+
+jobs:
+  build-and-deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. جلب الكود من المستودع
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 2. إعداد بيئة PHP 8.3 مع الامتدادات اللازمة
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, xml, ctype, iconv, intl, pdo, pdo_mysql, pdo_sqlite, bcmath, curl, zip
+          coverage: none
+
+      # 3. تثبيت حزم Composer للإنتاج بدون حزم التطوير
+      - name: Install Composer Dependencies
+        run: |
+          composer install --no-dev --prefer-dist --optimize-autoloader --no-progress --no-interaction
+
+      # 4. إعداد بيئة Node.js 20
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      # 5. تثبيت حزم NPM وبناء ملفات الواجهة (Vite / Tailwind)
+      - name: Install NPM Dependencies & Build Assets
+        run: |
+          npm ci
+          npm run build
+
+      # 6. إعداد مفتاح SSH والاتصال بسيرفر Namecheap (المنفذ الافتراضي 21098)
+      - name: Configure SSH Key & Host
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          SSH_PORT="${{ secrets.SSH_PORT || '21098' }}"
+          ssh-keyscan -p $SSH_PORT -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts 2>/dev/null || true
+
+      # 7. مزامنة ونقل الملفات عبر Rsync مع استثناء الملفات الحساسة
+      - name: Sync Files via Rsync
+        run: |
+          SSH_PORT="${{ secrets.SSH_PORT || '21098' }}"
+          rsync -avz --delete \
+            -e "ssh -p $SSH_PORT -o StrictHostKeyChecking=no" \
+            --exclude='.env' \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='node_modules/' \
+            --exclude='storage/app/public/*' \
+            --exclude='storage/framework/sessions/*' \
+            --exclude='storage/framework/views/*' \
+            --exclude='storage/logs/*' \
+            --exclude='database/database.sqlite' \
+            ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}
+
+      # 8. تنفيذ أوامر الصيانة والتحديث على سيرفر الاستضافة
+      - name: Execute Remote Post-Deployment Tasks
+        run: |
+          SSH_PORT="${{ secrets.SSH_PORT || '21098' }}"
+          PHP_CMD="${{ secrets.PHP_BIN || 'php' }}"
+
+          ssh -p $SSH_PORT -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << EOF
+            set -e
+            cd ${{ secrets.DEPLOY_PATH }}
+
+            # ضبط الصلاحيات للمجلدات القابلة للكتابة
+            chmod -R 775 storage bootstrap/cache
+
+            # ربط التخزين العام
+            $PHP_CMD artisan storage:link --force || true
+
+            # تشغيل الترحيلات
+            $PHP_CMD artisan migrate --force
+
+            # تحسين الأداء ومسح وتحديث الكاش للإنتاج
+            $PHP_CMD artisan optimize:clear
+            $PHP_CMD artisan config:cache
+            $PHP_CMD artisan route:cache
+            $PHP_CMD artisan view:cache
+          EOF

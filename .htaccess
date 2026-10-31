@@ -1,0 +1,16 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # 1. منع الوصول المباشر للملفات الحساسة وملفات الإعداد والبيئة
+    RewriteRule ^\.(.*) - [F,L]
+    RewriteRule ^(app|bootstrap|config|database|resources|routes|storage|tests|vendor)(/.*)?$ - [F,L]
+    RewriteRule ^(composer\.(json|lock)|package(-lock)?\.json|phpunit\.xml|vite\.config\.js|\.env.*) - [F,L]
+
+    # 2. تحويل كافة الطلبات تلقائياً إلى مجلد public/ في حال كان النطاق يشير إلى المجلد الجذر
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
