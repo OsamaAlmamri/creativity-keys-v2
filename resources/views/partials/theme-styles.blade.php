@@ -156,39 +156,38 @@
         .rounded-3xl { border-radius: 2rem !important; }
     @endif
 
-    /* Light Mode Overrides */
+    /* ========================================================= */
+    /* ☀️ COMPLETE LIGHT MODE OVERHAUL (متناسق، مريح ومثالي)       */
+    /* ========================================================= */
+
     html.theme-light body,
     body.theme-light {
         background-color: #f8fafc !important;
-        color: #0f172a !important;
+        color: #1e293b !important;
     }
 
-    /* Light Mode Gradients Overrides */
-    html.theme-light #hero,
-    html.theme-light .bg-gradient-to-b.from-slate-950.via-slate-900.to-slate-950 {
-        background-image: linear-gradient(180deg, #ffffff 0%, #f1f5f9 55%, #f8fafc 100%) !important;
-    }
-
+    /* 1. Global Backgrounds & Gradients in Light Mode */
     html.theme-light .bg-slate-950 {
         background-color: #ffffff !important;
     }
 
     html.theme-light .bg-slate-900 {
-        background-color: #f1f5f9 !important;
+        background-color: #ffffff !important;
     }
 
     html.theme-light .bg-slate-900\/90,
     html.theme-light .bg-slate-900\/80,
     html.theme-light .bg-slate-900\/60,
     html.theme-light .bg-slate-900\/50,
-    html.theme-light .bg-slate-900\/40 {
-        background-color: rgba(241, 245, 249, 0.95) !important;
+    html.theme-light .bg-slate-900\/40,
+    html.theme-light .bg-slate-900\/98 {
+        background-color: rgba(255, 255, 255, 0.96) !important;
     }
 
     html.theme-light .bg-slate-800,
     html.theme-light .bg-slate-800\/60,
     html.theme-light .bg-slate-800\/80 {
-        background-color: #e2e8f0 !important;
+        background-color: #f1f5f9 !important;
     }
 
     html.theme-light .border-slate-800,
@@ -197,19 +196,42 @@
     html.theme-light .border-slate-700,
     html.theme-light .border-slate-700\/60,
     html.theme-light .border-slate-750 {
-        border-color: #cbd5e1 !important;
+        border-color: #e2e8f0 !important;
     }
 
-    html.theme-light .text-white {
+    /* Section Gradients in Light Mode */
+    html.theme-light #hero,
+    html.theme-light .bg-gradient-to-b.from-slate-950.via-slate-900.to-slate-950 {
+        background-image: linear-gradient(180deg, #ffffff 0%, #f1f5f9 60%, #f8fafc 100%) !important;
+    }
+
+    /* Hero Headline Gradient in Light Mode - High Contrast */
+    html.theme-light .text-brand-gradient {
+        background: linear-gradient(135deg, var(--brand-700) 0%, var(--brand-600) 50%, var(--brand-500) 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+    }
+
+    /* 2. Text Color Harmony in Light Mode */
+    html.theme-light h1,
+    html.theme-light h2,
+    html.theme-light h3,
+    html.theme-light h4,
+    html.theme-light h5,
+    html.theme-light h6 {
         color: #0f172a !important;
     }
 
+    html.theme-light p {
+        color: #334155 !important;
+    }
+
     html.theme-light .text-slate-100 {
-        color: #1e293b !important;
+        color: #0f172a !important;
     }
 
     html.theme-light .text-slate-200 {
-        color: #334155 !important;
+        color: #1e293b !important;
     }
 
     html.theme-light .text-slate-300 {
@@ -220,36 +242,138 @@
         color: #64748b !important;
     }
 
-    /* Light Mode Navigation Bar */
+    html.theme-light .text-slate-500 {
+        color: #64748b !important;
+    }
+
+    /* Replace pale text colors with rich, readable contrast on white */
+    html.theme-light .text-amber-400,
+    html.theme-light .text-amber-300 {
+        color: var(--brand-700, #b45309) !important;
+    }
+
+    html.theme-light .text-emerald-400 {
+        color: #047857 !important;
+    }
+
+    html.theme-light .text-blue-400 {
+        color: #1d4ed8 !important;
+    }
+
+    html.theme-light .text-red-400 {
+        color: #b91c1c !important;
+    }
+
+    html.theme-light .text-purple-400 {
+        color: #7e22ce !important;
+    }
+
+    /* 3. PROTECT BUTTONS AND OVERLAYS WITH INTENDED WHITE TEXT */
+    html.theme-light button.text-white,
+    html.theme-light a.text-white,
+    html.theme-light .bg-emerald-600,
+    html.theme-light .bg-emerald-600 *,
+    html.theme-light .bg-emerald-500,
+    html.theme-light .bg-emerald-500 *,
+    html.theme-light .bg-red-600,
+    html.theme-light .bg-red-600 *,
+    html.theme-light .bg-red-500,
+    html.theme-light .bg-red-500 *,
+    html.theme-light .bg-gradient-to-r.from-red-600,
+    html.theme-light .bg-gradient-to-r.from-red-600 *,
+    html.theme-light .gallery-card h3,
+    html.theme-light .gallery-card p,
+    html.theme-light .gallery-card span.text-white,
+    html.theme-light span.bg-red-500.text-white,
+    html.theme-light .badge-white-text {
+        color: #ffffff !important;
+    }
+
+    /* Standalone .text-white elements that are NOT buttons/badges */
+    html.theme-light div > .text-white:not(button):not(a):not(span[class*="bg-red"]):not(span[class*="bg-emerald"]),
+    html.theme-light tr > td.text-white,
+    html.theme-light label.text-white {
+        color: #0f172a !important;
+    }
+
+    /* 4. Navigation Bar & Header in Light Mode */
     html.theme-light header {
         background-color: rgba(255, 255, 255, 0.94) !important;
         border-bottom-color: #e2e8f0 !important;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
     }
+
+    html.theme-light header a > span.text-white {
+        color: #0f172a !important;
+    }
+
     html.theme-light header nav {
         background-color: #f1f5f9 !important;
         border-color: #cbd5e1 !important;
     }
+
     html.theme-light header nav a {
         color: #475569 !important;
     }
+
     html.theme-light header nav a:hover {
         color: #0f172a !important;
         background-color: #e2e8f0 !important;
     }
 
-    /* Light Mode Cards */
-    html.theme-light .bg-slate-900.border.border-slate-800 {
+    /* 5. Cards & Containers in Light Mode */
+    html.theme-light .bg-slate-900.border.border-slate-800,
+    html.theme-light .bg-slate-950.border.border-slate-800 {
         background-color: #ffffff !important;
         border-color: #e2e8f0 !important;
-        box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05) !important;
+        box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.05) !important;
     }
 
-    /* Light Mode Hover on Cards */
-    html.theme-light .hover-brand-card:hover,
-    html.theme-light .bg-slate-900.border.border-slate-800:hover {
-        box-shadow: 0 20px 25px -5px rgba(var(--brand-rgb), 0.14), 0 8px 10px -6px rgba(var(--brand-rgb), 0.08) !important;
+    /* Sub-panels and inner wells in Light Mode */
+    html.theme-light .peer + div {
+        background-color: #f8fafc !important;
+        border-color: #e2e8f0 !important;
     }
 
+    html.theme-light .peer:checked + div {
+        background-color: #ffffff !important;
+        border-color: var(--brand-500) !important;
+        box-shadow: 0 4px 15px -2px rgba(var(--brand-rgb), 0.15) !important;
+    }
+
+    /* Font sample preview box in Theme Customizer */
+    html.theme-light .theme-font-radio + div > div:last-child {
+        background-color: #f1f5f9 !important;
+        border-color: #e2e8f0 !important;
+        color: var(--brand-700, #b45309) !important;
+        font-weight: 600;
+    }
+
+    /* Map iframe in Light Mode */
+    html.theme-light iframe {
+        filter: none !important;
+    }
+
+    /* Service Category Badge */
+    html.theme-light .bg-slate-800.text-amber-400 {
+        background-color: #f1f5f9 !important;
+        color: var(--brand-700, #b45309) !important;
+        border-color: #cbd5e1 !important;
+    }
+
+    /* Gallery Tabs Inactive */
+    html.theme-light .gallery-tab-btn:not(.bg-amber-500) {
+        background-color: #f1f5f9 !important;
+        color: #475569 !important;
+        border-color: #cbd5e1 !important;
+    }
+
+    html.theme-light .gallery-tab-btn:not(.bg-amber-500):hover {
+        background-color: #e2e8f0 !important;
+        color: #0f172a !important;
+    }
+
+    /* 6. Form Inputs & Selects in Light Mode */
     html.theme-light input:not([type="checkbox"]):not([type="radio"]):not([type="color"]),
     html.theme-light textarea,
     html.theme-light select {
@@ -263,9 +387,148 @@
         color: #94a3b8 !important;
     }
 
+    html.theme-light input:focus,
+    html.theme-light textarea:focus,
+    html.theme-light select:focus {
+        background-color: #ffffff !important;
+        border-color: var(--brand-500) !important;
+        box-shadow: 0 0 0 3px rgba(var(--brand-rgb), 0.15) !important;
+    }
+
+    /* 7. Footer in Light Mode */
     html.theme-light footer {
         background-color: #f8fafc !important;
         border-top-color: #e2e8f0 !important;
+    }
+
+    html.theme-light footer p,
+    html.theme-light footer a {
+        color: #64748b !important;
+    }
+
+    html.theme-light footer a:hover {
+        color: var(--brand-700, #b45309) !important;
+    }
+
+    /* 8. ADMIN PANEL COMPLETE LIGHT MODE STYLING */
+    /* Admin Sidebar */
+    html.theme-light aside {
+        background-color: #ffffff !important;
+        border-left-color: #e2e8f0 !important;
+    }
+
+    html.theme-light aside .border-b,
+    html.theme-light aside .border-t {
+        border-color: #e2e8f0 !important;
+    }
+
+    html.theme-light aside nav a:not([class*="bg-amber-500"]) {
+        color: #475569 !important;
+    }
+
+    html.theme-light aside nav a:not([class*="bg-amber-500"]):hover {
+        background-color: #f1f5f9 !important;
+        color: #0f172a !important;
+    }
+
+    html.theme-light aside .bg-slate-950\/60 {
+        background-color: #f8fafc !important;
+    }
+
+    /* Admin Topbar */
+    html.theme-light div.flex-1 > header.h-16 {
+        background-color: #ffffff !important;
+        border-bottom-color: #e2e8f0 !important;
+    }
+
+    html.theme-light div.flex-1 > header.h-16 h1 {
+        color: #0f172a !important;
+    }
+
+    /* Admin Tables */
+    html.theme-light thead.bg-slate-950\/60,
+    html.theme-light thead.bg-slate-950 {
+        background-color: #f8fafc !important;
+        color: #475569 !important;
+        border-bottom-color: #e2e8f0 !important;
+    }
+
+    html.theme-light tbody.divide-slate-800 > tr,
+    html.theme-light tr.hover\:bg-slate-800\/40 {
+        border-bottom-color: #f1f5f9 !important;
+    }
+
+    html.theme-light tr.hover\:bg-slate-800\/40:hover {
+        background-color: #f8fafc !important;
+    }
+
+    html.theme-light td {
+        color: #1e293b !important;
+    }
+
+    /* Admin Stat Cards */
+    html.theme-light .rounded-3xl.bg-slate-900.border.border-slate-800 {
+        background-color: #ffffff !important;
+        border-color: #e2e8f0 !important;
+    }
+
+    html.theme-light .font-mono.text-white {
+        color: #0f172a !important;
+    }
+
+    /* Admin Badges & Pills in Light Mode */
+    html.theme-light .bg-emerald-500\/10 {
+        background-color: #ecfdf5 !important;
+        border-color: #a7f3d0 !important;
+    }
+
+    html.theme-light .bg-amber-500\/10,
+    html.theme-light .bg-amber-500\/5 {
+        background-color: #fffbeb !important;
+        border-color: #fde68a !important;
+    }
+
+    html.theme-light .bg-blue-500\/10 {
+        background-color: #eff6ff !important;
+        border-color: #bfdbfe !important;
+    }
+
+    html.theme-light .bg-red-500\/10 {
+        background-color: #fef2f2 !important;
+        border-color: #fecaca !important;
+    }
+
+    /* Admin Action Buttons */
+    html.theme-light .bg-slate-800.text-white,
+    html.theme-light .bg-slate-800.text-slate-300 {
+        background-color: #f1f5f9 !important;
+        color: #334155 !important;
+        border-color: #cbd5e1 !important;
+    }
+
+    html.theme-light .bg-slate-800.text-white:hover,
+    html.theme-light .bg-slate-800.text-slate-300:hover {
+        background-color: #e2e8f0 !important;
+        color: #0f172a !important;
+    }
+
+    /* Admin Modals */
+    html.theme-light .fixed.z-50.bg-slate-950\/80 {
+        background-color: rgba(15, 23, 42, 0.6) !important;
+    }
+
+    html.theme-light .fixed.z-50 .bg-slate-900 {
+        background-color: #ffffff !important;
+        border-color: #cbd5e1 !important;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+    }
+
+    html.theme-light .fixed.z-50 .border-slate-800 {
+        border-color: #e2e8f0 !important;
+    }
+
+    html.theme-light .fixed.z-50 label {
+        color: #334155 !important;
     }
 </style>
 

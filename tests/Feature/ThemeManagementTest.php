@@ -118,4 +118,17 @@ class ThemeManagementTest extends TestCase
         $this->assertEquals('amber', Setting::get('theme_preset'));
         $this->assertEquals('Cairo', Setting::get('theme_font'));
     }
+
+    public function test_light_mode_provides_harmonized_colors_and_protects_white_text_on_buttons(): void
+    {
+        $response = $this->get(route('home'));
+
+        $response->assertStatus(200);
+        // Confirms light mode styles exist in template
+        $response->assertSee('html.theme-light body', false);
+        $response->assertSee('html.theme-light .bg-emerald-600', false);
+        $response->assertSee('html.theme-light h1', false);
+        $response->assertSee('html.theme-light header nav a', false);
+        $response->assertSee('html.theme-light aside', false);
+    }
 }
