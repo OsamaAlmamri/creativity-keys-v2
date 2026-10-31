@@ -79,4 +79,29 @@ class AdminAuthAndDashboardTest extends TestCase
         $response = $this->actingAs($manager)->get(route('admin.users.index'));
         $response->assertStatus(403);
     }
+
+    public function test_admin_layout_has_well_formed_header_sidebar_and_breadcrumbs(): void
+    {
+        $admin = User::factory()->create([
+            'role' => 'admin',
+            'is_active' => true,
+        ]);
+
+        $response = $this->actingAs($admin)->get(route('admin.dashboard'));
+        $response->assertStatus(200);
+
+        // Sidebar & drawer
+        $response->assertSee('id="admin-sidebar"', false);
+        $response->assertSee('id="mobile-sidebar"', false);
+
+        // Header and breadcrumb structure
+        $response->assertSee('admin-header', false);
+        $response->assertSee('admin-breadcrumb', false);
+        $response->assertSee('handleSidebarToggle()', false);
+        $response->assertSee('طوارئ 24/7 نشط', false);
+
+        // Check theme style includes admin breadcrumb styling
+        $response->assertSee('html.theme-light .admin-header', false);
+        $response->assertSee('html.theme-light .admin-breadcrumb', false);
+    }
 }

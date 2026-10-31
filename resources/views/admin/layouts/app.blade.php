@@ -424,10 +424,10 @@
     <!-- ======================================================== -->
     <!-- 3. MAIN CONTENT WRAPPER & MODERN APP BAR                  -->
     <!-- ======================================================== -->
-    <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+    <div class="flex-1 flex flex-col min-w-0">
         
         <!-- Modern Floating / Sticky Topbar -->
-        <header class="h-16 bg-slate-900/80 backdrop-blur-md border-b border-slate-800/80 px-4 sm:px-8 flex items-center justify-between sticky top-0 z-30">
+        <header class="admin-header h-16 bg-slate-900/80 backdrop-blur-md border-b border-slate-800/80 px-4 sm:px-8 flex items-center justify-between sticky top-0 z-30">
             
             <!-- Left Side: Modern Sidebar Toggle Icon & Breadcrumbs -->
             <div class="flex items-center gap-3 sm:gap-4 min-w-0">
@@ -448,17 +448,9 @@
                 <div class="h-5 w-px bg-slate-800 hidden sm:block"></div>
 
                 <!-- Breadcrumb Navigation -->
-                <nav class="flex items-center gap-2 text-xs font-bold truncate" aria-label="مسار التصفح">
-                    <a href="{{ route('admin.dashboard') }}" class="text-slate-400 hover:text-white transition-colors hidden sm:inline-flex items-center gap-1">
-                        <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                        <span>لوحة الإدارة</span>
-                    </a>
-                    <span class="text-slate-600 hidden sm:inline">/</span>
-                    <h1 class="text-xs sm:text-sm font-black text-white truncate">
-                        @yield('page_title', 'لوحة التحكم')
-                    </h1>
-                </nav>
-            </div>
+                <nav class="admin-breadcrumb flex items-center gap-2 text-xs font-bold truncate" aria-label="مسار التصفح">
+                    <a href="{{ route('admin.dashboard') }}" class="text-slate-400 hover:text-amber-500 transition-colors hidden sm:inline-flex items-center gap-1.5">
+                        <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
                         <span>لوحة الإدارة</span>
                     </a>
                     <span class="text-slate-600 hidden sm:inline">/</span>
@@ -551,7 +543,7 @@
         </div>
 
         <!-- Main Workspace Canvas -->
-        <main class="flex-1 p-4 sm:p-8 overflow-y-auto">
+        <main class="flex-1 p-4 sm:p-8">
             @yield('content')
         </main>
     </div>

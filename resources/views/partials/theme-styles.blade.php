@@ -418,6 +418,42 @@
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
     }
 
+    /* Admin Navigation & Breadcrumb in Light Mode */
+    html.theme-light .admin-header {
+        background-color: rgba(255, 255, 255, 0.95) !important;
+        border-bottom-color: #e2e8f0 !important;
+    }
+
+    html.theme-light .admin-header nav,
+    html.theme-light nav.admin-breadcrumb {
+        background-color: transparent !important;
+        background: transparent !important;
+        border: none !important;
+        border-color: transparent !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+    }
+
+    html.theme-light .admin-header nav a,
+    html.theme-light nav.admin-breadcrumb a {
+        background-color: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        color: #64748b !important;
+        font-weight: 700 !important;
+    }
+
+    html.theme-light .admin-header nav a:hover,
+    html.theme-light nav.admin-breadcrumb a:hover {
+        color: #0f172a !important;
+        background-color: transparent !important;
+        box-shadow: none !important;
+    }
+
+    html.theme-light .admin-breadcrumb h1 {
+        color: #0f172a !important;
+    }
+
     /* Mobile Dropdown Menu in Light Mode */
     html.theme-light #mobile-menu {
         background-color: #ffffff !important;
