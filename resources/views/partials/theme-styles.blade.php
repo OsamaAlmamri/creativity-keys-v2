@@ -337,19 +337,19 @@
 
     /* 5. Button & Action Link Contrasts in Light Mode */
     /* Secondary Action Buttons (was dark slate with white text) */
-    html.theme-light a[class*="bg-slate-800"],
-    html.theme-light button[class*="bg-slate-800"],
-    html.theme-light a[class*="bg-slate-700"],
+    html.theme-light a[class*="bg-slate-800"]:not(header nav a),
+    html.theme-light button[class*="bg-slate-800"]:not(header button),
+    html.theme-light a[class*="bg-slate-700"]:not(header nav a),
     html.theme-light button[class*="bg-slate-700"] {
         background-color: #ffffff !important;
         color: #0f172a !important;
-        border-color: #cbd5e1 !important;
+        border: 1px solid #cbd5e1 !important;
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
     }
 
-    html.theme-light a[class*="bg-slate-800"]:hover,
-    html.theme-light button[class*="bg-slate-800"]:hover,
-    html.theme-light a[class*="bg-slate-700"]:hover,
+    html.theme-light a[class*="bg-slate-800"]:not(header nav a):hover,
+    html.theme-light button[class*="bg-slate-800"]:not(header button):hover,
+    html.theme-light a[class*="bg-slate-700"]:not(header nav a):hover,
     html.theme-light button[class*="bg-slate-700"]:hover {
         background-color: #f1f5f9 !important;
         color: #0f172a !important;
@@ -398,11 +398,15 @@
     }
 
     html.theme-light header nav {
-        background-color: #f1f5f9 !important;
+        background-color: rgba(241, 245, 249, 0.9) !important;
         border-color: #e2e8f0 !important;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.03) !important;
     }
 
     html.theme-light header nav a {
+        background-color: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
         color: #475569 !important;
         font-weight: 600 !important;
     }
@@ -410,7 +414,8 @@
     html.theme-light header nav a:hover {
         color: #0f172a !important;
         background-color: #ffffff !important;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+        border: none !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
     }
 
     /* Mobile Dropdown Menu in Light Mode */
