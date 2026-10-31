@@ -129,18 +129,11 @@
                             <tr class="hover:bg-slate-800/40 transition-colors {{ !$msg->is_read ? 'bg-amber-500/5' : '' }}">
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     @if($msg->is_emergency)
-                                        <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-red-500/10 text-red-400 border border-red-500/20 font-black">
-                                            <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span>
-                                            طوارئ
-                                        </span>
+                                        <x-badge variant="red" :ping="true">طوارئ</x-badge>
                                     @elseif(!$msg->is_read)
-                                        <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 font-bold">
-                                            جديدة
-                                        </span>
+                                        <x-badge variant="amber">جديدة</x-badge>
                                     @else
-                                        <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-slate-800 text-slate-400 font-medium">
-                                            مقروءة
-                                        </span>
+                                        <x-badge variant="slate">مقروءة</x-badge>
                                     @endif
                                 </td>
                                 <td class="px-6 py-4 font-bold text-white whitespace-nowrap">

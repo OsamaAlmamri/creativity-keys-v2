@@ -35,13 +35,11 @@
                             </div>
                             <div class="flex items-center gap-2">
                                 @if($service->is_emergency)
-                                    <span class="px-2.5 py-0.5 rounded-full bg-red-500/10 text-red-400 border border-red-500/20 text-xs font-bold">
-                                        طوارئ
-                                    </span>
+                                    <x-badge variant="red" size="xs">طوارئ</x-badge>
                                 @endif
-                                <span class="px-2.5 py-0.5 rounded-full {{ $service->is_active ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-slate-800 text-slate-500' }} text-xs font-bold">
+                                <x-badge :variant="$service->is_active ? 'emerald' : 'slate'" size="xs">
                                     {{ $service->is_active ? 'نشطة' : 'معطلة' }}
-                                </span>
+                                </x-badge>
                             </div>
                         </div>
 

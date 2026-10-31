@@ -48,19 +48,12 @@
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="flex items-center gap-1.5">
                                         @if($msg->is_emergency)
-                                            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-red-500/10 text-red-400 border border-red-500/20 font-black">
-                                                <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span>
-                                                طوارئ
-                                            </span>
+                                            <x-badge variant="red" :ping="true">طوارئ</x-badge>
                                         @endif
                                         @if(!$msg->is_read)
-                                            <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 font-bold">
-                                                جديدة
-                                            </span>
+                                            <x-badge variant="amber" size="xs">جديدة</x-badge>
                                         @else
-                                            <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-slate-800 text-slate-500 font-medium">
-                                                تم الاطلاع
-                                            </span>
+                                            <x-badge variant="slate" size="xs">تم الاطلاع</x-badge>
                                         @endif
                                     </div>
                                 </td>

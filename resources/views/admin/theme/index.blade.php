@@ -209,22 +209,14 @@
                 </div>
 
                 <!-- Visitor Toggle Option -->
-                <label class="group p-4 sm:p-5 rounded-2xl bg-slate-950 border border-slate-800 hover:border-slate-700 transition-all flex items-center justify-between gap-4 cursor-pointer select-none has-[:checked]:border-amber-500/40 has-[:checked]:bg-amber-500/[0.03]">
-                    <div class="space-y-1 flex-1">
-                        <div class="flex items-center gap-2">
-                            <span class="text-xs sm:text-sm font-bold text-white block">إتاحة زر تبديل الوضع (نهاري / ليلي) للزوار</span>
-                            <span class="hidden group-has-[:checked]:inline-flex text-[10px] font-black px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-500 dark:text-amber-400 border border-amber-500/30">مفعل</span>
-                            <span class="inline-flex group-has-[:checked]:hidden text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700/60">معطل</span>
-                        </div>
-                        <span class="text-[11px] text-slate-400 block">إظهار أيقونة الشمس/القمر في شريط التنقل العلوي لتمكين العميل من اختيار الوضع المفضل لديه.</span>
-                    </div>
-                    <div class="modern-switch shrink-0">
-                        <input type="checkbox" name="theme_visitor_toggle" value="1" class="modern-switch-input" {{ $current['theme_visitor_toggle'] ? 'checked' : '' }}>
-                        <span class="modern-switch-track">
-                            <span class="modern-switch-thumb"></span>
-                        </span>
-                    </div>
-                </label>
+                <x-modern-switch
+                    name="theme_visitor_toggle"
+                    :checked="(bool)$current['theme_visitor_toggle']"
+                    label="إتاحة زر تبديل الوضع (نهاري / ليلي) للزوار"
+                    subtitle="إظهار أيقونة الشمس/القمر في شريط التنقل العلوي لتمكين العميل من اختيار الوضع المفضل لديه."
+                    activeBadge="مفعل"
+                    inactiveBadge="معطل"
+                />
             </div>
 
             <!-- 3. Arabic Typography (Fonts) -->
@@ -325,76 +317,44 @@
 
                 <div class="space-y-4">
                     <!-- Ticker -->
-                    <label class="group p-4 sm:p-5 rounded-2xl bg-slate-950 border border-slate-800 hover:border-slate-700 transition-all flex items-center justify-between gap-4 cursor-pointer select-none has-[:checked]:border-amber-500/40 has-[:checked]:bg-amber-500/[0.03]">
-                        <div class="space-y-1 flex-1">
-                            <div class="flex items-center gap-2">
-                                <span class="text-xs sm:text-sm font-bold text-white block">إظهار شريط الطوارئ المتحرك 24/7 أعلى الموقع</span>
-                                <span class="hidden group-has-[:checked]:inline-flex text-[10px] font-black px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-500 dark:text-amber-400 border border-amber-500/30">مفعل</span>
-                                <span class="inline-flex group-has-[:checked]:hidden text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700/60">معطل</span>
-                            </div>
-                            <span class="text-[11px] text-slate-400 block">شريط لافت بأعلى الشاشة يوضح خدمة الطوارئ السريعة لجميع أحياء الرياض مع رقم الاتصال المباشر.</span>
-                        </div>
-                        <div class="modern-switch shrink-0">
-                            <input type="checkbox" name="show_emergency_ticker" value="1" class="modern-switch-input" {{ $current['show_emergency_ticker'] ? 'checked' : '' }}>
-                            <span class="modern-switch-track">
-                                <span class="modern-switch-thumb"></span>
-                            </span>
-                        </div>
-                    </label>
+                    <x-modern-switch
+                        name="show_emergency_ticker"
+                        :checked="(bool)$current['show_emergency_ticker']"
+                        label="إظهار شريط الطوارئ المتحرك 24/7 أعلى الموقع"
+                        subtitle="شريط لافت بأعلى الشاشة يوضح خدمة الطوارئ السريعة لجميع أحياء الرياض مع رقم الاتصال المباشر."
+                        activeBadge="مفعل"
+                        inactiveBadge="معطل"
+                    />
 
                     <!-- Header Contact Buttons -->
-                    <label class="group p-4 sm:p-5 rounded-2xl bg-slate-950 border border-slate-800 hover:border-slate-700 transition-all flex items-center justify-between gap-4 cursor-pointer select-none has-[:checked]:border-amber-500/40 has-[:checked]:bg-amber-500/[0.03]">
-                        <div class="space-y-1 flex-1">
-                            <div class="flex items-center gap-2">
-                                <span class="text-xs sm:text-sm font-bold text-white block">إظهار أزرار الاتصال السريع في هيدر الموقع (WhatsApp & Phone)</span>
-                                <span class="hidden group-has-[:checked]:inline-flex text-[10px] font-black px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-500 dark:text-amber-400 border border-amber-500/30">مفعل</span>
-                                <span class="inline-flex group-has-[:checked]:hidden text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700/60">معطل</span>
-                            </div>
-                            <span class="text-[11px] text-slate-400 block">إظهار أو إخفاء أزرار الواتساب والاتصال الهاتفي المباشر في شريط التنقل العلوي للموقع (الهيدر).</span>
-                        </div>
-                        <div class="modern-switch shrink-0">
-                            <input type="checkbox" name="show_header_contact_buttons" value="1" class="modern-switch-input" {{ $current['show_header_contact_buttons'] ? 'checked' : '' }}>
-                            <span class="modern-switch-track">
-                                <span class="modern-switch-thumb"></span>
-                            </span>
-                        </div>
-                    </label>
+                    <x-modern-switch
+                        name="show_header_contact_buttons"
+                        :checked="(bool)$current['show_header_contact_buttons']"
+                        label="إظهار أزرار الاتصال السريع في هيدر الموقع (WhatsApp & Phone)"
+                        subtitle="إظهار أو إخفاء أزرار الواتساب والاتصال الهاتفي المباشر في شريط التنقل العلوي للموقع (الهيدر)."
+                        activeBadge="مفعل"
+                        inactiveBadge="معطل"
+                    />
 
                     <!-- Floating Buttons -->
-                    <label class="group p-4 sm:p-5 rounded-2xl bg-slate-950 border border-slate-800 hover:border-slate-700 transition-all flex items-center justify-between gap-4 cursor-pointer select-none has-[:checked]:border-amber-500/40 has-[:checked]:bg-amber-500/[0.03]">
-                        <div class="space-y-1 flex-1">
-                            <div class="flex items-center gap-2">
-                                <span class="text-xs sm:text-sm font-bold text-white block">إظهار أزرار الاتصال السريع العائمة أسفل الشاشة (WhatsApp & Phone)</span>
-                                <span class="hidden group-has-[:checked]:inline-flex text-[10px] font-black px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-500 dark:text-amber-400 border border-amber-500/30">مفعل</span>
-                                <span class="inline-flex group-has-[:checked]:hidden text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700/60">معطل</span>
-                            </div>
-                            <span class="text-[11px] text-slate-400 block">أزرار ثابتة أسفل يمين الشاشة تتيح للعميل محادثة واتساب فورية أو الاتصال برقم الطوارئ بنقرة واحدة.</span>
-                        </div>
-                        <div class="modern-switch shrink-0">
-                            <input type="checkbox" name="show_floating_buttons" value="1" class="modern-switch-input" {{ $current['show_floating_buttons'] ? 'checked' : '' }}>
-                            <span class="modern-switch-track">
-                                <span class="modern-switch-thumb"></span>
-                            </span>
-                        </div>
-                    </label>
+                    <x-modern-switch
+                        name="show_floating_buttons"
+                        :checked="(bool)$current['show_floating_buttons']"
+                        label="إظهار أزرار الاتصال السريع العائمة أسفل الشاشة (WhatsApp & Phone)"
+                        subtitle="أزرار ثابتة أسفل يمين الشاشة تتيح للعميل محادثة واتساب فورية أو الاتصال برقم الطوارئ بنقرة واحدة."
+                        activeBadge="مفعل"
+                        inactiveBadge="معطل"
+                    />
 
                     <!-- Home Articles -->
-                    <label class="group p-4 sm:p-5 rounded-2xl bg-slate-950 border border-slate-800 hover:border-slate-700 transition-all flex items-center justify-between gap-4 cursor-pointer select-none has-[:checked]:border-amber-500/40 has-[:checked]:bg-amber-500/[0.03]">
-                        <div class="space-y-1 flex-1">
-                            <div class="flex items-center gap-2">
-                                <span class="text-xs sm:text-sm font-bold text-white block">إظهار قسم المدونة وأحدث المقالات في الصفحة الرئيسية</span>
-                                <span class="hidden group-has-[:checked]:inline-flex text-[10px] font-black px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-500 dark:text-amber-400 border border-amber-500/30">مفعل</span>
-                                <span class="inline-flex group-has-[:checked]:hidden text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700/60">معطل</span>
-                            </div>
-                            <span class="text-[11px] text-slate-400 block">عرض أحدث 3 مقالات ونصائح مفاتيح السيارات والأقفال الذكية لتعزيز محركات البحث والثقة.</span>
-                        </div>
-                        <div class="modern-switch shrink-0">
-                            <input type="checkbox" name="show_home_articles" value="1" class="modern-switch-input" {{ $current['show_home_articles'] ? 'checked' : '' }}>
-                            <span class="modern-switch-track">
-                                <span class="modern-switch-thumb"></span>
-                            </span>
-                        </div>
-                    </label>
+                    <x-modern-switch
+                        name="show_home_articles"
+                        :checked="(bool)$current['show_home_articles']"
+                        label="إظهار قسم المدونة وأحدث المقالات في الصفحة الرئيسية"
+                        subtitle="عرض أحدث 3 مقالات ونصائح مفاتيح السيارات والأقفال الذكية لتعزيز محركات البحث والثقة."
+                        activeBadge="مفعل"
+                        inactiveBadge="معطل"
+                    />
 
                     <!-- Header Style -->
                     <div class="p-4 sm:p-5 rounded-2xl bg-slate-950 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">

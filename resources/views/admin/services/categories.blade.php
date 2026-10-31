@@ -117,9 +117,9 @@
                                     </span>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <span class="px-2.5 py-0.5 rounded-full {{ $cat->is_active ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-slate-800 text-slate-500' }} font-bold">
+                                    <x-badge :variant="$cat->is_active ? 'emerald' : 'slate'" size="xs">
                                         {{ $cat->is_active ? 'نشط' : 'معطل' }}
-                                    </span>
+                                    </x-badge>
                                 </td>
                                 <td class="px-6 py-4 text-center font-mono text-slate-400 whitespace-nowrap">
                                     {{ $cat->sort_order }}

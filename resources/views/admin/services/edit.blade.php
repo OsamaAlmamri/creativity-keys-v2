@@ -77,38 +77,24 @@
 
                 <!-- Emergency & Active Toggles -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <label class="group p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-slate-700 transition-all flex items-center justify-between gap-3 cursor-pointer select-none has-[:checked]:border-red-500/40 has-[:checked]:bg-red-500/[0.03]">
-                        <div class="space-y-1 flex-1">
-                            <div class="flex items-center gap-2">
-                                <span class="text-xs font-bold text-white block">خدمة طوارئ 24 ساعة</span>
-                                <span class="hidden group-has-[:checked]:inline-flex text-[10px] font-black px-2 py-0.5 rounded-full bg-red-500/15 text-red-400 border border-red-500/30">طوارئ</span>
-                            </div>
-                            <span class="text-[11px] text-slate-400 block">تمييزها ببادج أحمر لطوارئ 24/7</span>
-                        </div>
-                        <div class="modern-switch modern-switch-red shrink-0">
-                            <input type="checkbox" name="is_emergency" value="1" class="modern-switch-input" {{ old('is_emergency', $service->is_emergency) ? 'checked' : '' }}>
-                            <span class="modern-switch-track">
-                                <span class="modern-switch-thumb"></span>
-                            </span>
-                        </div>
-                    </label>
+                    <x-modern-switch
+                        name="is_emergency"
+                        :checked="(bool)old('is_emergency', $service->is_emergency)"
+                        label="خدمة طوارئ 24 ساعة"
+                        subtitle="تمييزها ببادج أحمر لطوارئ 24/7"
+                        color="red"
+                        activeBadge="طوارئ"
+                    />
 
-                    <label class="group p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-slate-700 transition-all flex items-center justify-between gap-3 cursor-pointer select-none has-[:checked]:border-emerald-500/40 has-[:checked]:bg-emerald-500/[0.03]">
-                        <div class="space-y-1 flex-1">
-                            <div class="flex items-center gap-2">
-                                <span class="text-xs font-bold text-white block">حالة الخدمة: نشطة</span>
-                                <span class="hidden group-has-[:checked]:inline-flex text-[10px] font-black px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">نشطة</span>
-                                <span class="inline-flex group-has-[:checked]:hidden text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700">معطلة</span>
-                            </div>
-                            <span class="text-[11px] text-slate-400 block">تظهر للزوار في الموقع</span>
-                        </div>
-                        <div class="modern-switch modern-switch-emerald shrink-0">
-                            <input type="checkbox" name="is_active" value="1" class="modern-switch-input" {{ old('is_active', $service->is_active) ? 'checked' : '' }}>
-                            <span class="modern-switch-track">
-                                <span class="modern-switch-thumb"></span>
-                            </span>
-                        </div>
-                    </label>
+                    <x-modern-switch
+                        name="is_active"
+                        :checked="(bool)old('is_active', $service->is_active)"
+                        label="حالة الخدمة: نشطة"
+                        subtitle="تظهر للزوار في الموقع"
+                        color="emerald"
+                        activeBadge="نشطة"
+                        inactiveBadge="معطلة"
+                    />
                 </div>
 
                 <!-- Sort Order -->

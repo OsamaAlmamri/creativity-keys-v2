@@ -73,14 +73,14 @@
 
                 <!-- Desktop Navigation Links -->
                 <nav class="hidden lg:flex items-center gap-0.5 bg-slate-100/90 dark:bg-slate-800/60 p-1.5 rounded-full border border-slate-200/80 dark:border-slate-700/60 shadow-inner">
-                    <a href="{{ route('home') }}#hero" class="px-3 xl:px-3.5 py-1.5 rounded-full text-xs xl:text-sm font-bold text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-white dark:hover:bg-slate-700 transition-all">الرئيسية</a>
-                    <a href="{{ route('home') }}#about" class="px-3 xl:px-3.5 py-1.5 rounded-full text-xs xl:text-sm font-bold text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-white dark:hover:bg-slate-700 transition-all">من نحن</a>
-                    <a href="{{ route('home') }}#services" class="px-3 xl:px-3.5 py-1.5 rounded-full text-xs xl:text-sm font-bold text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-white dark:hover:bg-slate-700 transition-all">خدماتنا</a>
-                    <a href="{{ route('home') }}#gallery" class="px-3 xl:px-3.5 py-1.5 rounded-full text-xs xl:text-sm font-bold text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-white dark:hover:bg-slate-700 transition-all">معرض الأعمال</a>
-                    <a href="{{ route('home') }}#reviews" class="px-3 xl:px-3.5 py-1.5 rounded-full text-xs xl:text-sm font-bold text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-white dark:hover:bg-slate-700 transition-all">التقييمات</a>
-                    <a href="{{ route('articles.index') }}" class="px-3 xl:px-3.5 py-1.5 rounded-full text-xs xl:text-sm font-bold text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-white dark:hover:bg-slate-700 transition-all">المقالات</a>
-                    <a href="{{ route('home') }}#location" class="px-3 xl:px-3.5 py-1.5 rounded-full text-xs xl:text-sm font-bold text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-white dark:hover:bg-slate-700 transition-all">موقعنا</a>
-                    <a href="{{ route('home') }}#contact" class="px-3 xl:px-3.5 py-1.5 rounded-full text-xs xl:text-sm font-bold text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-white dark:hover:bg-slate-700 transition-all">اتصل بنا</a>
+                    <x-nav-link :href="route('home') . '#hero'">الرئيسية</x-nav-link>
+                    <x-nav-link :href="route('home') . '#about'">من نحن</x-nav-link>
+                    <x-nav-link :href="route('home') . '#services'">خدماتنا</x-nav-link>
+                    <x-nav-link :href="route('home') . '#gallery'">معرض الأعمال</x-nav-link>
+                    <x-nav-link :href="route('home') . '#reviews'">التقييمات</x-nav-link>
+                    <x-nav-link :href="route('articles.index')" :active="request()->routeIs('articles.*')">المقالات</x-nav-link>
+                    <x-nav-link :href="route('home') . '#location'">موقعنا</x-nav-link>
+                    <x-nav-link :href="route('home') . '#contact'">اتصل بنا</x-nav-link>
                 </nav>
 
                 <!-- Header Actions -->
@@ -136,14 +136,14 @@
 
         <!-- Mobile Menu Dropdown -->
         <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-800 bg-slate-900/98 px-4 pt-3 pb-6 space-y-2">
-            <a href="{{ route('home') }}#hero" class="block px-3 py-2 rounded-lg text-base font-semibold text-slate-200 hover:bg-slate-800">الرئيسية</a>
-            <a href="{{ route('home') }}#about" class="block px-3 py-2 rounded-lg text-base font-semibold text-slate-300 hover:bg-slate-800">من نحن</a>
-            <a href="{{ route('home') }}#services" class="block px-3 py-2 rounded-lg text-base font-semibold text-slate-300 hover:bg-slate-800">خدماتنا</a>
-            <a href="{{ route('home') }}#gallery" class="block px-3 py-2 rounded-lg text-base font-semibold text-slate-300 hover:bg-slate-800">معرض الأعمال</a>
-            <a href="{{ route('home') }}#reviews" class="block px-3 py-2 rounded-lg text-base font-semibold text-slate-300 hover:bg-slate-800">التقييمات</a>
-            <a href="{{ route('articles.index') }}" class="block px-3 py-2 rounded-lg text-base font-semibold text-amber-400 hover:bg-slate-800">المقالات والنصائح</a>
-            <a href="{{ route('home') }}#location" class="block px-3 py-2 rounded-lg text-base font-semibold text-slate-300 hover:bg-slate-800">موقعنا</a>
-            <a href="{{ route('home') }}#contact" class="block px-3 py-2 rounded-lg text-base font-semibold text-slate-300 hover:bg-slate-800">اتصل بنا</a>
+            <x-nav-link variant="mobile" :href="route('home') . '#hero'">الرئيسية</x-nav-link>
+            <x-nav-link variant="mobile" :href="route('home') . '#about'">من نحن</x-nav-link>
+            <x-nav-link variant="mobile" :href="route('home') . '#services'">خدماتنا</x-nav-link>
+            <x-nav-link variant="mobile" :href="route('home') . '#gallery'">معرض الأعمال</x-nav-link>
+            <x-nav-link variant="mobile" :href="route('home') . '#reviews'">التقييمات</x-nav-link>
+            <x-nav-link variant="mobile" :href="route('articles.index')" :active="request()->routeIs('articles.*')" :highlight="true">المقالات والنصائح</x-nav-link>
+            <x-nav-link variant="mobile" :href="route('home') . '#location'">موقعنا</x-nav-link>
+            <x-nav-link variant="mobile" :href="route('home') . '#contact'">اتصل بنا</x-nav-link>
             @if($showHeaderContactButtons)
             <div class="pt-4 flex flex-col gap-2">
                 <a href="https://wa.me/{{ $settings['whatsapp'] ?? '966551234567' }}" target="_blank" class="w-full text-center py-3 bg-emerald-600 text-white rounded-xl font-bold flex items-center justify-center gap-2">
@@ -207,13 +207,13 @@
                         أقسام الموقع
                     </h3>
                     <ul class="space-y-2.5 text-sm">
-                        <li><a href="{{ route('home') }}#hero" class="hover:text-amber-400 transition-colors">الصفحة الرئيسية</a></li>
-                        <li><a href="{{ route('home') }}#about" class="hover:text-amber-400 transition-colors">من نحن ومميزاتنا</a></li>
-                        <li><a href="{{ route('home') }}#services" class="hover:text-amber-400 transition-colors">خدمات الأقفال والمفاتيح</a></li>
-                        <li><a href="{{ route('home') }}#gallery" class="hover:text-amber-400 transition-colors">معرض الأعمال والتجهيزات</a></li>
-                        <li><a href="{{ route('home') }}#reviews" class="hover:text-amber-400 transition-colors">تجارب وتقييمات العملاء</a></li>
-                        <li><a href="{{ route('articles.index') }}" class="hover:text-amber-400 transition-colors">المقالات والنصائح التوعوية</a></li>
-                        <li><a href="{{ route('home') }}#location" class="hover:text-amber-400 transition-colors">الموقع الجغرافي وساعات العمل</a></li>
+                        <li><x-nav-link variant="footer" :href="route('home') . '#hero'">الصفحة الرئيسية</x-nav-link></li>
+                        <li><x-nav-link variant="footer" :href="route('home') . '#about'">من نحن ومميزاتنا</x-nav-link></li>
+                        <li><x-nav-link variant="footer" :href="route('home') . '#services'">خدمات الأقفال والمفاتيح</x-nav-link></li>
+                        <li><x-nav-link variant="footer" :href="route('home') . '#gallery'">معرض الأعمال والتجهيزات</x-nav-link></li>
+                        <li><x-nav-link variant="footer" :href="route('home') . '#reviews'">تجارب وتقييمات العملاء</x-nav-link></li>
+                        <li><x-nav-link variant="footer" :href="route('articles.index')" :active="request()->routeIs('articles.*')">المقالات والنصائح التوعوية</x-nav-link></li>
+                        <li><x-nav-link variant="footer" :href="route('home') . '#location'">الموقع الجغرافي وساعات العمل</x-nav-link></li>
                     </ul>
                 </div>
 

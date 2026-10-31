@@ -60,19 +60,15 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     @if($user->role === 'admin')
-                                        <span class="px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20 font-bold">
-                                            مدير النظام الكامل (Admin)
-                                        </span>
+                                        <x-badge variant="purple">مدير النظام الكامل (Admin)</x-badge>
                                     @else
-                                        <span class="px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 font-bold">
-                                            مشرف فرع (Manager)
-                                        </span>
+                                        <x-badge variant="blue">مشرف فرع (Manager)</x-badge>
                                     @endif
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <span class="px-2.5 py-1 rounded-full {{ $user->is_active ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-red-500/10 text-red-400 border border-red-500/20' }} font-bold">
+                                    <x-badge :variant="$user->is_active ? 'emerald' : 'red'">
                                         {{ $user->is_active ? 'نشط' : 'معطل' }}
-                                    </span>
+                                    </x-badge>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-slate-400 font-mono">
                                     {{ $user->created_at->format('Y-m-d') }}
