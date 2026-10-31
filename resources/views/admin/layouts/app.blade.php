@@ -7,6 +7,19 @@
 
     <title>لوحة التحكم | {{ $title ?? 'مفتاح باب البستان' }}</title>
 
+    @php
+        $siteFavicon = \App\Models\Setting::get('site_favicon');
+        $adminLogo = \App\Models\Setting::get('site_logo');
+        $adminSiteName = \App\Models\Setting::get('site_name', 'مفتاح باب البستان');
+    @endphp
+
+    @if(!empty($siteFavicon))
+        <link rel="icon" href="{{ $siteFavicon }}">
+        <link rel="apple-touch-icon" href="{{ $siteFavicon }}">
+    @else
+        <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f59e0b'><path d='M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z'/></svg>">
+    @endif
+
     @include('partials.theme-styles')
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -101,12 +114,18 @@
         <!-- Mobile Drawer Header -->
         <div class="h-16 px-5 border-b border-slate-800 flex items-center justify-between shrink-0">
             <div class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-yellow-300 text-slate-950 flex items-center justify-center font-black shadow-md shadow-amber-500/20">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
-                </div>
+                @if(!empty($adminLogo))
+                    <div class="w-9 h-9 rounded-xl bg-slate-950 p-1 border border-slate-800 flex items-center justify-center shrink-0 shadow-md">
+                        <img src="{{ $adminLogo }}" alt="{{ $adminSiteName }}" class="max-h-full max-w-full object-contain">
+                    </div>
+                @else
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-yellow-300 text-slate-950 flex items-center justify-center font-black shadow-md shadow-amber-500/20 shrink-0">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
+                    </div>
+                @endif
                 <div>
                     <span class="text-sm font-black text-white block">لوحة الإدارة</span>
-                    <span class="text-[11px] text-amber-400 font-bold block">مفتاح باب البستان</span>
+                    <span class="text-[11px] text-amber-400 font-bold block">{{ $adminSiteName }}</span>
                 </div>
             </div>
             <button type="button" 
@@ -158,15 +177,21 @@
         
         <!-- Brand Header (Clean & Centered when collapsed) -->
         <div class="h-16 px-4 border-b border-slate-800 flex items-center shrink-0 sidebar-header-box overflow-hidden">
-            <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 overflow-hidden sidebar-logo-link w-full" title="لوحة الإدارة - مفتاح باب البستان">
-                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-amber-500 to-yellow-300 text-slate-950 flex items-center justify-center font-black shadow-lg shadow-amber-500/20 shrink-0 group-hover:scale-105 transition-transform mx-auto lg:mx-0">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
-                </div>
+            <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 overflow-hidden sidebar-logo-link w-full" title="لوحة الإدارة - {{ $adminSiteName }}">
+                @if(!empty($adminLogo))
+                    <div class="w-10 h-10 rounded-2xl bg-slate-950 p-1 border border-slate-800 flex items-center justify-center shrink-0 shadow-lg group-hover:scale-105 transition-transform mx-auto lg:mx-0">
+                        <img src="{{ $adminLogo }}" alt="{{ $adminSiteName }}" class="max-h-full max-w-full object-contain">
+                    </div>
+                @else
+                    <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-amber-500 to-yellow-300 text-slate-950 flex items-center justify-center font-black shadow-lg shadow-amber-500/20 shrink-0 group-hover:scale-105 transition-transform mx-auto lg:mx-0">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
+                    </div>
+                @endif
                 <div class="sidebar-text truncate">
                     <span class="text-sm font-black text-white block tracking-tight">لوحة الإدارة</span>
                     <span class="text-[11px] text-amber-400 font-bold block flex items-center gap-1">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                        مفتاح باب البستان
+                        {{ $adminSiteName }}
                     </span>
                 </div>
             </a>

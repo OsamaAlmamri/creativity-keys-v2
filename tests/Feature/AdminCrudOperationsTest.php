@@ -10,6 +10,8 @@ use App\Models\ServiceCategory;
 use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class AdminCrudOperationsTest extends TestCase
@@ -193,6 +195,52 @@ class AdminCrudOperationsTest extends TestCase
         $response->assertRedirect(route('admin.settings.index'));
         $this->assertEquals('0558887766', Setting::get('phone'));
         $this->assertEquals('مفتاح باب البستان - الفرع الرئيسي', Setting::get('site_name'));
+    }
+
+    public function test_admin_can_upload_logo_and_save_seo_settings(): void
+    {
+        Storage::fake('public');
+
+        $logoFile = UploadedFile::fake()->image('custom-logo.png', 200, 60);
+        $faviconFile = UploadedFile::fake()->create('custom-favicon.ico', 10, 'image/x-icon');
+        $ogImageFile = UploadedFile::fake()->image('custom-og.jpg', 1200, 630);
+
+        $response = $this->actingAs($this->admin)->post(route('admin.settings.update'), [
+            'site_logo_file' => $logoFile,
+            'site_favicon_file' => $faviconFile,
+            'og_image_file' => $ogImageFile,
+            'meta_keywords' => 'مفاتيح جدة, قص مفاتيح, فتح ابواب',
+            'seo_robots' => 'index, follow',
+            'seo_alternate_name' => 'مختبر مفتاح باب البستان المعتمد',
+            'google_site_verification' => 'google-verify-code-12345',
+            'google_analytics_id' => 'G-ABC123XYZ',
+            'social_twitter' => 'https://x.com/baba_albustan',
+            'social_instagram' => 'https://instagram.com/baba_albustan',
+        ]);
+
+        $response->assertRedirect(route('admin.settings.index'));
+        $this->assertNotEmpty(Setting::get('site_logo'));
+        $this->assertNotEmpty(Setting::get('site_favicon'));
+        $this->assertNotEmpty(Setting::get('og_image'));
+        $this->assertEquals('مفاتيح جدة, قص مفاتيح, فتح ابواب', Setting::get('meta_keywords'));
+        $this->assertEquals('google-verify-code-12345', Setting::get('google_site_verification'));
+        $this->assertEquals('G-ABC123XYZ', Setting::get('google_analytics_id'));
+        $this->assertEquals('https://x.com/baba_albustan', Setting::get('social_twitter'));
+    }
+
+    public function test_admin_can_remove_logo_and_favicon(): void
+    {
+        Setting::set('site_logo', 'https://example.com/old-logo.png');
+        Setting::set('site_favicon', 'https://example.com/old-favicon.ico');
+
+        $response = $this->actingAs($this->admin)->post(route('admin.settings.update'), [
+            'remove_site_logo' => '1',
+            'remove_site_favicon' => '1',
+        ]);
+
+        $response->assertRedirect(route('admin.settings.index'));
+        $this->assertEquals('', Setting::get('site_logo'));
+        $this->assertEquals('', Setting::get('site_favicon'));
     }
 
     public function test_admin_can_manage_users_and_cannot_delete_self(): void

@@ -7,6 +7,19 @@
 
     <title>تسجيل الدخول إلى لوحة التحكم | مفتاح باب البستان</title>
 
+    @php
+        $siteFavicon = \App\Models\Setting::get('site_favicon');
+        $loginLogo = \App\Models\Setting::get('site_logo');
+        $siteName = \App\Models\Setting::get('site_name', 'مفتاح باب البستان');
+    @endphp
+
+    @if(!empty($siteFavicon))
+        <link rel="icon" href="{{ $siteFavicon }}">
+        <link rel="apple-touch-icon" href="{{ $siteFavicon }}">
+    @else
+        <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f59e0b'><path d='M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z'/></svg>">
+    @endif
+
     @include('partials.theme-styles')
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -16,10 +29,16 @@
     <div class="w-full max-w-md">
         <!-- Logo & Title -->
         <div class="text-center mb-8 space-y-3">
-            <div class="w-16 h-16 rounded-3xl bg-gradient-to-tr from-amber-500 to-yellow-300 text-slate-950 flex items-center justify-center font-black shadow-2xl shadow-amber-500/20 mx-auto">
-                <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
-            </div>
-            <h1 class="text-2xl font-black text-white">لوحة تحكم محل المفاتيح</h1>
+            @if(!empty($loginLogo))
+                <div class="h-16 flex items-center justify-center p-2 rounded-3xl bg-slate-900 border border-slate-800 shadow-2xl max-w-[220px] mx-auto">
+                    <img src="{{ $loginLogo }}" alt="{{ $siteName }}" class="max-h-full max-w-full object-contain">
+                </div>
+            @else
+                <div class="w-16 h-16 rounded-3xl bg-gradient-to-tr from-amber-500 to-yellow-300 text-slate-950 flex items-center justify-center font-black shadow-2xl shadow-amber-500/20 mx-auto">
+                    <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
+                </div>
+            @endif
+            <h1 class="text-2xl font-black text-white">لوحة تحكم {{ $siteName }}</h1>
             <p class="text-xs text-slate-400">سجل الدخول لإدارة الخدمات، الطلبات، ومعرض الأعمال</p>
         </div>
 

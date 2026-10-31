@@ -42,9 +42,18 @@
                 <!-- Mini Header -->
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl p-0.5 flex items-center justify-center text-slate-950 font-black shadow-lg" id="preview-logo-box" style="background-color: {{ $activeColors['500'] }};">
-                            <svg class="w-5 h-5 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
-                        </div>
+                        @php
+                            $previewLogo = \App\Models\Setting::get('site_logo');
+                        @endphp
+                        @if(!empty($previewLogo))
+                            <div class="h-10 p-1 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center shrink-0">
+                                <img src="{{ $previewLogo }}" alt="شعار الموقع" class="max-h-full max-w-[120px] object-contain">
+                            </div>
+                        @else
+                            <div class="w-10 h-10 rounded-xl p-0.5 flex items-center justify-center text-slate-950 font-black shadow-lg" id="preview-logo-box" style="background-color: {{ $activeColors['500'] }};">
+                                <svg class="w-5 h-5 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
+                            </div>
+                        @endif
                         <div>
                             <span class="text-sm font-black text-white block" id="preview-brand-title">مفتاح باب البستان</span>
                             <span class="text-[11px] font-bold block" id="preview-brand-sub" style="color: {{ $activeColors['500'] }};">قص وبرمجة الأقفال 24/7</span>

@@ -153,4 +153,49 @@ class SeoOptimizationTest extends TestCase
         $this->assertStringContainsString('Disallow: /admin', $content);
         $this->assertStringContainsString('Sitemap:', $content);
     }
+
+    public function test_custom_seo_and_branding_settings_are_rendered_correctly(): void
+    {
+        Setting::set('site_name', 'مفتاح باب البستان');
+        Setting::set('site_logo', 'https://example.com/brand-logo.png');
+        Setting::set('site_favicon', 'https://example.com/custom-favicon.png');
+        Setting::set('meta_keywords', 'مفاتيح سيارات جدة, قص ليزر, فتح اقفال ذكية');
+        Setting::set('og_image', 'https://example.com/custom-og.jpg');
+        Setting::set('seo_robots', 'noindex, nofollow');
+        Setting::set('seo_alternate_name', 'مختبر مفتاح باب البستان لقص وبرمجة الأقفال');
+        Setting::set('google_site_verification', 'googletestcode998877');
+        Setting::set('google_analytics_id', 'G-TEST123456');
+        Setting::set('social_twitter', 'https://x.com/baba_keys');
+        Setting::set('social_instagram', 'https://instagram.com/baba_keys');
+
+        $response = $this->get(route('home'));
+
+        $response->assertStatus(200);
+
+        // Logo in Header & Schema
+        $response->assertSee('https://example.com/brand-logo.png');
+        $response->assertSee('"logo": "https://example.com/brand-logo.png"', false);
+
+        // Favicon
+        $response->assertSee('<link rel="icon" href="https://example.com/custom-favicon.png">', false);
+
+        // Keywords
+        $response->assertSee('<meta name="keywords" content="مفاتيح سيارات جدة, قص ليزر, فتح اقفال ذكية">', false);
+
+        // OG Image
+        $response->assertSee('<meta property="og:image" content="https://example.com/custom-og.jpg">', false);
+        $response->assertSee('<meta name="twitter:image" content="https://example.com/custom-og.jpg">', false);
+
+        // Robots
+        $response->assertSee('<meta name="robots" content="noindex, nofollow">', false);
+
+        // Verification & Analytics
+        $response->assertSee('<meta name="google-site-verification" content="googletestcode998877">', false);
+        $response->assertSee('https://www.googletagmanager.com/gtag/js?id=G-TEST123456', false);
+        $response->assertSee("gtag('config', 'G-TEST123456');", false);
+
+        // Schema Alternate Name & sameAs
+        $response->assertSee('"alternateName": "مختبر مفتاح باب البستان لقص وبرمجة الأقفال"', false);
+        $response->assertSee('"sameAs": ["https://x.com/baba_keys","https://instagram.com/baba_keys"]', false);
+    }
 }

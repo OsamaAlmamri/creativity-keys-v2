@@ -21,6 +21,22 @@ class SettingSeeder extends Seeder
             ['key' => 'coverage_note', 'value' => 'ورش متنقلة وفنيون مرخصون لجميع أحياء ومناطق جدة', 'group' => 'general', 'label' => 'ملاحظة تغطية شريط الطوارئ', 'type' => 'text'],
             ['key' => 'meta_description', 'value' => 'محل ومختبر مفتاح باب البستان: خدمات نسخ وقص وبرمجة مفاتيح السيارات، فتح الأبواب المقفلة للطوارئ 24 ساعة، صيانة وتركيب الأقفال الذكية وفتح الخزنات في جدة.', 'group' => 'general', 'label' => 'وصف الموقع لمحركات البحث', 'type' => 'textarea'],
 
+            // الهوية والشعار
+            ['key' => 'site_logo', 'value' => '', 'group' => 'branding', 'label' => 'شعار الموقع الرئيسي', 'type' => 'text'],
+            ['key' => 'site_favicon', 'value' => '', 'group' => 'branding', 'label' => 'أيقونة الموقع (Favicon)', 'type' => 'text'],
+
+            // تحسين محركات البحث SEO والتواصل
+            ['key' => 'meta_keywords', 'value' => 'قص مفاتيح جدة, برمجة مفاتيح سيارات جدة, فتح ابواب منازل طوارئ, فتح سيارات مقفلة, صب مفاتيح جدة, اقفال ذكية جدة, مفاتيح سيارات مشفرة, ريموت بصمة, نجار فتح اقفال 24 ساعة, فني مفاتيح شمال جدة', 'group' => 'seo', 'label' => 'الكلمات المفتاحية لموقع الويب (Meta Keywords)', 'type' => 'textarea'],
+            ['key' => 'og_image', 'value' => 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&h=630&q=80', 'group' => 'seo', 'label' => 'صورة المشاركة الافتراضية (Social Share Image)', 'type' => 'text'],
+            ['key' => 'seo_robots', 'value' => 'index, follow', 'group' => 'seo', 'label' => 'توجيهات محركات البحث (Robots Meta)', 'type' => 'text'],
+            ['key' => 'seo_alternate_name', 'value' => 'محل ومختبر مفتاح باب البستان لقص وبرمجة المفاتيح بجدة', 'group' => 'seo', 'label' => 'الاسم البديل في نتائج البحث والسكيما', 'type' => 'text'],
+            ['key' => 'google_site_verification', 'value' => '', 'group' => 'seo', 'label' => 'رمز التحقق من Google Search Console', 'type' => 'text'],
+            ['key' => 'google_analytics_id', 'value' => '', 'group' => 'seo', 'label' => 'معرف Google Analytics (GA4)', 'type' => 'text'],
+            ['key' => 'social_twitter', 'value' => '', 'group' => 'seo', 'label' => 'حساب منصة X (تويتر)', 'type' => 'text'],
+            ['key' => 'social_instagram', 'value' => '', 'group' => 'seo', 'label' => 'حساب انستغرام', 'type' => 'text'],
+            ['key' => 'social_tiktok', 'value' => '', 'group' => 'seo', 'label' => 'حساب تيك توك', 'type' => 'text'],
+            ['key' => 'social_snapchat', 'value' => '', 'group' => 'seo', 'label' => 'حساب سناب شات', 'type' => 'text'],
+
             // الاتصال وموقع الخريطة
             ['key' => 'phone', 'value' => '0551234567', 'group' => 'contact', 'label' => 'رقم الهاتف الرئيسي', 'type' => 'text'],
             ['key' => 'emergency_phone', 'value' => '0559998877', 'group' => 'contact', 'label' => 'خط الطوارئ 24/7', 'type' => 'text'],
