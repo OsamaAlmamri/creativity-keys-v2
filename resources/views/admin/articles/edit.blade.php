@@ -102,12 +102,22 @@
                 </div>
 
                 <!-- Publish Status -->
-                <div class="flex items-center gap-3">
-                    <input type="checkbox" id="is_published" name="is_published" value="1" {{ old('is_published', $article->is_published) ? 'checked' : '' }} class="w-5 h-5 rounded border-slate-700 bg-slate-950 text-emerald-500 focus:ring-emerald-400">
-                    <label for="is_published" class="text-xs font-bold text-slate-200 cursor-pointer">
-                        مقال منشور ومتاح لجميع الزوار
-                    </label>
-                </div>
+                <label class="group p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-slate-700 transition-all flex items-center justify-between gap-3 cursor-pointer select-none has-[:checked]:border-emerald-500/40 has-[:checked]:bg-emerald-500/[0.03]">
+                    <div class="space-y-1 flex-1">
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs font-bold text-white block">حالة النشر: متاح للزوار</span>
+                            <span class="hidden group-has-[:checked]:inline-flex text-[10px] font-black px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">منشور</span>
+                            <span class="inline-flex group-has-[:checked]:hidden text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700">مسودة</span>
+                        </div>
+                        <span class="text-[11px] text-slate-400 block">نشر المقال فوراً في قسم المقالات والمدونة في الموقع الرئيسي</span>
+                    </div>
+                    <div class="modern-switch modern-switch-emerald shrink-0">
+                        <input type="checkbox" id="is_published" name="is_published" value="1" class="modern-switch-input" {{ old('is_published', $article->is_published) ? 'checked' : '' }}>
+                        <span class="modern-switch-track">
+                            <span class="modern-switch-thumb"></span>
+                        </span>
+                    </div>
+                </label>
 
                 <!-- Actions -->
                 <div class="pt-4 flex items-center justify-end gap-3 border-t border-slate-800">

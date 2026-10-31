@@ -209,16 +209,22 @@
                 </div>
 
                 <!-- Visitor Toggle Option -->
-                <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between">
-                    <div>
-                        <span class="text-xs sm:text-sm font-bold text-white block">إتاحة زر تبديل الوضع (نهاري / ليلي) للزوار</span>
-                        <span class="text-[11px] text-slate-400 block mt-0.5">إظهار أيقونة الشمس/القمر في شريط التنقل العلوي لتمكين العميل من اختيار الوضع المفضل لديه.</span>
+                <label class="group p-4 sm:p-5 rounded-2xl bg-slate-950 border border-slate-800 hover:border-slate-700 transition-all flex items-center justify-between gap-4 cursor-pointer select-none has-[:checked]:border-amber-500/40 has-[:checked]:bg-amber-500/[0.03]">
+                    <div class="space-y-1 flex-1">
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs sm:text-sm font-bold text-white block">إتاحة زر تبديل الوضع (نهاري / ليلي) للزوار</span>
+                            <span class="hidden group-has-[:checked]:inline-flex text-[10px] font-black px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-500 dark:text-amber-400 border border-amber-500/30">مفعل</span>
+                            <span class="inline-flex group-has-[:checked]:hidden text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700/60">معطل</span>
+                        </div>
+                        <span class="text-[11px] text-slate-400 block">إظهار أيقونة الشمس/القمر في شريط التنقل العلوي لتمكين العميل من اختيار الوضع المفضل لديه.</span>
                     </div>
-                    <label class="relative inline-flex items-center cursor-pointer">
-                        <input type="checkbox" name="theme_visitor_toggle" value="1" class="sr-only peer" {{ $current['theme_visitor_toggle'] ? 'checked' : '' }}>
-                        <div class="w-11 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-amber-500"></div>
-                    </label>
-                </div>
+                    <div class="modern-switch shrink-0">
+                        <input type="checkbox" name="theme_visitor_toggle" value="1" class="modern-switch-input" {{ $current['theme_visitor_toggle'] ? 'checked' : '' }}>
+                        <span class="modern-switch-track">
+                            <span class="modern-switch-thumb"></span>
+                        </span>
+                    </div>
+                </label>
             </div>
 
             <!-- 3. Arabic Typography (Fonts) -->
@@ -319,55 +325,78 @@
 
                 <div class="space-y-4">
                     <!-- Ticker -->
-                    <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between">
-                        <div>
-                            <span class="text-xs sm:text-sm font-bold text-white block">إظهار شريط الطوارئ المتحرك 24/7 أعلى الموقع</span>
-                            <span class="text-[11px] text-slate-400 block mt-0.5">شريط لافت بأعلى الشاشة يوضح خدمة الطوارئ السريعة لجميع أحياء الرياض مع رقم الاتصال المباشر.</span>
+                    <label class="group p-4 sm:p-5 rounded-2xl bg-slate-950 border border-slate-800 hover:border-slate-700 transition-all flex items-center justify-between gap-4 cursor-pointer select-none has-[:checked]:border-amber-500/40 has-[:checked]:bg-amber-500/[0.03]">
+                        <div class="space-y-1 flex-1">
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs sm:text-sm font-bold text-white block">إظهار شريط الطوارئ المتحرك 24/7 أعلى الموقع</span>
+                                <span class="hidden group-has-[:checked]:inline-flex text-[10px] font-black px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-500 dark:text-amber-400 border border-amber-500/30">مفعل</span>
+                                <span class="inline-flex group-has-[:checked]:hidden text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700/60">معطل</span>
+                            </div>
+                            <span class="text-[11px] text-slate-400 block">شريط لافت بأعلى الشاشة يوضح خدمة الطوارئ السريعة لجميع أحياء الرياض مع رقم الاتصال المباشر.</span>
                         </div>
-                        <label class="relative inline-flex items-center cursor-pointer">
-                            <input type="checkbox" name="show_emergency_ticker" value="1" class="sr-only peer" {{ $current['show_emergency_ticker'] ? 'checked' : '' }}>
-                            <div class="w-11 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-amber-500"></div>
-                        </label>
-                    </div>
+                        <div class="modern-switch shrink-0">
+                            <input type="checkbox" name="show_emergency_ticker" value="1" class="modern-switch-input" {{ $current['show_emergency_ticker'] ? 'checked' : '' }}>
+                            <span class="modern-switch-track">
+                                <span class="modern-switch-thumb"></span>
+                            </span>
+                        </div>
+                    </label>
 
                     <!-- Floating Buttons -->
-                    <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between">
-                        <div>
-                            <span class="text-xs sm:text-sm font-bold text-white block">إظهار أزرار الاتصال السريع العائمة (WhatsApp & Phone)</span>
-                            <span class="text-[11px] text-slate-400 block mt-0.5">أزرار ثابتة أسفل يمين الشاشة تتيح للعميل محادثة واتساب فورية أو الاتصال برقم الطوارئ بنقرة واحدة.</span>
+                    <label class="group p-4 sm:p-5 rounded-2xl bg-slate-950 border border-slate-800 hover:border-slate-700 transition-all flex items-center justify-between gap-4 cursor-pointer select-none has-[:checked]:border-amber-500/40 has-[:checked]:bg-amber-500/[0.03]">
+                        <div class="space-y-1 flex-1">
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs sm:text-sm font-bold text-white block">إظهار أزرار الاتصال السريع العائمة (WhatsApp & Phone)</span>
+                                <span class="hidden group-has-[:checked]:inline-flex text-[10px] font-black px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-500 dark:text-amber-400 border border-amber-500/30">مفعل</span>
+                                <span class="inline-flex group-has-[:checked]:hidden text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700/60">معطل</span>
+                            </div>
+                            <span class="text-[11px] text-slate-400 block">أزرار ثابتة أسفل يمين الشاشة تتيح للعميل محادثة واتساب فورية أو الاتصال برقم الطوارئ بنقرة واحدة.</span>
                         </div>
-                        <label class="relative inline-flex items-center cursor-pointer">
-                            <input type="checkbox" name="show_floating_buttons" value="1" class="sr-only peer" {{ $current['show_floating_buttons'] ? 'checked' : '' }}>
-                            <div class="w-11 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-amber-500"></div>
-                        </label>
-                    </div>
+                        <div class="modern-switch shrink-0">
+                            <input type="checkbox" name="show_floating_buttons" value="1" class="modern-switch-input" {{ $current['show_floating_buttons'] ? 'checked' : '' }}>
+                            <span class="modern-switch-track">
+                                <span class="modern-switch-thumb"></span>
+                            </span>
+                        </div>
+                    </label>
 
                     <!-- Home Articles -->
-                    <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between">
-                        <div>
-                            <span class="text-xs sm:text-sm font-bold text-white block">إظهار قسم المدونة وأحدث المقالات في الصفحة الرئيسية</span>
-                            <span class="text-[11px] text-slate-400 block mt-0.5">عرض أحدث 3 مقالات ونصائح مفاتيح السيارات والأقفال الذكية لتعزيز محركات البحث والثقة.</span>
+                    <label class="group p-4 sm:p-5 rounded-2xl bg-slate-950 border border-slate-800 hover:border-slate-700 transition-all flex items-center justify-between gap-4 cursor-pointer select-none has-[:checked]:border-amber-500/40 has-[:checked]:bg-amber-500/[0.03]">
+                        <div class="space-y-1 flex-1">
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs sm:text-sm font-bold text-white block">إظهار قسم المدونة وأحدث المقالات في الصفحة الرئيسية</span>
+                                <span class="hidden group-has-[:checked]:inline-flex text-[10px] font-black px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-500 dark:text-amber-400 border border-amber-500/30">مفعل</span>
+                                <span class="inline-flex group-has-[:checked]:hidden text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700/60">معطل</span>
+                            </div>
+                            <span class="text-[11px] text-slate-400 block">عرض أحدث 3 مقالات ونصائح مفاتيح السيارات والأقفال الذكية لتعزيز محركات البحث والثقة.</span>
                         </div>
-                        <label class="relative inline-flex items-center cursor-pointer">
-                            <input type="checkbox" name="show_home_articles" value="1" class="sr-only peer" {{ $current['show_home_articles'] ? 'checked' : '' }}>
-                            <div class="w-11 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-amber-500"></div>
-                        </label>
-                    </div>
+                        <div class="modern-switch shrink-0">
+                            <input type="checkbox" name="show_home_articles" value="1" class="modern-switch-input" {{ $current['show_home_articles'] ? 'checked' : '' }}>
+                            <span class="modern-switch-track">
+                                <span class="modern-switch-thumb"></span>
+                            </span>
+                        </div>
+                    </label>
 
                     <!-- Header Style -->
-                    <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                        <div>
+                    <div class="p-4 sm:p-5 rounded-2xl bg-slate-950 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div class="space-y-1">
                             <span class="text-xs sm:text-sm font-bold text-white block">نمط شريط التنقل (الهيدر)</span>
-                            <span class="text-[11px] text-slate-400 block mt-0.5">هل يلتصق الهيدر بأعلى الشاشة عند التمرير لأسفل (Sticky) أم يبقى في أعلى الصفحة فقط؟</span>
+                            <span class="text-[11px] text-slate-400 block">هل يلتصق الهيدر بأعلى الشاشة عند التمرير لأسفل (Sticky) أم يبقى في أعلى الصفحة فقط؟</span>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <label class="inline-flex items-center gap-1.5 text-xs text-slate-300 font-bold cursor-pointer">
-                                <input type="radio" name="header_style" value="sticky" class="text-amber-500 focus:ring-0" {{ $current['header_style'] === 'sticky' ? 'checked' : '' }}>
-                                ثابت عند التمرير (Sticky)
+                        <div class="header-style-segmented inline-flex p-1 bg-slate-900 border border-slate-800 rounded-xl shrink-0 gap-1.5 self-start sm:self-auto">
+                            <label class="cursor-pointer relative">
+                                <input type="radio" name="header_style" value="sticky" class="sr-only" {{ $current['header_style'] === 'sticky' ? 'checked' : '' }}>
+                                <span class="px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 flex items-center gap-1.5 transition-all">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                    ثابت (Sticky)
+                                </span>
                             </label>
-                            <label class="inline-flex items-center gap-1.5 text-xs text-slate-300 font-bold cursor-pointer mr-3">
-                                <input type="radio" name="header_style" value="static" class="text-amber-500 focus:ring-0" {{ $current['header_style'] === 'static' ? 'checked' : '' }}>
-                                عادي (Static)
+                            <label class="cursor-pointer relative">
+                                <input type="radio" name="header_style" value="static" class="sr-only" {{ $current['header_style'] === 'static' ? 'checked' : '' }}>
+                                <span class="px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 flex items-center gap-1.5 transition-all">
+                                    عادي (Static)
+                                </span>
                             </label>
                         </div>
                     </div>

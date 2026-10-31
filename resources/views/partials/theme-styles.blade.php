@@ -832,6 +832,173 @@
     html.theme-light .fixed.z-50 label {
         color: #334155 !important;
     }
+
+    /* ========================================================= */
+    /* ⚡ MODERN UI TOGGLE SWITCH COMPONENT                      */
+    /* ========================================================= */
+    .modern-switch {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+        -webkit-user-select: none;
+        vertical-align: middle;
+    }
+
+    .modern-switch-input {
+        position: absolute !important;
+        opacity: 0 !important;
+        width: 0 !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        pointer-events: none !important;
+    }
+
+    .modern-switch-track {
+        position: relative;
+        display: inline-block;
+        width: 48px;
+        height: 26px;
+        border-radius: 9999px;
+        background-color: #334155 !important;
+        border: 2px solid #475569 !important;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25) !important;
+        transition: background-color 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+
+    .modern-switch-thumb {
+        position: absolute;
+        top: 1px;
+        right: 2px;
+        width: 20px;
+        height: 20px;
+        border-radius: 9999px;
+        background: #ffffff !important;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3) !important;
+        transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modern-switch-thumb::after {
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 9999px;
+        background-color: #94a3b8;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    /* Light Mode OFF State */
+    html.theme-light .modern-switch-track {
+        background-color: #cbd5e1 !important;
+        border-color: #94a3b8 !important;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08) !important;
+    }
+
+    html.theme-light .modern-switch-thumb {
+        background: #ffffff !important;
+        box-shadow: 0 1px 4px rgba(15, 23, 42, 0.25) !important;
+    }
+
+    html.theme-light .modern-switch-thumb::after {
+        background-color: #94a3b8;
+    }
+
+    /* Checked / ON State (Amber / Brand Primary) */
+    .modern-switch-input:checked + .modern-switch-track {
+        background-color: var(--brand-500, #f59e0b) !important;
+        border-color: var(--brand-600, #d97706) !important;
+        box-shadow: 0 0 12px rgba(var(--brand-rgb, 245, 158, 11), 0.45) !important;
+    }
+
+    .modern-switch-input:checked + .modern-switch-track .modern-switch-thumb::after {
+        background-color: var(--brand-600, #d97706) !important;
+        transform: scale(1.15);
+    }
+
+    html.theme-light .modern-switch-input:checked + .modern-switch-track {
+        background-color: var(--brand-500, #f59e0b) !important;
+        border-color: var(--brand-600, #d97706) !important;
+        box-shadow: 0 2px 6px rgba(var(--brand-rgb, 245, 158, 11), 0.35) !important;
+    }
+
+    html.theme-light .modern-switch-input:checked + .modern-switch-track .modern-switch-thumb::after {
+        background-color: var(--brand-600, #d97706) !important;
+        transform: scale(1.15);
+    }
+
+    /* Emerald Variant (for Active status) */
+    .modern-switch-emerald .modern-switch-input:checked + .modern-switch-track,
+    html.theme-light .modern-switch-emerald .modern-switch-input:checked + .modern-switch-track {
+        background-color: #10b981 !important;
+        border-color: #059669 !important;
+        box-shadow: 0 0 12px rgba(16, 185, 129, 0.45) !important;
+    }
+
+    .modern-switch-emerald .modern-switch-input:checked + .modern-switch-track .modern-switch-thumb::after,
+    html.theme-light .modern-switch-emerald .modern-switch-input:checked + .modern-switch-track .modern-switch-thumb::after {
+        background-color: #059669 !important;
+    }
+
+    /* Red Variant (for Emergency status) */
+    .modern-switch-red .modern-switch-input:checked + .modern-switch-track,
+    html.theme-light .modern-switch-red .modern-switch-input:checked + .modern-switch-track {
+        background-color: #ef4444 !important;
+        border-color: #dc2626 !important;
+        box-shadow: 0 0 12px rgba(239, 68, 68, 0.45) !important;
+    }
+
+    .modern-switch-red .modern-switch-input:checked + .modern-switch-track .modern-switch-thumb::after,
+    html.theme-light .modern-switch-red .modern-switch-input:checked + .modern-switch-track .modern-switch-thumb::after {
+        background-color: #dc2626 !important;
+    }
+
+    /* RTL Movement (Arabic) */
+    [dir="rtl"] .modern-switch-input:checked + .modern-switch-track .modern-switch-thumb,
+    html[dir="rtl"] .modern-switch-input:checked + .modern-switch-track .modern-switch-thumb {
+        transform: translateX(-20px) !important;
+    }
+
+    /* LTR Movement (Fallback) */
+    [dir="ltr"] .modern-switch-input:checked + .modern-switch-track .modern-switch-thumb,
+    html[dir="ltr"] .modern-switch-input:checked + .modern-switch-track .modern-switch-thumb {
+        transform: translateX(20px) !important;
+    }
+
+    /* Hover effect */
+    .modern-switch:hover .modern-switch-track {
+        filter: brightness(1.08);
+    }
+
+    /* Segmented Header Style Control */
+    .header-style-segmented input:checked + span {
+        background-color: var(--brand-500, #f59e0b) !important;
+        color: #020617 !important;
+        font-weight: 800 !important;
+        box-shadow: 0 2px 6px rgba(var(--brand-rgb, 245, 158, 11), 0.3) !important;
+    }
+
+    html.theme-light .header-style-segmented {
+        background-color: #f1f5f9 !important;
+        border-color: #cbd5e1 !important;
+    }
+
+    html.theme-light .header-style-segmented span {
+        color: #64748b !important;
+    }
+
+    html.theme-light .header-style-segmented input:checked + span {
+        background-color: var(--brand-500, #f59e0b) !important;
+        color: #0f172a !important;
+        font-weight: 800 !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+    }
 </style>
 
 <!-- Immediate Theme Mode Initialization (Zero Flicker) -->

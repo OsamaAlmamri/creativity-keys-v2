@@ -131,4 +131,23 @@ class ThemeManagementTest extends TestCase
         $response->assertSee('html.theme-light header nav a', false);
         $response->assertSee('html.theme-light aside', false);
     }
+
+    public function test_modern_switches_and_controls_render_in_theme_settings(): void
+    {
+        $response = $this->actingAs($this->admin)->get(route('admin.theme.index'));
+        $response->assertStatus(200);
+
+        // Modern switch structure
+        $response->assertSee('modern-switch-track', false);
+        $response->assertSee('modern-switch-thumb', false);
+        $response->assertSee('modern-switch-input', false);
+
+        // Header segmented control
+        $response->assertSee('header-style-segmented', false);
+
+        // Check CSS styling in theme-styles
+        $response->assertSee('.modern-switch-track', false);
+        $response->assertSee('html.theme-light .modern-switch-track', false);
+        $response->assertSee('html.theme-light .modern-switch-input:checked + .modern-switch-track', false);
+    }
 }
