@@ -280,18 +280,6 @@
                     <p class="text-sm leading-relaxed text-slate-300">
                         مفتاح الإبداع — خيارك الأول والموثوق في {{ $settings['city_name'] ?? 'جدة' }} لكافة خدمات قص وبرمجة مفاتيح وبصمات السيارات بأحدث أجهزة الكمبيوتر والليزر، وفتح أبواب السيارات والمنازل المغلقة للطوارئ بدون أي خدش أو كسر، مع ورش متنقلة مجهزة بأحدث التقنيات لتصلك أينما كنت على مدار 24 ساعة.
                     </p>
-                    <div class="flex flex-wrap items-center gap-2 pt-1">
-                        <span
-                            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
-                            <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                            ترخيص مهني معتمد
-                        </span>
-                        <span
-                            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                            <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            ضمان شامل على البرمجة
-                        </span>
-                    </div>
 
                     <!-- Social Media Links (Only display platforms with non-empty URLs) -->
                     @php
@@ -516,25 +504,13 @@
                 </div>
             </div>
 
-            <!-- Bottom Copyright & Admin link -->
-            <div
-                class="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+            <!-- Bottom Copyright -->
+            <div class="pt-8 border-t border-slate-800/80 text-center text-xs">
                 <p class="text-slate-400 leading-normal">
                     © {{ date('Y') }} {{ $settings['site_name'] ?? 'مفتاح الإبداع' }}. برمجة وتطوير 
                     <a href="https://github.com/OsamaAlmamri" target="_blank" rel="noopener noreferrer"
                         class="text-brand-primary hover:underline font-semibold">أسامة المعمري</a>. جميع الحقوق محفوظة.
                 </p>
-                <div class="flex items-center gap-4">
-                    <span class="text-slate-500 hidden sm:inline">أعلى معايير الأمان والسرية</span>
-                    <a href="{{ route('admin.login') }}"
-                        class="text-slate-500 hover:text-brand-primary transition-colors inline-flex items-center gap-1.5">
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                        </svg>
-                        <span>دخول لوحة التحكم</span>
-                    </a>
-                </div>
             </div>
         </div>
     </footer>
