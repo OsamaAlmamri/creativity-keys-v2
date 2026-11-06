@@ -1,5 +1,5 @@
 @php
-    $siteName = $settings['site_name'] ?? 'مفاتيح الإبداع';
+    $siteName = $settings['site_name'] ?? 'مفتاح الإبداع';
     $siteTagline = $settings['site_tagline'] ?? 'قص وبرمجة المفاتيح الذكية';
     $cityName = $settings['city_name'] ?? 'جدة';
     $defaultDesc = $settings['meta_description'] ?? ("أفضل خدمات قص وبرمجة مفاتيح وبصمات السيارات وفتح الأقفال المغلقة للطوارئ بدون كسر على مدار 24 ساعة في {$cityName}.");
@@ -54,22 +54,23 @@
 <title>{{ $title }}</title>
 <meta name="description" content="{{ $description }}">
 @if(!empty($keywords))
-<meta name="keywords" content="{{ $keywords }}">
+    <meta name="keywords" content="{{ $keywords }}">
 @endif
 <meta name="author" content="{{ $siteName }}">
 <meta name="robots" content="{{ $robotsDirective }}">
 <link rel="canonical" href="{{ $canonicalUrl }}">
 
 @if(!empty($settings['google_site_verification']))
-<meta name="google-site-verification" content="{{ $settings['google_site_verification'] }}">
+    <meta name="google-site-verification" content="{{ $settings['google_site_verification'] }}">
 @endif
 
 <!-- Favicon -->
 @if(!empty($faviconUrl))
-<link rel="icon" href="{{ $faviconUrl }}">
-<link rel="apple-touch-icon" href="{{ $faviconUrl }}">
+    <link rel="icon" href="{{ $faviconUrl }}">
+    <link rel="apple-touch-icon" href="{{ $faviconUrl }}">
 @else
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f59e0b'><path d='M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z'/></svg>">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f59e0b'><path d='M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z'/></svg>">
 @endif
 
 <!-- Local & Geo SEO for Saudi Arabia / City -->
@@ -96,13 +97,13 @@
 
 <!-- Google Analytics (GA4) -->
 @if(!empty($settings['google_analytics_id']))
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ $settings['google_analytics_id'] }}"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', '{{ $settings['google_analytics_id'] }}');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ $settings['google_analytics_id'] }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', '{{ $settings['google_analytics_id'] }}');
+    </script>
 @endif
 
 <!-- Schema.org: LocalBusiness & Locksmith Rich Snippet (JSON-LD) -->
@@ -119,10 +120,10 @@
     "priceRange": "$$",
     "image": "{{ $ogImage }}",
     @if(!empty($siteLogo))
-    "logo": "{{ $siteLogo }}",
+        "logo": "{{ $siteLogo }}",
     @endif
     @if(!empty($socials))
-    "sameAs": {!! json_encode($socials, JSON_UNESCAPED_SLASHES) !!},
+        "sameAs": {!! json_encode($socials, JSON_UNESCAPED_SLASHES) !!},
     @endif
     "address": {
         "@@type": "PostalAddress",
@@ -159,14 +160,14 @@
     "currenciesAccepted": "SAR",
     "paymentAccepted": "Cash, Credit Card, Mada, Apple Pay"
     @if(isset($averageRating) && $averageRating > 0 && isset($reviewCount) && $reviewCount > 0)
-    ,
-    "aggregateRating": {
-        "@@type": "AggregateRating",
-        "ratingValue": "{{ number_format($averageRating, 1) }}",
-        "reviewCount": "{{ $reviewCount }}",
-        "bestRating": "5",
-        "worstRating": "1"
-    }
+        ,
+        "aggregateRating": {
+            "@@type": "AggregateRating",
+            "ratingValue": "{{ number_format($averageRating, 1) }}",
+            "reviewCount": "{{ $reviewCount }}",
+            "bestRating": "5",
+            "worstRating": "1"
+        }
     @endif
 }
 </script>

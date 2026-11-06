@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         User::updateOrCreate(
             ['email' => 'admin@creativity-keys.com'],
             [
-                'name' => 'إدارة مفاتيح الإبداع',
+                'name' => 'إدارة مفتاح الإبداع',
                 'password' => Hash::make('password123'),
                 'role' => 'admin',
                 'phone' => '0568191921',

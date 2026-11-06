@@ -16,7 +16,7 @@ class HomePageTest extends TestCase
 
     public function test_home_page_loads_successfully(): void
     {
-        Setting::set('site_name', 'مفاتيح الإبداع');
+        Setting::set('site_name', 'مفتاح الإبداع');
         Setting::set('site_tagline', 'قص وبرمجة المفاتيح الذكية');
         Article::factory()->create(['title' => 'مقال رئيسي مميز', 'is_published' => true]);
         Service::factory()->create(['title' => 'برمجة بصمة سيارة']);
@@ -26,7 +26,7 @@ class HomePageTest extends TestCase
         $response = $this->get(route('home'));
 
         $response->assertStatus(200);
-        $response->assertSee('مفاتيح الإبداع');
+        $response->assertSee('مفتاح الإبداع');
         $response->assertSee('قص وبرمجة المفاتيح الذكية');
         $response->assertSee('برمجة بصمة سيارة');
         $response->assertSee('قص مفتاح ليزر');

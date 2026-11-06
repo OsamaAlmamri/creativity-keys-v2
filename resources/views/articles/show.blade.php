@@ -1,64 +1,64 @@
 @extends('layouts.app')
 
-@section('title', $article->title . ' | ' . ($settings['site_name'] ?? 'مفاتيح الإبداع'))
+@section('title', $article->title . ' | ' . ($settings['site_name'] ?? 'مفتاح الإبداع'))
 @section('meta_description', $article->excerpt ?? \Illuminate\Support\Str::limit(strip_tags($article->content), 160))
 @section('og_type', 'article')
 @section('og_image', $article->image_url)
 
 @section('schema')
     <script type="application/ld+json">
-    {
-        "@@context": "https://schema.org",
-        "@@type": "BlogPosting",
-        "mainEntityOfPage": {
-            "@@type": "WebPage",
-            "@@id": "{{ url()->current() }}"
-        },
-        "headline": {!! json_encode($article->title, JSON_UNESCAPED_UNICODE) !!},
-        "description": {!! json_encode($article->excerpt ?? \Illuminate\Support\Str::limit(strip_tags($article->content), 160), JSON_UNESCAPED_UNICODE) !!},
-        "image": {!! json_encode($article->image_url, JSON_UNESCAPED_SLASHES) !!},
-        "datePublished": "{{ $article->published_at ? $article->published_at->toIso8601String() : $article->created_at->toIso8601String() }}",
-        "dateModified": "{{ $article->updated_at->toIso8601String() }}",
-        "author": {
-            "@@type": "Organization",
-            "name": "{{ $settings['site_name'] ?? 'مفاتيح الإبداع' }}",
-            "url": "{{ route('home') }}"
-        },
-        "publisher": {
-            "@@type": "Organization",
-            "name": "{{ $settings['site_name'] ?? 'مفاتيح الإبداع' }}",
-            "url": "{{ route('home') }}"
-        },
-        "articleSection": "{{ $article->category }}"
-    }
-    </script>
+        {
+            "@@context": "https://schema.org",
+            "@@type": "BlogPosting",
+            "mainEntityOfPage": {
+                "@@type": "WebPage",
+                "@@id": "{{ url()->current() }}"
+            },
+            "headline": {!! json_encode($article->title, JSON_UNESCAPED_UNICODE) !!},
+            "description": {!! json_encode($article->excerpt ?? \Illuminate\Support\Str::limit(strip_tags($article->content), 160), JSON_UNESCAPED_UNICODE) !!},
+            "image": {!! json_encode($article->image_url, JSON_UNESCAPED_SLASHES) !!},
+            "datePublished": "{{ $article->published_at ? $article->published_at->toIso8601String() : $article->created_at->toIso8601String() }}",
+            "dateModified": "{{ $article->updated_at->toIso8601String() }}",
+            "author": {
+                "@@type": "Organization",
+                "name": "{{ $settings['site_name'] ?? 'مفتاح الإبداع' }}",
+                "url": "{{ route('home') }}"
+            },
+            "publisher": {
+                "@@type": "Organization",
+                "name": "{{ $settings['site_name'] ?? 'مفتاح الإبداع' }}",
+                "url": "{{ route('home') }}"
+            },
+            "articleSection": "{{ $article->category }}"
+        }
+        </script>
 
     <script type="application/ld+json">
-    {
-        "@@context": "https://schema.org",
-        "@@type": "BreadcrumbList",
-        "itemListElement": [
-            {
-                "@@type": "ListItem",
-                "position": 1,
-                "name": "الرئيسية",
-                "item": "{{ route('home') }}"
-            },
-            {
-                "@@type": "ListItem",
-                "position": 2,
-                "name": "المقالات والنصائح",
-                "item": "{{ route('articles.index') }}"
-            },
-            {
-                "@@type": "ListItem",
-                "position": 3,
-                "name": {!! json_encode($article->title, JSON_UNESCAPED_UNICODE) !!},
-                "item": "{{ url()->current() }}"
-            }
-        ]
-    }
-    </script>
+        {
+            "@@context": "https://schema.org",
+            "@@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@@type": "ListItem",
+                    "position": 1,
+                    "name": "الرئيسية",
+                    "item": "{{ route('home') }}"
+                },
+                {
+                    "@@type": "ListItem",
+                    "position": 2,
+                    "name": "المقالات والنصائح",
+                    "item": "{{ route('articles.index') }}"
+                },
+                {
+                    "@@type": "ListItem",
+                    "position": 3,
+                    "name": {!! json_encode($article->title, JSON_UNESCAPED_UNICODE) !!},
+                    "item": "{{ url()->current() }}"
+                }
+            ]
+        }
+        </script>
 @endsection
 
 @section('content')
@@ -155,7 +155,8 @@
                 </div>
                 <div>
                     <h4 class="text-sm font-bold text-white mb-0.5">فريق فنيي
-                        {{ $settings['site_name'] ?? 'مفاتيح الإبداع' }}</h4>
+                        {{ $settings['site_name'] ?? 'مفتاح الإبداع' }}
+                    </h4>
                     <p class="text-xs text-slate-400 leading-relaxed">
                         نخبة من أمهر فنيي فتح الأقفال وبرمجة مفاتيح السيارات في {{ $settings['city_name'] ?? 'جدة' }} بخبرة
                         تتجاوز {{ $settings['years_experience'] ?? '15' }} عاماً. نهدف من خلال هذه المقالات إلى إثراء

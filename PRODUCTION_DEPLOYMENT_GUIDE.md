@@ -1,6 +1,6 @@
 # دليل النشر المباشر للإنتاج وإجراءات التراجع في حالات الطوارئ
 # PRODUCTION DEPLOYMENT & ROLLBACK GUIDE
-## مشروع: مفاتيح الإبداع (Creativity Keys) — النقل إلى Laravel 13
+## مشروع: مفتاح الإبداع (Creativity Keys) — النقل إلى Laravel 13
 **النطاق:** `https://creativity-keys.com`  
 **بيئة الإنتاج المستهدفة:** سيرفر الاستضافة (cPanel / SSH / MySQL / PHP 8.3+)
 
@@ -43,7 +43,7 @@ tar -czvf /home/[USER]/keys_v1_backup_$(date +%F_%T).tar.gz /home/[USER]/public_
 ### الخطوة 3: ضبط ملف البيئة `.env` في الإنتاج
 إنشاء وضبط ملف `.env` في مجلد التطبيق:
 ```env
-APP_NAME="مفاتيح الإبداع"
+APP_NAME="مفتاح الإبداع"
 APP_ENV=production
 APP_KEY=[YOUR_GENERATED_APP_KEY]
 APP_DEBUG=false
@@ -109,7 +109,7 @@ php artisan event:cache
 ## 4. التحقق واختبار ما بعد النشر (Post-Deployment Verification)
 
 1. فتح الصفحة الرئيسية عبر المتصفح والتحقق من ظهور:
-   - الشعار، اسم المحل "مفاتيح الإبداع"، وهاتف الطوارئ `0568191921`.
+   - الشعار، اسم المحل "مفتاح الإبداع"، وهاتف الطوارئ `0568191921`.
    - الخدمات الـ 9 الحقيقية.
    - قسم نطاق التغطية (الأحياء الـ 85 وفلتر البحث).
    - خريطة Google المضمنة والموقع الجغرافي.

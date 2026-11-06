@@ -69,7 +69,7 @@
                     class="flex flex-col items-start transition-opacity hover:opacity-85 shrink-0 group">
                     <span
                         class="text-xl sm:text-2xl font-black tracking-tight text-slate-900 dark:text-white block leading-tight">
-                        {{ $settings['site_name'] ?? 'مفاتيح الإبداع' }}
+                        {{ $settings['site_name'] ?? 'مفتاح الإبداع' }}
                     </span>
                     <span class="mt-0.5 text-[11px] font-bold text-amber-600 dark:text-amber-400 block leading-none">
                         - {{ $settings['site_tagline'] ?? 'لخدمات الأقفال والأمان' }} -
@@ -253,7 +253,7 @@
                             <div
                                 class="h-10 flex items-center justify-center p-1 rounded-xl bg-slate-900 border border-slate-800 shadow-md">
                                 <img src="{{ $settings['site_logo'] }}"
-                                    alt="{{ $settings['site_name'] ?? 'مفاتيح الإبداع' }}"
+                                    alt="{{ $settings['site_name'] ?? 'مفتاح الإبداع' }}"
                                     class="h-8 w-auto max-w-[140px] object-contain">
                             </div>
                         @else
@@ -266,7 +266,7 @@
                             </div>
                         @endif
                         <span
-                            class="text-xl font-black text-white">{{ $settings['site_name'] ?? 'مفاتيح الإبداع' }}</span>
+                            class="text-xl font-black text-white">{{ $settings['site_name'] ?? 'مفتاح الإبداع' }}</span>
                     </div>
                     <p class="text-sm leading-relaxed text-slate-400">
                         المركز المتخصص الأول في قص وبرمجة مفاتيح السيارات الحديثة، واستخراج ريموتات البصمة، وفتح كافة
@@ -444,7 +444,7 @@
             <!-- Bottom Copyright & Admin link -->
             <div
                 class="pt-8 border-t border-slate-800/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-                <p>© {{ date('Y') }} {{ $settings['site_name'] ?? 'مفاتيح الإبداع' }}. برمجة وتطوير <a
+                <p>© {{ date('Y') }} {{ $settings['site_name'] ?? 'مفتاح الإبداع' }}. برمجة وتطوير <a
                         href="https://github.com/OsamaAlmamri" target="_blank"
                         class="text-amber-400 hover:underline">أسامة المعمري</a>. جميع الحقوق محفوظة.</p>
                 <div class="flex items-center gap-4">

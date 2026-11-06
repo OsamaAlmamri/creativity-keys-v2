@@ -80,7 +80,7 @@
                                         class="inline-flex items-center px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-bold transition-colors">
                                         عرض وتفاصيل
                                     </a>
-                                    <a href="https://wa.me/{{ preg_replace('/^0/', '966', preg_replace('/\D/', '', $msg->phone)) }}?text={{ urlencode('مرحباً أخي ' . $msg->name . '، بخصوص طلبك من مركز مفاتيح الإبداع') }}"
+                                    <a href="https://wa.me/{{ preg_replace('/^0/', '966', preg_replace('/\D/', '', $msg->phone)) }}?text={{ urlencode('مرحباً أخي ' . $msg->name . '، بخصوص طلبك من مركز مفتاح الإبداع') }}"
                                         target="_blank"
                                         class="inline-flex items-center px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-colors">
                                         واتساب

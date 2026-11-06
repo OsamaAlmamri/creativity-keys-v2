@@ -64,7 +64,7 @@ class ServiceController extends Controller
             'description' => $service->meta_description ?? $service->short_description,
             'provider' => [
                 '@type' => 'Locksmith',
-                'name' => $settings['site_name'] ?? 'محل مفاتيح الإبداع',
+                'name' => $settings['site_name'] ?? 'محل مفتاح الإبداع',
                 'telephone' => $settings['emergency_phone'] ?? '0568191921',
                 'url' => route('home'),
             ],

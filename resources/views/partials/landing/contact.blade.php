@@ -1,6 +1,6 @@
 <section id="contact" class="py-24 contact-section px-5 sm:px-8 border-t border-slate-200/80 dark:border-slate-800 relative">
     <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-        
+
         <!-- Right Column in RTL: Contact Information & Quick Channels -->
         <div>
             <p class="section-kicker">تواصل معنا</p>
@@ -13,10 +13,10 @@
 
             <!-- 2x2 Mini-Grid of Glass Info Cards -->
             <div class="mt-8 grid gap-4 sm:grid-cols-2">
-                
+
                 <!-- Phone Card -->
-                <a 
-                    href="tel:{{ $settings['emergency_phone'] ?? '0568191921' }}" 
+                <a
+                    href="tel:{{ $settings['emergency_phone'] ?? '0568191921' }}"
                     class="glass-panel flex items-center gap-4 rounded-2xl p-4 transition-all duration-300 hover-brand-card"
                 >
                     <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
@@ -31,10 +31,10 @@
                 </a>
 
                 <!-- WhatsApp Card -->
-                <a 
-                    href="https://wa.me/{{ $settings['whatsapp'] ?? '966568191921' }}?text={{ urlencode('مرحباً، أود الاستفسار عن خدمات مفاتيح الإبداع') }}" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                <a
+                    href="https://wa.me/{{ $settings['whatsapp'] ?? '966568191921' }}?text={{ urlencode('مرحباً، أود الاستفسار عن خدمات مفتاح الإبداع') }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     class="glass-panel flex items-center gap-4 rounded-2xl p-4 transition-all duration-300 hover-brand-card"
                 >
                     <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
@@ -73,7 +73,7 @@
 
         <!-- Left Column in RTL: Contact Form in Rounded Glass Panel -->
         <div class="glass-panel rounded-[2.2rem] p-6 sm:p-8 shadow-md">
-            
+
             @if($errors->any())
                 <div class="mb-6 p-4 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 text-sm">
                     <div class="font-bold mb-1">يرجى مراجعة وتصحيح الحقول التالية:</div>
@@ -94,13 +94,13 @@
                         <label for="name" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
                             الاسم الكريم <span class="text-amber-400">*</span>
                         </label>
-                        <input 
-                            type="text" 
-                            id="name" 
-                            name="name" 
-                            value="{{ old('name') }}" 
-                            required 
-                            placeholder="اسمك الكريم" 
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            value="{{ old('name') }}"
+                            required
+                            placeholder="اسمك الكريم"
                             class="w-full rounded-full border border-slate-300/80 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 px-5 py-3 text-slate-900 dark:text-white placeholder-slate-400 focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400/30 text-sm"
                         >
                     </div>
@@ -110,14 +110,14 @@
                         <label for="phone" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
                             رقم الجوال <span class="text-amber-400">*</span>
                         </label>
-                        <input 
-                            type="tel" 
-                            id="phone" 
-                            name="phone" 
-                            value="{{ old('phone') }}" 
-                            required 
-                            dir="ltr" 
-                            placeholder="05XXXXXXXX" 
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            value="{{ old('phone') }}"
+                            required
+                            dir="ltr"
+                            placeholder="05XXXXXXXX"
                             class="w-full rounded-full border border-slate-300/80 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 px-5 py-3 text-slate-900 dark:text-white placeholder-slate-400 focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400/30 text-sm text-right font-mono"
                         >
                     </div>
@@ -129,9 +129,9 @@
                         <label for="service_needed" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
                             نوع الخدمة
                         </label>
-                        <select 
-                            id="service_needed" 
-                            name="service_needed" 
+                        <select
+                            id="service_needed"
+                            name="service_needed"
                             class="w-full rounded-full border border-slate-300/80 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 px-5 py-3 text-slate-900 dark:text-white focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400/30 text-sm"
                         >
                             <option value="">اختر الخدمة المطلوبة...</option>
@@ -149,12 +149,12 @@
                         <label for="city_district" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
                             الحي في {{ $cityName }}
                         </label>
-                        <input 
-                            type="text" 
-                            id="city_district" 
-                            name="city_district" 
-                            value="{{ old('city_district') }}" 
-                            placeholder="مثال: حي الروضة / الشاطئ / أبحر" 
+                        <input
+                            type="text"
+                            id="city_district"
+                            name="city_district"
+                            value="{{ old('city_district') }}"
+                            placeholder="مثال: حي الروضة / الشاطئ / أبحر"
                             class="w-full rounded-full border border-slate-300/80 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 px-5 py-3 text-slate-900 dark:text-white placeholder-slate-400 focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400/30 text-sm"
                         >
                     </div>
@@ -162,12 +162,12 @@
 
                 <!-- Emergency checkbox -->
                 <div class="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center gap-3">
-                    <input 
-                        type="checkbox" 
-                        id="is_emergency" 
-                        name="is_emergency" 
-                        value="1" 
-                        {{ old('is_emergency') ? 'checked' : '' }} 
+                    <input
+                        type="checkbox"
+                        id="is_emergency"
+                        name="is_emergency"
+                        value="1"
+                        {{ old('is_emergency') ? 'checked' : '' }}
                         class="w-4 h-4 rounded border-slate-300 text-amber-500 focus:ring-amber-400"
                     >
                     <label for="is_emergency" class="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 cursor-pointer">
@@ -180,19 +180,19 @@
                     <label for="message" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
                         تفاصيل الطلب <span class="text-amber-400">*</span>
                     </label>
-                    <textarea 
-                        id="message" 
-                        name="message" 
-                        rows="3" 
-                        required 
-                        placeholder="اكتب نوع السيارة والموديل أو تفاصيل طلبك بدقة..." 
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="3"
+                        required
+                        placeholder="اكتب نوع السيارة والموديل أو تفاصيل طلبك بدقة..."
                         class="w-full rounded-3xl border border-slate-300/80 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-4 text-slate-900 dark:text-white placeholder-slate-400 focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400/30 text-sm leading-relaxed"
                     >{{ old('message') }}</textarea>
                 </div>
 
                 <!-- Submit Button -->
-                <button 
-                    type="submit" 
+                <button
+                    type="submit"
                     class="w-full min-h-12 py-3 px-8 rounded-full bg-brand-primary hover:brightness-105 text-slate-950 font-bold text-sm sm:text-base shadow-brand transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
                 >
                     <svg class="w-4 h-4 fill-none stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>

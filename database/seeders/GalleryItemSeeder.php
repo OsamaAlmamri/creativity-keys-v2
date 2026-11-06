@@ -14,7 +14,7 @@ class GalleryItemSeeder extends Seeder
     {
         $items = [
             [
-                'title' => 'واجهة محل مفاتيح الإبداع في جدة',
+                'title' => 'واجهة محل مفتاح الإبداع في جدة',
                 'category' => 'المركز والواجهة',
                 'image_url' => '/images/store/800_6abfe27982073.jpg',
                 'description' => 'المقر الرئيسي لخدمات قص وبرمجة المفاتيح وفتح الأقفال في جدة',

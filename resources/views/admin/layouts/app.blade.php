@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>لوحة التحكم | {{ $title ?? 'مفاتيح الإبداع' }}</title>
+    <title>لوحة التحكم | {{ $title ?? 'مفتاح الإبداع' }}</title>
 
     @php
         $siteFavicon = \App\Models\Setting::get('site_favicon');
         $adminLogo = \App\Models\Setting::get('site_logo');
-        $adminSiteName = \App\Models\Setting::get('site_name', 'مفاتيح الإبداع');
+        $adminSiteName = \App\Models\Setting::get('site_name', 'مفتاح الإبداع');
     @endphp
 
     @if(!empty($siteFavicon))

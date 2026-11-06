@@ -18,7 +18,7 @@ class ServiceDetailsAndSeoTest extends TestCase
 
     public function test_service_details_page_loads_successfully_with_rich_content(): void
     {
-        Setting::set('site_name', 'مفاتيح الإبداع');
+        Setting::set('site_name', 'مفتاح الإبداع');
         Setting::set('emergency_phone', '0568191921');
         Setting::set('city_name', 'جدة');
 

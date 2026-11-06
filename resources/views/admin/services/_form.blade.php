@@ -174,7 +174,7 @@
             (فقرات متعددة تثري الصفحة وتدعم الـ SEO)</label>
         <textarea id="overview_content" name="overview_content" rows="6"
             class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:border-amber-400 focus:outline-none leading-relaxed"
-            placeholder="اكتب شرحاً وافياً ومقنعاً عن كيفية تنفيذ الخدمة، التجهيزات المستخدمة، والمميزات التنافسية لورشة مفاتيح الإبداع...">{{ old('overview_content', $service->overview_content ?? '') }}</textarea>
+            placeholder="اكتب شرحاً وافياً ومقنعاً عن كيفية تنفيذ الخدمة، التجهيزات المستخدمة، والمميزات التنافسية لورشة مفتاح الإبداع...">{{ old('overview_content', $service->overview_content ?? '') }}</textarea>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 border-t border-slate-800">
@@ -509,7 +509,7 @@
             </div>
             <h4 id="serp-title-preview"
                 class="text-[#8ab4f8] text-base hover:underline cursor-pointer font-medium truncate" dir="rtl">
-                {{ $service->meta_title ?? ($service->title ?? 'عنوان الخدمة في نتائج البحث') }} | مفاتيح الإبداع
+                {{ $service->meta_title ?? ($service->title ?? 'عنوان الخدمة في نتائج البحث') }} | مفتاح الإبداع
             </h4>
             <p id="serp-desc-preview" class="text-[#bdc1c6] text-xs leading-relaxed line-clamp-2" dir="rtl">
                 {{ $service->meta_description ?? ($service->short_description ?? 'وصف الخدمة ومميزاتها سيظهر هنا لجذب العملاء في نتائج البحث...') }}
@@ -691,7 +691,7 @@
         const serpDesc = document.getElementById('serp-desc-preview');
         const serpSlug = document.getElementById('serp-slug-preview');
 
-        if (serpTitle) serpTitle.innerText = titleText + ' | مفاتيح الإبداع';
+        if (serpTitle) serpTitle.innerText = titleText + ' | مفتاح الإبداع';
         if (serpDesc) serpDesc.innerText = descText;
         if (serpSlug) serpSlug.innerText = slugText;
 

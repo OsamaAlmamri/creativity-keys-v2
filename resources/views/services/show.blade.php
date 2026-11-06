@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', ($service->meta_title ?? $service->title) . ' | ' . ($settings['site_name'] ?? 'مفاتيح الإبداع'))
+@section('title', ($service->meta_title ?? $service->title) . ' | ' . ($settings['site_name'] ?? 'مفتاح الإبداع'))
 @section('meta_description', $service->meta_description ?? $service->short_description)
 @section('keywords', $service->meta_keywords ?? ($service->title . ', مفاتيح ' . $cityName . ', قص وبرمجة مفاتيح, طوارئ 24 ساعة'))
 @section('canonical', route('services.show', $service->slug))
@@ -22,7 +22,7 @@
 
 @section('content')
 <div class="relative overflow-hidden bg-slate-950 min-h-screen text-slate-800 dark:text-slate-200">
-    
+
     <!-- Ambient Background Lighting Orbs with Dynamic Theme Accent -->
     <div class="orb orb-sage"></div>
     <div class="orb orb-terracotta"></div>
@@ -30,7 +30,7 @@
     <!-- Service Hero Header -->
     <section class="relative pt-32 pb-16 lg:pt-36 lg:pb-20 border-b border-slate-200/80 dark:border-slate-800">
         <div class="max-w-7xl mx-auto px-5 sm:px-8">
-            
+
             <!-- Breadcrumbs -->
             <nav class="flex items-center gap-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-6 font-medium">
                 <a href="{{ route('home') }}" class="hover:text-amber-400 transition-colors">الرئيسية</a>
@@ -58,8 +58,8 @@
 
                     <!-- Fast Action CTAs -->
                     <div class="pt-4 flex flex-wrap items-center gap-4">
-                        <a 
-                            href="tel:{{ $settings['emergency_phone'] ?? '0568191921' }}" 
+                        <a
+                            href="tel:{{ $settings['emergency_phone'] ?? '0568191921' }}"
                             class="inline-flex items-center justify-center gap-2.5 min-h-12 px-7 py-3 rounded-full bg-brand-primary hover:brightness-105 text-slate-950 font-bold text-sm sm:text-base shadow-brand transition-all duration-300"
                         >
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
@@ -67,10 +67,10 @@
                             <span dir="ltr">{{ $settings['emergency_phone'] ?? '0568191921' }}</span>
                         </a>
 
-                        <a 
-                            href="https://wa.me/{{ $settings['whatsapp'] ?? '966568191921' }}?text={{ urlencode('مرحباً، أود الاستفسار وطلب خدمة: ' . $service->title) }}" 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
+                        <a
+                            href="https://wa.me/{{ $settings['whatsapp'] ?? '966568191921' }}?text={{ urlencode('مرحباً، أود الاستفسار وطلب خدمة: ' . $service->title) }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             class="inline-flex items-center justify-center gap-2.5 min-h-12 px-7 py-3 rounded-full bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold text-sm sm:text-base shadow-sm transition-all duration-300"
                         >
                             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
@@ -82,9 +82,9 @@
                 <!-- Visual Badge / Image -->
                 <div class="lg:col-span-4 flex justify-center">
                     <div class="relative w-full max-w-sm rounded-[2rem] overflow-hidden glass-panel p-2 shadow-lg">
-                        <img 
-                            src="{{ $service->image_url }}" 
-                            alt="{{ $service->title }}" 
+                        <img
+                            src="{{ $service->image_url }}"
+                            alt="{{ $service->title }}"
                             class="w-full h-64 object-cover rounded-[1.6rem]"
                         >
                         <div class="absolute bottom-4 right-4 left-4 p-3 rounded-xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200/80 dark:border-slate-800 flex items-center justify-between text-xs">
@@ -101,16 +101,16 @@
     <!-- Main Content Section (Split into Content Column & Sticky Sidebar) -->
     <section class="py-16 px-5 sm:px-8">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            
+
             <!-- Main Content Area (8 Cols) -->
             <div class="lg:col-span-8 space-y-12 min-w-0">
-                
+
                 <!-- 1. Detailed Overview & Value Narrative -->
                 <article class="glass-panel rounded-[2.2rem] p-6 sm:p-9 shadow-sm space-y-6">
                     <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
                         {{ $service->overview_title ?? 'تفاصيل ونظرة عامة على الخدمة' }}
                     </h2>
-                    
+
                     <div class="text-slate-600 dark:text-slate-300 leading-8 text-base sm:text-lg space-y-4 whitespace-pre-line">
                         {{ $service->overview_content ?? $service->full_description }}
                     </div>
@@ -284,7 +284,7 @@
 
             <!-- Sticky Sidebar Area (4 Cols) -->
             <aside class="lg:col-span-4 space-y-6 lg:sticky lg:top-28">
-                
+
                 <!-- Quick Emergency / Contact Card (matching competitor screenshot) -->
                 @if($service->is_emergency)
                     <div class="rounded-[2.2rem] bg-gradient-to-br from-red-600 to-rose-700 text-white p-7 shadow-xl space-y-4">
@@ -295,8 +295,8 @@
                         <p class="text-sm text-red-100 leading-relaxed">
                             نصلك في أي حي من أحياء {{ $cityName }} خلال 15 إلى 25 دقيقة لفتح سيارتك أو منزلك فوراً وبأمان.
                         </p>
-                        <a 
-                            href="tel:{{ $settings['emergency_phone'] ?? '0568191921' }}" 
+                        <a
+                            href="tel:{{ $settings['emergency_phone'] ?? '0568191921' }}"
                             class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-white text-red-700 font-black text-sm shadow-md hover:bg-red-50 transition-colors"
                         >
                             <span>اتصل فوراً:</span>
@@ -309,8 +309,8 @@
                         <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
                             تفضل بزيارة معرضنا في {{ $cityName }} أو اطلب سيارة الخدمة المتنقلة لتصلك عند بيتك أو عملك.
                         </p>
-                        <a 
-                            href="tel:{{ $settings['emergency_phone'] ?? '0568191921' }}" 
+                        <a
+                            href="tel:{{ $settings['emergency_phone'] ?? '0568191921' }}"
                             class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-brand-primary hover:brightness-105 text-slate-950 font-bold text-sm shadow-brand transition-all duration-300"
                         >
                             <span>اتصل الآن:</span>
@@ -325,7 +325,7 @@
                         <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                         <span>تغطية الخدمة في {{ $cityName }}</span>
                     </h3>
-                    
+
                     <p class="text-xs text-slate-500 dark:text-slate-400">
                         سياراتنا المتنقلة مجهزة لتغطية كافة الأحياء والمخططات:
                     </p>
@@ -347,12 +347,12 @@
                     <h3 class="text-base font-bold text-slate-900 dark:text-white">
                         خدمات أخرى قد تهمك
                     </h3>
-                    
+
                     <ul class="space-y-2 text-sm">
                         @foreach($relatedServices as $rel)
                             <li>
-                                <a 
-                                    href="{{ route('services.show', $rel->slug) }}" 
+                                <a
+                                    href="{{ route('services.show', $rel->slug) }}"
                                     class="flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-500/10 transition-colors group"
                                 >
                                     <span class="text-slate-700 dark:text-slate-300 group-hover:text-amber-400 font-medium truncate">

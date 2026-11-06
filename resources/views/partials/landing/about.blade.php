@@ -8,7 +8,7 @@
                     <div
                         class="relative rounded-[2.5rem] overflow-hidden border-2 border-slate-800 bg-slate-950 shadow-2xl group">
                         <img src="/images/store/800_6abfe0ca2391c.jpg"
-                            alt="معرض ريموتات ومفاتيح السيارات الحديثة داخل محل مفاتيح الإبداع في {{ $cityName }}"
+                            alt="معرض ريموتات ومفاتيح السيارات الحديثة داخل محل مفتاح الإبداع في {{ $cityName }}"
                             loading="lazy"
                             class="w-full h-[450px] object-cover group-hover:scale-105 transition-transform duration-700">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent">
@@ -51,7 +51,7 @@
                 </h2>
 
                 <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
-                    محل <strong>{{ $settings['site_name'] ?? 'مفاتيح الإبداع' }}</strong> هو وجهتك الموثوقة الأولى في
+                    محل <strong>{{ $settings['site_name'] ?? 'مفتاح الإبداع' }}</strong> هو وجهتك الموثوقة الأولى في
                     {{ $cityName }}. إذا كنت تحتاج إلى اقرب محل مفاتيح لخدمتك بشكل طارئ، فإن فريقنا المتنقل يغطي كافة
                     الأحياء لتقديم خدمات نسخ المفاتيح، إصلاح وبرمجة مفاتيح السيارات، وتركيب الأقفال بأحدث الأجهزة
                     المتطورة وبدون أي كسر.

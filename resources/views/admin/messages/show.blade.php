@@ -78,7 +78,7 @@
                         </svg>
                         <span dir="ltr">{{ $message->phone }}</span>
                     </a>
-                    <a href="https://wa.me/{{ preg_replace('/^0/', '966', preg_replace('/\D/', '', $message->phone)) }}?text={{ urlencode('مرحباً أخي ' . $message->name . '، معك فني مفاتيح الإبداع بخصوص طلبك.') }}"
+                    <a href="https://wa.me/{{ preg_replace('/^0/', '966', preg_replace('/\D/', '', $message->phone)) }}?text={{ urlencode('مرحباً أخي ' . $message->name . '، معك فني مفتاح الإبداع بخصوص طلبك.') }}"
                         target="_blank"
                         class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-colors shadow-lg shadow-emerald-600/20">
                         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">

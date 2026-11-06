@@ -160,7 +160,7 @@ class SettingController extends Controller
             Setting::set('site_favicon', $request->input('site_favicon') ?? '', 'branding', 'أيقونة الموقع (Favicon)');
         }
 
-        Setting::set('site_name', $request->input('site_name', 'مفاتيح الإبداع'), 'branding', 'اسم المحل / المركز');
+        Setting::set('site_name', $request->input('site_name', 'مفتاح الإبداع'), 'branding', 'اسم المحل / المركز');
         Setting::set('city_name', $request->input('city_name', 'جدة'), 'branding', 'المدينة الرئيسية');
         Setting::set('site_tagline', $request->input('site_tagline') ?? '', 'branding', 'الشعار اللفظي');
 
