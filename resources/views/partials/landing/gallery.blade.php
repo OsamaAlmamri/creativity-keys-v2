@@ -1,4 +1,4 @@
-<section id="gallery" class="py-24 bg-slate-50 dark:bg-slate-950 px-5 sm:px-8 border-t border-slate-200 dark:border-slate-800/80 relative overflow-hidden transition-colors duration-300">
+<section id="gallery" class="py-24 bg-slate-100/70 dark:bg-slate-950 px-5 sm:px-8 border-t border-slate-200 dark:border-slate-800/80 relative overflow-hidden transition-colors duration-300">
     <div class="mx-auto max-w-7xl">
 
         <!-- Section Header Matching Reference Website -->
@@ -15,65 +15,66 @@
         </div>
 
         <!-- Filter Categories Tabs -->
-        @if($galleryCategories->isNotEmpty())
+        @if($galleryCategories->isNotEmpty() && $galleryCategories->count() > 1)
             <div class="flex flex-wrap items-center gap-2 pt-8" id="gallery-filters" role="tablist" aria-label="تصنيفات المعرض">
                 <button type="button" data-filter="all"
-                    class="gallery-filter-btn active px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 bg-amber-500 text-white shadow-xs cursor-pointer">
+                    class="gallery-filter-btn active px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 bg-amber-500 text-white shadow-xs cursor-pointer">
                     الكل ({{ $galleryItems->count() }})
                 </button>
                 @foreach($galleryCategories as $category)
                     <button type="button" data-filter="{{ $category }}"
-                        class="gallery-filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 cursor-pointer">
+                        class="gallery-filter-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 shadow-xs cursor-pointer">
                         {{ $category }}
                     </button>
                 @endforeach
             </div>
         @endif
 
-        <!-- Gallery Grid Matching Reference Structure -->
+        <!-- Gallery Grid with Enhanced Light & Dark Mode Design -->
         <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" id="gallery-grid">
             @forelse($galleryItems as $index => $item)
                 <button type="button"
-                    class="gallery-item glass-panel group relative overflow-hidden rounded-[1.8rem] p-2 text-start transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl cursor-pointer block w-full focus:outline-none focus:ring-2 focus:ring-amber-500/70"
+                    class="gallery-item glass-panel group relative overflow-hidden rounded-[1.8rem] p-2.5 text-start transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl cursor-pointer block w-full focus:outline-none focus:ring-2 focus:ring-amber-500/70"
                     data-gallery-src="{{ $item->image_url }}"
                     data-gallery-title="{{ $item->title }}"
                     data-gallery-desc="{{ $item->description ?? '' }}"
                     data-gallery-category="{{ $item->category }}"
                     data-category="{{ $item->category }}"
                     aria-label="عرض الصورة: {{ $item->title }}">
-                    <div class="relative overflow-hidden rounded-[1.4rem]">
+                    
+                    <!-- Clean, crystal-clear image container with subtle hover overlay -->
+                    <div class="relative overflow-hidden rounded-[1.4rem] aspect-[4/3] bg-slate-200 dark:bg-slate-800">
                         <img alt="{{ $item->title }}" loading="lazy"
-                            class="aspect-[4/3] w-full rounded-[1.4rem] object-cover transition-transform duration-500 group-hover:scale-105"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                             src="{{ $item->image_url }}">
 
-                        <!-- Dark gradient overlay for text readability -->
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/25 to-transparent opacity-90 group-hover:opacity-95 transition-opacity"></div>
+                        <!-- Subtle hover veil with zoom icon (only visible on hover) -->
+                        <div class="absolute inset-0 bg-slate-950/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 rounded-full bg-white/90 dark:bg-slate-900/90 text-slate-800 dark:text-white flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                <svg class="w-5 h-5 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
+                                </svg>
+                            </div>
+                        </div>
 
-                        <!-- Category badge -->
+                        <!-- Pill Category Badge (Clean contrast) -->
                         <div class="absolute top-3 right-3">
-                            <span class="rounded-full bg-slate-900/80 backdrop-blur-md px-3 py-1 text-xs font-semibold text-amber-400 border border-slate-700/60 shadow-xs">
+                            <span class="rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-md px-3 py-1 text-xs font-bold text-slate-800 dark:text-amber-400 border border-slate-200/80 dark:border-slate-700/60 shadow-xs">
                                 {{ $item->category }}
                             </span>
                         </div>
+                    </div>
 
-                        <!-- Zoom indicator button -->
-                        <div class="absolute top-3 left-3 w-9 h-9 rounded-full bg-slate-900/70 backdrop-blur-md text-white border border-white/15 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
-                            </svg>
-                        </div>
-
-                        <!-- Text details at bottom -->
-                        <div class="absolute bottom-0 inset-x-0 p-4 space-y-1">
-                            <h3 class="text-white font-bold text-base leading-snug group-hover:text-amber-400 transition-colors drop-shadow-sm">
-                                {{ $item->title }}
-                            </h3>
-                            @if($item->description)
-                                <p class="text-xs text-slate-300 line-clamp-1 drop-shadow-sm">
-                                    {{ $item->description }}
-                                </p>
-                            @endif
-                        </div>
+                    <!-- Clean Typography Card Footer (High contrast in Light & Dark modes) -->
+                    <div class="px-3 pt-3 pb-1 flex flex-col gap-1">
+                        <h3 class="text-slate-900 dark:text-white font-bold text-sm sm:text-base leading-snug group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                            {{ $item->title }}
+                        </h3>
+                        @if($item->description)
+                            <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-1">
+                                {{ $item->description }}
+                            </p>
+                        @endif
                     </div>
                 </button>
             @empty

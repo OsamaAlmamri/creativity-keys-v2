@@ -46,10 +46,7 @@
     <!-- 4. Why Choose Us (Features) Section -->
     @include('partials.landing.features')
 
-    <!-- 5. Geographic Coverage Areas Section (85+ Jeddah Districts) -->
-    @include('partials.landing.coverage')
-
-    <!-- 6. Work Gallery Section -->
+    <!-- 5. Work Gallery Section -->
     @include('partials.landing.gallery')
 
     <!-- 7. Client Reviews Section -->

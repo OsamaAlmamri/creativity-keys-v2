@@ -143,8 +143,9 @@ class ThemeManagementTest extends TestCase
         $responseDisabled->assertDontSee('<span>واتساب</span>', false);
         $responseDisabled->assertDontSee('<span>اتصال طوارئ 24/7</span>', false);
         $responseDisabled->assertDontSee('محادثة واتساب سريعة', false);
-        $responseDisabled->assertSee('theme-text-sun', false);
-        $responseDisabled->assertSee('الوضع الليلي', false);
+        $responseDisabled->assertDontSee('الوضع الليلي');
+        $responseDisabled->assertDontSee('الوضع النهاري');
+        $responseDisabled->assertSee('aria-label="تبديل المظهر"', false);
         $responseDisabled->assertSee('emergency-ticker-btn', false);
     }
 

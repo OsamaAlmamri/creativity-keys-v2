@@ -39,7 +39,7 @@ class HomePageTest extends TestCase
         $response->assertSee('id="hero"', false);
         $response->assertSee('id="about"', false);
         $response->assertSee('id="services"', false);
-        $response->assertSee('id="coverage"', false);
+        $response->assertDontSee('id="coverage"', false);
         $response->assertSee('id="gallery"', false);
         $response->assertSee('id="reviews"', false);
         $response->assertSee('id="articles"', false);
@@ -47,17 +47,15 @@ class HomePageTest extends TestCase
         $response->assertSee('id="contact"', false);
     }
 
-    public function test_coverage_section_displays_jeddah_neighborhoods(): void
+    public function test_coverage_section_is_hidden_from_home_page(): void
     {
         Setting::set('coverage_areas', 'الروضة • السلامة • الزهراء • المروة • الصفا • أبحر');
 
         $response = $this->get(route('home'));
 
         $response->assertStatus(200);
-        $response->assertSee('نغطي جميع مناطق وأحياء ومخططات جدة');
-        $response->assertSee('الروضة');
-        $response->assertSee('السلامة');
-        $response->assertSee('أبحر');
+        $response->assertDontSee('id="coverage"', false);
+        $response->assertDontSee('نغطي جميع مناطق وأحياء ومخططات جدة');
     }
 
     public function test_legacy_301_redirects_preserve_seo_value(): void
