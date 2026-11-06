@@ -329,15 +329,27 @@ class SettingController extends Controller
             'arrival_time' => 'nullable|string|max:50',
             'happy_clients' => 'nullable|string|max:50',
             'team_size' => 'nullable|string|max:50',
+            'google_review_rating' => 'nullable|string|max:10',
+            'google_reviews_count' => 'nullable|string|max:30',
+            'google_reviews_url' => 'nullable|url|max:255',
+            'google_reviews_subtitle' => 'nullable|string|max:255',
+            'reviews_title' => 'nullable|string|max:255',
+            'reviews_description' => 'nullable|string|max:500',
         ]);
 
         Setting::set('years_experience', $request->input('years_experience') ?? '', 'stats', 'سنوات الخبرة');
         Setting::set('arrival_time', $request->input('arrival_time') ?? '', 'stats', 'سرعة الوصول للطوارئ');
         Setting::set('happy_clients', $request->input('happy_clients') ?? '', 'stats', 'العملاء المخدومين');
         Setting::set('team_size', $request->input('team_size') ?? '', 'stats', 'عدد الفنيين');
+        Setting::set('google_review_rating', $request->input('google_review_rating') ?? '4.9', 'stats', 'تقييم قوقل العام');
+        Setting::set('google_reviews_count', $request->input('google_reviews_count') ?? '185+', 'stats', 'إجمالي تقييمات قوقل');
+        Setting::set('google_reviews_url', $request->input('google_reviews_url') ?? '', 'stats', 'رابط صفحة التقييمات على خرائط Google');
+        Setting::set('google_reviews_subtitle', $request->input('google_reviews_subtitle') ?? '', 'stats', 'النص التوضيحي لتقييمات قوقل');
+        Setting::set('reviews_title', $request->input('reviews_title') ?? '', 'stats', 'عنوان قسم التقييمات');
+        Setting::set('reviews_description', $request->input('reviews_description') ?? '', 'stats', 'وصف قسم التقييمات');
 
         return redirect()->route('admin.settings.index', ['tab' => 'stats'])
-            ->with('success', 'تم حفظ إحصائيات وأرقام الثقة بنجاح.');
+            ->with('success', 'تم حفظ إحصائيات وأرقام الثقة وإعدادات التقييمات بنجاح.');
     }
 
     /**
