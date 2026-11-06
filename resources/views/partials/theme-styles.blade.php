@@ -669,7 +669,7 @@
 
     /* 10. Footer in Light Mode */
     html.theme-light footer {
-        background-color: #f1f5f9 !important;
+        background-color: #f8fafc !important;
         border-top-color: #e2e8f0 !important;
     }
 
@@ -683,13 +683,19 @@
     }
 
     html.theme-light footer a:not([class*="bg-"]):hover {
-        color: var(--brand-700, #b45309) !important;
+        color: var(--brand-600, #b45309) !important;
     }
 
     html.theme-light footer .bg-slate-900 {
         background-color: #ffffff !important;
         border-color: #e2e8f0 !important;
         color: #334155 !important;
+    }
+
+    html.theme-light footer .text-brand-primary,
+    html.theme-light footer .text-brand-primary svg,
+    html.theme-light footer .text-brand-primary path {
+        color: var(--brand-500) !important;
     }
 
     /* 11. ADMIN PANEL COMPLETE LIGHT MODE STYLING */

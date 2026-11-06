@@ -48,7 +48,7 @@
                     <label for="seo_alternate_name" class="block text-xs font-bold text-slate-200">الاسم التجاري البديل
                         في السكيما (Schema Alternate Name)</label>
                     <input type="text" id="seo_alternate_name" name="seo_alternate_name"
-                        value="{{ \App\Models\Setting::get('seo_alternate_name', 'محل ومختبر مفتاح الإبداع لقص وبرمجة المفاتيح بجدة') }}"
+                        value="{{ \App\Models\Setting::get('seo_alternate_name', 'محل مفتاح الإبداع لقص وبرمجة المفاتيح بجدة') }}"
                         class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:border-emerald-400 focus:outline-none">
                     <p class="text-[11px] text-slate-500">الاسم التعريفي الكامل لنشاطك التجاري في بيانات Schema.org
                         الغنية لتعزيز الظهور المحلي.</p>

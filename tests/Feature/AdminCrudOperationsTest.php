@@ -189,12 +189,12 @@ class AdminCrudOperationsTest extends TestCase
         $response = $this->actingAs($this->admin)->post(route('admin.settings.update'), [
             'phone' => '0558887766',
             'emergency_phone' => '0551110099',
-            'site_name' => 'مفتاح باب البستان - الفرع الرئيسي',
+            'site_name' => 'مفتاح الابداع  - الفرع الرئيسي',
         ]);
 
         $response->assertRedirect(route('admin.settings.index'));
         $this->assertEquals('0558887766', Setting::get('phone'));
-        $this->assertEquals('مفتاح باب البستان - الفرع الرئيسي', Setting::get('site_name'));
+        $this->assertEquals('مفتاح الابداع  - الفرع الرئيسي', Setting::get('site_name'));
     }
 
     public function test_admin_can_upload_logo_and_save_seo_settings(): void
@@ -211,7 +211,7 @@ class AdminCrudOperationsTest extends TestCase
             'og_image_file' => $ogImageFile,
             'meta_keywords' => 'مفاتيح جدة, قص مفاتيح, فتح ابواب',
             'seo_robots' => 'index, follow',
-            'seo_alternate_name' => 'مختبر مفتاح باب البستان المعتمد',
+            'seo_alternate_name' => 'محل مفتاح الابداع  المعتمد',
             'google_site_verification' => 'google-verify-code-12345',
             'google_analytics_id' => 'G-ABC123XYZ',
             'social_twitter' => 'https://x.com/baba_albustan',
@@ -290,14 +290,14 @@ class AdminCrudOperationsTest extends TestCase
 
         // 2. Update branding tab independently
         $brandingResponse = $this->actingAs($this->admin)->post(route('admin.settings.update-tab', 'branding'), [
-            'site_name' => 'مفتاح باب البستان المطور',
+            'site_name' => 'مفتاح الابداع  المطور',
             'city_name' => 'جدة عروس البحر',
             'site_tagline' => 'خدمة 24 ساعة احترافية',
         ]);
 
         $brandingResponse->assertRedirect(route('admin.settings.index', ['tab' => 'branding']));
         $brandingResponse->assertSessionHas('success');
-        $this->assertEquals('مفتاح باب البستان المطور', Setting::get('site_name'));
+        $this->assertEquals('مفتاح الابداع  المطور', Setting::get('site_name'));
         $this->assertEquals('جدة عروس البحر', Setting::get('city_name'));
 
         // Verify other tabs were untouched

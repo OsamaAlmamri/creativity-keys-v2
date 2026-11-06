@@ -15,7 +15,7 @@ class SeoOptimizationTest extends TestCase
 
     public function test_home_page_contains_comprehensive_seo_meta_tags_and_schema(): void
     {
-        Setting::set('site_name', 'مفتاح باب البستان');
+        Setting::set('site_name', 'مفتاح الابداع ');
         Setting::set('site_tagline', 'قص وبرمجة المفاتيح الذكية');
         Setting::set('city_name', 'جدة');
         Setting::set('meta_description', 'أفضل خدمات قص وبرمجة المفاتيح والأقفال في جدة على مدار 24 ساعة');
@@ -39,7 +39,7 @@ class SeoOptimizationTest extends TestCase
         // Basic SEO & Meta
         $response->assertSee('<meta name="robots" content="index, follow', false);
         $response->assertSee('<link rel="canonical" href="'.route('home').'">', false);
-        $response->assertSee('مفتاح باب البستان');
+        $response->assertSee('مفتاح الابداع ');
         $response->assertSee('أفضل خدمات قص وبرمجة المفاتيح والأقفال في جدة', false);
 
         // Geo & Local SEO Tags
@@ -49,14 +49,14 @@ class SeoOptimizationTest extends TestCase
         $response->assertSee('name="ICBM"', false);
 
         // Open Graph & Twitter Cards
-        $response->assertSee('<meta property="og:site_name" content="مفتاح باب البستان">', false);
+        $response->assertSee('<meta property="og:site_name" content="مفتاح الابداع ">', false);
         $response->assertSee('<meta property="og:locale" content="ar_SA">', false);
         $response->assertSee('<meta property="og:type" content="website">', false);
         $response->assertSee('<meta name="twitter:card" content="summary_large_image">', false);
 
         // JSON-LD Schema.org LocalBusiness / Locksmith
         $response->assertSee('"@type": "Locksmith"', false);
-        $response->assertSee('"name": "مفتاح باب البستان"', false);
+        $response->assertSee('"name": "مفتاح الابداع "', false);
         $response->assertSee('"telephone": "0559998877"', false);
         $response->assertSee('"@type": "PostalAddress"', false);
         $response->assertSee('"addressLocality": "جدة"', false);
@@ -71,7 +71,7 @@ class SeoOptimizationTest extends TestCase
 
     public function test_article_details_page_contains_article_specific_seo_and_schema(): void
     {
-        Setting::set('site_name', 'مفتاح باب البستان');
+        Setting::set('site_name', 'مفتاح الابداع ');
 
         $article = Article::factory()->create([
             'title' => 'دليل برمجة مفاتيح سيارات تويوتا الذكية',
@@ -87,7 +87,7 @@ class SeoOptimizationTest extends TestCase
         $response->assertStatus(200);
 
         // Title and description match article
-        $response->assertSee('<title>دليل برمجة مفاتيح سيارات تويوتا الذكية | مفتاح باب البستان</title>', false);
+        $response->assertSee('<title>دليل برمجة مفاتيح سيارات تويوتا الذكية | مفتاح الابداع </title>', false);
         $response->assertSee('content="كل ما تود معرفته عن برمجة بصمات ومفاتيح تويوتا المشفرة', false);
 
         // Open Graph
@@ -156,13 +156,13 @@ class SeoOptimizationTest extends TestCase
 
     public function test_custom_seo_and_branding_settings_are_rendered_correctly(): void
     {
-        Setting::set('site_name', 'مفتاح باب البستان');
+        Setting::set('site_name', 'مفتاح الابداع ');
         Setting::set('site_logo', 'https://example.com/brand-logo.png');
         Setting::set('site_favicon', 'https://example.com/custom-favicon.png');
         Setting::set('meta_keywords', 'مفاتيح سيارات جدة, قص ليزر, فتح اقفال ذكية');
         Setting::set('og_image', 'https://example.com/custom-og.jpg');
         Setting::set('seo_robots', 'noindex, nofollow');
-        Setting::set('seo_alternate_name', 'مختبر مفتاح باب البستان لقص وبرمجة الأقفال');
+        Setting::set('seo_alternate_name', 'محل مفتاح الابداع  لقص وبرمجة الأقفال');
         Setting::set('google_site_verification', 'googletestcode998877');
         Setting::set('google_analytics_id', 'G-TEST123456');
         Setting::set('social_twitter', 'https://x.com/baba_keys');
@@ -195,7 +195,7 @@ class SeoOptimizationTest extends TestCase
         $response->assertSee("gtag('config', 'G-TEST123456');", false);
 
         // Schema Alternate Name & sameAs
-        $response->assertSee('"alternateName": "مختبر مفتاح باب البستان لقص وبرمجة الأقفال"', false);
+        $response->assertSee('"alternateName": "محل مفتاح الابداع  لقص وبرمجة الأقفال"', false);
         $response->assertSee('"sameAs": ["https://x.com/baba_keys","https://instagram.com/baba_keys"]', false);
     }
 }
