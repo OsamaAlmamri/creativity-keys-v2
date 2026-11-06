@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\ServiceCategoryController;
-use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\ThemeController;
 use App\Http\Controllers\Admin\UserController;
@@ -15,6 +15,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ManageController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/migrate', [ManageController::class, 'migrate']);
 Route::get('/artisan/{common}', [ManageController::class, 'artisan']);
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
+Route::get('/services/{slug}', [ServiceController::class, 'show'])->name('services.show');
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
 Route::get('/articles/{slug}', [ArticleController::class, 'show'])->name('articles.show');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
@@ -74,7 +77,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // إدارة الخدمات وأصنافها
         Route::resource('service-categories', ServiceCategoryController::class)->except(['show'])->names('service-categories');
-        Route::resource('services', ServiceController::class)->names('services');
+        Route::resource('services', AdminServiceController::class)->names('services');
 
         // إدارة المقالات والنصائح
         Route::resource('articles', AdminArticleController::class)->except(['show'])->names('articles');

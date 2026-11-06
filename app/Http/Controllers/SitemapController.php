@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Service;
 use Illuminate\Http\Response;
 
 class SitemapController extends Controller
@@ -16,10 +17,17 @@ class SitemapController extends Controller
             ->orderBy('updated_at', 'desc')
             ->get();
 
-        $latestDate = $articles->first()?->updated_at?->toAtomString() ?? now()->toAtomString();
+        $services = Service::where('is_active', true)
+            ->orderBy('updated_at', 'desc')
+            ->get();
+
+        $latestArticleDate = $articles->first()?->updated_at?->toAtomString();
+        $latestServiceDate = $services->first()?->updated_at?->toAtomString();
+        $latestDate = $latestArticleDate ?? $latestServiceDate ?? now()->toAtomString();
 
         $xml = view('sitemap', [
             'articles' => $articles,
+            'services' => $services,
             'latestDate' => $latestDate,
         ])->render();
 

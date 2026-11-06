@@ -17,6 +17,24 @@
         <priority>0.8</priority>
     </url>
 
+    <!-- خدمات المحل الفنية المتميزة -->
+    @if(isset($services))
+    @foreach($services as $service)
+    <url>
+        <loc>{{ route('services.show', $service->slug) }}</loc>
+        <lastmod>{{ $service->updated_at->toAtomString() }}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        @if($service->image_url)
+        <image:image>
+            <image:loc>{{ url($service->image_url) }}</image:loc>
+            <image:title>{{ $service->title }}</image:title>
+        </image:image>
+        @endif
+    </url>
+    @endforeach
+    @endif
+
     <!-- المقالات المنشورة -->
     @foreach($articles as $article)
     <url>

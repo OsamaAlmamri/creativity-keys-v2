@@ -6,6 +6,7 @@ use Database\Factories\ServiceFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
 class Service extends Model
@@ -21,16 +22,29 @@ class Service extends Model
         'short_description',
         'full_description',
         'price_starting_at',
+        'badge',
+        'hero_subtitle',
+        'overview_title',
+        'overview_content',
+        'features_title',
+        'process_title',
+        'steps',
+        'pricing_title',
+        'pricing_note',
         'features',
         'is_emergency',
         'is_active',
         'sort_order',
+        'meta_title',
+        'meta_description',
+        'meta_keywords',
     ];
 
     protected function casts(): array
     {
         return [
             'features' => 'array',
+            'steps' => 'array',
             'is_emergency' => 'boolean',
             'is_active' => 'boolean',
             'sort_order' => 'integer',
@@ -42,9 +56,31 @@ class Service extends Model
         return $this->belongsTo(ServiceCategory::class, 'category_id');
     }
 
+    public function featuresList(): HasMany
+    {
+        return $this->hasMany(ServiceFeature::class)->orderBy('sort_order')->orderBy('id');
+    }
+
+    public function faqs(): HasMany
+    {
+        return $this->hasMany(ServiceFaq::class)->orderBy('sort_order')->orderBy('id');
+    }
+
+    public function pricingTiers(): HasMany
+    {
+        return $this->hasMany(ServicePricingTier::class)->orderBy('sort_order')->orderBy('id');
+    }
+
     public function getImageUrlAttribute(): string
     {
         $map = [
+            'car-keys-programming' => '/images/store/800_gi-6abfd921d9050.jpg',
+            'car-remotes-repair-programming' => '/images/store/800_6abfe0ca2391c.jpg',
+            'emergency-car-lockout' => '/images/store/800_gi-6abfd95c4c431.jpg',
+            'laser-car-keys-cutting' => '/images/store/800_6abfe2761228b.jpg',
+            'home-door-locksmith' => '/images/store/800_6abfe27712dff.jpg',
+            'safes-vaults-smart-locks' => '/images/store/800_gi-6abfd921d9048.jpg',
+            // Legacy fallbacks
             'car-keys-and-remotes-programming' => '/images/store/800_gi-6abfd921d9050.jpg',
             'smart-fob-and-standard-remotes-coding' => '/images/store/800_6abfe0ca2391c.jpg',
             'transponder-lost-car-keys-duplication' => '/images/store/800_6abfe2761228b.jpg',
@@ -61,19 +97,21 @@ class Service extends Model
 
     public function getBadgeTextAttribute(): string
     {
+        if (! empty($this->badge)) {
+            return $this->badge;
+        }
+
         if ($this->is_emergency) {
             return 'طوارئ 24/7';
         }
 
         $map = [
-            'car-keys-and-remotes-programming' => 'دقيق',
-            'smart-fob-and-standard-remotes-coding' => 'حديث',
-            'transponder-lost-car-keys-duplication' => 'سريع',
-            'ford-mykey-system-reset-disable' => 'برمجة ذكية',
-            'ignition-switch-and-car-locks-repair' => 'صيانة فورية',
-            'car-keys-repair-home-unlocking' => 'شامل',
-            'lost-keys-replacement-all-locks' => 'مطابق للوكالة',
-            'doors-cars-safes-programming' => 'أمان فائق',
+            'car-keys-programming' => 'تقنية ذكية',
+            'car-remotes-repair-programming' => 'صيانة فورية',
+            'emergency-car-lockout' => 'طوارئ سريعة',
+            'laser-car-keys-cutting' => 'ليزر CNC',
+            'home-door-locksmith' => 'أمان المنازل',
+            'safes-vaults-smart-locks' => 'أمان فائق',
         ];
 
         return $map[$this->slug] ?? 'متميز';
