@@ -2,19 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
-use App\Models\GalleryItem;
-use App\Models\Review;
-use App\Models\Service;
-use App\Models\Setting;
-use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Artisan;
 
 class ManageController extends Controller
 {
-
-
-  public function artisan(string $command)
+    public function artisan(string $command)
     {
         $blocked = [
             'migrate:fresh',
@@ -53,6 +45,4 @@ class ManageController extends Controller
         return 'migrate success';
 
     }
-
-
 }

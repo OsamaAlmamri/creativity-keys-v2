@@ -42,7 +42,7 @@
                 <div class="space-y-1.5">
                     <label for="seo_alternate_name" class="block text-xs font-bold text-slate-200">الاسم التجاري البديل في السكيما (Schema Alternate Name)</label>
                     <input type="text" id="seo_alternate_name" name="seo_alternate_name"
-                        value="{{ \App\Models\Setting::get('seo_alternate_name', 'محل ومختبر مفتاح باب البستان لقص وبرمجة المفاتيح بجدة') }}"
+                        value="{{ \App\Models\Setting::get('seo_alternate_name', 'محل ومختبر مفاتيح الإبداع لقص وبرمجة المفاتيح بجدة') }}"
                         class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:border-emerald-400 focus:outline-none">
                     <p class="text-[11px] text-slate-500">الاسم التعريفي الكامل لنشاطك التجاري في بيانات Schema.org الغنية لتعزيز الظهور المحلي.</p>
                 </div>
@@ -139,7 +139,7 @@
                         <div class="p-3 space-y-1 bg-slate-900/90 border-t border-slate-800">
                             <div class="text-[11px] font-mono text-emerald-400">{{ url('/') }}</div>
                             <div class="text-xs font-bold text-white truncate">
-                                {{ \App\Models\Setting::get('site_name', 'مفتاح باب البستان') }} | خدمات المفاتيح
+                                {{ \App\Models\Setting::get('site_name', 'مفاتيح الإبداع') }} | خدمات المفاتيح
                             </div>
                             <div class="text-[11px] text-slate-400 line-clamp-1 truncate">
                                 {{ \App\Models\Setting::get('meta_description') }}

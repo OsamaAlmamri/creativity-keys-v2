@@ -155,7 +155,7 @@
                                     <a href="{{ route('admin.messages.show', $msg) }}" class="inline-flex items-center px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-bold transition-colors">
                                         عرض
                                     </a>
-                                    <a href="https://wa.me/{{ preg_replace('/^0/', '966', preg_replace('/\D/', '', $msg->phone)) }}?text={{ urlencode('السلام عليكم ' . $msg->name . '، بخصوص طلبك من مفتاح باب البستان') }}" target="_blank" class="inline-flex items-center px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-colors">
+                                    <a href="https://wa.me/{{ preg_replace('/^0/', '966', preg_replace('/\D/', '', $msg->phone)) }}?text={{ urlencode('السلام عليكم ' . $msg->name . '، بخصوص طلبك من مفاتيح الإبداع') }}" target="_blank" class="inline-flex items-center px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-colors">
                                         واتساب
                                     </a>
                                 </td>

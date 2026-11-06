@@ -5,7 +5,7 @@
             <!-- About Media & Trust Elements -->
             <div class="lg:col-span-5 space-y-6">
                 <div class="relative rounded-3xl overflow-hidden border border-slate-800 shadow-2xl group">
-                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="ورشة ومختبر {{ $settings['site_name'] ?? 'مفتاح باب البستان' }} لقص وبرمجة المفاتيح في {{ $cityName }}" loading="lazy" class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-500">
+                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="ورشة ومختبر {{ $settings['site_name'] ?? 'مفاتيح الإبداع' }} لقص وبرمجة المفاتيح في {{ $cityName }}" loading="lazy" class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
                     
                     <div class="absolute bottom-6 right-6 left-6 p-4 rounded-2xl bg-slate-900/90 backdrop-blur-md border border-slate-750">
@@ -47,7 +47,7 @@
 
                 <div class="space-y-4 text-slate-300 text-base leading-relaxed">
                     <p>
-                        تأسس مركز <strong>{{ $settings['site_name'] ?? 'مفتاح باب البستان' }}</strong> برؤية واضحة تهدف إلى إرساء معايير جديدة لخدمات المفاتيح وفتح الأقفال في المملكة العربية السعودية. نحن ندرك تماماً أن الوقوع في موقف قفل مفاجئ للمنزل أو السيارة يسبب قلقاً وإرباكاً، لذا جهزنا أسطولاً من الورش المتنقلة بأعلى التقنيات لتكون بجانبك خلال دقائق معدودة.
+                        تأسس مركز <strong>{{ $settings['site_name'] ?? 'مفاتيح الإبداع' }}</strong> برؤية واضحة تهدف إلى إرساء معايير جديدة لخدمات المفاتيح وفتح الأقفال في المملكة العربية السعودية. نحن ندرك تماماً أن الوقوع في موقف قفل مفاجئ للمنزل أو السيارة يسبب قلقاً وإرباكاً، لذا جهزنا أسطولاً من الورش المتنقلة بأعلى التقنيات لتكون بجانبك خلال دقائق معدودة.
                     </p>
                     <p>
                         سواء كنت بحاجة لقص مفتاح كمبيوتر دقيق، برمجة بصمة سيارة حديثة بعد فقدان المفتاح الأصلي، صيانة خزنة حديدية مغلقة، أو تركيب أحدث أنظمة الأقفال الذكية لمنزلك، فإننا نجمع بين الحرفية العالية والأمان التام والمصداقية.

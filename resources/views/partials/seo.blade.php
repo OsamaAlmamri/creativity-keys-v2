@@ -1,5 +1,5 @@
 @php
-    $siteName = $settings['site_name'] ?? 'مفتاح باب البستان';
+    $siteName = $settings['site_name'] ?? 'مفاتيح الإبداع';
     $siteTagline = $settings['site_tagline'] ?? 'قص وبرمجة المفاتيح الذكية';
     $cityName = $settings['city_name'] ?? 'جدة';
     $defaultDesc = $settings['meta_description'] ?? ("أفضل خدمات قص وبرمجة مفاتيح وبصمات السيارات وفتح الأقفال المغلقة للطوارئ بدون كسر على مدار 24 ساعة في {$cityName}.");

@@ -14,8 +14,8 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\ManageController;
+use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +31,31 @@ Route::get('/articles', [ArticleController::class, 'index'])->name('articles.ind
 Route::get('/articles/{slug}', [ArticleController::class, 'show'])->name('articles.show');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
+
+/*
+|--------------------------------------------------------------------------
+| SEO 301 Permanent Redirects for Legacy URLs
+| تحويلات دائمة للروابط القديمة من النسخة v1 للحفاظ على أرشفة محركات البحث
+|--------------------------------------------------------------------------
+*/
+Route::get('/contact', function () {
+    return redirect('/#contact', 301);
+});
+Route::get('/blog', function () {
+    return redirect()->route('articles.index', [], 301);
+});
+Route::get('/article/{slug}', function (string $slug) {
+    return redirect()->route('articles.show', ['slug' => $slug], 301);
+});
+Route::get('/category/{slug?}', function () {
+    return redirect()->route('articles.index', [], 301);
+});
+Route::get('/tag/{slug?}', function () {
+    return redirect()->route('articles.index', [], 301);
+});
+Route::get('/page/{slug?}', function () {
+    return redirect('/', 301);
+});
 
 /*
 |--------------------------------------------------------------------------

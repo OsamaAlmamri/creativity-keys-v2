@@ -176,7 +176,7 @@
                 <div class="space-y-1.5 sm:col-span-1">
                     <label for="site_name" class="block text-xs font-bold text-slate-300">اسم المحل / المركز <span class="text-red-400">*</span></label>
                     <input type="text" id="site_name" name="site_name" required
-                        value="{{ \App\Models\Setting::get('site_name', 'مفتاح باب البستان') }}"
+                        value="{{ \App\Models\Setting::get('site_name', 'مفاتيح الإبداع') }}"
                         class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:border-amber-400 focus:outline-none">
                 </div>
 

@@ -55,7 +55,7 @@
                             </div>
                         @endif
                         <div>
-                            <span class="text-sm font-black text-white block" id="preview-brand-title">مفتاح باب البستان</span>
+                            <span class="text-sm font-black text-white block" id="preview-brand-title">مفاتيح الإبداع</span>
                             <span class="text-[11px] font-bold block" id="preview-brand-sub" style="color: {{ $activeColors['500'] }};">قص وبرمجة الأقفال 24/7</span>
                         </div>
                     </div>

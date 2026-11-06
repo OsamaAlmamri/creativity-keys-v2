@@ -55,7 +55,7 @@
                 <a href="{{ route('home') }}" class="flex items-center gap-3 group shrink-0">
                     @if(!empty($settings['site_logo']))
                         <div class="h-11 flex items-center justify-center p-1 rounded-2xl bg-white/50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 group-hover:scale-105 transition-transform shadow-xs">
-                            <img src="{{ $settings['site_logo'] }}" alt="{{ $settings['site_name'] ?? 'مفتاح باب البستان' }}" class="h-9 w-auto max-w-[160px] object-contain">
+                            <img src="{{ $settings['site_logo'] }}" alt="{{ $settings['site_name'] ?? 'مفاتيح الإبداع' }}" class="h-9 w-auto max-w-[160px] object-contain">
                         </div>
                     @else
                         <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-amber-500 via-amber-400 to-yellow-300 p-0.5 shadow-md shadow-amber-500/20 group-hover:scale-105 transition-transform">
@@ -68,7 +68,7 @@
                     @endif
                     <div class="flex flex-col">
                         <span class="text-base sm:text-lg font-black tracking-tight text-slate-900 dark:text-white block leading-snug">
-                            {{ $settings['site_name'] ?? 'مفتاح باب البستان' }}
+                            {{ $settings['site_name'] ?? 'مفاتيح الإبداع' }}
                         </span>
                         <span class="text-[11px] text-amber-600 dark:text-amber-400 font-bold block leading-none">
                             {{ $settings['site_tagline'] ?? 'قص وبرمجة المفاتيح الذكية' }}
@@ -81,6 +81,7 @@
                     <x-nav-link :href="route('home') . '#hero'">الرئيسية</x-nav-link>
                     <x-nav-link :href="route('home') . '#about'">من نحن</x-nav-link>
                     <x-nav-link :href="route('home') . '#services'">خدماتنا</x-nav-link>
+                    <x-nav-link :href="route('home') . '#coverage'">نطاق التغطية</x-nav-link>
                     <x-nav-link :href="route('home') . '#gallery'">معرض الأعمال</x-nav-link>
                     <x-nav-link :href="route('home') . '#reviews'">التقييمات</x-nav-link>
                     <x-nav-link :href="route('articles.index')" :active="request()->routeIs('articles.*')">المقالات</x-nav-link>
@@ -144,6 +145,7 @@
             <x-nav-link variant="mobile" :href="route('home') . '#hero'">الرئيسية</x-nav-link>
             <x-nav-link variant="mobile" :href="route('home') . '#about'">من نحن</x-nav-link>
             <x-nav-link variant="mobile" :href="route('home') . '#services'">خدماتنا</x-nav-link>
+            <x-nav-link variant="mobile" :href="route('home') . '#coverage'">نطاق التغطية والأحياء</x-nav-link>
             <x-nav-link variant="mobile" :href="route('home') . '#gallery'">معرض الأعمال</x-nav-link>
             <x-nav-link variant="mobile" :href="route('home') . '#reviews'">التقييمات</x-nav-link>
             <x-nav-link variant="mobile" :href="route('articles.index')" :active="request()->routeIs('articles.*')" :highlight="true">المقالات والنصائح</x-nav-link>
@@ -189,14 +191,14 @@
                     <div class="flex items-center gap-3">
                         @if(!empty($settings['site_logo']))
                             <div class="h-10 flex items-center justify-center p-1 rounded-xl bg-slate-900 border border-slate-800 shadow-md">
-                                <img src="{{ $settings['site_logo'] }}" alt="{{ $settings['site_name'] ?? 'مفتاح باب البستان' }}" class="h-8 w-auto max-w-[140px] object-contain">
+                                <img src="{{ $settings['site_logo'] }}" alt="{{ $settings['site_name'] ?? 'مفاتيح الإبداع' }}" class="h-8 w-auto max-w-[140px] object-contain">
                             </div>
                         @else
                             <div class="w-10 h-10 rounded-xl bg-amber-500 flex items-center justify-center text-slate-950 font-black shadow-lg shadow-amber-500/20">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
                             </div>
                         @endif
-                        <span class="text-xl font-black text-white">{{ $settings['site_name'] ?? 'مفتاح باب البستان' }}</span>
+                        <span class="text-xl font-black text-white">{{ $settings['site_name'] ?? 'مفاتيح الإبداع' }}</span>
                     </div>
                     <p class="text-sm leading-relaxed text-slate-400">
                         المركز المتخصص الأول في قص وبرمجة مفاتيح السيارات الحديثة، واستخراج ريموتات البصمة، وفتح كافة أقفال المنازل والخزائن للطوارئ بدون كسر على مدار الساعة.
@@ -338,7 +340,7 @@
 
             <!-- Bottom Copyright & Admin link -->
             <div class="pt-8 border-t border-slate-800/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-                <p>© {{ date('Y') }} {{ $settings['site_name'] ?? 'مفتاح باب البستان' }}. جميع الحقوق محفوظة.</p>
+                <p>© {{ date('Y') }} {{ $settings['site_name'] ?? 'مفاتيح الإبداع' }}. برمجة وتطوير <a href="https://github.com/OsamaAlmamri" target="_blank" class="text-amber-400 hover:underline">أسامة المعمري</a>. جميع الحقوق محفوظة.</p>
                 <div class="flex items-center gap-4">
                     <span class="text-slate-600">تصميم وتطوير بأحدث معايير الأمان</span>
                     <a href="{{ route('admin.login') }}" class="text-slate-500 hover:text-amber-400 transition-colors inline-flex items-center gap-1">

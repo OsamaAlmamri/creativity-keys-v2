@@ -15,24 +15,36 @@ class DatabaseSeeder extends Seeder
     {
         // مستخدم المدير العام (Full Admin)
         User::updateOrCreate(
-            ['email' => 'admin@keyshop.com'],
+            ['email' => 'admin@creativity-keys.com'],
             [
-                'name' => 'المدير العام',
+                'name' => 'إدارة مفاتيح الإبداع',
                 'password' => Hash::make('password123'),
                 'role' => 'admin',
-                'phone' => '0551234567',
+                'phone' => '0568191921',
                 'is_active' => true,
             ]
         );
 
-        // مستخدم المشرف (Manager)
+        // حساب احتياطي إضافي للإدارة
         User::updateOrCreate(
-            ['email' => 'manager@keyshop.com'],
+            ['email' => 'admin@admin.com'],
             [
-                'name' => 'مشرف الفرع',
+                'name' => 'المدير العام',
+                'password' => Hash::make('admin123456'),
+                'role' => 'admin',
+                'phone' => '0568191921',
+                'is_active' => true,
+            ]
+        );
+
+        // مستخدم المشرف وفني الطوارئ (Manager)
+        User::updateOrCreate(
+            ['email' => 'manager@creativity-keys.com'],
+            [
+                'name' => 'مشرف فرع جدة',
                 'password' => Hash::make('password123'),
                 'role' => 'manager',
-                'phone' => '0559998877',
+                'phone' => '0568191921',
                 'is_active' => true,
             ]
         );

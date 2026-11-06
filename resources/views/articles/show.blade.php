@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $article->title . ' | ' . ($settings['site_name'] ?? 'مفتاح باب البستان'))
+@section('title', $article->title . ' | ' . ($settings['site_name'] ?? 'مفاتيح الإبداع'))
 @section('meta_description', $article->excerpt ?? \Illuminate\Support\Str::limit(strip_tags($article->content), 160))
 @section('og_type', 'article')
 @section('og_image', $article->image_url)
@@ -21,12 +21,12 @@
     "dateModified": "{{ $article->updated_at->toIso8601String() }}",
     "author": {
         "@@type": "Organization",
-        "name": "{{ $settings['site_name'] ?? 'مفتاح باب البستان' }}",
+        "name": "{{ $settings['site_name'] ?? 'مفاتيح الإبداع' }}",
         "url": "{{ route('home') }}"
     },
     "publisher": {
         "@@type": "Organization",
-        "name": "{{ $settings['site_name'] ?? 'مفتاح باب البستان' }}",
+        "name": "{{ $settings['site_name'] ?? 'مفاتيح الإبداع' }}",
         "url": "{{ route('home') }}"
     },
     "articleSection": "{{ $article->category }}"
@@ -134,7 +134,7 @@
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
                 </div>
                 <div>
-                    <h4 class="text-sm font-bold text-white mb-0.5">فريق فنيي {{ $settings['site_name'] ?? 'مفتاح باب البستان' }}</h4>
+                    <h4 class="text-sm font-bold text-white mb-0.5">فريق فنيي {{ $settings['site_name'] ?? 'مفاتيح الإبداع' }}</h4>
                     <p class="text-xs text-slate-400 leading-relaxed">
                         نخبة من أمهر فنيي فتح الأقفال وبرمجة مفاتيح السيارات في {{ $settings['city_name'] ?? 'جدة' }} بخبرة تتجاوز {{ $settings['years_experience'] ?? '15' }} عاماً. نهدف من خلال هذه المقالات إلى إثراء المحتوى التوعوي وحماية ممتلكاتكم.
                     </p>
