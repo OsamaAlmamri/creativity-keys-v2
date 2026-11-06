@@ -13,10 +13,10 @@
                 : ($highlight ? 'text-amber-400 hover:bg-slate-800/80 hover:text-amber-300' : 'text-slate-300 hover:bg-slate-800 hover:text-white')
         ),
         'footer' => 'text-sm text-slate-400 hover:text-amber-400 transition-colors inline-block',
-        default => 'px-3 xl:px-3.5 py-1.5 rounded-full text-xs xl:text-sm font-bold transition-all ' . (
+        default => 'text-sm font-semibold transition-colors duration-200 ' . (
             $active
-                ? 'bg-white dark:bg-slate-700 text-slate-950 dark:text-white shadow-xs'
-                : ($highlight ? 'text-amber-500 dark:text-amber-400 hover:bg-white dark:hover:bg-slate-700' : 'text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-white dark:hover:bg-slate-700')
+                ? 'text-amber-500 dark:text-amber-400 font-bold'
+                : ($highlight ? 'text-amber-500 dark:text-amber-400 font-bold' : 'text-slate-700 dark:text-slate-200 hover:text-amber-500 dark:hover:text-amber-400')
         ),
     };
 @endphp
