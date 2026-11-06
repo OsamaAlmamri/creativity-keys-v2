@@ -35,7 +35,7 @@
     // Favicon & Logo & Alternate name
     $faviconUrl = !empty($settings['site_favicon']) ? $settings['site_favicon'] : null;
     $siteLogo = !empty($settings['site_logo']) ? $settings['site_logo'] : null;
-    $alternateName = !empty($settings['seo_alternate_name']) ? $settings['seo_alternate_name'] : "محل وورشة {$siteName} لقص وبرمجة المفاتيح وفتح الأقفال";
+    $alternateName = !empty($settings['seo_alternate_name']) ? $settings['seo_alternate_name'] : "محل  {$siteName} لقص وبرمجة المفاتيح وفتح الأقفال";
 
     // Social accounts for schema sameAs
     $socials = array_values(array_filter([
