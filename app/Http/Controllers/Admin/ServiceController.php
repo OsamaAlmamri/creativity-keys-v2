@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Service;
 use App\Models\ServiceCategory;
+use App\Models\ServiceFaq;
+use App\Models\ServiceFeature;
+use App\Models\ServicePricingTier;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -44,18 +47,37 @@ class ServiceController extends Controller
             'pricing_title' => 'nullable|string|max:255',
             'pricing_note' => 'nullable|string|max:255',
             'price_starting_at' => 'nullable|string|max:100',
-            'features' => 'nullable|string', // comma or newline separated
+            'features' => 'nullable|string',
             'meta_title' => 'nullable|string|max:190',
             'meta_description' => 'nullable|string',
             'meta_keywords' => 'nullable|string',
             'is_emergency' => 'nullable|boolean',
             'is_active' => 'nullable|boolean',
             'sort_order' => 'nullable|integer',
+            'steps' => 'nullable|array',
+            'sub_features' => 'nullable|array',
+            'pricing_tiers' => 'nullable|array',
+            'faqs' => 'nullable|array',
         ]);
 
         $featuresArray = [];
         if (! empty($validated['features'])) {
             $featuresArray = array_values(array_filter(array_map('trim', preg_split('/\r\n|\r|\n|,/', $validated['features']))));
+        }
+
+        // Clean steps array
+        $stepsArray = [];
+        if ($request->has('steps') && is_array($request->input('steps'))) {
+            $idx = 1;
+            foreach ($request->input('steps') as $stepItem) {
+                if (! empty($stepItem['title'])) {
+                    $stepsArray[] = [
+                        'step' => $idx++,
+                        'title' => trim($stepItem['title']),
+                        'desc' => trim($stepItem['desc'] ?? ''),
+                    ];
+                }
+            }
         }
 
         $service = new Service;
@@ -75,6 +97,7 @@ class ServiceController extends Controller
         $service->pricing_note = $validated['pricing_note'] ?? null;
         $service->price_starting_at = $validated['price_starting_at'] ?? null;
         $service->features = $featuresArray;
+        $service->steps = ! empty($stepsArray) ? $stepsArray : null;
         $service->meta_title = $validated['meta_title'] ?? null;
         $service->meta_description = $validated['meta_description'] ?? null;
         $service->meta_keywords = $validated['meta_keywords'] ?? null;
@@ -82,6 +105,51 @@ class ServiceController extends Controller
         $service->is_active = $request->boolean('is_active', true);
         $service->sort_order = (int) ($validated['sort_order'] ?? 0);
         $service->save();
+
+        // Sync Sub-Features
+        if ($request->has('sub_features') && is_array($request->input('sub_features'))) {
+            foreach ($request->input('sub_features') as $order => $f) {
+                if (! empty($f['title'])) {
+                    ServiceFeature::create([
+                        'service_id' => $service->id,
+                        'title' => trim($f['title']),
+                        'description' => trim($f['description'] ?? ''),
+                        'icon' => $f['icon'] ?? 'sparkles',
+                        'badge' => $f['badge'] ?? null,
+                        'sort_order' => $order + 1,
+                    ]);
+                }
+            }
+        }
+
+        // Sync Pricing Tiers
+        if ($request->has('pricing_tiers') && is_array($request->input('pricing_tiers'))) {
+            foreach ($request->input('pricing_tiers') as $order => $p) {
+                if (! empty($p['name'])) {
+                    ServicePricingTier::create([
+                        'service_id' => $service->id,
+                        'name' => trim($p['name']),
+                        'price' => trim($p['price'] ?? ''),
+                        'note' => $p['note'] ?? null,
+                        'sort_order' => $order + 1,
+                    ]);
+                }
+            }
+        }
+
+        // Sync FAQs
+        if ($request->has('faqs') && is_array($request->input('faqs'))) {
+            foreach ($request->input('faqs') as $order => $q) {
+                if (! empty($q['question']) && ! empty($q['answer'])) {
+                    ServiceFaq::create([
+                        'service_id' => $service->id,
+                        'question' => trim($q['question']),
+                        'answer' => trim($q['answer']),
+                        'sort_order' => $order + 1,
+                    ]);
+                }
+            }
+        }
 
         return redirect()->route('admin.services.index')->with('success', 'تمت إضافة الخدمة بنجاح.');
     }
@@ -119,11 +187,31 @@ class ServiceController extends Controller
             'is_emergency' => 'nullable|boolean',
             'is_active' => 'nullable|boolean',
             'sort_order' => 'nullable|integer',
+            'steps' => 'nullable|array',
+            'sub_features' => 'nullable|array',
+            'pricing_tiers' => 'nullable|array',
+            'faqs' => 'nullable|array',
         ]);
 
         $featuresArray = [];
         if (! empty($validated['features'])) {
             $featuresArray = array_values(array_filter(array_map('trim', preg_split('/\r\n|\r|\n|,/', $validated['features']))));
+        }
+
+        // Clean steps array if passed
+        if ($request->has('steps') && is_array($request->input('steps'))) {
+            $stepsArray = [];
+            $idx = 1;
+            foreach ($request->input('steps') as $stepItem) {
+                if (! empty($stepItem['title'])) {
+                    $stepsArray[] = [
+                        'step' => $idx++,
+                        'title' => trim($stepItem['title']),
+                        'desc' => trim($stepItem['desc'] ?? ''),
+                    ];
+                }
+            }
+            $service->steps = $stepsArray;
         }
 
         $service->category_id = $validated['category_id'] ?? null;
@@ -151,6 +239,54 @@ class ServiceController extends Controller
         $service->is_active = $request->boolean('is_active');
         $service->sort_order = (int) ($validated['sort_order'] ?? 0);
         $service->save();
+
+        // Sync Sub-Features if present in request
+        if ($request->has('sub_features') && is_array($request->input('sub_features'))) {
+            $service->featuresList()->delete();
+            foreach ($request->input('sub_features') as $order => $f) {
+                if (! empty($f['title'])) {
+                    ServiceFeature::create([
+                        'service_id' => $service->id,
+                        'title' => trim($f['title']),
+                        'description' => trim($f['description'] ?? ''),
+                        'icon' => $f['icon'] ?? 'sparkles',
+                        'badge' => $f['badge'] ?? null,
+                        'sort_order' => $order + 1,
+                    ]);
+                }
+            }
+        }
+
+        // Sync Pricing Tiers if present in request
+        if ($request->has('pricing_tiers') && is_array($request->input('pricing_tiers'))) {
+            $service->pricingTiers()->delete();
+            foreach ($request->input('pricing_tiers') as $order => $p) {
+                if (! empty($p['name'])) {
+                    ServicePricingTier::create([
+                        'service_id' => $service->id,
+                        'name' => trim($p['name']),
+                        'price' => trim($p['price'] ?? ''),
+                        'note' => $p['note'] ?? null,
+                        'sort_order' => $order + 1,
+                    ]);
+                }
+            }
+        }
+
+        // Sync FAQs if present in request
+        if ($request->has('faqs') && is_array($request->input('faqs'))) {
+            $service->faqs()->delete();
+            foreach ($request->input('faqs') as $order => $q) {
+                if (! empty($q['question']) && ! empty($q['answer'])) {
+                    ServiceFaq::create([
+                        'service_id' => $service->id,
+                        'question' => trim($q['question']),
+                        'answer' => trim($q['answer']),
+                        'sort_order' => $order + 1,
+                    ]);
+                }
+            }
+        }
 
         return redirect()->route('admin.services.index')->with('success', 'تم تحديث بيانات الخدمة بنجاح.');
     }

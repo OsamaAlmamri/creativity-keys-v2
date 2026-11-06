@@ -8,6 +8,7 @@ use App\Models\ServiceFaq;
 use App\Models\ServiceFeature;
 use App\Models\ServicePricingTier;
 use App\Models\Setting;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -131,5 +132,62 @@ class ServiceDetailsAndSeoTest extends TestCase
         $response = $this->get(route('sitemap'));
         $response->assertStatus(200);
         $response->assertSee(route('services.show', $service->slug));
+    }
+
+    public function test_admin_can_manage_service_with_subfeatures_pricing_and_faqs(): void
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
+
+        // 1. Create with repeated child items
+        $response = $this->actingAs($admin)->post(route('admin.services.store'), [
+            'title' => 'خدمة صيانة الأقفال الذكية بالبصمة',
+            'short_description' => 'صيانة وبرمجة الأقفال الذكية',
+            'overview_title' => 'نظرة متقدمة على أقفال البصمة',
+            'overview_content' => 'شرح تفصيلي حول الأقفال البيومترية.',
+            'hero_subtitle' => 'تركيب وصيانة الأقفال الذكية في جدة',
+            'badge' => 'أمان فائق',
+            'price_starting_at' => '200 ر.س',
+            'meta_title' => 'صيانة أقفال ذكية في جدة | مفتاح الإبداع',
+            'meta_description' => 'صيانة وتركيب أقفال ذكية بالبصمة في جدة.',
+            'meta_keywords' => 'اقفال ذكية, قفل بصمة',
+            'is_emergency' => 1,
+            'is_active' => 1,
+            'sort_order' => 1,
+            'steps' => [
+                ['title' => 'فحص الكالون القديم', 'desc' => 'معاينة مقاس الباب'],
+                ['title' => 'تركيب القفل وبرمجته', 'desc' => 'تسجيل بصمات العائلة'],
+            ],
+            'sub_features' => [
+                ['title' => 'بصمة سريعة 0.3 ثانية', 'description' => 'مستشعر سويدي دقيق', 'icon' => 'sparkles', 'badge' => 'فوري'],
+                ['title' => 'بطاقة RFID مشفرة', 'description' => 'دخول سهل لكبار السن', 'icon' => 'cpu-chip', 'badge' => 'مشفر'],
+            ],
+            'pricing_tiers' => [
+                ['name' => 'تركيب قفل ذكي للباب الخارجي', 'price' => '250 ر.س', 'note' => 'شامل البرمجة'],
+            ],
+            'faqs' => [
+                ['question' => 'ماذا يحدث لو نفدت البطارية؟', 'answer' => 'يوجد مدخل USB طوارئ ومفتاح ميكانيكي احتياطي.'],
+            ],
+        ]);
+
+        $response->assertRedirect(route('admin.services.index'));
+        $this->assertDatabaseHas('services', ['title' => 'خدمة صيانة الأقفال الذكية بالبصمة']);
+
+        $service = Service::where('title', 'خدمة صيانة الأقفال الذكية بالبصمة')->first();
+        $this->assertCount(2, $service->featuresList);
+        $this->assertCount(1, $service->pricingTiers);
+        $this->assertCount(1, $service->faqs);
+        $this->assertCount(2, $service->steps);
+
+        // 2. Admin can view create and edit forms
+        $createView = $this->actingAs($admin)->get(route('admin.services.create'));
+        $createView->assertStatus(200);
+        $createView->assertSee('إضافة خدمة فنية جديدة');
+
+        $editView = $this->actingAs($admin)->get(route('admin.services.edit', $service));
+        $editView->assertStatus(200);
+        $editView->assertSee('تعديل الخدمة ومحتواها التفاعلي');
+        $editView->assertSee('خدمة صيانة الأقفال الذكية بالبصمة');
+        $editView->assertSee('بصمة سريعة 0.3 ثانية');
+        $editView->assertSee('ماذا يحدث لو نفدت البطارية؟');
     }
 }
