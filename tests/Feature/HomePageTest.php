@@ -117,4 +117,18 @@ class HomePageTest extends TestCase
         $responseWithSocials->assertDontSee('https://tiktok.com');
         $responseWithSocials->assertDontSee('https://facebook.com');
     }
+
+    public function test_accessibility_aria_attributes_are_valid_on_interactive_and_rating_elements(): void
+    {
+        $response = $this->get(route('home'));
+        $response->assertStatus(200);
+
+        // Rating containers must use role="img" when labeled by aria-label to satisfy ARIA 1.2 / Lighthouse specs
+        $response->assertSee('role="img"', false);
+        $response->assertDontSee('<div class="mt-3 flex gap-1 text-amber-400" aria-label=', false);
+        $response->assertDontSee('<div class="mt-4 flex gap-0.5 text-amber-400" aria-label=', false);
+
+        // Floating buttons container must have role="group" when labeled by aria-label
+        $response->assertSee('role="group" aria-label="تواصل سريع"', false);
+    }
 }

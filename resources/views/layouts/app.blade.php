@@ -541,7 +541,7 @@
 
     @if(\App\Models\Setting::get('show_floating_buttons', '1') == '1')
         <!-- Floating Action Buttons (WhatsApp, Phone Call & Back To Top) -->
-        <div class="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-2.5" aria-label="تواصل سريع">
+        <div role="group" aria-label="تواصل سريع" class="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-2.5">
             <!-- 1. WhatsApp Button -->
             <a href="https://wa.me/{{ $settings['whatsapp'] ?? '966568191921' }}?text={{ urlencode('السلام عليكم، أحتاج مساعدة أو خدمة مفاتيح') }}"
                 target="_blank" rel="noopener noreferrer"
