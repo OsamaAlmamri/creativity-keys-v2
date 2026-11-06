@@ -250,43 +250,94 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-950 border-t border-slate-800/80 pt-16 pb-12 text-slate-400">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer class="bg-slate-950 border-t border-slate-800/80 pt-14 pb-12 text-slate-400 relative overflow-hidden">
+        <!-- Subtle background decorative ambient glow -->
+        <div class="absolute top-0 right-1/4 -translate-y-1/2 w-96 h-96 bg-brand-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-1/4 translate-y-1/2 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Emergency Dispatch / Fast Call CTA Banner -->
+            <div class="mb-14 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900 border border-slate-800/90 shadow-2xl relative overflow-hidden">
+                <div class="relative flex flex-col lg:flex-row items-center justify-between gap-6">
+                    <div class="space-y-2 text-center lg:text-right">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                            ورشة متنقلة جاهزة للتحرك الفوري 24/7
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-black text-white">
+                            أغلقت السيارة ومفتاحك بالداخل أو ضاع؟ نصلك أينما كنت فوراً!
+                        </h3>
+                        <p class="text-xs sm:text-sm text-slate-400 max-w-2xl leading-relaxed">
+                            فريقنا المتخصص في {{ $settings['city_name'] ?? 'جدة' }} مجهز بأحدث أجهزة فتح السيارات بدون أي خدش، وبرمجة وقص المفاتيح في موقعك خلال 15 - 25 دقيقة.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap items-center justify-center gap-3 shrink-0">
+                        <a href="tel:{{ $settings['phone'] ?? '0551234567' }}"
+                            class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm transition-all duration-200 shadow-lg shadow-amber-500/20 hover:scale-[1.02] active:scale-[0.98]">
+                            <svg class="w-5 h-5 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                            <span>اتصل الآن: <span dir="ltr">{{ $settings['phone'] ?? '0551234567' }}</span></span>
+                        </a>
+
+                        @php
+                            $waPhone = preg_replace('/[^0-9]/', '', $settings['whatsapp'] ?? $settings['phone'] ?? '966551234567');
+                            if (str_starts_with($waPhone, '05')) {
+                                $waPhone = '966' . substr($waPhone, 1);
+                            }
+                        @endphp
+                        <a href="https://wa.me/{{ $waPhone }}" target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2.5 px-5 py-3.5 rounded-2xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-bold text-sm transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                <path
+                                    d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                            </svg>
+                            <span>محادثة واتساب فورية</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
                 <!-- Col 1: About & Info -->
                 <div class="space-y-4">
                     <div class="flex items-center gap-3">
                         @if(!empty($settings['site_logo']))
                             <div
-                                class="h-10 flex items-center justify-center p-1 rounded-xl bg-slate-900 border border-slate-800 shadow-md">
+                                class="h-11 w-11 flex items-center justify-center p-1.5 rounded-2xl bg-slate-900 border border-slate-800 shadow-md">
                                 <img src="{{ $settings['site_logo'] }}"
                                     alt="{{ $settings['site_name'] ?? 'مفتاح الإبداع' }}"
                                     class="h-8 w-auto max-w-[140px] object-contain">
                             </div>
                         @else
                             <div
-                                class="w-10 h-10 rounded-xl bg-amber-500 flex items-center justify-center text-white font-black shadow-lg shadow-amber-500/20">
+                                class="w-11 h-11 rounded-2xl bg-amber-500 flex items-center justify-center text-white font-black shadow-lg shadow-amber-500/20">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
                                 </svg>
                             </div>
                         @endif
-                        <span
-                            class="text-xl font-black text-white">{{ $settings['site_name'] ?? 'مفتاح الإبداع' }}</span>
+                        <div>
+                            <span class="text-xl font-black text-white block">{{ $settings['site_name'] ?? 'مفتاح الإبداع' }}</span>
+                            <span class="text-xs text-amber-400 font-medium">لخدمات المفاتيح والأقفال والبرمجة</span>
+                        </div>
                     </div>
-                    <p class="text-sm leading-relaxed text-slate-400">
-                        المركز المتخصص الأول في قص وبرمجة مفاتيح السيارات الحديثة، واستخراج ريموتات البصمة، وفتح كافة
-                        أقفال المنازل والخزائن للطوارئ بدون كسر على مدار الساعة.
+                    <p class="text-sm leading-relaxed text-slate-300">
+                        مفتاح الإبداع — خيارك الأول والموثوق في {{ $settings['city_name'] ?? 'جدة' }} لكافة خدمات قص وبرمجة مفاتيح وبصمات السيارات بأحدث أجهزة الكمبيوتر والليزر، وفتح أبواب السيارات والمنازل المغلقة للطوارئ بدون أي خدش أو كسر، مع ورش متنقلة مجهزة بأحدث التقنيات لتصلك أينما كنت على مدار 24 ساعة.
                     </p>
-                    <div class="flex items-center gap-2 pt-2">
+                    <div class="flex flex-wrap items-center gap-2 pt-1">
                         <span
-                            class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                            <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                             ترخيص مهني معتمد
                         </span>
                         <span
-                            class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                            ضمان كامل على الأعمال
+                            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                            <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            ضمان شامل على البرمجة
                         </span>
                     </div>
 
@@ -368,101 +419,168 @@
                         أقسام الموقع
                     </h3>
                     <ul class="space-y-2.5 text-sm">
-                        <li><x-nav-link variant="footer" :href="route('home') . '#hero'">الصفحة الرئيسية</x-nav-link>
+                        <li>
+                            <x-nav-link variant="footer" :href="route('home') . '#hero'" class="group flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-amber-400 transition-colors"></span>
+                                <span>الصفحة الرئيسية</span>
+                            </x-nav-link>
                         </li>
-                        <li><x-nav-link variant="footer" :href="route('home') . '#about'">من نحن ومميزاتنا</x-nav-link>
+                        <li>
+                            <x-nav-link variant="footer" :href="route('home') . '#about'" class="group flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-amber-400 transition-colors"></span>
+                                <span>من نحن ومميزاتنا</span>
+                            </x-nav-link>
                         </li>
-                        <li><x-nav-link variant="footer" :href="route('home') . '#services'">خدمات الأقفال
-                                والمفاتيح</x-nav-link></li>
-                        <li><x-nav-link variant="footer" :href="route('home') . '#gallery'">معرض الأعمال
-                                والتجهيزات</x-nav-link></li>
-                        <li><x-nav-link variant="footer" :href="route('home') . '#reviews'">تجارب وتقييمات
-                                العملاء</x-nav-link></li>
-                        <li><x-nav-link variant="footer" :href="route('articles.index')"
-                                :active="request()->routeIs('articles.*')">المقالات والنصائح التوعوية</x-nav-link></li>
-                        <li><x-nav-link variant="footer" :href="route('home') . '#location'">الموقع الجغرافي وساعات
-                                العمل</x-nav-link></li>
+                        <li>
+                            <x-nav-link variant="footer" :href="route('home') . '#services'" class="group flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-amber-400 transition-colors"></span>
+                                <span>خدمات الأقفال والمفاتيح</span>
+                            </x-nav-link>
+                        </li>
+                        <li>
+                            <x-nav-link variant="footer" :href="route('home') . '#gallery'" class="group flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-amber-400 transition-colors"></span>
+                                <span>معرض الأعمال والتجهيزات</span>
+                            </x-nav-link>
+                        </li>
+                        <li>
+                            <x-nav-link variant="footer" :href="route('home') . '#reviews'" class="group flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-amber-400 transition-colors"></span>
+                                <span>تجارب وتقييمات العملاء</span>
+                            </x-nav-link>
+                        </li>
+                        <li>
+                            <x-nav-link variant="footer" :href="route('articles.index')"
+                                :active="request()->routeIs('articles.*')" class="group flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-amber-400 transition-colors"></span>
+                                <span>المقالات والنصائح التوعوية</span>
+                            </x-nav-link>
+                        </li>
+                        <li>
+                            <x-nav-link variant="footer" :href="route('home') . '#location'" class="group flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-amber-400 transition-colors"></span>
+                                <span>الموقع الجغرافي وساعات العمل</span>
+                            </x-nav-link>
+                        </li>
                     </ul>
                 </div>
 
-                <!-- Col 3: Services -->
+                <!-- Col 3: Services (Direct SEO Links) -->
                 <div>
                     <h3 class="text-white font-bold text-base mb-4 flex items-center gap-2">
                         <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-                        أبرز الخدمات
+                        أبرز الخدمات المتخصصة
                     </h3>
                     <ul class="space-y-2.5 text-sm">
-                        <li><a href="#services" class="hover:text-amber-400 transition-colors">برمجة مفاتيح وبصمات
-                                السيارات</a></li>
-                        <li><a href="#services" class="hover:text-amber-400 transition-colors">فتح أبواب المنازل والفلل
-                                المقفلة</a></li>
-                        <li><a href="#services" class="hover:text-amber-400 transition-colors">تركيب وبرمجة الأقفال
-                                الذكية</a></li>
-                        <li><a href="#services" class="hover:text-amber-400 transition-colors">فتح وصيانة الخزنات
-                                والتجوري</a></li>
-                        <li><a href="#services" class="hover:text-amber-400 transition-colors">قص ليزر وعمل ماستر كي
-                                للعمائر</a></li>
-                        <li><a href="#services" class="hover:text-amber-400 transition-colors">ورشة الطوارئ المتنقلة
-                                24/7</a></li>
+                        <li>
+                            <a href="{{ route('services.show', 'car-keys-programming') }}" class="group flex items-center gap-2 hover:text-amber-400 transition-colors">
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-amber-400 transition-colors"></span>
+                                <span>برمجة مفاتيح وبصمات السيارات</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('services.show', 'car-remotes-repair-programming') }}" class="group flex items-center gap-2 hover:text-amber-400 transition-colors">
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-amber-400 transition-colors"></span>
+                                <span>برمجة وإصلاح ريموتات السيارات</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('services.show', 'emergency-car-lockout') }}" class="group flex items-center gap-2 hover:text-amber-400 transition-colors">
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-amber-400 transition-colors"></span>
+                                <span>فتح السيارات المغلقة بدون خدش</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('services.show', 'laser-car-keys-cutting') }}" class="group flex items-center gap-2 hover:text-amber-400 transition-colors">
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-amber-400 transition-colors"></span>
+                                <span>نسخ وقص المفاتيح بالكمبيوتر والليزر</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('services.show', 'home-door-locksmith') }}" class="group flex items-center gap-2 hover:text-amber-400 transition-colors">
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-amber-400 transition-colors"></span>
+                                <span>فتح وتغيير أقفال المنازل والفلل</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('services.show', 'safes-vaults-smart-locks') }}" class="group flex items-center gap-2 hover:text-amber-400 transition-colors">
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-amber-400 transition-colors"></span>
+                                <span>فتح الخزائن والتجوري والأقفال الذكية</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
-                <!-- Col 4: Contact & Hours -->
-                <div class="space-y-3">
+                <!-- Col 4: Contact & Emergency Info -->
+                <div class="space-y-3.5">
                     <h3 class="text-white font-bold text-base mb-4 flex items-center gap-2">
                         <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-                        بيانات الاتصال
+                        بيانات الاتصال والتواجد
                     </h3>
                     <div class="flex items-start gap-3 text-sm">
-                        <svg class="w-5 h-5 text-amber-400 shrink-0 mt-0.5" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        <span>{{ $settings['address'] ?? (($settings['city_name'] ?? 'جدة') . ' - طريق الملك عبد العزيز') }}</span>
+                        <div class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center shrink-0 text-amber-400 mt-0.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </div>
+                        <span class="pt-1 text-slate-300 leading-relaxed">{{ $settings['address'] ?? (($settings['city_name'] ?? 'جدة') . ' - طريق الملك عبد العزيز') }}</span>
                     </div>
                     <div class="flex items-center gap-3 text-sm">
-                        <svg class="w-5 h-5 text-amber-400 shrink-0" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                        </svg>
+                        <div class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center shrink-0 text-amber-400">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                        </div>
                         <a href="tel:{{ $settings['phone'] ?? '0551234567' }}" dir="ltr"
-                            class="hover:text-white">{{ $settings['phone'] ?? '0551234567' }}</a>
+                            class="pt-0.5 hover:text-white font-bold text-slate-200 transition-colors">{{ $settings['phone'] ?? '0551234567' }}</a>
                     </div>
                     <div class="flex items-center gap-3 text-sm">
-                        <svg class="w-5 h-5 text-amber-400 shrink-0" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                        <a href="mailto:{{ $settings['email'] ?? 'info@keyshop.com' }}" class="hover:text-white">{{
+                        <div class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center shrink-0 text-amber-400">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <a href="mailto:{{ $settings['email'] ?? 'info@keyshop.com' }}" class="pt-0.5 hover:text-white text-slate-300 transition-colors">{{
                             $settings['email'] ?? 'info@keyshop.com' }}</a>
                     </div>
-                    <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300">
-                        <div class="font-bold text-amber-400 mb-1">أوقات العمل:</div>
-                        {{ $settings['working_hours'] ?? 'طوارئ 24 ساعة لجميع أيام الأسبوع' }}
+                    <div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 text-xs text-slate-300 space-y-1.5 shadow-inner">
+                        <div class="flex items-center justify-between font-bold text-amber-400">
+                            <span class="flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                                أوقات الخدمة والعمل:
+                            </span>
+                            <span class="text-[11px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 font-bold">24 ساعة</span>
+                        </div>
+                        <p class="text-slate-400 leading-relaxed">{{ $settings['working_hours'] ?? 'طوارئ 24 ساعة لجميع أيام الأسبوع' }}</p>
                     </div>
                 </div>
             </div>
 
             <!-- Bottom Copyright & Admin link -->
             <div
-                class="pt-8 border-t border-slate-800/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-                <p>© {{ date('Y') }} {{ $settings['site_name'] ?? 'مفتاح الإبداع' }}. برمجة وتطوير <a
-                        href="https://github.com/OsamaAlmamri" target="_blank"
-                        class="text-amber-400 hover:underline">أسامة المعمري</a>. جميع الحقوق محفوظة.</p>
+                class="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+                <p class="text-slate-400 leading-normal">
+                    © {{ date('Y') }} {{ $settings['site_name'] ?? 'مفتاح الإبداع' }}. برمجة وتطوير 
+                    <a href="https://github.com/OsamaAlmamri" target="_blank" rel="noopener noreferrer"
+                        class="text-amber-400 hover:underline font-semibold">أسامة المعمري</a>. جميع الحقوق محفوظة.
+                </p>
                 <div class="flex items-center gap-4">
-                    <span class="text-slate-600">تصميم وتطوير بأحدث معايير الأمان</span>
+                    <span class="text-slate-500 hidden sm:inline">أعلى معايير الأمان والسرية</span>
                     <a href="{{ route('admin.login') }}"
-                        class="text-slate-500 hover:text-amber-400 transition-colors inline-flex items-center gap-1">
+                        class="text-slate-500 hover:text-amber-400 transition-colors inline-flex items-center gap-1.5">
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                         </svg>
-                        دخول لوحة التحكم
+                        <span>دخول لوحة التحكم</span>
                     </a>
                 </div>
             </div>
