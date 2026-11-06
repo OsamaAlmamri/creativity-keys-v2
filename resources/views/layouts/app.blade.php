@@ -81,6 +81,7 @@
                     <x-nav-link :href="route('home') . '#hero'">الرئيسية</x-nav-link>
                     <x-nav-link :href="route('home') . '#about'">من نحن</x-nav-link>
                     <x-nav-link :href="route('home') . '#services'">خدماتنا</x-nav-link>
+                    <x-nav-link :href="route('home') . '#features'">لماذا تختارنا</x-nav-link>
                     <x-nav-link :href="route('home') . '#coverage'">نطاق التغطية</x-nav-link>
                     <x-nav-link :href="route('home') . '#gallery'">معرض الأعمال</x-nav-link>
                     <x-nav-link :href="route('home') . '#reviews'">التقييمات</x-nav-link>
@@ -145,6 +146,7 @@
             <x-nav-link variant="mobile" :href="route('home') . '#hero'">الرئيسية</x-nav-link>
             <x-nav-link variant="mobile" :href="route('home') . '#about'">من نحن</x-nav-link>
             <x-nav-link variant="mobile" :href="route('home') . '#services'">خدماتنا</x-nav-link>
+            <x-nav-link variant="mobile" :href="route('home') . '#features'">لماذا تختارنا</x-nav-link>
             <x-nav-link variant="mobile" :href="route('home') . '#coverage'">نطاق التغطية والأحياء</x-nav-link>
             <x-nav-link variant="mobile" :href="route('home') . '#gallery'">معرض الأعمال</x-nav-link>
             <x-nav-link variant="mobile" :href="route('home') . '#reviews'">التقييمات</x-nav-link>

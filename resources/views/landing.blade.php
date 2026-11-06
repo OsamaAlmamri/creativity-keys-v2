@@ -43,22 +43,25 @@
     <!-- 3. Services Section -->
     @include('partials.landing.services')
 
-    <!-- 4. Geographic Coverage Areas Section (85+ Jeddah Districts) -->
+    <!-- 4. Why Choose Us (Features) Section -->
+    @include('partials.landing.features')
+
+    <!-- 5. Geographic Coverage Areas Section (85+ Jeddah Districts) -->
     @include('partials.landing.coverage')
 
-    <!-- 5. Work Gallery Section -->
+    <!-- 6. Work Gallery Section -->
     @include('partials.landing.gallery')
 
-    <!-- 6. Client Reviews Section -->
+    <!-- 7. Client Reviews Section -->
     @include('partials.landing.reviews')
 
-    <!-- 7. Latest Articles Section (Controlled by Theme Settings) -->
+    <!-- 8. Latest Articles Section (Controlled by Theme Settings) -->
     @include('partials.landing.articles')
 
-    <!-- 8. Geographic Location & Hours Section -->
+    <!-- 9. Geographic Location & Hours Section -->
     @include('partials.landing.location')
 
-    <!-- 9. Direct Contact Form Section -->
+    <!-- 10. Direct Contact Form Section -->
     @include('partials.landing.contact')
 
     <!-- Gallery Filtering JavaScript -->
