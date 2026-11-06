@@ -22,8 +22,8 @@ class ThemeController extends Controller
         $activeColors = ThemeService::getActiveColors();
 
         $current = [
-            'theme_preset' => Setting::get('theme_preset', 'amber'),
-            'theme_custom_color' => Setting::get('theme_custom_color', '#f59e0b'),
+            'theme_preset' => Setting::get('theme_preset', 'custom'),
+            'theme_custom_color' => Setting::get('theme_custom_color', '#588157'),
             'theme_mode' => Setting::get('theme_mode', 'dark'),
             'theme_visitor_toggle' => (bool) Setting::get('theme_visitor_toggle', '1'),
             'theme_font' => Setting::get('theme_font', 'Cairo'),

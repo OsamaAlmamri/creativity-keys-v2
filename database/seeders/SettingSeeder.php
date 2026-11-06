@@ -56,7 +56,7 @@ class SettingSeeder extends Seeder
             ['key' => 'email3', 'value' => 'admin@creativity-keys.com', 'group' => 'contact', 'label' => 'البريد الإلكتروني التقني', 'type' => 'text'],
 
             // العنوان وموقع الخريطة والاتجاهات
-            ['key' => 'address', 'value' => 'المملكة العربية السعودية - جدة - ابحر المالية', 'group' => 'contact', 'label' => 'العنوان الفعلي', 'type' => 'text'],
+            ['key' => 'address', 'value' => 'المملكة العربية السعودية - جدة   ', 'group' => 'contact', 'label' => 'العنوان الفعلي', 'type' => 'text'],
             ['key' => 'working_hours', 'value' => 'يومياً من 9:00 صباحاً حتى 11:00 مساءً | خدمة متنقلة وطوارئ 24/7 نصل إليك أينما كنت في جدة وأبحر على مدار الساعة', 'group' => 'contact', 'label' => 'ساعات العمل', 'type' => 'textarea'],
             ['key' => 'map_directions_url', 'value' => 'https://maps.app.goo.gl/5Z8Yifuj6SPKphLK8', 'group' => 'contact', 'label' => 'رابط اتجاهات قوقل ماب المباشر', 'type' => 'text'],
             ['key' => 'map_latitude', 'value' => '21.774671', 'group' => 'contact', 'label' => 'خط العرض (Latitude)', 'type' => 'text'],
@@ -80,8 +80,8 @@ class SettingSeeder extends Seeder
             ['key' => 'about_story', 'value' => "محل مفتاح الإبداع هو وجهتك الأولى في جدة لكافة خدمات مفاتيح السيارات والمنازل والخزانات.\n\nنتميز بخبرة طويلة وفريق فنيين متنقل ومجهز بأحدث أجهزة الليزر الإيطالية والألمانية لقص المفاتيح المشفرة بدقة متناهية وبرمجة كمبيوتر وريموتات أحدث موديلات السيارات البصمة والعادية.\n\nنقدم خدمات فتح السيارات المقفلة وفك الأبواب والشقق بدون أي كسر أو خدش، مع الالتزام بأعلى معايير السرعة والأمان.\n\nشعارنا: هدفنا خدمتكم وغايتنا رضاكم — اتصل نصل أينما كنت في جدة 24/7.", 'group' => 'about', 'label' => 'نص من نحن', 'type' => 'textarea'],
 
             // الثيم والمظهر
-            ['key' => 'theme_preset', 'value' => 'amber', 'group' => 'theme', 'label' => 'نمط لون السمة', 'type' => 'text'],
-            ['key' => 'theme_custom_color', 'value' => '#f59e0b', 'group' => 'theme', 'label' => 'اللون المخصص', 'type' => 'text'],
+            ['key' => 'theme_preset', 'value' => 'custom', 'group' => 'theme', 'label' => 'نمط لون السمة', 'type' => 'text'],
+            ['key' => 'theme_custom_color', 'value' => '#588157', 'group' => 'theme', 'label' => 'اللون المخصص', 'type' => 'text'],
             ['key' => 'theme_mode', 'value' => 'dark', 'group' => 'theme', 'label' => 'وضع المظهر الافتراضي', 'type' => 'text'],
             ['key' => 'theme_visitor_toggle', 'value' => '1', 'group' => 'theme', 'label' => 'السماح للزوار بتبديل الوضع', 'type' => 'boolean'],
             ['key' => 'theme_font', 'value' => 'Cairo', 'group' => 'theme', 'label' => 'نوع الخط العربي', 'type' => 'text'],

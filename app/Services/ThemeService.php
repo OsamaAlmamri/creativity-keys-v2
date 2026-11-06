@@ -135,11 +135,11 @@ class ThemeService
      */
     public static function getActiveColors(): array
     {
-        $preset = Setting::get('theme_preset', 'amber');
+        $preset = Setting::get('theme_preset', 'custom');
         $presets = static::presetColors();
 
-        if ($preset === 'custom') {
-            $hex = Setting::get('theme_custom_color', '#f59e0b');
+        if ($preset === 'custom' || ! isset($presets[$preset])) {
+            $hex = Setting::get('theme_custom_color', '#588157');
             $rgb = static::hexToRgb($hex);
 
             return [
@@ -152,7 +152,7 @@ class ThemeService
             ];
         }
 
-        return $presets[$preset] ?? $presets['amber'];
+        return $presets[$preset];
     }
 
     /**
@@ -209,8 +209,8 @@ class ThemeService
     public static function resetToDefaults(): void
     {
         $defaults = [
-            'theme_preset' => 'amber',
-            'theme_custom_color' => '#f59e0b',
+            'theme_preset' => 'custom',
+            'theme_custom_color' => '#588157',
             'theme_mode' => 'dark',
             'theme_visitor_toggle' => '1',
             'theme_font' => 'Cairo',

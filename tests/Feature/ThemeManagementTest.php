@@ -159,7 +159,8 @@ class ThemeManagementTest extends TestCase
         $response->assertRedirect(route('admin.theme.index'));
         $response->assertSessionHas('success');
 
-        $this->assertEquals('amber', Setting::get('theme_preset'));
+        $this->assertEquals('custom', Setting::get('theme_preset'));
+        $this->assertEquals('#588157', Setting::get('theme_custom_color'));
         $this->assertEquals('Cairo', Setting::get('theme_font'));
     }
 

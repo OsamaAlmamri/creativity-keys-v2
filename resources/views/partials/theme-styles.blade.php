@@ -1,6 +1,6 @@
 @php
-    $themePreset = \App\Models\Setting::get('theme_preset', 'amber');
-    $themeCustom = \App\Models\Setting::get('theme_custom_color', '#f59e0b');
+    $themePreset = \App\Models\Setting::get('theme_preset', 'custom');
+    $themeCustom = \App\Models\Setting::get('theme_custom_color', '#588157');
     $themeMode = \App\Models\Setting::get('theme_mode', 'dark');
     $themeFont = \App\Models\Setting::get('theme_font', 'Cairo');
     $themeRadius = \App\Models\Setting::get('theme_radius', 'medium');
