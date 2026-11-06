@@ -5,15 +5,15 @@
 @section('content')
 
     <div class="space-y-8">
-        
+
         <!-- Header -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
                 <h2 class="text-xl font-black text-white">إدارة المستخدمين وصلاحيات لوحة التحكم</h2>
                 <p class="text-xs text-slate-400">إنشاء وتعديل حسابات المدراء والمشرفين المخولين بإدارة الموقع والطلبات</p>
             </div>
-            
-            <button type="button" onclick="document.getElementById('create-user-modal').classList.remove('hidden')" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition-colors shadow-lg shadow-amber-500/20">
+
+            <button type="button" onclick="document.getElementById('create-user-modal').classList.remove('hidden')" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-white font-bold text-xs transition-colors shadow-lg shadow-amber-500/20">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg>
                 <span>إضافة مستخدم جديد</span>
             </button>
@@ -151,7 +151,7 @@
 
                 <div class="pt-4 flex justify-end gap-3 border-t border-slate-800">
                     <button type="button" onclick="document.getElementById('create-user-modal').classList.add('hidden')" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-750 text-white font-bold text-xs">إلغاء</button>
-                    <button type="submit" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs shadow-lg shadow-amber-500/20">إنشاء المستخدم</button>
+                    <button type="submit" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-white font-black text-xs shadow-lg shadow-amber-500/20">إنشاء المستخدم</button>
                 </div>
             </form>
         </div>
@@ -206,7 +206,7 @@
 
                 <div class="pt-4 flex justify-end gap-3 border-t border-slate-800">
                     <button type="button" onclick="document.getElementById('edit-user-modal').classList.add('hidden')" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-750 text-white font-bold text-xs">إلغاء</button>
-                    <button type="submit" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs shadow-lg shadow-amber-500/20">تحديث المستخدم</button>
+                    <button type="submit" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-white font-black text-xs shadow-lg shadow-amber-500/20">تحديث المستخدم</button>
                 </div>
             </form>
         </div>

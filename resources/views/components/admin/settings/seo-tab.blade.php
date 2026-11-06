@@ -3,16 +3,19 @@
 ])
 
 <div id="tab-panel-seo" class="tab-panel {{ $active ? '' : 'hidden' }}">
-    <form action="{{ route('admin.settings.update-tab', ['tab' => 'seo']) }}" method="POST" enctype="multipart/form-data" class="space-y-8">
+    <form action="{{ route('admin.settings.update-tab', ['tab' => 'seo']) }}" method="POST"
+        enctype="multipart/form-data" class="space-y-8">
         @csrf
 
         <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl space-y-6">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-4 gap-2">
                 <div class="flex items-center gap-2.5">
                     <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
-                    <h3 class="text-base font-bold text-white">إعدادات محركات البحث والظهور الرقمي (SEO & Social Cards)</h3>
+                    <h3 class="text-base font-bold text-white">إعدادات محركات البحث والظهور الرقمي (SEO & Social Cards)
+                    </h3>
                 </div>
-                <span class="text-xs text-emerald-400 font-medium">Google Search, WhatsApp Previews, Twitter/X Cards</span>
+                <span class="text-xs text-emerald-400 font-medium">Google Search, WhatsApp Previews, Twitter/X
+                    Cards</span>
             </div>
 
             <!-- Meta Description with Character Counter -->
@@ -26,13 +29,15 @@
                 <textarea id="meta_description" name="meta_description" rows="3"
                     oninput="updateCharCounter(this, 'meta-desc-counter', 160)"
                     class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:border-emerald-400 focus:outline-none leading-relaxed">{{ \App\Models\Setting::get('meta_description') }}</textarea>
-                <p class="text-[11px] text-slate-400">هذا النص يظهر كملخص للموقع في صفحة نتائج بحث Google. يوصى بطول بين 140 إلى 160 حرفاً شاملاً كلماتك المفتاحية.</p>
+                <p class="text-[11px] text-slate-400">هذا النص يظهر كملخص للموقع في صفحة نتائج بحث Google. يوصى بطول بين
+                    140 إلى 160 حرفاً شاملاً كلماتك المفتاحية.</p>
             </div>
 
             <!-- Keywords & Alternate Name -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div class="space-y-1.5">
-                    <label for="meta_keywords" class="block text-xs font-bold text-slate-200">الكلمات المفتاحية لموقع الويب (Meta Keywords)</label>
+                    <label for="meta_keywords" class="block text-xs font-bold text-slate-200">الكلمات المفتاحية لموقع
+                        الويب (Meta Keywords)</label>
                     <textarea id="meta_keywords" name="meta_keywords" rows="3"
                         class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:border-emerald-400 focus:outline-none"
                         placeholder="مثال: قص مفاتيح جدة, برمجة مفاتيح سيارات, فتح اقفال منازل...">{{ \App\Models\Setting::get('meta_keywords', 'قص مفاتيح جدة, برمجة مفاتيح سيارات جدة, فتح ابواب منازل طوارئ, فتح سيارات مقفلة, صب مفاتيح جدة, اقفال ذكية جدة, مفاتيح سيارات مشفرة, ريموت بصمة, نجار فتح اقفال 24 ساعة, فني مفاتيح شمال جدة') }}</textarea>
@@ -40,18 +45,21 @@
                 </div>
 
                 <div class="space-y-1.5">
-                    <label for="seo_alternate_name" class="block text-xs font-bold text-slate-200">الاسم التجاري البديل في السكيما (Schema Alternate Name)</label>
+                    <label for="seo_alternate_name" class="block text-xs font-bold text-slate-200">الاسم التجاري البديل
+                        في السكيما (Schema Alternate Name)</label>
                     <input type="text" id="seo_alternate_name" name="seo_alternate_name"
                         value="{{ \App\Models\Setting::get('seo_alternate_name', 'محل ومختبر مفاتيح الإبداع لقص وبرمجة المفاتيح بجدة') }}"
                         class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:border-emerald-400 focus:outline-none">
-                    <p class="text-[11px] text-slate-500">الاسم التعريفي الكامل لنشاطك التجاري في بيانات Schema.org الغنية لتعزيز الظهور المحلي.</p>
+                    <p class="text-[11px] text-slate-500">الاسم التعريفي الكامل لنشاطك التجاري في بيانات Schema.org
+                        الغنية لتعزيز الظهور المحلي.</p>
                 </div>
             </div>
 
             <!-- Robots & Verification & Analytics -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-2">
                 <div class="space-y-1.5">
-                    <label for="seo_robots" class="block text-xs font-bold text-slate-200">توجيهات أرشفة روبوتات البحث (Robots Meta)</label>
+                    <label for="seo_robots" class="block text-xs font-bold text-slate-200">توجيهات أرشفة روبوتات البحث
+                        (Robots Meta)</label>
                     <select id="seo_robots" name="seo_robots"
                         class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:border-emerald-400 focus:outline-none">
                         <option value="index, follow" {{ \App\Models\Setting::get('seo_robots', 'index, follow') === 'index, follow' ? 'selected' : '' }}>
@@ -61,11 +69,13 @@
                             🚫 حجب الفهرسة مؤقتاً (noindex, nofollow)
                         </option>
                     </select>
-                    <p class="text-[11px] text-slate-500">تحكم بما إذا كان محرك البحث Google يقوم بأرشفة صفحات موقعك.</p>
+                    <p class="text-[11px] text-slate-500">تحكم بما إذا كان محرك البحث Google يقوم بأرشفة صفحات موقعك.
+                    </p>
                 </div>
 
                 <div class="space-y-1.5">
-                    <label for="google_site_verification" class="block text-xs font-bold text-slate-200">رمز التحقق من Google Search Console</label>
+                    <label for="google_site_verification" class="block text-xs font-bold text-slate-200">رمز التحقق من
+                        Google Search Console</label>
                     <input type="text" id="google_site_verification" name="google_site_verification"
                         value="{{ \App\Models\Setting::get('google_site_verification') }}"
                         placeholder="مثال: google-site-verification code" dir="ltr"
@@ -74,7 +84,8 @@
                 </div>
 
                 <div class="space-y-1.5">
-                    <label for="google_analytics_id" class="block text-xs font-bold text-slate-200">معرف Google Analytics 4 (GA4)</label>
+                    <label for="google_analytics_id" class="block text-xs font-bold text-slate-200">معرف Google
+                        Analytics 4 (GA4)</label>
                     <input type="text" id="google_analytics_id" name="google_analytics_id"
                         value="{{ \App\Models\Setting::get('google_analytics_id') }}" placeholder="G-XXXXXXXXXX"
                         dir="ltr"
@@ -99,7 +110,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
                     <div class="space-y-3">
                         <div class="space-y-1.5">
-                            <label for="og_image_file" class="block text-xs font-medium text-slate-300">رفع صورة جديدة من جهازك</label>
+                            <label for="og_image_file" class="block text-xs font-medium text-slate-300">رفع صورة جديدة
+                                من جهازك</label>
                             <input type="file" id="og_image_file" name="og_image_file"
                                 accept="image/png,image/jpeg,image/webp"
                                 onchange="previewUploadedImage(this, 'og-image-preview-img', null, 'remove-og-btn', 'remove_og_image')"
@@ -107,7 +119,8 @@
                         </div>
 
                         <div class="space-y-1.5">
-                            <label for="og_image" class="block text-xs font-medium text-slate-400">أو رابط مباشر لصورة المشاركة (URL)</label>
+                            <label for="og_image" class="block text-xs font-medium text-slate-400">أو رابط مباشر لصورة
+                                المشاركة (URL)</label>
                             <input type="url" id="og_image" name="og_image"
                                 value="{{ \App\Models\Setting::get('og_image') }}"
                                 placeholder="https://example.com/share-image.jpg" dir="ltr"
@@ -132,7 +145,8 @@
                             <img src="{{ \App\Models\Setting::get('og_image', 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&h=630&q=80') }}"
                                 id="og-image-preview-img" alt="معاينة بطاقة المشاركة"
                                 class="w-full h-full object-cover">
-                            <div class="absolute top-2 right-2 px-2 py-0.5 rounded-md bg-slate-950/80 text-[10px] font-bold text-emerald-400 border border-emerald-500/30">
+                            <div
+                                class="absolute top-2 right-2 px-2 py-0.5 rounded-md bg-slate-950/80 text-[10px] font-bold text-emerald-400 border border-emerald-500/30">
                                 معاينة المشاركة في WhatsApp و X
                             </div>
                         </div>
@@ -152,10 +166,11 @@
 
         <!-- Submit Button for SEO -->
         <div class="flex items-center justify-between p-4 bg-slate-900/60 border border-slate-800 rounded-2xl">
-            <span class="text-xs text-slate-400">تحديث فوري لبيانات الميتا تاغ وسكيما محركات البحث وكروت المشاركة.</span>
+            <span class="text-xs text-slate-400">تحديث فوري لبيانات الميتا تاغ وسكيما محركات البحث وكروت
+                المشاركة.</span>
             <button type="submit"
-                class="px-8 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-sm transition-all shadow-lg shadow-emerald-500/20 active:scale-95 inline-flex items-center gap-2">
-                <svg class="w-4 h-4 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                class="px-8 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-black text-sm transition-all shadow-lg shadow-emerald-500/20 active:scale-95 inline-flex items-center gap-2">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                 </svg>
                 حفظ إعدادات محركات البحث (SEO)

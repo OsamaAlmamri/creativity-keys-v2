@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="space-y-6">
-        
+
         <!-- Header & Filters -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
@@ -15,13 +15,16 @@
 
             <!-- Filter tabs -->
             <div class="flex items-center gap-2">
-                <a href="{{ route('admin.messages.index') }}" class="px-3.5 py-2 rounded-xl text-xs font-bold transition-colors {{ !request()->filled('filter') ? 'bg-amber-500 text-slate-950' : 'bg-slate-800 text-slate-300 hover:bg-slate-750' }}">
+                <a href="{{ route('admin.messages.index') }}"
+                    class="px-3.5 py-2 rounded-xl text-xs font-bold transition-colors {{ !request()->filled('filter') ? 'bg-amber-500 text-white' : 'bg-slate-800 text-slate-300 hover:bg-slate-750' }}">
                     جميع الرسائل
                 </a>
-                <a href="{{ route('admin.messages.index', ['filter' => 'unread']) }}" class="px-3.5 py-2 rounded-xl text-xs font-bold transition-colors {{ request('filter') === 'unread' ? 'bg-amber-500 text-slate-950' : 'bg-slate-800 text-slate-300 hover:bg-slate-750' }}">
+                <a href="{{ route('admin.messages.index', ['filter' => 'unread']) }}"
+                    class="px-3.5 py-2 rounded-xl text-xs font-bold transition-colors {{ request('filter') === 'unread' ? 'bg-amber-500 text-white' : 'bg-slate-800 text-slate-300 hover:bg-slate-750' }}">
                     غير المقروءة ({{ $unreadCount }})
                 </a>
-                <a href="{{ route('admin.messages.index', ['filter' => 'emergency']) }}" class="px-3.5 py-2 rounded-xl text-xs font-bold transition-colors {{ request('filter') === 'emergency' ? 'bg-red-500 text-white' : 'bg-slate-800 text-red-400 hover:bg-slate-750' }}">
+                <a href="{{ route('admin.messages.index', ['filter' => 'emergency']) }}"
+                    class="px-3.5 py-2 rounded-xl text-xs font-bold transition-colors {{ request('filter') === 'emergency' ? 'bg-red-500 text-white' : 'bg-slate-800 text-red-400 hover:bg-slate-750' }}">
                     طلبات الطوارئ فقط
                 </a>
             </div>
@@ -73,17 +76,27 @@
                                     {{ $msg->created_at->format('Y-m-d H:i') }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-center space-x-2 space-x-reverse">
-                                    <a href="{{ route('admin.messages.show', $msg) }}" class="inline-flex items-center px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-bold transition-colors">
+                                    <a href="{{ route('admin.messages.show', $msg) }}"
+                                        class="inline-flex items-center px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-bold transition-colors">
                                         عرض وتفاصيل
                                     </a>
-                                    <a href="https://wa.me/{{ preg_replace('/^0/', '966', preg_replace('/\D/', '', $msg->phone)) }}?text={{ urlencode('مرحباً أخي ' . $msg->name . '، بخصوص طلبك من مركز مفاتيح الإبداع') }}" target="_blank" class="inline-flex items-center px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-colors">
+                                    <a href="https://wa.me/{{ preg_replace('/^0/', '966', preg_replace('/\D/', '', $msg->phone)) }}?text={{ urlencode('مرحباً أخي ' . $msg->name . '، بخصوص طلبك من مركز مفاتيح الإبداع') }}"
+                                        target="_blank"
+                                        class="inline-flex items-center px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-colors">
                                         واتساب
                                     </a>
-                                    <form action="{{ route('admin.messages.destroy', $msg) }}" method="POST" class="inline" data-confirm-title="تأكيد حذف الرسالة" data-item-name="{{ $msg->name }} ({{ $msg->phone }})" data-confirm-message="هل أنت متأكد من رغبتك في حذف طلب وتواصل العميل؟">
+                                    <form action="{{ route('admin.messages.destroy', $msg) }}" method="POST" class="inline"
+                                        data-confirm-title="تأكيد حذف الرسالة"
+                                        data-item-name="{{ $msg->name }} ({{ $msg->phone }})"
+                                        data-confirm-message="هل أنت متأكد من رغبتك في حذف طلب وتواصل العميل؟">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn-delete p-1.5 rounded-lg transition-all" title="حذف الرسالة">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                                        <button type="submit" class="btn-delete p-1.5 rounded-lg transition-all"
+                                            title="حذف الرسالة">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                            </svg>
                                         </button>
                                     </form>
                                 </td>

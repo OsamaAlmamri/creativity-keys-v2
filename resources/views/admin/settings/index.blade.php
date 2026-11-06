@@ -14,7 +14,8 @@
                     إعدادات وبيانات المركز والموقع
                 </h2>
                 <p class="text-xs text-slate-400 mt-1.5">
-                    إدارة شاملة ومستقلة لكل قسم: الهوية والشعار، محركات البحث SEO، وسائل التواصل، الاتصال، التغطية، والعنوان.
+                    إدارة شاملة ومستقلة لكل قسم: الهوية والشعار، محركات البحث SEO، وسائل التواصل، الاتصال، التغطية،
+                    والعنوان.
                 </p>
             </div>
 
@@ -32,9 +33,11 @@
 
         <!-- Global Success Alert -->
         @if(session('success'))
-            <div class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-sm flex items-start gap-3 shadow-lg shadow-emerald-500/5 transition-all">
+            <div
+                class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-sm flex items-start gap-3 shadow-lg shadow-emerald-500/5 transition-all">
                 <svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <div class="flex-1 font-medium leading-relaxed">
                     {{ session('success') }}
@@ -44,9 +47,11 @@
 
         <!-- Global Error Alert -->
         @if($errors->any())
-            <div class="p-4 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-300 text-sm flex items-start gap-3 shadow-lg shadow-red-500/5">
+            <div
+                class="p-4 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-300 text-sm flex items-start gap-3 shadow-lg shadow-red-500/5">
                 <svg class="w-5 h-5 text-red-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <div class="flex-1 space-y-1">
                     <strong class="font-bold block">يرجى مراجعة الأخطاء التالية وتصحيحها:</strong>
@@ -97,7 +102,7 @@
             }
 
             // 1. Hide all tab panels
-            document.querySelectorAll('.tab-panel').forEach(function(panel) {
+            document.querySelectorAll('.tab-panel').forEach(function (panel) {
                 panel.classList.add('hidden');
             });
 
@@ -108,20 +113,20 @@
             }
 
             // 3. Update tab buttons active classes
-            document.querySelectorAll('.tab-btn').forEach(function(btn) {
+            document.querySelectorAll('.tab-btn').forEach(function (btn) {
                 const isCurrent = btn.getAttribute('data-tab-link') === tabKey;
                 const icon = btn.querySelector('svg');
 
                 if (isCurrent) {
-                    btn.className = 'tab-btn shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-black bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20 transition-all duration-200';
+                    btn.className = 'tab-btn shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-black bg-amber-500 text-white shadow-md shadow-amber-500/20 transition-all duration-200';
                     if (icon) {
                         icon.classList.remove('text-amber-400', 'text-emerald-400', 'text-sky-400', 'text-red-400', 'text-blue-400', 'text-purple-400');
-                        icon.classList.add('text-slate-950');
+                        icon.classList.add('text-white');
                     }
                 } else {
                     btn.className = 'tab-btn shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold text-slate-400 hover:text-white hover:bg-slate-800/80 transition-all duration-200';
                     if (icon) {
-                        icon.classList.remove('text-slate-950');
+                        icon.classList.remove('text-white');
                         // restore specific tab icon color
                         const targetKey = btn.getAttribute('data-tab-link');
                         if (targetKey === 'seo') icon.classList.add('text-emerald-400');
@@ -147,7 +152,7 @@
         }
 
         // Support browser Back/Forward buttons
-        window.addEventListener('popstate', function(event) {
+        window.addEventListener('popstate', function (event) {
             if (event.state && event.state.tab) {
                 switchTab(null, event.state.tab);
             }
@@ -157,7 +162,7 @@
         function previewUploadedImage(input, imgId, fallbackId, removeBtnId, removeFlagId) {
             if (input.files && input.files[0]) {
                 const reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     const img = document.getElementById(imgId);
                     if (img) {
                         img.src = e.target.result;

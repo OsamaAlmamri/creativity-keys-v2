@@ -27,7 +27,8 @@
                 </div>
 
                 <div class="space-y-1.5">
-                    <label for="phone" class="block text-xs font-bold text-slate-300">رقم الهاتف الأرضي أو الثابت</label>
+                    <label for="phone" class="block text-xs font-bold text-slate-300">رقم الهاتف الأرضي أو
+                        الثابت</label>
                     <input type="text" id="phone" name="phone"
                         value="{{ \App\Models\Setting::get('phone', '0551234567') }}" dir="ltr"
                         class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:border-amber-400 focus:outline-none text-right font-mono">
@@ -35,7 +36,8 @@
                 </div>
 
                 <div class="space-y-1.5">
-                    <label for="whatsapp" class="block text-xs font-bold text-emerald-400">رقم الواتساب (مع الرمز الدولي بدون +)</label>
+                    <label for="whatsapp" class="block text-xs font-bold text-emerald-400">رقم الواتساب (مع الرمز الدولي
+                        بدون +)</label>
                     <input type="text" id="whatsapp" name="whatsapp"
                         value="{{ \App\Models\Setting::get('whatsapp', '966551234567') }}" dir="ltr"
                         class="w-full bg-slate-950 border border-emerald-500/30 rounded-xl px-4 py-3 text-white text-sm focus:border-emerald-400 focus:outline-none text-right font-mono"
@@ -48,7 +50,8 @@
                     <input type="email" id="email" name="email"
                         value="{{ \App\Models\Setting::get('email', 'info@keyshop.com') }}" dir="ltr"
                         class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:border-amber-400 focus:outline-none text-right">
-                    <p class="text-[11px] text-slate-500">يظهر في الفوتر ويُستخدم لاستقبال الإشعارات والمراسلات الرسمية.</p>
+                    <p class="text-[11px] text-slate-500">يظهر في الفوتر ويُستخدم لاستقبال الإشعارات والمراسلات الرسمية.
+                    </p>
                 </div>
             </div>
         </div>
@@ -57,8 +60,8 @@
         <div class="flex items-center justify-between p-4 bg-slate-900/60 border border-slate-800 rounded-2xl">
             <span class="text-xs text-slate-400">تحديث فوري لأرقام الاتصال وأزرار الاتصال السريع بالموقع.</span>
             <button type="submit"
-                class="px-8 py-3 rounded-xl bg-red-500 hover:bg-red-400 text-slate-950 font-black text-sm transition-all shadow-lg shadow-red-500/20 active:scale-95 inline-flex items-center gap-2">
-                <svg class="w-4 h-4 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                class="px-8 py-3 rounded-xl bg-red-500 hover:bg-red-400 text-white font-black text-sm transition-all shadow-lg shadow-red-500/20 active:scale-95 inline-flex items-center gap-2">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                 </svg>
                 حفظ أرقام الاتصال والطوارئ

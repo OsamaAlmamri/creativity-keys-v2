@@ -3,7 +3,8 @@
 ])
 
 <div id="tab-panel-branding" class="tab-panel {{ $active ? '' : 'hidden' }}">
-    <form action="{{ route('admin.settings.update-tab', ['tab' => 'branding']) }}" method="POST" enctype="multipart/form-data" class="space-y-8">
+    <form action="{{ route('admin.settings.update-tab', ['tab' => 'branding']) }}" method="POST"
+        enctype="multipart/form-data" class="space-y-8">
         @csrf
 
         <!-- Logo & Favicon Card -->
@@ -39,7 +40,8 @@
                                     alt="شعار الموقع" class="max-h-full max-w-full object-contain">
                                 <div id="site-logo-fallback"
                                     class="text-center text-slate-600 text-[10px] hidden flex flex-col items-center gap-1">
-                                    <svg class="w-6 h-6 text-amber-500/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-6 h-6 text-amber-500/60" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
                                     </svg>
@@ -50,7 +52,8 @@
                                     class="max-h-full max-w-full object-contain hidden">
                                 <div id="site-logo-fallback"
                                     class="text-center text-slate-600 text-[10px] flex flex-col items-center gap-1">
-                                    <svg class="w-6 h-6 text-amber-500/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-6 h-6 text-amber-500/60" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
                                     </svg>
@@ -60,7 +63,8 @@
                         </div>
                         <div class="flex-1 space-y-1">
                             <div class="text-xs font-bold text-white">معاينة الشعار الحالية</div>
-                            <p class="text-[11px] text-slate-400">يفضل صورة شفافة PNG أو SVG أو WebP بدقة 250×70 بكسل.</p>
+                            <p class="text-[11px] text-slate-400">يفضل صورة شفافة PNG أو SVG أو WebP بدقة 250×70 بكسل.
+                            </p>
                             <button type="button" onclick="clearSiteLogo()" id="remove-logo-btn"
                                 class="inline-flex items-center gap-1 text-[11px] text-red-400 hover:text-red-300 font-bold transition-colors {{ empty(\App\Models\Setting::get('site_logo')) ? 'hidden' : '' }}">
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -75,7 +79,8 @@
 
                     <!-- Upload File Input -->
                     <div class="space-y-1.5">
-                        <label for="site_logo_file" class="block text-xs font-medium text-slate-300">رفع ملف شعار من جهازك</label>
+                        <label for="site_logo_file" class="block text-xs font-medium text-slate-300">رفع ملف شعار من
+                            جهازك</label>
                         <input type="file" id="site_logo_file" name="site_logo_file"
                             accept="image/png,image/jpeg,image/svg+xml,image/webp"
                             onchange="previewUploadedImage(this, 'site-logo-preview-img', 'site-logo-fallback', 'remove-logo-btn', 'remove_site_logo')"
@@ -84,7 +89,8 @@
 
                     <!-- Or External URL -->
                     <div class="space-y-1.5">
-                        <label for="site_logo" class="block text-xs font-medium text-slate-400">أو رابط مباشر للشعار (URL)</label>
+                        <label for="site_logo" class="block text-xs font-medium text-slate-400">أو رابط مباشر للشعار
+                            (URL)</label>
                         <input type="url" id="site_logo" name="site_logo"
                             value="{{ \App\Models\Setting::get('site_logo') }}"
                             placeholder="https://example.com/logo.png" dir="ltr"
@@ -115,7 +121,8 @@
                                     alt="Favicon" class="w-8 h-8 object-contain">
                                 <div id="site-favicon-fallback" class="text-amber-500 hidden">
                                     <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                                        <path
+                                            d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
                                     </svg>
                                 </div>
                             @else
@@ -123,14 +130,16 @@
                                     class="w-8 h-8 object-contain hidden">
                                 <div id="site-favicon-fallback" class="text-amber-500">
                                     <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                                        <path
+                                            d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
                                     </svg>
                                 </div>
                             @endif
                         </div>
                         <div class="flex-1 space-y-1">
                             <div class="text-xs font-bold text-white">أيقونة التبويب الحالية</div>
-                            <p class="text-[11px] text-slate-400">يفضل ملف ICO أو PNG أو SVG بدقة 32×32 أو 64×64 بكسل.</p>
+                            <p class="text-[11px] text-slate-400">يفضل ملف ICO أو PNG أو SVG بدقة 32×32 أو 64×64 بكسل.
+                            </p>
                             <button type="button" onclick="clearSiteFavicon()" id="remove-favicon-btn"
                                 class="inline-flex items-center gap-1 text-[11px] text-red-400 hover:text-red-300 font-bold transition-colors {{ empty(\App\Models\Setting::get('site_favicon')) ? 'hidden' : '' }}">
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -145,7 +154,8 @@
 
                     <!-- Upload Favicon Input -->
                     <div class="space-y-1.5">
-                        <label for="site_favicon_file" class="block text-xs font-medium text-slate-300">رفع أيقونة من جهازك</label>
+                        <label for="site_favicon_file" class="block text-xs font-medium text-slate-300">رفع أيقونة من
+                            جهازك</label>
                         <input type="file" id="site_favicon_file" name="site_favicon_file"
                             accept=".ico,image/png,image/svg+xml"
                             onchange="previewUploadedImage(this, 'site-favicon-preview-img', 'site-favicon-fallback', 'remove-favicon-btn', 'remove_site_favicon')"
@@ -154,7 +164,8 @@
 
                     <!-- Or External URL -->
                     <div class="space-y-1.5">
-                        <label for="site_favicon" class="block text-xs font-medium text-slate-400">أو رابط مباشر للأيقونة (URL)</label>
+                        <label for="site_favicon" class="block text-xs font-medium text-slate-400">أو رابط مباشر
+                            للأيقونة (URL)</label>
                         <input type="url" id="site_favicon" name="site_favicon"
                             value="{{ \App\Models\Setting::get('site_favicon') }}"
                             placeholder="https://example.com/favicon.png" dir="ltr"
@@ -174,14 +185,16 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 <div class="space-y-1.5 sm:col-span-1">
-                    <label for="site_name" class="block text-xs font-bold text-slate-300">اسم المحل / المركز <span class="text-red-400">*</span></label>
+                    <label for="site_name" class="block text-xs font-bold text-slate-300">اسم المحل / المركز <span
+                            class="text-red-400">*</span></label>
                     <input type="text" id="site_name" name="site_name" required
                         value="{{ \App\Models\Setting::get('site_name', 'مفاتيح الإبداع') }}"
                         class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:border-amber-400 focus:outline-none">
                 </div>
 
                 <div class="space-y-1.5 sm:col-span-1">
-                    <label for="city_name" class="block text-xs font-bold text-amber-400">المدينة الرئيسية (نطاق العمل الأساسي) <span class="text-red-400">*</span></label>
+                    <label for="city_name" class="block text-xs font-bold text-amber-400">المدينة الرئيسية (نطاق العمل
+                        الأساسي) <span class="text-red-400">*</span></label>
                     <input type="text" id="city_name" name="city_name" required
                         value="{{ \App\Models\Setting::get('city_name', 'جدة') }}"
                         placeholder="مثال: جدة أو مكة أو الرياض"
@@ -190,7 +203,8 @@
                 </div>
 
                 <div class="space-y-1.5 sm:col-span-1">
-                    <label for="site_tagline" class="block text-xs font-bold text-slate-300">الشعار اللفظي (Tagline)</label>
+                    <label for="site_tagline" class="block text-xs font-bold text-slate-300">الشعار اللفظي
+                        (Tagline)</label>
                     <input type="text" id="site_tagline" name="site_tagline"
                         value="{{ \App\Models\Setting::get('site_tagline') }}"
                         placeholder="مثال: قص وبرمجة المفاتيح الذكية"
@@ -203,8 +217,8 @@
         <div class="flex items-center justify-between p-4 bg-slate-900/60 border border-slate-800 rounded-2xl">
             <span class="text-xs text-slate-400">يتم حفظ وتطبيق التعديلات على الشعار واسم المركز والمدينة فورياً.</span>
             <button type="submit"
-                class="px-8 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm transition-all shadow-lg shadow-amber-500/20 active:scale-95 inline-flex items-center gap-2">
-                <svg class="w-4 h-4 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                class="px-8 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-white font-black text-sm transition-all shadow-lg shadow-amber-500/20 active:scale-95 inline-flex items-center gap-2">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                 </svg>
                 حفظ إعدادات الهوية والشعار

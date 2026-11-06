@@ -1,27 +1,27 @@
 @extends('layouts.app')
 
 @section('schema')
-@if(isset($services) && $services->isNotEmpty())
-<script type="application/ld+json">
-{
-    "@@context": "https://schema.org",
-    "@@type": "OfferCatalog",
-    "name": "دليل خدمات قص وبرمجة المفاتيح وفتح الأقفال",
-    "itemListElement": [
-        @foreach($services as $index => $srv)
+    @if(isset($services) && $services->isNotEmpty())
+        <script type="application/ld+json">
         {
-            "@@type": "Offer",
-            "itemOffered": {
-                "@@type": "Service",
-                "name": {!! json_encode($srv->title, JSON_UNESCAPED_UNICODE) !!},
-                "description": {!! json_encode($srv->short_description, JSON_UNESCAPED_UNICODE) !!}
-            }
-        }{{ !$loop->last ? ',' : '' }}
-        @endforeach
-    ]
-}
-</script>
-@endif
+            "@@context": "https://schema.org",
+            "@@type": "OfferCatalog",
+            "name": "دليل خدمات قص وبرمجة المفاتيح وفتح الأقفال",
+            "itemListElement": [
+                @foreach($services as $index => $srv)
+                    {
+                        "@@type": "Offer",
+                        "itemOffered": {
+                            "@@type": "Service",
+                            "name": {!! json_encode($srv->title, JSON_UNESCAPED_UNICODE) !!},
+                            "description": {!! json_encode($srv->short_description, JSON_UNESCAPED_UNICODE) !!}
+                        }
+                    }{{ !$loop->last ? ',' : '' }}
+                @endforeach
+            ]
+        }
+        </script>
+    @endif
 @endsection
 
 @section('content')
@@ -76,10 +76,10 @@
 
                     // Active state on buttons
                     filterButtons.forEach(b => {
-                        b.classList.remove('bg-amber-500', 'text-slate-950');
+                        b.classList.remove('bg-amber-500', 'text-white');
                         b.classList.add('bg-slate-800', 'text-slate-300');
                     });
-                    this.classList.add('bg-amber-500', 'text-slate-950');
+                    this.classList.add('bg-amber-500', 'text-white');
                     this.classList.remove('bg-slate-800', 'text-slate-300');
 
                     // Filter cards
