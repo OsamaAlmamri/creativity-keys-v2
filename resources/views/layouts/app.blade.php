@@ -66,14 +66,21 @@
             <div class="flex items-center justify-between h-20 gap-4">
                 <!-- Brand Logo & Site Identity -->
                 <a href="{{ route('home') }}"
-                    class="flex flex-col items-start transition-opacity hover:opacity-85 shrink-0 group">
-                    <span
-                        class="text-xl sm:text-2xl font-black tracking-tight text-slate-900 dark:text-white block leading-tight">
-                        {{ $settings['site_name'] ?? 'مفتاح الإبداع' }}
-                    </span>
-                    <span class="mt-0.5 text-[11px] font-bold text-amber-600 dark:text-amber-400 block leading-none">
-                        - {{ $settings['site_tagline'] ?? 'لخدمات الأقفال والأمان' }} -
-                    </span>
+                    class="flex items-center gap-3 transition-opacity hover:opacity-85 shrink-0 group">
+                    @if(!empty($settings['site_logo']))
+                        <img src="{{ $settings['site_logo'] }}"
+                            alt="{{ $settings['site_name'] ?? 'مفتاح الإبداع' }}"
+                            class="h-11 w-11 rounded-xl object-contain bg-slate-900 border border-slate-800 p-0.5 shadow-sm">
+                    @endif
+                    <div class="flex flex-col items-start">
+                        <span
+                            class="text-xl sm:text-2xl font-black tracking-tight text-slate-900 dark:text-white block leading-tight">
+                            {{ $settings['site_name'] ?? 'مفتاح الإبداع' }}
+                        </span>
+                        <span class="mt-0.5 text-[11px] font-bold text-amber-600 dark:text-amber-400 block leading-none">
+                            - {{ $settings['site_tagline'] ?? 'لخدمات الأقفال والأمان' }} -
+                        </span>
+                    </div>
                 </a>
 
                 <!-- Desktop Navigation Links (Simplified & Clean) -->

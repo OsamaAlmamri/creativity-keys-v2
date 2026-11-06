@@ -64,20 +64,26 @@
     <meta name="google-site-verification" content="{{ $settings['google_site_verification'] }}">
 @endif
 
-<!-- Favicon -->
+<!-- Favicon & Touch Icons -->
 @if(!empty($faviconUrl))
     <link rel="icon" href="{{ $faviconUrl }}">
     <link rel="apple-touch-icon" href="{{ $faviconUrl }}">
 @else
-    <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f59e0b'><path d='M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z'/></svg>">
+    <link rel="icon" href="{{ asset('favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
 @endif
+<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16x16.png') }}">
 
 <!-- Local & Geo SEO for Saudi Arabia / City -->
 <meta name="geo.region" content="{{ $geoRegion }}">
 <meta name="geo.placename" content="{{ $cityName }}، المملكة العربية السعودية">
 <meta name="geo.position" content="{{ $lat }};{{ $lng }}">
 <meta name="ICBM" content="{{ $lat }}, {{ $lng }}">
+
+@php
+    $ogImageUrl = Str::startsWith($ogImage, ['http://', 'https://']) ? $ogImage : url($ogImage);
+@endphp
 
 <!-- Open Graph / Facebook / WhatsApp / LinkedIn -->
 <meta property="og:site_name" content="{{ $siteName }}">
@@ -86,14 +92,16 @@
 <meta property="og:url" content="{{ $canonicalUrl }}">
 <meta property="og:title" content="{{ $title }}">
 <meta property="og:description" content="{{ $description }}">
-<meta property="og:image" content="{{ $ogImage }}">
+<meta property="og:image" content="{{ $ogImageUrl }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="{{ $title }}">
 
 <!-- Twitter Cards -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ $title }}">
 <meta name="twitter:description" content="{{ $description }}">
-<meta name="twitter:image" content="{{ $ogImage }}">
+<meta name="twitter:image" content="{{ $ogImageUrl }}">
 
 <!-- Google Analytics (GA4) -->
 @if(!empty($settings['google_analytics_id']))

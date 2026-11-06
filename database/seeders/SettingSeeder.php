@@ -23,12 +23,12 @@ class SettingSeeder extends Seeder
             ['key' => 'meta_description', 'value' => 'تبحث عن اقرب محل مفاتيح من موقعك في جدة؟ مفتاح الإبداع يقدم خدمات نسخ وتفصيل المفاتيح، برمجة وإصلاح مفاتيح السيارات، وفتح السيارات المغلقة بخدمة سريعة واحترافية على مدار 24 ساعة.', 'group' => 'general', 'label' => 'وصف الموقع لمحركات البحث', 'type' => 'textarea'],
 
             // الهوية والشعار
-            ['key' => 'site_logo', 'value' => '/images/logo.webp', 'group' => 'branding', 'label' => 'شعار الموقع الرئيسي', 'type' => 'text'],
-            ['key' => 'site_favicon', 'value' => '/images/logo.webp', 'group' => 'branding', 'label' => 'أيقونة الموقع (Favicon)', 'type' => 'text'],
+            ['key' => 'site_logo', 'value' => '/images/logo.png', 'group' => 'branding', 'label' => 'شعار الموقع الرئيسي', 'type' => 'text'],
+            ['key' => 'site_favicon', 'value' => '/favicon.ico', 'group' => 'branding', 'label' => 'أيقونة الموقع (Favicon)', 'type' => 'text'],
 
             // تحسين محركات البحث SEO والكلمات المفتاحية
             ['key' => 'meta_keywords', 'value' => 'محل مفاتيح جدة, برمجة مفاتيح سيارات, اقرب محل مفاتيح من موقعي, مفاتيح سيارات جدة, مفاتيح الابداع جدة, محل مفاتيح سيارات جدة, برمجة مفاتيح سيارات جدة, برمجة ريموتات وبصمة سيارات, فتح ابواب سيارات جدة, فتح اقفال منازل طوارئ 24 ساعة, الغاء نظام ماي كي فورد, تصليح كوالين وسوتشات سيارات معلقة, عمل مفاتيح بدل فاقد جدة, نسخ مفاتيح مشفرة, صب مفاتيح جدة, فتح شقق فك ابواب, نجار فتح اقفال جدة, فتح خزانات وتجوري, ورشة مفاتيح متنقلة جدة, مفاتيح جدة, برمجة مفاتيح شفرة ليزر, حي الروضة, حي السلامة, حي الزهراء, حي المروة, حي الصفا, أبحر الشمالية, الحمدانية', 'group' => 'seo', 'label' => 'الكلمات المفتاحية لموقع الويب (Meta Keywords)', 'type' => 'textarea'],
-            ['key' => 'og_image', 'value' => '/images/key.jpg', 'group' => 'seo', 'label' => 'صورة المشاركة الافتراضية (Social Share Image)', 'type' => 'text'],
+            ['key' => 'og_image', 'value' => '/images/og-share.jpg', 'group' => 'seo', 'label' => 'صورة المشاركة الافتراضية (Social Share Image)', 'type' => 'text'],
             ['key' => 'seo_robots', 'value' => 'index, follow', 'group' => 'seo', 'label' => 'توجيهات محركات البحث (Robots Meta)', 'type' => 'text'],
             ['key' => 'seo_alternate_name', 'value' => 'محل وورشة مفتاح الإبداع لقص وبرمجة المفاتيح وفتح الأقفال بجدة', 'group' => 'seo', 'label' => 'الاسم البديل في نتائج البحث والسكيما', 'type' => 'text'],
             ['key' => 'google_site_verification', 'value' => '0voJsPP2tXTFQt8I8OGdFD755V8UxEY53ZNU8udgmPQ', 'group' => 'seo', 'label' => 'رمز التحقق من Google Search Console', 'type' => 'text'],
