@@ -128,6 +128,9 @@ class HomePageTest extends TestCase
 
         // Floating buttons container must have role="group" when labeled by aria-label
         $response->assertSee('role="group" aria-label="تواصل سريع"', false);
+
+        // Ensure no invalid role="tablist" without role="tab" exists on gallery filters
+        $response->assertDontSee('role="tablist"', false);
     }
 
     public function test_gallery_renders_lightbox_preview_and_interactive_items(): void

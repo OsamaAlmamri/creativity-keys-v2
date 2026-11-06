@@ -16,7 +16,7 @@
 
         <!-- Filter Categories Tabs -->
         @if($galleryCategories->isNotEmpty() && $galleryCategories->count() > 1)
-            <div class="flex flex-wrap items-center gap-2 pt-8" id="gallery-filters" role="tablist" aria-label="تصنيفات المعرض">
+            <div class="flex flex-wrap items-center gap-2 pt-8" id="gallery-filters" role="group" aria-label="تصنيفات المعرض">
                 <button type="button" data-filter="all"
                     class="gallery-filter-btn active px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 bg-amber-500 text-white shadow-xs cursor-pointer">
                     الكل ({{ $galleryItems->count() }})
