@@ -477,23 +477,31 @@
     }
 
     /* 7. Cards & Containers Hierarchy in Light Mode */
-    /* Cards inside Services, Reviews, Location, Contact */
+    /* Cards inside Services, Reviews, Location, Contact & Glass Panels */
     html.theme-light #services .bg-slate-900,
     html.theme-light #reviews .bg-slate-900,
     html.theme-light #location .bg-slate-950,
+    html.theme-light #location .bg-slate-900,
     html.theme-light #contact .bg-slate-900,
-    html.theme-light #articles article.bg-slate-950 {
+    html.theme-light #articles article.bg-slate-950,
+    html.theme-light .glass-panel {
         background-color: #ffffff !important;
         border-color: #e2e8f0 !important;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -2px rgba(0, 0, 0, 0.04) !important;
     }
 
+    html.theme-light .hover-brand-card:hover,
     html.theme-light #services .hover-brand-card:hover,
     html.theme-light #reviews .hover-brand-card:hover,
     html.theme-light #articles .hover-brand-card:hover {
         transform: translateY(-4px) !important;
         border-color: var(--brand-400) !important;
         box-shadow: 0 20px 25px -5px rgba(var(--brand-rgb), 0.15), 0 8px 10px -6px rgba(var(--brand-rgb), 0.08) !important;
+    }
+
+    html.theme-light .arch-frame {
+        background-color: #f8fafc !important;
+        border-color: rgba(var(--brand-rgb, 245, 158, 11), 0.3) !important;
     }
 
     /* About Section Elements */

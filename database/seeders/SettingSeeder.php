@@ -39,10 +39,10 @@ class SettingSeeder extends Seeder
             ['key' => 'social_twitter', 'value' => 'https://twitter.com/creativitykeys', 'group' => 'social', 'label' => 'حساب منصة X (تويتر)', 'type' => 'text'],
             ['key' => 'social_instagram', 'value' => 'https://instagram.com/creativitykeys', 'group' => 'social', 'label' => 'حساب انستغرام', 'type' => 'text'],
             ['key' => 'social_tiktok', 'value' => 'https://tiktok.com/@creativitykeys', 'group' => 'social', 'label' => 'حساب تيك توك', 'type' => 'text'],
-            ['key' => 'social_telegram', 'value' => 'https://t.me/creativitykeys', 'group' => 'social', 'label' => 'قناة / حساب تيليجرام', 'type' => 'text'],
-            ['key' => 'social_youtube', 'value' => 'https://youtube.com/@creativitykeys', 'group' => 'social', 'label' => 'قناة يوتيوب', 'type' => 'text'],
-            ['key' => 'social_snapchat', 'value' => 'https://snapchat.com/add/creativitykeys', 'group' => 'social', 'label' => 'حساب سناب شات', 'type' => 'text'],
-            ['key' => 'social_linkedin', 'value' => 'https://linkedin.com/company/creativitykeys', 'group' => 'social', 'label' => 'صفحة لينكد إن', 'type' => 'text'],
+            ['key' => 'social_telegram', 'value' => '', 'group' => 'social', 'label' => 'قناة / حساب تيليجرام', 'type' => 'text'],
+            ['key' => 'social_youtube', 'value' => '', 'group' => 'social', 'label' => 'قناة يوتيوب', 'type' => 'text'],
+            ['key' => 'social_snapchat', 'value' => '', 'group' => 'social', 'label' => 'حساب سناب شات', 'type' => 'text'],
+            ['key' => 'social_linkedin', 'value' => '', 'group' => 'social', 'label' => 'صفحة لينكد إن', 'type' => 'text'],
 
             // أرقام التواصل وعناوين البريد الإلكتروني
             ['key' => 'phone', 'value' => '0568191921', 'group' => 'contact', 'label' => 'رقم الهاتف الرئيسي', 'type' => 'text'],

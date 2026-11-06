@@ -21,9 +21,9 @@
 @endsection
 
 @section('content')
-<div class="relative overflow-hidden bg-[#FAF9F6] dark:bg-slate-950 min-h-screen text-slate-800 dark:text-slate-200">
+<div class="relative overflow-hidden bg-slate-950 min-h-screen text-slate-800 dark:text-slate-200">
     
-    <!-- Ambient Background Lighting Orbs -->
+    <!-- Ambient Background Lighting Orbs with Dynamic Theme Accent -->
     <div class="orb orb-sage"></div>
     <div class="orb orb-terracotta"></div>
 
@@ -33,9 +33,9 @@
             
             <!-- Breadcrumbs -->
             <nav class="flex items-center gap-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-6 font-medium">
-                <a href="{{ route('home') }}" class="hover:text-[#588157] transition-colors">الرئيسية</a>
+                <a href="{{ route('home') }}" class="hover:text-amber-400 transition-colors">الرئيسية</a>
                 <span class="text-slate-300 dark:text-slate-700">/</span>
-                <a href="{{ url('/#services') }}" class="hover:text-[#588157] transition-colors">الخدمات</a>
+                <a href="{{ url('/#services') }}" class="hover:text-amber-400 transition-colors">الخدمات</a>
                 <span class="text-slate-300 dark:text-slate-700">/</span>
                 <span class="text-slate-900 dark:text-white font-bold truncate">{{ $service->title }}</span>
             </nav>
@@ -43,8 +43,8 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <!-- Text Details -->
                 <div class="lg:col-span-8 space-y-4">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#C0CFB2]/40 text-[#3A5A40] dark:bg-slate-800 dark:text-emerald-400 text-xs font-bold">
-                        <span class="w-2 h-2 rounded-full bg-[#588157] animate-pulse"></span>
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold">
+                        <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
                         <span>{{ $service->badge_text }}</span>
                     </div>
 
@@ -60,7 +60,7 @@
                     <div class="pt-4 flex flex-wrap items-center gap-4">
                         <a 
                             href="tel:{{ $settings['emergency_phone'] ?? '0568191921' }}" 
-                            class="inline-flex items-center justify-center gap-2.5 min-h-12 px-7 py-3 rounded-full bg-[#588157] hover:bg-[#3A5A40] text-white font-bold text-sm sm:text-base shadow-sm transition-all duration-300"
+                            class="inline-flex items-center justify-center gap-2.5 min-h-12 px-7 py-3 rounded-full bg-brand-primary hover:brightness-105 text-slate-950 font-bold text-sm sm:text-base shadow-brand transition-all duration-300"
                         >
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                             <span>اتصل للخدمة:</span>
@@ -89,7 +89,7 @@
                         >
                         <div class="absolute bottom-4 right-4 left-4 p-3 rounded-xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200/80 dark:border-slate-800 flex items-center justify-between text-xs">
                             <span class="font-bold text-slate-900 dark:text-white">السرعة المعتمدة:</span>
-                            <span class="text-[#588157] dark:text-emerald-400 font-bold">15 - 25 دقيقة بموقعك</span>
+                            <span class="text-brand-primary font-bold">15 - 25 دقيقة بموقعك</span>
                         </div>
                     </div>
                 </div>
@@ -123,7 +123,7 @@
                             <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-700 dark:text-slate-300">
                                 @foreach($service->features as $item)
                                     <li class="flex items-center gap-2.5">
-                                        <svg class="w-5 h-5 text-[#588157] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                        <svg class="w-5 h-5 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                                         <span>{{ $item }}</span>
                                     </li>
                                 @endforeach
@@ -143,10 +143,10 @@
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                             @foreach($service->featuresList as $feat)
-                                <div class="glass-panel rounded-[2rem] p-6 flex flex-col justify-between transition-all duration-300 hover:shadow-md">
+                                <div class="glass-panel rounded-[2rem] p-6 flex flex-col justify-between transition-all duration-300 hover-brand-card">
                                     <div>
                                         <div class="flex items-center justify-between gap-3 mb-4">
-                                            <div class="w-12 h-12 rounded-full bg-[#C0CFB2]/40 text-[#588157] dark:bg-slate-800 dark:text-emerald-400 flex items-center justify-center">
+                                            <div class="w-12 h-12 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 flex items-center justify-center">
                                                 @if($feat->icon === 'battery')
                                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
                                                 @elseif($feat->icon === 'cpu-chip')
@@ -163,7 +163,7 @@
                                             </div>
 
                                             @if($feat->badge)
-                                                <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-[#C0CFB2]/30 text-[#3A5A40] dark:bg-slate-800 dark:text-emerald-400 text-xs font-bold">
+                                                <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-bold">
                                                     {{ $feat->badge }}
                                                 </span>
                                             @endif
@@ -194,7 +194,7 @@
                             @foreach($service->steps as $step)
                                 <div class="glass-panel rounded-[2rem] p-6 relative">
                                     <div class="flex items-center gap-3 mb-3">
-                                        <span class="w-8 h-8 rounded-full bg-[#588157] text-white flex items-center justify-center font-bold text-sm shrink-0">
+                                        <span class="w-8 h-8 rounded-full bg-brand-primary text-slate-950 flex items-center justify-center font-black text-sm shrink-0 shadow-brand">
                                             {{ $step['step'] ?? $loop->iteration }}
                                         </span>
                                         <h3 class="text-base font-bold text-slate-900 dark:text-white">
@@ -237,7 +237,7 @@
                                                         <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 block">{{ $tier->note }}</span>
                                                     @endif
                                                 </td>
-                                                <td class="py-4 px-4 text-left font-mono font-bold text-[#588157] dark:text-emerald-400 whitespace-nowrap">
+                                                <td class="py-4 px-4 text-left font-mono font-bold text-brand-primary whitespace-nowrap">
                                                     {{ $tier->price }}
                                                 </td>
                                             </tr>
@@ -267,7 +267,7 @@
                                 <details class="group glass-panel rounded-[1.8rem] p-6 [&_summary::-webkit-details-marker]:hidden transition-all duration-300">
                                     <summary class="flex items-center justify-between gap-4 cursor-pointer font-bold text-base sm:text-lg text-slate-900 dark:text-white select-none">
                                         <span>{{ $faq->question }}</span>
-                                        <span class="w-8 h-8 rounded-full bg-[#C0CFB2]/40 text-[#588157] flex items-center justify-center shrink-0 group-open:rotate-180 transition-transform duration-300">
+                                        <span class="w-8 h-8 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 flex items-center justify-center shrink-0 group-open:rotate-180 transition-transform duration-300">
                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                                         </span>
                                     </summary>
@@ -311,7 +311,7 @@
                         </p>
                         <a 
                             href="tel:{{ $settings['emergency_phone'] ?? '0568191921' }}" 
-                            class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-[#588157] text-white font-bold text-sm shadow-sm hover:bg-[#3A5A40] transition-colors"
+                            class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-brand-primary hover:brightness-105 text-slate-950 font-bold text-sm shadow-brand transition-all duration-300"
                         >
                             <span>اتصل الآن:</span>
                             <span dir="ltr">{{ $settings['emergency_phone'] ?? '0568191921' }}</span>
@@ -322,7 +322,7 @@
                 <!-- Coverage Areas Widget Matching Competitor Design -->
                 <div class="glass-panel rounded-[2.2rem] p-6 space-y-4 shadow-sm">
                     <h3 class="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                        <svg class="w-5 h-5 text-[#588157]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                         <span>تغطية الخدمة في {{ $cityName }}</span>
                     </h3>
                     
@@ -331,14 +331,14 @@
                     </p>
 
                     <div class="grid grid-cols-2 gap-2 text-xs text-slate-700 dark:text-slate-300">
-                        <div class="flex items-center gap-1.5"><span class="text-[#588157]">›</span> حي الروضة</div>
-                        <div class="flex items-center gap-1.5"><span class="text-[#588157]">›</span> حي السلامة</div>
-                        <div class="flex items-center gap-1.5"><span class="text-[#588157]">›</span> حي الشاطئ</div>
-                        <div class="flex items-center gap-1.5"><span class="text-[#588157]">›</span> أبحر الشمالية والجنوبية</div>
-                        <div class="flex items-center gap-1.5"><span class="text-[#588157]">›</span> حي المروة</div>
-                        <div class="flex items-center gap-1.5"><span class="text-[#588157]">›</span> حي الصفا</div>
-                        <div class="flex items-center gap-1.5"><span class="text-[#588157]">›</span> حي النعيم</div>
-                        <div class="flex items-center gap-1.5"><span class="text-[#588157]">›</span> حي الزهراء</div>
+                        <div class="flex items-center gap-1.5"><span class="text-amber-400">›</span> حي الروضة</div>
+                        <div class="flex items-center gap-1.5"><span class="text-amber-400">›</span> حي السلامة</div>
+                        <div class="flex items-center gap-1.5"><span class="text-amber-400">›</span> حي الشاطئ</div>
+                        <div class="flex items-center gap-1.5"><span class="text-amber-400">›</span> أبحر الشمالية والجنوبية</div>
+                        <div class="flex items-center gap-1.5"><span class="text-amber-400">›</span> حي المروة</div>
+                        <div class="flex items-center gap-1.5"><span class="text-amber-400">›</span> حي الصفا</div>
+                        <div class="flex items-center gap-1.5"><span class="text-amber-400">›</span> حي النعيم</div>
+                        <div class="flex items-center gap-1.5"><span class="text-amber-400">›</span> حي الزهراء</div>
                     </div>
                 </div>
 
@@ -355,10 +355,10 @@
                                     href="{{ route('services.show', $rel->slug) }}" 
                                     class="flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-500/10 transition-colors group"
                                 >
-                                    <span class="text-slate-700 dark:text-slate-300 group-hover:text-[#588157] font-medium truncate">
+                                    <span class="text-slate-700 dark:text-slate-300 group-hover:text-amber-400 font-medium truncate">
                                         {{ $rel->title }}
                                     </span>
-                                    <svg class="w-4 h-4 text-slate-400 group-hover:text-[#588157] group-hover:-translate-x-1 transition-transform rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                                    <svg class="w-4 h-4 text-slate-400 group-hover:text-amber-400 group-hover:-translate-x-1 transition-transform rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                                 </a>
                             </li>
                         @endforeach

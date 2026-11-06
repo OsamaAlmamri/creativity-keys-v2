@@ -40,23 +40,23 @@ html {
     background: var(--brand-500, #eab308);
 }
 
-/* Authentic Arch Frame from Reference HTML */
+/* Authentic Arch Frame with Dynamic Theme Support */
 .arch-frame {
     position: relative;
     overflow: hidden;
-    border: 1px solid rgba(88, 129, 87, 0.38);
-    background: #F1F4EB;
-    box-shadow: 0 22px 70px rgba(31, 46, 35, 0.08);
+    border: 1px solid rgba(var(--brand-rgb, 245, 158, 11), 0.35);
+    background: #ffffff;
+    box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.08);
 }
 .dark .arch-frame {
-    border-color: rgba(88, 129, 87, 0.3);
+    border-color: rgba(var(--brand-rgb, 245, 158, 11), 0.3);
     background: #0f172a;
-    box-shadow: 0 22px 70px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 22px 70px rgba(0, 0, 0, 0.5);
 }
 .arch-frame::after {
     position: absolute;
     inset: 1.1rem;
-    border: 1px solid rgba(250, 249, 246, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: inherit;
     content: "";
     pointer-events: none;
@@ -76,28 +76,28 @@ html {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-    color: #3A5A40;
+    color: var(--brand-700, #b45309);
     font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 0.05em;
 }
 .dark .section-kicker {
-    color: #A5BA95;
+    color: var(--brand-400, #fbbf24);
 }
 .section-kicker::before {
     display: inline-block;
     width: 2.2rem;
     height: 2px;
-    background: #588157;
+    background: var(--brand-500, #f59e0b);
     content: "";
     border-radius: 999px;
 }
 
 /* Glass Panel Cards */
 .glass-panel {
-    border: 1px solid rgba(88, 129, 87, 0.22);
-    background: rgba(255, 255, 255, 0.88);
-    box-shadow: 0 10px 30px rgba(31, 46, 35, 0.05);
+    border: 1px solid #e2e8f0;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
     backdrop-filter: blur(16px);
 }
 .dark .glass-panel {
@@ -119,24 +119,24 @@ html {
     height: 26rem;
     inset-inline-end: 5%;
     top: 8%;
-    background: rgba(88, 129, 87, 0.18);
+    background: rgba(var(--brand-rgb, 245, 158, 11), 0.15);
 }
 .orb-terracotta {
     width: 20rem;
     height: 20rem;
     inset-inline-start: 4%;
     bottom: 8%;
-    background: rgba(163, 177, 138, 0.22);
+    background: rgba(var(--brand-rgb, 245, 158, 11), 0.08);
 }
 
 .contact-section {
     background:
-        radial-gradient(circle at 8% 16%, rgba(163, 177, 138, 0.15), transparent 24rem),
-        linear-gradient(180deg, #FAF9F6, #F1F4EB);
+        radial-gradient(circle at 8% 16%, rgba(var(--brand-rgb, 245, 158, 11), 0.08), transparent 24rem),
+        linear-gradient(180deg, #ffffff, #f8fafc);
 }
 .dark .contact-section {
     background:
-        radial-gradient(circle at 8% 16%, rgba(88, 129, 87, 0.12), transparent 24rem),
+        radial-gradient(circle at 8% 16%, rgba(var(--brand-rgb, 245, 158, 11), 0.12), transparent 24rem),
         linear-gradient(180deg, #020617, #0f172a);
 }
 

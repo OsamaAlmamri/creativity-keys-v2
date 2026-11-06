@@ -1,4 +1,4 @@
-<section id="location" class="py-24 bg-[#FAF9F6] dark:bg-slate-950 px-5 sm:px-8 border-t border-slate-200/80 dark:border-slate-800 relative">
+<section id="location" class="py-24 bg-slate-900 px-5 sm:px-8 border-t border-slate-800 relative">
     <div class="mx-auto max-w-7xl">
         
         <!-- Section Header Matching Reference Style -->
@@ -35,7 +35,7 @@
                 <!-- Directions Card -->
                 <div class="glass-panel flex flex-col rounded-[2rem] p-6 justify-between">
                     <div>
-                        <span class="flex h-12 w-12 items-center justify-center rounded-full bg-[#C0CFB2]/40 text-[#588157] dark:bg-slate-800 dark:text-emerald-400">
+                        <span class="flex h-12 w-12 items-center justify-center rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                         </span>
                         <h3 class="mt-4 text-lg font-semibold text-slate-900 dark:text-white">الاتجاهات</h3>
@@ -47,7 +47,7 @@
                         href="{{ $directionsUrl }}" 
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        class="mt-5 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[#C0CFB2] hover:bg-[#A5BA95] dark:bg-slate-800 dark:hover:bg-slate-700 px-5 py-3 text-sm font-semibold text-[#1F2E23] dark:text-white transition-all duration-300 shadow-sm"
+                        class="mt-5 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-brand-primary hover:brightness-105 px-5 py-3 text-sm font-bold text-slate-950 shadow-brand transition-all duration-300"
                     >
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                         <span>افتح في خرائط جوجل</span>
@@ -56,7 +56,7 @@
 
                 <!-- Working Hours Card -->
                 <div class="glass-panel flex items-start gap-4 rounded-[2rem] p-6">
-                    <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#C0CFB2]/40 text-[#588157] dark:bg-slate-800 dark:text-emerald-400">
+                    <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     </span>
                     <span class="min-w-0">
@@ -67,7 +67,7 @@
 
                 <!-- 24/7 Mobile Service Card -->
                 <div class="glass-panel flex items-start gap-4 rounded-[2rem] p-6">
-                    <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#C0CFB2]/40 text-[#588157] dark:bg-slate-800 dark:text-emerald-400">
+                    <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/></svg>
                     </span>
                     <span class="min-w-0">
