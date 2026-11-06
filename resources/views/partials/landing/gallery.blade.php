@@ -1,82 +1,279 @@
-<section id="gallery" class="py-24 bg-slate-900 border-t border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section id="gallery" class="py-24 bg-slate-50 dark:bg-slate-950 px-5 sm:px-8 border-t border-slate-200 dark:border-slate-800/80 relative overflow-hidden transition-colors duration-300">
+    <div class="mx-auto max-w-7xl">
 
-        <!-- Section Header -->
-        <div class="text-center max-w-3xl mx-auto space-y-4 mb-12">
-            <div
-                class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                معرض الصور والأعمال
+        <!-- Section Header Matching Reference Website -->
+        <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+            <div>
+                <p class="section-kicker">معرض الصور والأعمال</p>
+                <h2 class="mt-4 max-w-2xl text-4xl font-semibold leading-tight tracking-[-0.03em] sm:text-5xl text-slate-900 dark:text-white">
+                    لمحة من داخل محلنا وأحدث أجهزتنا.
+                </h2>
             </div>
-            <h2 class="text-3xl sm:text-5xl font-black text-white">
-                لقطات من أعمالنا وأحدث أجهزتنا
-            </h2>
-            <p class="text-slate-400 text-base">
-                شاهد كفاءة أجهزتنا الرقمية وصور حقيقية من برمجة بصمات السيارات وتركيب الأقفال الذكية وفتح الخزائن.
+            <p class="max-w-md text-base leading-7 text-slate-600 dark:text-slate-400">
+                تصفّح صورًا حقيقية من داخل محل مفاتيح الإبداع: أجهزة نسخ وبرمجة المفاتيح، معدات تشخيص السيارات، وعرض شامل لمفاتيح جميع الماركات. اضغط على أي صورة لعرضها بحجم أكبر.
             </p>
-
-            <!-- Filter Categories Tabs -->
-            @if($galleryCategories->isNotEmpty())
-                <div class="flex flex-wrap items-center justify-center gap-2 pt-4" id="gallery-filters">
-                    <button type="button" data-filter="all"
-                        class="filter-btn active px-4 py-2 rounded-full text-xs font-bold transition-all bg-amber-500 text-white">
-                        الكل ({{ $galleryItems->count() }})
-                    </button>
-                    @foreach($galleryCategories as $category)
-                        <button type="button" data-filter="{{ $category }}"
-                            class="filter-btn px-4 py-2 rounded-full text-xs font-bold transition-all bg-slate-800 text-slate-300 hover:bg-slate-700">
-                            {{ $category }}
-                        </button>
-                    @endforeach
-                </div>
-            @endif
         </div>
 
-        <!-- Gallery Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
-            @forelse($galleryItems as $item)
-                <div class="gallery-card group relative rounded-3xl overflow-hidden bg-slate-950 border border-slate-800 shadow-xl hover-brand-card"
-                    data-category="{{ $item->category }}">
-                    <!-- Image Container with Aspect Ratio -->
-                    <div class="aspect-w-16 aspect-h-11 h-64 overflow-hidden">
-                        <img src="{{ $item->image_url }}" alt="{{ $item->title }}" loading="lazy"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                    </div>
+        <!-- Filter Categories Tabs -->
+        @if($galleryCategories->isNotEmpty())
+            <div class="flex flex-wrap items-center gap-2 pt-8" id="gallery-filters" role="tablist" aria-label="تصنيفات المعرض">
+                <button type="button" data-filter="all"
+                    class="gallery-filter-btn active px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 bg-amber-500 text-white shadow-xs cursor-pointer">
+                    الكل ({{ $galleryItems->count() }})
+                </button>
+                @foreach($galleryCategories as $category)
+                    <button type="button" data-filter="{{ $category }}"
+                        class="gallery-filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 cursor-pointer">
+                        {{ $category }}
+                    </button>
+                @endforeach
+            </div>
+        @endif
 
-                    <!-- Gradient Overlay -->
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-80 group-hover:opacity-95 transition-opacity">
-                    </div>
+        <!-- Gallery Grid Matching Reference Structure -->
+        <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" id="gallery-grid">
+            @forelse($galleryItems as $index => $item)
+                <button type="button"
+                    class="gallery-item glass-panel group relative overflow-hidden rounded-[1.8rem] p-2 text-start transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl cursor-pointer block w-full focus:outline-none focus:ring-2 focus:ring-amber-500/70"
+                    data-gallery-src="{{ $item->image_url }}"
+                    data-gallery-title="{{ $item->title }}"
+                    data-gallery-desc="{{ $item->description ?? '' }}"
+                    data-gallery-category="{{ $item->category }}"
+                    data-category="{{ $item->category }}"
+                    aria-label="عرض الصورة: {{ $item->title }}">
+                    <div class="relative overflow-hidden rounded-[1.4rem]">
+                        <img alt="{{ $item->title }}" loading="lazy"
+                            class="aspect-[4/3] w-full rounded-[1.4rem] object-cover transition-transform duration-500 group-hover:scale-105"
+                            src="{{ $item->image_url }}">
 
-                    <!-- Card Badge -->
-                    <div class="absolute top-4 right-4">
-                        <span
-                            class="px-3 py-1 rounded-full bg-slate-900/90 backdrop-blur-md text-amber-400 border border-slate-700 text-xs font-bold">
-                            {{ $item->category }}
-                        </span>
-                    </div>
+                        <!-- Dark gradient overlay for text readability -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/25 to-transparent opacity-90 group-hover:opacity-95 transition-opacity"></div>
 
-                    <!-- Card Content at Bottom -->
-                    <div class="absolute bottom-0 inset-x-0 p-6 space-y-1">
-                        <h3 class="text-white font-bold text-base group-hover:text-amber-400 transition-colors">
-                            {{ $item->title }}
-                        </h3>
-                        @if($item->description)
-                            <p class="text-xs text-slate-400 line-clamp-2">
-                                {{ $item->description }}
-                            </p>
-                        @endif
+                        <!-- Category badge -->
+                        <div class="absolute top-3 right-3">
+                            <span class="rounded-full bg-slate-900/80 backdrop-blur-md px-3 py-1 text-xs font-semibold text-amber-400 border border-slate-700/60 shadow-xs">
+                                {{ $item->category }}
+                            </span>
+                        </div>
+
+                        <!-- Zoom indicator button -->
+                        <div class="absolute top-3 left-3 w-9 h-9 rounded-full bg-slate-900/70 backdrop-blur-md text-white border border-white/15 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
+                            </svg>
+                        </div>
+
+                        <!-- Text details at bottom -->
+                        <div class="absolute bottom-0 inset-x-0 p-4 space-y-1">
+                            <h3 class="text-white font-bold text-base leading-snug group-hover:text-amber-400 transition-colors drop-shadow-sm">
+                                {{ $item->title }}
+                            </h3>
+                            @if($item->description)
+                                <p class="text-xs text-slate-300 line-clamp-1 drop-shadow-sm">
+                                    {{ $item->description }}
+                                </p>
+                            @endif
+                        </div>
                     </div>
-                </div>
+                </button>
             @empty
-                <div class="col-span-3 text-center py-12 text-slate-500">
-                    جاري تحديث معرض الصور...
+                <div class="col-span-full text-center py-16 text-slate-500">
+                    جاري تحديث معرض الصور والأعمال...
                 </div>
             @endforelse
         </div>
-
     </div>
 </section>
+
+<!-- Lightbox Modal matching reference website with keyboard navigation & counter -->
+<div id="galleryLightbox" class="gallery-lightbox" role="dialog" aria-modal="true" aria-label="عرض صور المحل" style="display: none;">
+    <!-- Close button -->
+    <button type="button" id="galleryClose" class="gallery-lightbox-close" aria-label="إغلاق الصورة">
+        <svg class="w-6 h-6 stroke-[2.2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+    </button>
+
+    <!-- Prev button (In RTL, prev is on the right side pointing right) -->
+    <button type="button" id="galleryPrev" class="gallery-lightbox-nav gallery-lightbox-prev" aria-label="الصورة السابقة">
+        <svg class="w-6 h-6 stroke-[2.2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+    </button>
+
+    <!-- Main Content Container -->
+    <div class="gallery-lightbox-content flex flex-col items-center max-w-full max-h-full px-4 select-none">
+        <img id="galleryLightboxImg" src="" alt="" class="gallery-lightbox-img" />
+
+        <div class="mt-4 flex flex-col sm:flex-row items-center justify-between gap-3 max-w-3xl w-full px-2">
+            <div class="flex items-center gap-2 text-center sm:text-start">
+                <span id="galleryLightboxCategory" class="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-xs font-semibold border border-amber-500/30"></span>
+                <h4 id="galleryLightboxTitle" class="text-white font-bold text-sm sm:text-base drop-shadow"></h4>
+            </div>
+            <span id="galleryLightboxCounter" class="px-3 py-1 rounded-full bg-white/10 backdrop-blur text-white/80 text-xs font-bold border border-white/10 shrink-0">1 / 1</span>
+        </div>
+        <p id="galleryLightboxDesc" class="mt-1 text-xs text-slate-300 max-w-3xl w-full px-2 text-center sm:text-start drop-shadow line-clamp-2"></p>
+    </div>
+
+    <!-- Next button (In RTL, next is on the left side pointing left) -->
+    <button type="button" id="galleryNext" class="gallery-lightbox-nav gallery-lightbox-next" aria-label="الصورة التالية">
+        <svg class="w-6 h-6 stroke-[2.2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+    </button>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+        const lightbox = document.getElementById('galleryLightbox');
+        const lightboxImg = document.getElementById('galleryLightboxImg');
+        const lightboxTitle = document.getElementById('galleryLightboxTitle');
+        const lightboxCategory = document.getElementById('galleryLightboxCategory');
+        const lightboxDesc = document.getElementById('galleryLightboxDesc');
+        const lightboxCounter = document.getElementById('galleryLightboxCounter');
+        const closeBtn = document.getElementById('galleryClose');
+        const prevBtn = document.getElementById('galleryPrev');
+        const nextBtn = document.getElementById('galleryNext');
+        const filterBtns = document.querySelectorAll('.gallery-filter-btn');
+
+        let currentIndex = 0;
+
+        function getVisibleItems() {
+            return galleryItems.filter(item => item.style.display !== 'none');
+        }
+
+        function showImage(index) {
+            const visible = getVisibleItems();
+            if (!visible.length || !lightboxImg) return;
+            currentIndex = ((index % visible.length) + visible.length) % visible.length;
+            const item = visible[currentIndex];
+
+            const src = item.getAttribute('data-gallery-src');
+            const title = item.getAttribute('data-gallery-title') || '';
+            const desc = item.getAttribute('data-gallery-desc') || '';
+            const cat = item.getAttribute('data-gallery-category') || '';
+
+            lightboxImg.src = src;
+            lightboxImg.alt = title;
+
+            if (lightboxTitle) lightboxTitle.textContent = title;
+            if (lightboxDesc) {
+                lightboxDesc.textContent = desc;
+                lightboxDesc.style.display = desc ? 'block' : 'none';
+            }
+            if (lightboxCategory) {
+                lightboxCategory.textContent = cat;
+                lightboxCategory.style.display = cat ? 'inline-block' : 'none';
+            }
+            if (lightboxCounter) {
+                lightboxCounter.textContent = (currentIndex + 1) + ' / ' + visible.length;
+            }
+        }
+
+        function openLightbox(itemEl) {
+            if (!lightbox) return;
+            const visible = getVisibleItems();
+            const idx = visible.indexOf(itemEl);
+            currentIndex = idx >= 0 ? idx : 0;
+            showImage(currentIndex);
+            lightbox.style.display = 'flex';
+            lightbox.classList.add('is-open');
+            document.body.style.overflow = 'hidden';
+            if (closeBtn) closeBtn.focus();
+        }
+
+        function closeLightbox() {
+            if (!lightbox) return;
+            lightbox.classList.remove('is-open');
+            lightbox.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', function (e) {
+                e.preventDefault();
+                openLightbox(item);
+            });
+        });
+
+        if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                showImage(currentIndex - 1);
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                showImage(currentIndex + 1);
+            });
+        }
+
+        if (lightbox) {
+            lightbox.addEventListener('click', function (e) {
+                if (e.target === lightbox || e.target.classList.contains('gallery-lightbox-content')) {
+                    closeLightbox();
+                }
+            });
+
+            // Touch swipe support for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+            lightbox.addEventListener('touchstart', function (e) {
+                if (e.changedTouches && e.changedTouches[0]) {
+                    touchStartX = e.changedTouches[0].screenX;
+                }
+            }, { passive: true });
+            lightbox.addEventListener('touchend', function (e) {
+                if (e.changedTouches && e.changedTouches[0]) {
+                    touchEndX = e.changedTouches[0].screenX;
+                    const diff = touchEndX - touchStartX;
+                    if (Math.abs(diff) > 50) {
+                        if (diff > 0) {
+                            showImage(currentIndex - 1);
+                        } else {
+                            showImage(currentIndex + 1);
+                        }
+                    }
+                }
+            }, { passive: true });
+        }
+
+        document.addEventListener('keydown', function (e) {
+            if (!lightbox || !lightbox.classList.contains('is-open')) return;
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowLeft') {
+                showImage(currentIndex + 1);
+            } else if (e.key === 'ArrowRight') {
+                showImage(currentIndex - 1);
+            }
+        });
+
+        // Category Filtering
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-amber-500', 'text-white', 'shadow-xs');
+                    b.classList.add('bg-white', 'dark:bg-slate-900', 'text-slate-700', 'dark:text-slate-300');
+                });
+                btn.classList.add('active', 'bg-amber-500', 'text-white', 'shadow-xs');
+                btn.classList.remove('bg-white', 'dark:bg-slate-900', 'text-slate-700', 'dark:text-slate-300');
+
+                const filter = btn.getAttribute('data-filter');
+                galleryItems.forEach(item => {
+                    const cat = item.getAttribute('data-category');
+                    if (filter === 'all' || cat === filter) {
+                        item.style.display = '';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+</script>

@@ -140,3 +140,111 @@ html {
         linear-gradient(180deg, #020617, #0f172a);
 }
 
+/* Gallery Lightbox Preview Modal matching competitor reference */
+.gallery-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(15, 23, 42, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.gallery-lightbox.is-open {
+    display: flex;
+}
+
+.gallery-lightbox-img {
+    max-width: min(92vw, 1100px);
+    max-height: 75vh;
+    border-radius: 1.5rem;
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.6);
+    object-fit: contain;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.gallery-lightbox-close {
+    position: absolute;
+    top: 1.25rem;
+    inset-inline-end: 1.25rem;
+    display: inline-flex;
+    height: 3rem;
+    width: 3rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    transition: background 300ms ease, transform 300ms ease;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    z-index: 20;
+}
+
+.gallery-lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.08);
+}
+
+.gallery-lightbox-nav {
+    position: absolute;
+    top: 50%;
+    display: inline-flex;
+    height: 3rem;
+    width: 3rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    transform: translateY(-50%);
+    transition: background 300ms ease, transform 300ms ease;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    z-index: 20;
+}
+
+.gallery-lightbox-nav:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%) scale(1.08);
+}
+
+.gallery-lightbox-prev {
+    inset-inline-end: 1.25rem;
+}
+
+.gallery-lightbox-next {
+    inset-inline-start: 1.25rem;
+}
+
+@media (max-width: 640px) {
+    .gallery-lightbox-close {
+        top: 0.85rem;
+        inset-inline-end: 0.85rem;
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+
+    .gallery-lightbox-nav {
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+
+    .gallery-lightbox-prev {
+        inset-inline-end: 0.5rem;
+    }
+
+    .gallery-lightbox-next {
+        inset-inline-start: 0.5rem;
+    }
+}
+
+

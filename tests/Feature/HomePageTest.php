@@ -131,4 +131,27 @@ class HomePageTest extends TestCase
         // Floating buttons container must have role="group" when labeled by aria-label
         $response->assertSee('role="group" aria-label="تواصل سريع"', false);
     }
+
+    public function test_gallery_renders_lightbox_preview_and_interactive_items(): void
+    {
+        GalleryItem::factory()->create([
+            'title' => 'واجهة محل مفتاح الإبداع في جدة',
+            'category' => 'المركز والواجهة',
+            'image_url' => '/images/store/800_6abfe27982073.jpg',
+            'description' => 'المقر الرئيسي لخدمات قص وبرمجة المفاتيح',
+        ]);
+
+        $response = $this->get(route('home'));
+        $response->assertStatus(200);
+
+        // Verify Gallery Lightbox and Interactive items
+        $response->assertSee('id="galleryLightbox"', false);
+        $response->assertSee('id="galleryLightboxImg"', false);
+        $response->assertSee('id="galleryClose"', false);
+        $response->assertSee('id="galleryPrev"', false);
+        $response->assertSee('id="galleryNext"', false);
+        $response->assertSee('gallery-item', false);
+        $response->assertSee('data-gallery-src=', false);
+        $response->assertSee('واجهة محل مفتاح الإبداع في جدة');
+    }
 }
