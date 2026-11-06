@@ -216,6 +216,7 @@ class SettingController extends Controller
             'social_twitter' => 'nullable|url|max:255',
             'social_instagram' => 'nullable|url|max:255',
             'social_tiktok' => 'nullable|url|max:255',
+            'social_telegram' => 'nullable|url|max:255',
             'social_snapchat' => 'nullable|url|max:255',
             'social_facebook' => 'nullable|url|max:255',
             'social_youtube' => 'nullable|url|max:255',
@@ -224,6 +225,7 @@ class SettingController extends Controller
             'social_twitter.url' => 'يرجى إدخال رابط صحيح لمنصة X (تويتر).',
             'social_instagram.url' => 'يرجى إدخال رابط صحيح لحساب انستغرام.',
             'social_tiktok.url' => 'يرجى إدخال رابط صحيح لحساب تيك توك.',
+            'social_telegram.url' => 'يرجى إدخال رابط صحيح لقناة أو حساب تيليجرام.',
             'social_snapchat.url' => 'يرجى إدخال رابط صحيح لحساب سناب شات.',
             'social_facebook.url' => 'يرجى إدخال رابط صحيح لصفحة فيسبوك.',
             'social_youtube.url' => 'يرجى إدخال رابط صحيح لقناة يوتيوب.',
@@ -234,6 +236,7 @@ class SettingController extends Controller
             'social_twitter' => 'حساب منصة X (تويتر)',
             'social_instagram' => 'حساب انستغرام',
             'social_tiktok' => 'حساب تيك توك',
+            'social_telegram' => 'قناة أو حساب تيليجرام',
             'social_snapchat' => 'حساب سناب شات',
             'social_facebook' => 'حساب فيسبوك',
             'social_youtube' => 'قناة يوتيوب',
@@ -278,7 +281,7 @@ class SettingController extends Controller
     protected function updateCoverageTab(Request $request): RedirectResponse
     {
         $request->validate([
-            'coverage_areas' => 'nullable|string|max:500',
+            'coverage_areas' => 'nullable|string|max:4000',
             'coverage_note' => 'nullable|string|max:255',
         ]);
 

@@ -42,6 +42,7 @@
         $settings['social_twitter'] ?? null,
         $settings['social_instagram'] ?? null,
         $settings['social_tiktok'] ?? null,
+        $settings['social_telegram'] ?? null,
         $settings['social_snapchat'] ?? null,
         $settings['social_facebook'] ?? null,
         $settings['social_youtube'] ?? null,
