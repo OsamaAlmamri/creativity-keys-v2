@@ -81,6 +81,27 @@ class ThemeManagementTest extends TestCase
         $this->assertEquals('Alexandria', Setting::get('theme_font'));
     }
 
+    public function test_admin_can_select_sage_creativity_preset(): void
+    {
+        $response = $this->actingAs($this->admin)->post(route('admin.theme.update'), [
+            'theme_preset' => 'sage',
+            'theme_mode' => 'dark',
+            'theme_visitor_toggle' => 1,
+            'theme_font' => 'Cairo',
+            'theme_radius' => 'medium',
+            'header_style' => 'sticky',
+        ]);
+
+        $response->assertRedirect(route('admin.theme.index'));
+        $this->assertEquals('sage', Setting::get('theme_preset'));
+
+        $publicResponse = $this->get(route('home'));
+        $publicResponse->assertStatus(200);
+        $publicResponse->assertSee('#588157', false); // Sage 500
+        $publicResponse->assertSee('#4a6b53', false); // Sage 600
+        $publicResponse->assertSee('88, 129, 87', false); // Sage RGB
+    }
+
     public function test_public_pages_render_theme_styles_and_variables(): void
     {
         Setting::set('theme_preset', 'emerald', 'theme');

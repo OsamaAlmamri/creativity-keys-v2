@@ -8,6 +8,7 @@ use App\Services\ThemeService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ThemeController extends Controller
 {
@@ -42,8 +43,10 @@ class ThemeController extends Controller
      */
     public function update(Request $request): RedirectResponse
     {
+        $allowedPresets = array_merge(array_keys(ThemeService::presetColors()), ['custom']);
+
         $validated = $request->validate([
-            'theme_preset' => ['required', 'string', 'in:amber,blue,emerald,red,indigo,purple,orange,custom'],
+            'theme_preset' => ['required', 'string', Rule::in($allowedPresets)],
             'theme_custom_color' => ['nullable', 'string', 'regex:/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/'],
             'theme_mode' => ['required', 'string', 'in:dark,light,system'],
             'theme_visitor_toggle' => ['nullable', 'boolean'],
