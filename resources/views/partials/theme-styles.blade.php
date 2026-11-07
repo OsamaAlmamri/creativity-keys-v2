@@ -65,7 +65,15 @@
         background-color: var(--brand-500) !important;
     }
     .text-brand-primary {
-        color: var(--brand-500) !important;
+        color: var(--brand-700) !important;
+    }
+    .dark .text-brand-primary,
+    html.dark .text-brand-primary,
+    body:not(.theme-light) .text-brand-primary {
+        color: var(--brand-300) !important;
+    }
+    html.theme-light .text-brand-primary {
+        color: var(--brand-700) !important;
     }
     .border-brand-primary {
         border-color: var(--brand-500) !important;

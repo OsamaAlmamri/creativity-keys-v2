@@ -33,6 +33,13 @@
         <!-- Gallery Grid with Enhanced Light & Dark Mode Design -->
         <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" id="gallery-grid">
             @forelse($galleryItems as $index => $item)
+                @php
+                    $thumbWebp = preg_replace('/800_([a-zA-Z0-9_\-]+)\.(jpg|jpeg|png)$/i', '400_$1.webp', $item->image_url);
+                    $thumbJpg = preg_replace('/800_([a-zA-Z0-9_\-]+)\.(jpg|jpeg|png)$/i', '400_$1.jpg', $item->image_url);
+                    $hasThumbWebp = file_exists(public_path(ltrim($thumbWebp, '/')));
+                    $hasThumbJpg = file_exists(public_path(ltrim($thumbJpg, '/')));
+                    $cardImgSrc = $hasThumbJpg ? asset($thumbJpg) : $item->image_url;
+                @endphp
                 <button type="button"
                     class="gallery-item glass-panel group relative overflow-hidden rounded-[1.8rem] p-2.5 text-start transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl cursor-pointer block w-full focus:outline-none focus:ring-2 focus:ring-amber-500/70"
                     data-gallery-src="{{ $item->image_url }}"
@@ -44,9 +51,14 @@
                     
                     <!-- Clean, crystal-clear image container with subtle hover overlay -->
                     <div class="relative overflow-hidden rounded-[1.4rem] aspect-[4/3] bg-slate-200 dark:bg-slate-800">
-                        <img alt="{{ $item->title }}" loading="lazy"
-                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                            src="{{ $item->image_url }}">
+                        <picture>
+                            @if($hasThumbWebp)
+                                <source srcset="{{ asset($thumbWebp) }}" type="image/webp">
+                            @endif
+                            <img alt="{{ $item->title }}" loading="lazy" width="400" height="300"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                src="{{ $cardImgSrc }}">
+                        </picture>
 
                         <!-- Subtle hover veil with zoom icon (only visible on hover) -->
                         <div class="absolute inset-0 bg-slate-950/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">

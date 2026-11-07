@@ -79,7 +79,7 @@
         <div class="min-w-0">
             @if($service->price_starting_at)
                 <span class="text-[11px] text-slate-400 block leading-tight">السعر التقديري:</span>
-                <span class="text-sm font-bold text-brand-primary truncate block">{{ $service->price_starting_at }}</span>
+                <span class="text-sm font-extrabold text-amber-600 dark:text-amber-300 text-brand-primary truncate block">{{ $service->price_starting_at }}</span>
             @else
                 <span class="text-xs text-slate-400">حسب نوع الموديل</span>
             @endif

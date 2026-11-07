@@ -68,9 +68,13 @@
                 <a href="{{ route('home') }}"
                     class="flex items-center gap-3 transition-opacity hover:opacity-85 shrink-0 group">
                     @if(!empty($settings['site_logo']))
-                        <img src="{{ $settings['site_logo'] }}"
-                            alt="{{ $settings['site_name'] ?? 'مفتاح الإبداع' }}"
-                            class="h-11 w-11 rounded-xl object-contain bg-slate-900 border border-slate-800 p-0.5 shadow-sm">
+                        <picture>
+                            <source srcset="{{ asset('images/logo.webp') }}" type="image/webp">
+                            <img src="{{ $settings['site_logo'] }}"
+                                alt="{{ $settings['site_name'] ?? 'مفتاح الإبداع' }}"
+                                width="44" height="44"
+                                class="h-11 w-11 rounded-xl object-contain bg-slate-900 border border-slate-800 p-0.5 shadow-sm">
+                        </picture>
                     @endif
                     <div class="flex flex-col items-start">
                         <span
@@ -97,7 +101,7 @@
                 <!-- Header Actions -->
                 <div class="hidden lg:flex items-center gap-3 shrink-0">
                     <a href="{{ route('home') }}#contact"
-                        class="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-amber-500 hover:bg-amber-400 text-white font-bold text-xs sm:text-sm shadow-sm transition-all duration-300 hover:scale-[1.02]">
+                        class="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-amber-600 hover:bg-amber-500 text-white font-bold text-sm shadow-sm transition-all duration-300 hover:scale-[1.02]">
                         اطلب الخدمة
                     </a>
 
@@ -239,9 +243,13 @@
                         @if(!empty($settings['site_logo']))
                             <div
                                 class="h-11 w-11 flex items-center justify-center p-1.5 rounded-2xl bg-slate-900 border border-slate-800 shadow-md">
-                                <img src="{{ $settings['site_logo'] }}"
-                                    alt="{{ $settings['site_name'] ?? 'مفتاح الإبداع' }}"
-                                    class="h-8 w-auto max-w-[140px] object-contain">
+                                <picture>
+                                    <source srcset="{{ asset('images/logo.webp') }}" type="image/webp">
+                                    <img src="{{ $settings['site_logo'] }}"
+                                        alt="{{ $settings['site_name'] ?? 'مفتاح الإبداع' }}"
+                                        width="38" height="38"
+                                        class="h-8 w-auto max-w-[140px] object-contain">
+                                </picture>
                             </div>
                         @else
                             <div
