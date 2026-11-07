@@ -4,7 +4,7 @@
 ])
 
 @php
-    $whatsappNumber = $settings['whatsapp'] ?? '966568191921';
+    $whatsappNumber = $settings['whatsapp'] ?? '966543075802';
     $whatsappText = urlencode('مرحباً، أود الاستفسار وطلب خدمة: ' . $service->title);
     $whatsappUrl = "https://wa.me/{$whatsappNumber}?text={$whatsappText}";
 @endphp
@@ -13,14 +13,14 @@
     <div>
         <!-- Top Image Card -->
         <a href="{{ route('services.show', $service->slug) }}" class="block mb-5 overflow-hidden rounded-[1.6rem] bg-slate-950 aspect-[4/3] relative">
-            <img 
-                src="{{ $service->image_url }}" 
-                alt="{{ $service->title }}" 
-                loading="lazy" 
+            <img
+                src="{{ $service->image_url }}"
+                alt="{{ $service->title }}"
+                loading="lazy"
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             >
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent"></div>
-            
+
             @if($service->is_emergency)
                 <div class="absolute top-3 right-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-600/95 backdrop-blur-sm text-white text-xs font-bold shadow-md">
                     <span class="w-2 h-2 rounded-full bg-white animate-ping"></span>
@@ -56,7 +56,7 @@
                 {{ $service->title }}
             </a>
         </h3>
-        
+
         <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-3 mb-4">
             {{ $service->short_description }}
         </p>
@@ -86,18 +86,18 @@
         </div>
 
         <div class="flex items-center gap-2">
-            <a 
-                href="{{ route('services.show', $service->slug) }}" 
+            <a
+                href="{{ route('services.show', $service->slug) }}"
                 class="inline-flex items-center gap-1 px-3.5 py-2 rounded-full border border-slate-300/80 dark:border-slate-700 hover:border-amber-400 text-slate-700 dark:text-slate-200 hover:text-amber-400 font-semibold text-xs transition-all duration-300"
             >
                 <span>التفاصيل</span>
                 <svg class="w-3 h-3 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
 
-            <a 
-                href="{{ $whatsappUrl }}" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+            <a
+                href="{{ $whatsappUrl }}"
+                target="_blank"
+                rel="noopener noreferrer"
                 class="inline-flex items-center gap-1 px-3.5 py-2 rounded-full bg-brand-primary hover:brightness-105 text-slate-950 font-bold text-xs shadow-brand transition-all duration-300"
             >
                 <span>طلب</span>

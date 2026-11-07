@@ -19,7 +19,7 @@ class ServiceDetailsAndSeoTest extends TestCase
     public function test_service_details_page_loads_successfully_with_rich_content(): void
     {
         Setting::set('site_name', 'مفتاح الإبداع');
-        Setting::set('emergency_phone', '0568191921');
+        Setting::set('emergency_phone', '0543075802');
         Setting::set('city_name', 'جدة');
 
         $category = ServiceCategory::create([
@@ -92,7 +92,7 @@ class ServiceDetailsAndSeoTest extends TestCase
         $response->assertSee('برمجة مفتاح شريحة عادي');
         $response->assertSee('هل تبرمجون جميع ماركات السيارات في جدة؟');
         $response->assertSee('نعم، نبرمج كافة الماركات والموديلات الحديثة');
-        $response->assertSee('0568191921');
+        $response->assertSee('0543075802');
 
         // Check SEO Schemas
         $response->assertSee('"@type":"BreadcrumbList"', false);

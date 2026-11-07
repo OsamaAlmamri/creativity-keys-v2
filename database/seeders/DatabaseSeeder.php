@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'إدارة مفتاح الإبداع',
                 'password' => Hash::make('password123'),
                 'role' => 'admin',
-                'phone' => '0568191921',
+                'phone' => '0543075802',
                 'is_active' => true,
             ]
         );
@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'المدير العام',
                 'password' => Hash::make('admin123456'),
                 'role' => 'admin',
-                'phone' => '0568191921',
+                'phone' => '0543075802',
                 'is_active' => true,
             ]
         );
@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'مشرف فرع جدة',
                 'password' => Hash::make('password123'),
                 'role' => 'manager',
-                'phone' => '0568191921',
+                'phone' => '0543075802',
                 'is_active' => true,
             ]
         );

@@ -501,7 +501,7 @@
             <!-- Bottom Copyright -->
             <div class="pt-8 border-t border-slate-800/80 text-center text-xs">
                 <p class="text-slate-400 leading-normal">
-                    © {{ date('Y') }} {{ $settings['site_name'] ?? 'مفتاح الإبداع' }}. برمجة وتطوير 
+                    © {{ date('Y') }} {{ $settings['site_name'] ?? 'مفتاح الإبداع' }}. برمجة وتطوير
                     <a href="https://github.com/OsamaAlmamri" target="_blank" rel="noopener noreferrer"
                         class="text-brand-primary hover:underline font-semibold">أسامة المعمري</a>. جميع الحقوق محفوظة.
                 </p>
@@ -513,7 +513,7 @@
         <!-- Floating Action Buttons (WhatsApp, Phone Call & Back To Top) -->
         <div role="group" aria-label="تواصل سريع" class="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-2.5">
             <!-- 1. WhatsApp Button -->
-            <a href="https://wa.me/{{ $settings['whatsapp'] ?? '966568191921' }}?text={{ urlencode('السلام عليكم، أحتاج مساعدة أو خدمة مفاتيح') }}"
+            <a href="https://wa.me/{{ $settings['whatsapp'] ?? '966543075802' }}?text={{ urlencode('السلام عليكم، أحتاج مساعدة أو خدمة مفاتيح') }}"
                 target="_blank" rel="noopener noreferrer"
                 class="w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#25D366] hover:bg-[#1EBE5D] text-white flex items-center justify-center shadow-lg shadow-[#25D366]/30 hover:-translate-y-1 transition-all duration-300 group relative"
                 aria-label="تواصل عبر الواتساب">
@@ -528,7 +528,7 @@
             </a>
 
             <!-- 2. Phone Call Button -->
-            <a href="tel:{{ $settings['emergency_phone'] ?? '0568191921' }}"
+            <a href="tel:{{ $settings['emergency_phone'] ?? '0543075802' }}"
                 class="w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#4A6B53] hover:bg-[#3A5A40] text-white flex items-center justify-center shadow-lg shadow-[#4A6B53]/30 hover:-translate-y-1 transition-all duration-300 group relative"
                 aria-label="اتصل بنا">
                 <span

@@ -45,13 +45,13 @@ class SettingSeeder extends Seeder
             ['key' => 'social_linkedin', 'value' => '', 'group' => 'social', 'label' => 'صفحة لينكد إن', 'type' => 'text'],
 
             // أرقام التواصل وعناوين البريد الإلكتروني
-            ['key' => 'phone', 'value' => '0568191921', 'group' => 'contact', 'label' => 'رقم الهاتف الرئيسي', 'type' => 'text'],
-            ['key' => 'phone2', 'value' => '009665568191921', 'group' => 'contact', 'label' => 'رقم الاتصال المباشر البديل', 'type' => 'text'],
-            ['key' => 'emergency_phone', 'value' => '0568191921', 'group' => 'contact', 'label' => 'رقم هاتف الطوارئ السريع 24/7', 'type' => 'text'],
-            ['key' => 'whatsapp', 'value' => '966568191921', 'group' => 'contact', 'label' => 'رقم الواتساب الدولي (لروابط المحادثة)', 'type' => 'text'],
-            ['key' => 'whatsapp_phone', 'value' => '0568191921', 'group' => 'contact', 'label' => 'رقم الواتساب المحلي', 'type' => 'text'],
-            ['key' => 'email', 'value' => 'info@creativity-keys.com', 'group' => 'contact', 'label' => 'البريد الإلكتروني الرسمي للموقع', 'type' => 'text'],
-            ['key' => 'contact_email', 'value' => 'info@creativity-keys.com', 'group' => 'contact', 'label' => 'بريد استقبال رسائل التواصل', 'type' => 'text'],
+            ['key' => 'phone', 'value' => '0543075802', 'group' => 'contact', 'label' => 'رقم الهاتف الرئيسي', 'type' => 'text'],
+            ['key' => 'phone2', 'value' => '009665543075802', 'group' => 'contact', 'label' => 'رقم الاتصال المباشر البديل', 'type' => 'text'],
+            ['key' => 'emergency_phone', 'value' => '0543075802', 'group' => 'contact', 'label' => 'رقم هاتف الطوارئ السريع 24/7', 'type' => 'text'],
+            ['key' => 'whatsapp', 'value' => '966543075802', 'group' => 'contact', 'label' => 'رقم الواتساب الدولي (لروابط المحادثة)', 'type' => 'text'],
+            ['key' => 'whatsapp_phone', 'value' => '0543075802', 'group' => 'contact', 'label' => 'رقم الواتساب المحلي', 'type' => 'text'],
+            ['key' => 'email', 'value' => 'kanz.abhor.keys@gmail.com', 'group' => 'contact', 'label' => 'البريد الإلكتروني الرسمي للموقع', 'type' => 'text'],
+            ['key' => 'contact_email', 'value' => 'kanz.abhor.keys@gmail.com', 'group' => 'contact', 'label' => 'بريد استقبال رسائل التواصل', 'type' => 'text'],
             ['key' => 'email2', 'value' => 'mohammedahmedaboorig@gmail.com', 'group' => 'contact', 'label' => 'البريد الإلكتروني للإدارة', 'type' => 'text'],
             ['key' => 'email3', 'value' => 'admin@creativity-keys.com', 'group' => 'contact', 'label' => 'البريد الإلكتروني التقني', 'type' => 'text'],
 

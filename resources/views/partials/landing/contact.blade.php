@@ -16,7 +16,7 @@
 
                 <!-- Phone Card -->
                 <a
-                    href="tel:{{ $settings['emergency_phone'] ?? '0568191921' }}"
+                    href="tel:{{ $settings['emergency_phone'] ?? '0543075802' }}"
                     class="glass-panel flex items-center gap-4 rounded-2xl p-4 transition-all duration-300 hover-brand-card"
                 >
                     <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
@@ -25,14 +25,14 @@
                     <span class="min-w-0">
                         <span class="block text-xs font-bold uppercase tracking-widest text-slate-900 dark:text-white">اتصل بنا</span>
                         <span class="block text-sm text-slate-600 dark:text-slate-300 font-mono" dir="ltr">
-                            {{ $settings['emergency_phone'] ?? '0568191921' }}
+                            {{ $settings['emergency_phone'] ?? '0543075802' }}
                         </span>
                     </span>
                 </a>
 
                 <!-- WhatsApp Card -->
                 <a
-                    href="https://wa.me/{{ $settings['whatsapp'] ?? '966568191921' }}?text={{ urlencode('مرحباً، أود الاستفسار عن خدمات مفتاح الإبداع') }}"
+                    href="https://wa.me/{{ $settings['whatsapp'] ?? '966543075802' }}?text={{ urlencode('مرحباً، أود الاستفسار عن خدمات مفتاح الإبداع') }}"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="glass-panel flex items-center gap-4 rounded-2xl p-4 transition-all duration-300 hover-brand-card"
