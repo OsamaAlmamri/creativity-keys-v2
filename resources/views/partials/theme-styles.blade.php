@@ -16,10 +16,23 @@
     $radiusVal = $radiusMap[$themeRadius] ?? '1rem';
 @endphp
 
-<!-- Google Fonts (Cairo, Tajawal, Alexandria, Almarai) -->
+<!-- Optimized Asynchronous Google Fonts (Only active font family loaded) -->
+@php
+    $fontFamilyParam = match($themeFont) {
+        'Tajawal' => 'family=Tajawal:wght@400;600;700;800',
+        'Alexandria' => 'family=Alexandria:wght@400;600;700;800',
+        'Almarai' => 'family=Almarai:wght@400;700;800',
+        default => 'family=Cairo:wght@400;600;700;800',
+    };
+    $fontUrl = 'https://fonts.googleapis.com/css2?' . $fontFamilyParam . '&display=swap';
+@endphp
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;600;700;800;900&family=Almarai:wght@300;400;700;800&family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="{{ $fontUrl }}">
+<link rel="stylesheet" href="{{ $fontUrl }}" media="print" onload="this.media='all'">
+<noscript>
+    <link rel="stylesheet" href="{{ $fontUrl }}">
+</noscript>
 
 <style>
     :root {

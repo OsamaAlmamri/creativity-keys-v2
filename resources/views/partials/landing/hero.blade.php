@@ -36,11 +36,17 @@
         <!-- Hero Visual (Left in RTL): Classic Pure Roman Arch Window Frame -->
         <div class="relative mx-auto flex w-full max-w-[560px] justify-center justify-self-center lg:ms-0 lg:justify-self-end">
             <div class="arch-frame arch-frame-large w-full max-w-[560px]">
-                <img 
-                    src="/images/store/800_6abfe0cbeabef.jpg" 
-                    alt="واجهة محل {{ $settings['site_name'] ?? 'مفتاح الإبداع' }} لنسخ وبرمجة مفاتيح السيارات في {{ $cityName }}" 
-                    class="h-full w-full object-cover"
-                >
+                <picture>
+                    <source srcset="{{ asset('images/store/800_6abfe0cbeabef.webp') }}" type="image/webp">
+                    <img 
+                        src="{{ asset('images/store/800_6abfe0cbeabef.jpg') }}" 
+                        alt="واجهة محل {{ $settings['site_name'] ?? 'مفتاح الإبداع' }} لنسخ وبرمجة مفاتيح السيارات في {{ $cityName }}" 
+                        class="h-full w-full object-cover"
+                        width="560" height="680"
+                        fetchpriority="high"
+                        decoding="async"
+                    >
+                </picture>
             </div>
         </div>
 

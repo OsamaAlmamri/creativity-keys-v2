@@ -10,6 +10,10 @@
 
     @include('partials.theme-styles')
 
+    @if(request()->routeIs('home'))
+        <link rel="preload" as="image" href="{{ asset('images/store/800_6abfe0cbeabef.webp') }}" type="image/webp" fetchpriority="high">
+    @endif
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -555,11 +559,13 @@
                 menu?.classList.toggle('hidden');
             });
 
-            // Back to Top Button Visibility and Smooth Scroll
+            // Back to Top Button Visibility and Smooth Scroll (Optimized with RAF)
             const backToTopBtn = document.getElementById('backToTop');
             if (backToTopBtn) {
+                let ticking = false;
                 const updateBackToTop = function () {
-                    if (window.scrollY > 300) {
+                    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+                    if (scrollY > 300) {
                         backToTopBtn.classList.remove('opacity-0', 'invisible', 'pointer-events-none');
                         backToTopBtn.classList.add('opacity-100', 'visible', 'pointer-events-auto');
                     } else {
@@ -568,7 +574,15 @@
                     }
                 };
 
-                window.addEventListener('scroll', updateBackToTop, { passive: true });
+                window.addEventListener('scroll', function () {
+                    if (!ticking) {
+                        window.requestAnimationFrame(function () {
+                            updateBackToTop();
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                }, { passive: true });
                 updateBackToTop();
 
                 backToTopBtn.addEventListener('click', function () {
