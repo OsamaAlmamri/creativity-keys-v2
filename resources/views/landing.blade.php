@@ -61,35 +61,4 @@
     <!-- 10. Direct Contact Form Section -->
     @include('partials.landing.contact')
 
-    <!-- Gallery Filtering JavaScript -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const galleryCards = document.querySelectorAll('.gallery-card');
-
-            filterButtons.forEach(btn => {
-                btn.addEventListener('click', function () {
-                    const filter = this.getAttribute('data-filter');
-
-                    // Active state on buttons
-                    filterButtons.forEach(b => {
-                        b.classList.remove('bg-amber-500', 'text-white');
-                        b.classList.add('bg-slate-800', 'text-slate-300');
-                    });
-                    this.classList.add('bg-amber-500', 'text-white');
-                    this.classList.remove('bg-slate-800', 'text-slate-300');
-
-                    // Filter cards
-                    galleryCards.forEach(card => {
-                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                            card.style.display = 'block';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                });
-            });
-        });
-    </script>
-
 @endsection

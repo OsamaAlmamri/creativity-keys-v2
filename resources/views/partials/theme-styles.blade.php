@@ -1106,6 +1106,21 @@
     html.theme-light .article-title:hover {
         color: var(--brand-600, #d97706) !important;
     }
+    /* Pure CSS Theme Icons (Zero Forced Reflow, Zero DOM Mutation) */
+    .theme-icon-sun {
+        display: inline-block;
+    }
+    .theme-icon-moon {
+        display: none;
+    }
+    html.theme-light .theme-icon-sun,
+    html:not(.dark) .theme-icon-sun {
+        display: none !important;
+    }
+    html.theme-light .theme-icon-moon,
+    html:not(.dark) .theme-icon-moon {
+        display: inline-block !important;
+    }
 </style>
 
 <!-- Immediate Theme Mode Initialization (Zero Flicker) -->
@@ -1139,24 +1154,5 @@
             document.documentElement.classList.remove('dark');
             localStorage.setItem('keyshop_theme_mode', 'light');
         }
-        updateThemeIcons();
     };
-
-    function updateThemeIcons() {
-        var isLight = document.documentElement.classList.contains('theme-light');
-        document.querySelectorAll('.theme-icon-sun').forEach(function(el) {
-            el.style.display = isLight ? 'none' : 'inline-block';
-        });
-        document.querySelectorAll('.theme-icon-moon').forEach(function(el) {
-            el.style.display = isLight ? 'inline-block' : 'none';
-        });
-        document.querySelectorAll('.theme-text-sun').forEach(function(el) {
-            el.style.display = isLight ? 'none' : 'inline';
-        });
-        document.querySelectorAll('.theme-text-moon').forEach(function(el) {
-            el.style.display = isLight ? 'inline' : 'none';
-        });
-    }
-
-    document.addEventListener('DOMContentLoaded', updateThemeIcons);
 </script>
